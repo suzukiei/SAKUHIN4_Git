@@ -1,4 +1,4 @@
-#define WINDOE_WIDTH 960
+#define WINDOW_WIDTH 960
 #define WINDOW_HEIGHT 560
 #define GAME_WIDTH 960
 #define GAME_HEIGHT 560
