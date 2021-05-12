@@ -7,7 +7,9 @@
 #include "textevent.h"
 #include "variable.h"
 
+//ƒQ[ƒ€–{‘Ì
 void GameMain(void);
+//‰æ–Ê‘JˆÚ
 void GameSceneMove(void);
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
