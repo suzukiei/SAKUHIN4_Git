@@ -13,6 +13,7 @@ enum GAME_END
 	GAME_END_COMP,
 	GAME_END_FAIL
 };
+
 //ƒƒjƒ…[‘I‘ð
 enum MENU_SELECT
 {
