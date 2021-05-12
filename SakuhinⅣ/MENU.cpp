@@ -4,7 +4,7 @@
 #include "define.h"
 #include "menu.h"
 #include "class.h"
-#include "menu.h"
+
 
 VOID MENU(VOID)
 {
