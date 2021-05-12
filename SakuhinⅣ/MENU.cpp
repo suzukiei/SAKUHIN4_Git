@@ -5,7 +5,6 @@
 #include "menu.h"
 #include "class.h"
 
-
 VOID MENU(VOID)
 {
 	DrawGraph(MENU_WIDTH_POSITION, MENU_HEIGHT_POSITION, /*.handle*/, TRUE); //ƒƒjƒ…[‰æ–Ê”wŒi‰æ‘œ
