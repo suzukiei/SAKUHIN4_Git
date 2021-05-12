@@ -1,6 +1,11 @@
 #include "DxLib.h"
 #include "define.h"
 #include "enum.h"
+#include "class.h"
+#include "menu.h"
+#include "movement.h"
+#include "textevent.h"
+#include "variable.h"
 
 void GameMain(void);
 void GameSceneMove(void);
@@ -24,7 +29,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	SetDrawScreen(DX_SCREEN_BACK);
 
 
-	/*--------------------------------ゲームループ---------------------------------
+	//--------------------------------ゲームループ---------------------------------
 	while (GameLoop)
 	{
 		if (ProcessMessage() != 0) { break; }
@@ -43,7 +48,6 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 		MY_FPS_WAIT();
 	}
-	*/
 	ScreenFlip();
 
 	//--------------------------------終了処理---------------------------------
