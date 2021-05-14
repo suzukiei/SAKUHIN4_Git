@@ -1,10 +1,10 @@
-
+#include "class.h"
 //キーボードの種類
 #define KEY_CODE_KIND		256	//256種類
 #define CharaSpeed 2			//キャラクターのスピード
 
 
-VOID MOVEMENT(VOID);				//キャラの移動関数
+VOID MOVEMENT(CHARA,MOVE);				//キャラの移動関数
 VOID MY_ALL_KEYDOWN_UPDATE(VOID);	//キーの入力状態を更新する関数
 
 //キーボードの入力を取得
@@ -16,8 +16,15 @@ BOOL MY_KEY_DOWN(int);				//キーを押しているか、キーコードで判断する
 BOOL MY_KEY_UP(int);				//キーを押し上げたか、キーコードで判断する
 
 enum MOVE {
-	TOP,
-	BOTTOM,
+	UP,
+	DOWN,
 	RIGHT,
 	LEFT
 };
+
+enum PLAYER_KIND_1 {
+	D_1, D_2, D_3, D_4,
+	L_1, L_2, L_3, L_4,
+	R_1, R_2, R_3, R_4,
+	U_1, U_2, U_3, U_4
+};//(U上/D下/R右/L左)

@@ -1,131 +1,117 @@
 /*作品制作Ⅳ_冥闇の眼*/
 #include "DxLib.h"
 #include "movement.h"
+#include "class.h"
 
 
-
-VOID MOVEMENT(VOID)
+VOID MOVEMENT(CHARA *chara,MOVE move)
 {
 
 	BOOL IsMove = TRUE; //移動可能
 
 
-	//上に移動するとき
-	if (MY_KEY_DOWN(KEY_INPUT_W) == TRUE
-		&& MY_KEY_DOWN(KEY_INPUT_D) == FALSE
-		&& MY_KEY_DOWN(KEY_INPUT_S) == FALSE
-		&& MY_KEY_DOWN(KEY_INPUT_A) == FALSE
-		&& IsMove == TRUE)
+	switch (move)
 	{
-		//player.IsMoveNaname = FALSE;	//斜め移動していない
+	case UP:
+		chara->IsMoveNaname = FALSE;	//斜め移動していない
 
-		if (player.kind1 >= U_1 && player.kind1 < U_4)
+		if (chara->kind1 >= U_1 && chara->kind1 < U_4)
 		{
 			//画像変更カウンタ
-			if (player.imgChangeCnt < player.imgChangeCntMAX)
+			if (chara->imgChangeCnt < chara->imgChangeCntMAX)
 			{
-				player.imgChangeCnt++;
+				chara->imgChangeCnt++;
 			}
 			else //画像を変えるタイミングになったら
 			{
-				player.kind1++;			//次の画像にする
-				player.imgChangeCnt = 0;	//変更カウンタ初期化
+				chara->kind1++;			//次の画像にする
+				chara->imgChangeCnt = 0;	//変更カウンタ初期化
 			}
 		}
 		else
 		{
-			player.kind1 = U_1;	//最初の画像にする
+			chara->kind1 = U_1;	//最初の画像にする
 		}
 
-		player.image.y -= CharaSpeed;	//移動
-	}
+		chara->image.y -= CharaSpeed;	//移動
 
-	//右に移動するとき
-	if (MY_KEY_DOWN(KEY_INPUT_W) == FALSE
-		&& MY_KEY_DOWN(KEY_INPUT_D) == TRUE
-		&& MY_KEY_DOWN(KEY_INPUT_S) == FALSE
-		&& MY_KEY_DOWN(KEY_INPUT_A) == FALSE
-		&& IsMove == TRUE)
-	{
-		player.IsMoveNaname = FALSE;	//斜め移動していない
+		break;
 
-		if (player.kind1 >= R_1 && player.kind1 < R_4)
+	case DOWN:
+
+		chara->IsMoveNaname = FALSE;	//斜め移動していない
+
+		if (chara->kind1 >= D_1 && chara->kind1 < D_4)
 		{
 			//画像変更カウンタ
-			if (player.imgChangeCnt < player.imgChangeCntMAX)
+			if (chara->imgChangeCnt < chara->imgChangeCntMAX)
 			{
-				player.imgChangeCnt++;
+			chara->imgChangeCnt++;
 			}
 			else //画像を変えるタイミングになったら
 			{
-				player.kind1++;			//次の画像にする
-				player.imgChangeCnt = 0;	//変更カウンタ初期化
+				chara->kind1++;			//次の画像にする
+				chara->imgChangeCnt = 0;	//変更カウンタ初期化
 			}
 		}
 		else
 		{
-			player.kind1 = R_1;	//最初の画像にする
+			chara->kind1 = D_1;	//最初の画像にする
 		}
-		player.image.x += CharaSpeed;	//移動
-	}
+		chara->image.y += CharaSpeed;	//移動
 
-	//左に移動するとき
-	if (MY_KEY_DOWN(KEY_INPUT_W) == FALSE
-		&& MY_KEY_DOWN(KEY_INPUT_D) == FALSE
-		&& MY_KEY_DOWN(KEY_INPUT_S) == FALSE
-		&& MY_KEY_DOWN(KEY_INPUT_A) == TRUE
-		&& IsMove == TRUE)
-	{
-		player.IsMoveNaname = FALSE;	//斜め移動していない
+		break;
 
-		if (player.kind1 >= L_1 && player.kind1 < L_4)
+	case RIGHT:
+
+		chara->IsMoveNaname = FALSE;	//斜め移動していない
+
+		if (chara->kind1 >= R_1 && chara->kind1 < R_4)
 		{
 			//画像変更カウンタ
-			if (player.imgChangeCnt < player.imgChangeCntMAX)
+			if (chara->imgChangeCnt < chara->imgChangeCntMAX)
 			{
-				player.imgChangeCnt++;
+				chara->imgChangeCnt++;
 			}
 			else //画像を変えるタイミングになったら
 			{
-				player.kind1++;			//次の画像にする
-				player.imgChangeCnt = 0;	//変更カウンタ初期化
+				chara->kind1++;			//次の画像にする
+				chara->imgChangeCnt = 0;	//変更カウンタ初期化
 			}
 		}
 		else
 		{
-			player.kind1 = L_1;	//最初の画像にする
+			chara->kind1 = R_1;	//最初の画像にする
 		}
-		player.image.x -= CharaSpeed;	//移動
-	}
+		chara->image.x += CharaSpeed;	//移動
+		break;
 
-	//下に移動するとき
-	if (MY_KEY_DOWN(KEY_INPUT_W) == FALSE
-		&& MY_KEY_DOWN(KEY_INPUT_D) == FALSE
-		&& MY_KEY_DOWN(KEY_INPUT_S) == TRUE
-		&& MY_KEY_DOWN(KEY_INPUT_A) == FALSE
-		&& IsMove == TRUE)
-	{
-		player.IsMoveNaname = FALSE;	//斜め移動していない
+	case LEFT:
 
-		if (player.kind1 >= D_1 && player.kind1 < D_4)
+		chara->IsMoveNaname = FALSE;	//斜め移動していない
+
+		if (chara->kind1 >= L_1 && chara->kind1 < L_4)
 		{
 			//画像変更カウンタ
-			if (player.imgChangeCnt < player.imgChangeCntMAX)
+			if (chara->imgChangeCnt < chara->imgChangeCntMAX)
 			{
-				player.imgChangeCnt++;
+				chara->imgChangeCnt++;
 			}
 			else //画像を変えるタイミングになったら
 			{
-				player.kind1++;			//次の画像にする
-				player.imgChangeCnt = 0;	//変更カウンタ初期化
+				chara->kind1++;			//次の画像にする
+				chara->imgChangeCnt = 0;	//変更カウンタ初期化
 			}
 		}
 		else
 		{
-			player.kind1 = D_1;	//最初の画像にする
+			chara->kind1 = L_1;	//最初の画像にする
 		}
-		player.image.y += CharaSpeed;	//移動
+		chara->image.x -= CharaSpeed;	//移動
+
+		break;
 	}
+
 
 
 }
