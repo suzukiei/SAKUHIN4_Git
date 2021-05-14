@@ -14,3 +14,10 @@ char OldAllKeyState[KEY_CODE_KIND] = { '\0' };	//すべてのキーの状態(直前)が入る
 
 BOOL MY_KEY_DOWN(int);				//キーを押しているか、キーコードで判断する
 BOOL MY_KEY_UP(int);				//キーを押し上げたか、キーコードで判断する
+
+enum MOVE {
+	TOP,
+	BOTTOM,
+	RIGHT,
+	LEFT
+};

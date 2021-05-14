@@ -6,7 +6,6 @@
 
 VOID MOVEMENT(VOID)
 {
-	/*
 
 	BOOL IsMove = TRUE; //移動可能
 
@@ -126,16 +125,6 @@ VOID MOVEMENT(VOID)
 			player.kind1 = D_1;	//最初の画像にする
 		}
 		player.image.y += CharaSpeed;	//移動
-	}
-	*/
-
-	if (MY_KEY_DOWN(KEY_INPUT_ESCAPE) == TRUE)
-	{
-	   //ここにメニュー表示の関数を制作する。
-		IsMove = FALSE;
-
-		MENU();
-
 	}
 
 
