@@ -1,4 +1,4 @@
-#define WINDOE_WIDTH 960
+#define WINDOW_WIDTH 960
 #define WINDOW_HEIGHT 560
 #define GAME_WIDTH 960
 #define GAME_HEIGHT 560
@@ -19,8 +19,8 @@
 
 //FONT
 //#define FONT_PATH_MAX			255
-//#define FONT_ _PATH			TEXT(".ttf")
-//#define FONT_ _NAME			TEXT("font名前")
+//#define FONT_PATH			TEXT(".ttf")
+//#define FONT_NAME			TEXT("font名前")
 //#define FONT_INSTALL_ERR_TITLE	TEXT("フォントインストールエラー")
 //#define FONT_CREATE_ERR_TITLE	TEXT("フォント作成エラー")
 
@@ -54,6 +54,17 @@
 //#define IMAGE_END_BACK_CNT_MAX	30
 
 //#define IMAGE_BACK_PATH_END	TEXT(".png")
+
+#define MENU_WIDTH_POSITION 280 //メニュー背景
+#define MENU_HEIGHT_POSITION 180 //メニュー背景
+#define MENU_BUTTON_TITLE_WIDTH_POSITION 380 //タイトルへ戻るボタンの位置
+#define MENU_BUTTON_TITLE_HEIGHT_POSITION 280 //タイトルへ戻るボタンの位置
+#define MENU_BUTTON_SAVE_WIDTH_POSITION 380 //セーブボタンの位置
+#define MENU_BUTTON_SAVE_HEIGHT_POSITION 380 //セーブボタンの位置
+#define MENU_BUTTON_SELECT_TITLE_WIDTH_POSITION 370 //タイトル選択時の位置
+#define MENU_BUTTON_SELECT_TITLE_HEIGHT_POSITION 270 //タイトル選択時の位置
+#define MENU_BUTTON_SELECT_SAVE_WIDTH_POSITION 370 //セーブ選択時の位置
+#define MENU_BUTTON_SELECT_SAVE_HEIGHT_POSITION 370 //セーブ選択時の位置
 
 //player
 //#define IMAGE_PLAYER_PATH
