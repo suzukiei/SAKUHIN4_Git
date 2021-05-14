@@ -1,5 +1,5 @@
 //画像
-class STRUCT_IMAGE
+class IMAGE
 {
 	char path[PATH_MAX];
 	int handle;
@@ -10,7 +10,7 @@ class STRUCT_IMAGE
 };
 
 //タイトル背景
-class STRUCT_IMAGE_BACK
+class IMAGE_BACK
 {
 	IMAGE image;
 	BOOL IsDraw;
@@ -18,7 +18,7 @@ class STRUCT_IMAGE_BACK
 };
 
 //音声
-class STRUCT_MUSIC
+class MUSIC
 {
 	char path[PATH_MAX];
 	int handle;
@@ -26,19 +26,7 @@ class STRUCT_MUSIC
 };
 
 //プレイヤー
-class STRUCT_CHARA
-{
-	IMAGE image;
-	int speed;
-	int CenterX;
-	int CenterY;
-
-	RECT coll;
-	iPOINT collBeforePt;
-};
-
-//エネミー
-class STRUCT_ENEMY
+class CHARA
 {
 	IMAGE image;
 	int speed;
