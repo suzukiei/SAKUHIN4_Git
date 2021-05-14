@@ -7,17 +7,9 @@
 #include "variable.h"
 #include "flag.h"
 
+
 VOID MENU(VOID)
 {
-
-	if (MY_KEY_DOWN(KEY_INPUT_ESCAPE) == TRUE)
-	{
-		//ここにメニュー表示の関数を制作する。
-		IsMove = FALSE;
-
-		MENU();
-
-	}
 
 	DrawGraph(MENU_WIDTH_POSITION, MENU_HEIGHT_POSITION, /*.handle*/, TRUE); //メニュー画面背景画像
 	//メニューのタイトルへ戻るボタンの位置
@@ -85,6 +77,7 @@ VOID MENU(VOID)
 
 				SELECT = MENU_TITLE;
 			}
+			break;
 		}
 
 		break;

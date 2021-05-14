@@ -13,6 +13,6 @@ BOOL IsCharaAlive;
 //時間エンド
 BOOL GAMEOVER;
 //ゲームが終わっているか
-BOOL GameLoop;
+BOOL GameLoop = TRUE;
 //動いているか
 BOOL IsMove;
