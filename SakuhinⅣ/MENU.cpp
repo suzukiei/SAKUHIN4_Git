@@ -32,9 +32,14 @@ VOID MENU(VOID)
 		case MENU_TITLE:
 
 			//ここに選択時の囲いを表示
+
+
+
+
+
 			if (MY_KEY_DOWN(KEY_INPUT_RETURN) == TRUE)
 			{
-				GAME_SCENE = GAME_SCENE_START;
+				GameScene = GAME_SCENE_START;
 			}
 
 			if (MY_KEY_DOWN(KEY_INPUT_DOWN) == TRUE)
@@ -55,6 +60,13 @@ VOID MENU(VOID)
 
 		case MENU_SAVE:
 			//ここに選択時の囲いを表示
+
+
+
+
+
+
+
 			if (MY_KEY_DOWN(KEY_INPUT_RETURN) == TRUE)
 			{
 				//ここにセーブ機能

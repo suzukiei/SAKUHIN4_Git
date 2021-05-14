@@ -1,16 +1,18 @@
 //ボタンギミックフラグ
-
-//迷路フラグ
-
-//扉ギミックフラグ
-
+BOOL IsButtonPush;
 //強制移動ギミックフラグ
-
+BOOL OnTheFloor;
 //地雷ギミックフラグ
-
+BOOL IsMineCollision;
 //ワープギミックフラグ
-
-//見えない道ギミックフラグ
-
+BOOL IsWorp;
 //テキスト終了フラグ
 BOOL StringEndFlag;
+//生きているか
+BOOL IsCharaAlive;
+//時間エンド
+BOOL GAMEOVER;
+//ゲームが終わっているか
+BOOL GameLoop;
+//動いているか
+BOOL IsMove;
