@@ -1,0 +1,12 @@
+#include "DxLib.h"
+
+VOID TITLE(VOID);
+
+int TITLE_SELECT_NO = 0;
+
+enum TITLE_SELECT
+{
+	TITLE_START,
+	TITLE_CONTINUE,
+	TITLE_QUIT
+};

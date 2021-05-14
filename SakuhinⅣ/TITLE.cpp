@@ -1,0 +1,110 @@
+#include "Dxlib.h"
+#include "movement.h"
+#include "enum.h"
+#include "define.h"
+#include "menu.h"
+#include "class.h"
+#include "variable.h"
+#include "flag.h"
+#include "title.h"
+
+VOID TITLE(VOID)
+{
+
+	//
+	//各UI画像をここに表記
+	//
+
+
+	while (true)
+	{
+		switch (TITLE_SELECT_NO)
+		{
+		case TITLE_START:
+
+			//ここに選択時の囲いを表示
+
+
+
+
+
+			if (MY_KEY_DOWN(KEY_INPUT_RETURN) == TRUE)
+			{
+				GameScene = GAME_SCENE_PLAY;
+			}
+
+			if (MY_KEY_DOWN(KEY_INPUT_DOWN) == TRUE)
+			{
+
+				TITLE_SELECT_NO = TITLE_CONTINUE;
+
+			}
+
+			if (MY_KEY_DOWN(KEY_INPUT_UP) == TRUE)
+			{
+
+				TITLE_SELECT_NO = TITLE_QUIT;
+			}
+
+			break;
+
+
+		case TITLE_CONTINUE:
+			//ここに選択時の囲いを表示
+
+
+
+
+
+
+
+			if (MY_KEY_DOWN(KEY_INPUT_RETURN) == TRUE)
+			{
+				//セーブしたところから
+				break;
+			}
+
+			if (MY_KEY_DOWN(KEY_INPUT_DOWN) == TRUE)
+			{
+
+				TITLE_SELECT_NO = TITLE_QUIT;
+
+			}
+
+			if (MY_KEY_DOWN(KEY_INPUT_UP) == TRUE)
+			{
+
+				TITLE_SELECT_NO = TITLE_START;
+			}
+
+			break;
+
+		case TITLE_QUIT:
+
+			if (MY_KEY_DOWN(KEY_INPUT_RETURN) == TRUE)
+			{
+				//ゲーム終了
+				GameLoop = FALSE;
+				break;
+			}
+
+			if (MY_KEY_DOWN(KEY_INPUT_DOWN) == TRUE)
+			{
+
+				TITLE_SELECT_NO = TITLE_START;
+
+			}
+
+			if (MY_KEY_DOWN(KEY_INPUT_UP) == TRUE)
+			{
+
+				TITLE_SELECT_NO = TITLE_CONTINUE;
+			}
+
+			break;
+
+		}
+
+		break;
+	}
+}

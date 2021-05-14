@@ -160,6 +160,7 @@
     <ClInclude Include="menu.h" />
     <ClInclude Include="movement.h" />
     <ClInclude Include="textevent.h" />
+    <ClInclude Include="title.h" />
     <ClInclude Include="variable.h" />
   </ItemGroup>
   <ItemGroup>
@@ -167,6 +168,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MENU.cpp" />
     <ClCompile Include="Movement.cpp" />
+    <ClCompile Include="TITLE.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
