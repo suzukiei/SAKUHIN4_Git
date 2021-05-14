@@ -1,6 +1,9 @@
+#include "define.h"
+
 //画像
 class IMAGE
 {
+public:
 	char path[PATH_MAX];
 	int handle;
 	int x;
@@ -10,9 +13,8 @@ class IMAGE
 };
 
 //タイトル背景
-class IMAGE_BACK
+class IMAGE_BACK : IMAGE
 {
-	IMAGE image;
 	BOOL IsDraw;
 
 };
@@ -28,25 +30,31 @@ class MUSIC
 //プレイヤー
 class CHARA
 {
+public:
 	IMAGE image;
 	int speed;
 	int CenterX;
 	int CenterY;
+	int kind1;
+	int imgChangeCnt;
+	int imgChangeCntMAX;
+	BOOL IsMoveNaname;
 
 	RECT coll;
-	iPOINT collBeforePt;
+	IPOINT collBeforePt;
 };
 
 //マップ部屋（ギミック）
 class MAP_ROOM
 {
+public:
 
 };
 
 //マップ通路
 class MAP_PASS
 {
+public:
 
 };
 
- 
