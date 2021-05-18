@@ -96,8 +96,8 @@
 //êßå¿éûä‘
 #define GAME_TIME_LIMIT	60
 
-#define MAP_DIV_WIDTH		64
-#define MAP_DIV_HEIGHT	64
+#define MAP_DIV_WIDTH		29
+#define MAP_DIV_HEIGHT	30
 #define MAP_DIV_TATE		10
 #define MAP_DIV_YOKO		4
 #define MAP_DIV_NUM	MAP_DIV_TATE * MAP_DIV_YOKO
