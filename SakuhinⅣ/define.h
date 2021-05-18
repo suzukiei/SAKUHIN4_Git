@@ -144,4 +144,6 @@ typedef struct STRUCT_MAP
 	int y;
 	int width;
 	int height;
+
+	bool IsCollisionNo;
 }MAP;
