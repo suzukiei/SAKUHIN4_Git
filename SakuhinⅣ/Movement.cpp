@@ -3,111 +3,118 @@
 #include "movement.h"
 #include "class.h"
 
-
-VOID MOVEMENT(CHARA *chara,MOVE move)
+BOOL MOVEMENT(CHARA *chara,MOVE move)
 {
 
 	BOOL IsMove = TRUE; //移動可能
-
+	CHARA work = *chara;
 
 	switch (move)
 	{
 	case UP:
 		chara->IsMoveNaname = FALSE;	//斜め移動していない
-
-		if (chara->kind1 >= U_1 && chara->kind1 < U_4)
-		{
-			//画像変更カウンタ
-			if (chara->imgChangeCnt < chara->imgChangeCntMAX)
+		
+		if (CHARA_COLLISION() == FALSE) {
+			if (chara->kind1 >= U_1 && chara->kind1 < U_4)
 			{
-				chara->imgChangeCnt++;
+				//画像変更カウンタ
+				if (chara->imgChangeCnt < chara->imgChangeCntMAX)
+				{
+					chara->imgChangeCnt++;
+				}
+				else //画像を変えるタイミングになったら
+				{
+					chara->kind1++;			//次の画像にする
+					chara->imgChangeCnt = 0;	//変更カウンタ初期化
+				}
 			}
-			else //画像を変えるタイミングになったら
+			else
 			{
-				chara->kind1++;			//次の画像にする
-				chara->imgChangeCnt = 0;	//変更カウンタ初期化
+				chara->kind1 = U_1;	//最初の画像にする
 			}
-		}
-		else
-		{
-			chara->kind1 = U_1;	//最初の画像にする
-		}
 
-		chara->image.y -= CharaSpeed;	//移動
+			chara->image.y -= CharaSpeed;	//移動
 
-		break;
+			break;
+		}
 
 	case DOWN:
 
 		chara->IsMoveNaname = FALSE;	//斜め移動していない
 
-		if (chara->kind1 >= D_1 && chara->kind1 < D_4)
+		if (CHARA_COLLISION == FALSE)
 		{
-			//画像変更カウンタ
-			if (chara->imgChangeCnt < chara->imgChangeCntMAX)
+			if (chara->kind1 >= D_1 && chara->kind1 < D_4)
 			{
-			chara->imgChangeCnt++;
+				//画像変更カウンタ
+				if (chara->imgChangeCnt < chara->imgChangeCntMAX)
+				{
+					chara->imgChangeCnt++;
+				}
+				else //画像を変えるタイミングになったら
+				{
+					chara->kind1++;			//次の画像にする
+					chara->imgChangeCnt = 0;	//変更カウンタ初期化
+				}
 			}
-			else //画像を変えるタイミングになったら
+			else
 			{
-				chara->kind1++;			//次の画像にする
-				chara->imgChangeCnt = 0;	//変更カウンタ初期化
+				chara->kind1 = D_1;	//最初の画像にする
 			}
+			chara->image.y += CharaSpeed;	//移動
 		}
-		else
-		{
-			chara->kind1 = D_1;	//最初の画像にする
-		}
-		chara->image.y += CharaSpeed;	//移動
-
 		break;
 
 	case RIGHT:
 
 		chara->IsMoveNaname = FALSE;	//斜め移動していない
 
-		if (chara->kind1 >= R_1 && chara->kind1 < R_4)
-		{
-			//画像変更カウンタ
-			if (chara->imgChangeCnt < chara->imgChangeCntMAX)
+		if (CHARA_COLLISION == FALSE) {
+			if (chara->kind1 >= R_1 && chara->kind1 < R_4)
 			{
-				chara->imgChangeCnt++;
+				//画像変更カウンタ
+				if (chara->imgChangeCnt < chara->imgChangeCntMAX)
+				{
+					chara->imgChangeCnt++;
+				}
+				else //画像を変えるタイミングになったら
+				{
+					chara->kind1++;			//次の画像にする
+					chara->imgChangeCnt = 0;	//変更カウンタ初期化
+				}
 			}
-			else //画像を変えるタイミングになったら
+			else
 			{
-				chara->kind1++;			//次の画像にする
-				chara->imgChangeCnt = 0;	//変更カウンタ初期化
+				chara->kind1 = R_1;	//最初の画像にする
 			}
+			chara->image.x += CharaSpeed;	//移動
 		}
-		else
-		{
-			chara->kind1 = R_1;	//最初の画像にする
-		}
-		chara->image.x += CharaSpeed;	//移動
 		break;
 
 	case LEFT:
 
 		chara->IsMoveNaname = FALSE;	//斜め移動していない
 
-		if (chara->kind1 >= L_1 && chara->kind1 < L_4)
-		{
-			//画像変更カウンタ
-			if (chara->imgChangeCnt < chara->imgChangeCntMAX)
+		if (CHARA_COLLISION == FALSE) {
+			if (chara->kind1 >= L_1 && chara->kind1 < L_4)
 			{
-				chara->imgChangeCnt++;
+				//画像変更カウンタ
+				if (chara->imgChangeCnt < chara->imgChangeCntMAX)
+				{
+					chara->imgChangeCnt++;
+				}
+				else //画像を変えるタイミングになったら
+				{
+					chara->kind1++;			//次の画像にする
+					chara->imgChangeCnt = 0;	//変更カウンタ初期化
+				}
 			}
-			else //画像を変えるタイミングになったら
+			else
 			{
-				chara->kind1++;			//次の画像にする
-				chara->imgChangeCnt = 0;	//変更カウンタ初期化
+				chara->kind1 = L_1;	//最初の画像にする
 			}
+			chara->image.x -= CharaSpeed;	//移動
 		}
-		else
-		{
-			chara->kind1 = L_1;	//最初の画像にする
-		}
-		chara->image.x -= CharaSpeed;	//移動
 
 		break;
 	}
