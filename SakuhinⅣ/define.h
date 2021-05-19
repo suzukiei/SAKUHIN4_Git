@@ -18,7 +18,7 @@
 #define NAME_MAX	255
 
 //FONT
-//#define FONT_PATH_MAX			255
+#define FONT_PATH_MAX			255
 //#define FONT_PATH			TEXT(".ttf")
 //#define FONT_NAME			TEXT("font名前")
 //#define FONT_INSTALL_ERR_TITLE	TEXT("フォントインストールエラー")
@@ -115,7 +115,7 @@ typedef struct STRUCT_IPOINT
 {
 	int x = -1;
 	int y = -1;
-}IPOINT;
+}iPOINT;
 
 //FONT
 typedef struct STRUCT_FONT
