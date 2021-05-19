@@ -96,10 +96,13 @@
 //制限時間
 #define GAME_TIME_LIMIT	60
 
-#define MAP_DIV_WIDTH		29
-#define MAP_DIV_HEIGHT	30
-#define MAP_DIV_TATE		10
-#define MAP_DIV_YOKO		4
+#define MAP_WIDTH_MAX		30
+#define MAP_HEIGHT_MAX	29
+#define MAP_DIV_WIDTH		32
+#define MAP_DIV_HEIGHT	32
+#define MAP_DIV_TATE		64
+#define MAP_DIV_YOKO		64
+//MAPTHIP分割する(4096)
 #define MAP_DIV_NUM	MAP_DIV_TATE * MAP_DIV_YOKO
 
 #define START_ERR_TITLE	TEXT("スタート位置エラー")
