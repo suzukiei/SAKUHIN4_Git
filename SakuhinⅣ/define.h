@@ -21,8 +21,8 @@
 #define FONT_PATH_MAX			255
 //#define FONT_PATH			TEXT(".ttf")
 //#define FONT_NAME			TEXT("font名前")
-//#define FONT_INSTALL_ERR_TITLE	TEXT("フォントインストールエラー")
-//#define FONT_CREATE_ERR_TITLE	TEXT("フォント作成エラー")
+#define FONT_INSTALL_ERR_TITLE	TEXT("フォントインストールエラー")
+#define FONT_CREATE_ERR_TITLE	TEXT("フォント作成エラー")
 
 //画像読み込みエラー
 #define IMAGE_LOAD_ERR_TITLE TEXT("画像読み込みエラー")
@@ -67,10 +67,10 @@
 #define MENU_BUTTON_SELECT_SAVE_HEIGHT_POSITION 370 //セーブ選択時の位置
 
 //player
-//#define IMAGE_PLAYER_PATH
+#define IMAGE_PLAYER_PATH
 
 //enemy
-//#define IMAGE_ENEMY_PATH
+#define IMAGE_ENEMY_PATH
 
 //音楽
 #define MUSIC_LOAD_ERR_TITLE	TEXT("音楽読み込みエラー")
@@ -85,10 +85,10 @@
 //#define MUSIC_BGM_FAIL_PATH		TEXT(".mp3")
 
 //MAP
-//#define GAME_MAP_TATE_MAX
-//#define GAME_MAP_YOKO_MAX
-//#define GAME_MAP_KIND_MAX
-//#define GAME_MAP_KAISO_MAX
+#define GAME_MAP_TATE_MAX
+#define GAME_MAP_YOKO_MAX
+#define GAME_MAP_KIND_MAX
+#define GAME_MAP_KAISO_MAX
 
 //MAP画像PATH
 //#define GAME_MAP_PATH(".png")
@@ -115,7 +115,7 @@ typedef struct STRUCT_IPOINT
 {
 	int x = -1;
 	int y = -1;
-}iPOINT;
+}IPOINT;
 
 //FONT
 typedef struct STRUCT_FONT
