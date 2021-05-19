@@ -15,6 +15,7 @@ public:
 //É^ÉCÉgÉãîwåi
 class IMAGE_BACK : IMAGE
 {
+public:
 	BOOL IsDraw;
 
 };
@@ -22,6 +23,7 @@ class IMAGE_BACK : IMAGE
 //âπê∫
 class MUSIC
 {
+public:
 	char path[PATH_MAX];
 	int handle;
 	int handle2;
@@ -57,6 +59,3 @@ class MAP_PASS
 public:
 
 };
-
-
-
