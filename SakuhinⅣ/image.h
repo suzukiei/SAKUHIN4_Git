@@ -55,4 +55,4 @@ class IMAGE_BACK : IMAGE
 public:
 	BOOL IsDraw;
 
-};
+}; 
