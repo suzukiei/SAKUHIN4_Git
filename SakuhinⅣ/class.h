@@ -1,33 +1,5 @@
 #include "define.h"
-
-//画像
-class IMAGE
-{
-public:
-	char path[PATH_MAX];
-	int handle;
-	int x;
-	int y;
-	int width;
-	int height;
-};
-
-//タイトル背景
-class IMAGE_BACK : IMAGE
-{
-public:
-	BOOL IsDraw;
-
-};
-
-//音声
-class MUSIC
-{
-public:
-	char path[PATH_MAX];
-	int handle;
-	int handle2;
-};
+#include "image.h"
 
 //プレイヤー
 class CHARA
