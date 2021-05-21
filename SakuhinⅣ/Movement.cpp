@@ -2,19 +2,21 @@
 #include "DxLib.h"
 #include "movement.h"
 #include "class.h"
+#include "define.h"
+
 
 BOOL MOVEMENT(CHARA *chara,MOVE move)
 {
 
 	BOOL IsMove = TRUE; //移動可能
 	CHARA work = *chara;
-
+	MAP mp;
 	switch (move)
 	{
 	case UP:
 		chara->IsMoveNaname = FALSE;	//斜め移動していない
 		
-		if (CHARA_COLLISION() == FALSE) {
+		if (CHARA_COLLISION(work,mp) == FALSE) {
 			if (chara->kind1 >= U_1 && chara->kind1 < U_4)
 			{
 				//画像変更カウンタ
@@ -114,6 +116,24 @@ BOOL MOVEMENT(CHARA *chara,MOVE move)
 				chara->kind1 = L_1;	//最初の画像にする
 			}
 			chara->image.x -= CharaSpeed;	//移動
+		}
+
+		//画面外に行ったときの処理
+		if (chara->image.x < 0)
+		{
+			chara->image.x = 0;
+		}
+		if (chara->image.x > GAME_WIDTH - mapChip.width)
+		{
+			chara->image.x = GAME_WIDTH - mapChip.width;
+		}
+		if (chara->image.y < 0)
+		{
+			chara->image.y = 0;
+		}
+		if (chara->image.y > GAME_HEIGHT - mapChip.height)
+		{
+			chara->image.y = GAME_HEIGHT - mapChip.height;
 		}
 
 		break;
