@@ -8,7 +8,6 @@ MUSIC BGM_COMP;
 MUSIC BGM_END;
 MUSIC BGM_SE;
 
-
 class MUSIC
 {
 public:
