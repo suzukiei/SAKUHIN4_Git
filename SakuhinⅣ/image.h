@@ -1,6 +1,16 @@
 #include"define.h"
 #include "DxLib.h"
 
+#define GAME_CSV_MAP_PATH
+
+/*#define GAME_MAP_PATH		TEXT(".\\MAP\\mapChip1.png")*/		//マップ画像パス
+#define GAME_CSV_PATH_STAGE1_FLOOR 		TEXT(".\\IMAGE\\csv\\Stage1_床.csv")//STAGE1床
+#define GAME_CSV_PATH_STAGE1_WALL 		TEXT(".\\IMAGE\\csv\\Stage1_壁.csv")//STAGE1壁
+#define GAME_CSV_PATH_STAGE1_BLOOD 		TEXT(".\\IMAGE\\csv\\Stage1_血.csv")//STAGE1血
+#define GAME_CSV_PATH_STAGE1_SBLOOD 	TEXT(".\\IMAGE\\csv\\Stage1_重ね血.csv")//STAGE1重ね血
+#define GAME_CSV_PATH_STAGE1_ACCES 		TEXT(".\\IMAGE\\csv\\Stage1_小物.csv")//STAGE1小物
+#define GAME_CSV_PATH_STAGE1_RECT 		TEXT(".\\IMAGE\\csv\\Stage1_当たり判定.csv")//STAGE1当たり判定
+
 //画像
 class IMAGE
 {
@@ -56,3 +66,8 @@ public:
 	BOOL IsDraw;
 
 }; 
+
+BOOL MY_LOAD_IMAGE(VOID);
+VOID MY_DELETE_IMAGE(VOID);
+
+BOOL MY_LOAD_CSV_MAP(VOID);
