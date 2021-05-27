@@ -164,6 +164,7 @@
     <ClInclude Include="variable.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CharaCollision.cpp" />
     <ClCompile Include="GameProc.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MENU.cpp" />
