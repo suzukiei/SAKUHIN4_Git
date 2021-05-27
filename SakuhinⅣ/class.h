@@ -1,5 +1,31 @@
 #include "define.h"
-#include "image.h"
+
+//画像
+class IMAGE
+{
+public:
+	char path[PATH_MAX];
+	int handle;
+	int x;
+	int y;
+	int width;
+	int height;
+};
+
+//タイトル背景
+class IMAGE_BACK : IMAGE
+{
+	BOOL IsDraw;
+
+};
+
+//音声
+class MUSIC
+{
+	char path[PATH_MAX];
+	int handle;
+	int handle2;
+};
 
 //プレイヤー
 class CHARA
@@ -31,3 +57,6 @@ class MAP_PASS
 public:
 
 };
+
+
+
