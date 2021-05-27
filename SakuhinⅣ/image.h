@@ -1,5 +1,5 @@
 #include"define.h"
- #include "DxLib.h"
+#include "DxLib.h"
 
 //‰æ‘œ
 class IMAGE
