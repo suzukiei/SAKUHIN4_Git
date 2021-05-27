@@ -8,7 +8,7 @@
 class TIME_COUNT
 {
 private:int TimeCou = 0;
-private:BOOL CountFlag = false;
+private:BOOL CountFlag = FALSE;
 
 public:
 	   //----ÉJÉEÉìÉgèâä˙âª----
@@ -44,3 +44,4 @@ public:
 
 VOID MY_FPS_UPDATE(VOID);
 VOID MY_FPS_WAIT(VOID);
+VOID ENEMY_MOVE(VOID)
