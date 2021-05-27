@@ -157,6 +157,7 @@
     <ClInclude Include="enum.h" />
     <ClInclude Include="flag.h" />
     <ClInclude Include="GameProcHeader.h" />
+    <ClInclude Include="image.h" />
     <ClInclude Include="menu.h" />
     <ClInclude Include="movement.h" />
     <ClInclude Include="textevent.h" />
