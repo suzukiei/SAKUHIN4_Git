@@ -1,9 +1,8 @@
 #include"define.h"
 #include "DxLib.h"
 
-#define GAME_CSV_MAP_PATH
+#define GAME_MAP_PATH		TEXT(".\\IMAGE\\mapuse.png")		//マップ画像パス
 
-/*#define GAME_MAP_PATH		TEXT(".\\MAP\\mapChip1.png")*/		//マップ画像パス
 #define GAME_CSV_PATH_STAGE1_FLOOR 		TEXT(".\\IMAGE\\csv\\Stage1_床.csv")//STAGE1床
 #define GAME_CSV_PATH_STAGE1_WALL 		TEXT(".\\IMAGE\\csv\\Stage1_壁.csv")//STAGE1壁
 #define GAME_CSV_PATH_STAGE1_BLOOD 		TEXT(".\\IMAGE\\csv\\Stage1_血.csv")//STAGE1血
@@ -67,7 +66,9 @@ public:
 
 }; 
 
+BOOL MY_LOAD_MAPCHIP(VOID);
+
 BOOL MY_LOAD_IMAGE(VOID);
 VOID MY_DELETE_IMAGE(VOID);
 
-BOOL MY_LOAD_CSV_MAP(VOID);
+BOOL MY_LOAD_CSV_MAP(const char* path);
