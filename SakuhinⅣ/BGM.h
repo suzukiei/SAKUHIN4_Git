@@ -59,7 +59,7 @@ BOOL MY_LOAD_MUSIC(VOID)
 	}
 
 
-	BGM_PLAY.SetPath(MUSIC_BGM_PLAY_PATH)
+	BGM_PLAY.SetPath(MUSIC_BGM_PLAY_PATH);
 		BGM_PLAY.SetHandle = LoadSoundMem(BGM_PLAY.SetPath);
 	if (BGM_PLAY.SethHandle == -1)
 	{
@@ -67,7 +67,7 @@ BOOL MY_LOAD_MUSIC(VOID)
 		return(FALSE);
 	}
 
-	BGM_COMP.SetPath(MUSIC_BGM_COMP_PATH)
+	BGM_COMP.SetPath(MUSIC_BGM_COMP_PATH);
 		BGM_COMP.SetHandle = LoadSoundMem(BGM_COMP.SetPath);
 	if (BGM_COMP.SethHandle == -1)
 	{
@@ -75,7 +75,7 @@ BOOL MY_LOAD_MUSIC(VOID)
 		return(FALSE);
 	}
 
-	BGM_END.SetPath(MUSIC_BGM_END_PATH)
+	BGM_END.SetPath(MUSIC_BGM_END_PATH);
 		BGM_END.SetHandle = LoadSoundMem(BGM_END.SetPath);
 	if (BGM_END.SethHandle == -1)
 	{
