@@ -19,4 +19,3 @@ enum MENU_SELECT
 {
 	MENU_TITLE,//タイトルボタン選択時
 	MENU_SAVE //セーブボタン選択時
-};
