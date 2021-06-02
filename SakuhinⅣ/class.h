@@ -25,6 +25,7 @@ class MAP_ROOM
 {
 public:
 	MAP map[MAP_HEIGHT_MAX][MAP_WIDTH_MAX];
+	GAME_GIMMICK_KIND gimmick;
 
 };
 
