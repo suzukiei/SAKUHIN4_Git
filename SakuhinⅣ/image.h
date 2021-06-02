@@ -72,3 +72,8 @@ BOOL MY_LOAD_IMAGE(VOID);
 VOID MY_DELETE_IMAGE(VOID);
 
 BOOL MY_LOAD_CSV_MAP(const char* path);
+
+VOID MY_START_DRAW(VOID);	//スタート画面の描画
+VOID MY_RULE_DRAW(VOID);	//ルール画面の描画
+VOID MY_PLAY_DRAW(VOID);	//プレイ画面の描画
+VOID MY_END_DRAW(VOID);	    //エンド画面の描画
