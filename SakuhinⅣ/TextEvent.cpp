@@ -7,6 +7,7 @@
 #include "movement.h"
 #include "textevent.h"
 
+
 VOID TEXTEVENT(VOID)
 {
 	switch (textNumber) {
