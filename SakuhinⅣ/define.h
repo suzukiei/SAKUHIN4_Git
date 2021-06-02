@@ -28,15 +28,15 @@
 #define IMAGE_LOAD_ERR_TITLE TEXT("âÊëúì«Ç›çûÇ›ÉGÉâÅ[")
 
 //âÊëúÉpÉX
-//#define IMAGE_TITLE_BK_PATH				TEXT(".png")
-//#define IMAGE_TITLE_ROGO_PATH			TEXT(".png")
-//#define IMAGE_TITLE_BUTTON_PLAY_PATH		TEXT(".png")
-//#define IMAGE_TITLE_BUTTON_RULE_PATH		TEXT(".png")
-//#define IMAGE_TITLE_BUTTON_END_PATH		TEXT(".png")
-//#define IMAGE_TITLE_BUTTON_NOW_PATH		TEXT(".png")
+#define IMAGE_TITLE_BK_PATH				TEXT(".\\IMAGE\\title_back.png")
+#define IMAGE_TITLE_ROGO_PATH				TEXT(".\\IMAGE\\karilogo.png")
+#define IMAGE_TITLE_BUTTON_PLAY_PATH		TEXT(".\\IMAGE\\button1.png")
+//#define IMAGE_TITLE_BUTTON_RULE_PATH		TEXT(".\\IMAGE\\.png")
+//#define IMAGE_TITLE_BUTTON_END_PATH		TEXT(".\\IMAGE\\.png")
+//#define IMAGE_TITLE_BUTTON_NOW_PATH		TEXT(".\\IMAGE\\.png")
 //#define IMAGE_TITLE_BUTTON_SPAN		30
 
-//#define IMAGE_RULE_PATH	TEXT(".png")
+#define IMAGE_RULE_PATH	TEXT(".\\IMAGE\\lule.png")
 
 //ê¨å˜	
 //#define IMAGE_END_COMP_PATH	TEXT(".png")
@@ -44,16 +44,16 @@
 //#define IMAGE_END_COMP_CNT_MAX	30
 
 //é∏îs	
-//#define IMAGE_END_FAIL_PATH	TEXT(".png")
-//#define IMAGE_END_FAIL_CNT	1
-//#define IMAGE_END_FAIL_CNT_MAX	30
+#define IMAGE_END_FAIL_PATH	TEXT(".\\IMAGE\\GameOver1.\\IMAGE\\.png")
+#define IMAGE_END_FAIL_CNT	1
+#define IMAGE_END_FAIL_CNT_MAX	30
 
 //îwåi	
-//#define IMAGE_END_BACK_PATH	TEXT(".png")
+//#define IMAGE_END_BACK_PATH	TEXT(".\\IMAGE\\.png")
 //#define IMAGE_END_BACK_CNT	1
 //#define IMAGE_END_BACK_CNT_MAX	30
 
-//#define IMAGE_BACK_PATH_END	TEXT(".png")
+//#define IMAGE_BACK_PATH_END	TEXT(".\\IMAGE\\.png")
 
 #define MENU_WIDTH_POSITION 280 //ÉÅÉjÉÖÅ[îwåi
 #define MENU_HEIGHT_POSITION 180 //ÉÅÉjÉÖÅ[îwåi
