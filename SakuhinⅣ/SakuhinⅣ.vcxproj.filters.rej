@@ -1,0 +1,11 @@
+diff a/SakuhinⅣ/SakuhinⅣ.vcxproj.filters b/SakuhinⅣ/SakuhinⅣ.vcxproj.filters	(rejected hunks)
+@@ -74,5 +74,8 @@
+     <ClCompile Include="BGM.cpp">
+       <Filter>ソース ファイル</Filter>
+     </ClCompile>
++    <ClCompile Include="TextEvent.cpp">
++      <Filter>ソース ファイル</Filter>
++    </ClCompile>
+   </ItemGroup>
+ </Project>
+\ No newline at end of file
