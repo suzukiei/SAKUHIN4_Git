@@ -4,6 +4,7 @@
 #include "class.h"
 #include "variable.h"
 #include "GameProcHeader.h"
+#include "flag.h"
 
 int StartTimeFps;
 int CountFps;
