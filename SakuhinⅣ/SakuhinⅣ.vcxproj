@@ -171,6 +171,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MENU.cpp" />
     <ClCompile Include="Movement.cpp" />
+    <ClCompile Include="TextEvent.cpp" />
     <ClCompile Include="TITLE.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
