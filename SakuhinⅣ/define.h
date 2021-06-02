@@ -38,6 +38,7 @@
 
 #define IMAGE_RULE_PATH	TEXT(".\\IMAGE\\lule.png")
 
+
 //ê¨å˜	
 //#define IMAGE_END_COMP_PATH	TEXT(".png")
 //#define IMAGE_END_COMP_CNT	1

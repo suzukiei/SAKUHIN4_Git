@@ -1,6 +1,7 @@
 #include "define.h"
 #include "Dxlib.h"
 
+
 //BGM
 MUSIC BGM_TITLE;
 MUSIC BGM_PLAY;

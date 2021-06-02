@@ -3,6 +3,7 @@
 #include"enum.h"
 #include"class.h"
 
+
 VOID TITLE_BGM(VOID)
 {
 	if (CheckSoundMem(BGM_TITLE.MusicHandle) == 0)
