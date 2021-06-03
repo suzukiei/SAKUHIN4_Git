@@ -21,7 +21,7 @@ public:
 
 private:
 	int handle;
-	char path[PATH_MAX];
+	char path[PATH_MAX] = "";
 
 public:
 	//handle‚Ìİ’è
@@ -39,7 +39,7 @@ public:
 	}
 
 	//ƒpƒX‚Ìİ’è
-	VOID SetPath(char Path[])
+	VOID SetPath(const char* Path)
 	{
 		strcpy_s(path, Path);
 		return;
