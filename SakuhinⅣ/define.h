@@ -31,11 +31,15 @@
 #define IMAGE_TITLE_BK_PATH				TEXT(".\\IMAGE\\title_back.png")
 #define IMAGE_TITLE_ROGO_PATH				TEXT(".\\IMAGE\\karilogo.png")
 #define IMAGE_TITLE_BUTTON_PLAY_PATH		TEXT(".\\IMAGE\\button1.png")
+//ルールに飛ぶボタン画像
 //#define IMAGE_TITLE_BUTTON_RULE_PATH		TEXT(".\\IMAGE\\.png")
+//終了するためのボタン画像
 //#define IMAGE_TITLE_BUTTON_END_PATH		TEXT(".\\IMAGE\\.png")
+// 選択中のボタンに画像をのっける
 //#define IMAGE_TITLE_BUTTON_NOW_PATH		TEXT(".\\IMAGE\\.png")
 //#define IMAGE_TITLE_BUTTON_SPAN		30
 
+//ルール画像
 #define IMAGE_RULE_PATH	TEXT(".\\IMAGE\\lule.png")
 
 
