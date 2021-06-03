@@ -1,5 +1,4 @@
-#include "define.h"
-#include "Dxlib.h"
+#include"class.h"
 
 
 //BGM
@@ -7,6 +6,7 @@ MUSIC BGM_TITLE;
 MUSIC BGM_PLAY;
 MUSIC BGM_COMP;
 MUSIC BGM_END;
+<<<<<<< HEAD
 MUSIC BGM_SE;
 
 class MUSIC
@@ -104,3 +104,6 @@ BOOL MY_DELETE_MUSIC(VOID)
 
 	return;
 }
+=======
+MUSIC BGM_SE;
+>>>>>>> 5c96d0daf7617451ee8268772f4d77cbb8c8f286

@@ -4,9 +4,7 @@
 #include "class.h"
 #include "variable.h"
 #include "GameProcHeader.h"
-#include "movement.h"
-
-using namespace std;
+#include "flag.h"
 
 int StartTimeFps;
 int CountFps;
@@ -45,32 +43,5 @@ VOID MY_FPS_WAIT(VOID)
 	{
 		WaitTimer(waitTime);
 	}
-	return;
-}
-
-VOID ENEMY_MOVE(VOID)
-{
-	int workx = player.CenterX - enemy.CenterX;
-	int worky = player.CenterY - enemy.CenterY;
-
-	BOOL moved = FALSE;
-
-	if (workx > 0)
-	{
-		moved =  MOVEMENT(&enemy, RIGHT);
-	}
-	if (workx < 0 && !moved)
-	{
-		MOVEMENT(&enemy, LEFT);
-	}
-	if (worky > 0 && !moved)
-	{
-		MOVEMENT(&enemy, DOWN);
-	}
-	if(worky < 0 && !moved)
-	{
-		MOVEMENT(&enemy, UP);
-	}
-
 	return;
 }

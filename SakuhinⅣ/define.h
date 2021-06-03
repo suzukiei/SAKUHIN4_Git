@@ -78,12 +78,12 @@
 
 //TITLE_BGM
 //#define MUSIC_BGM_PATH_TITLE		TEXT(".mp3")
-//PLAY_BGM
-//#define MUSIC_BGM_PLAY_PATH		TEXT(".mp3")
+//PLEY_BGM
+//#define MUSIC_BGM_PATH			TEXT(".mp3")
 //COMP_BGM
 //#define MUSIC_BGM_COMP_PATH		TEXT(".mp3")
 //END_BGM
-//#define MUSIC_BGM_END_PATH		TEXT(".mp3")
+//#define MUSIC_BGM_FAIL_PATH		TEXT(".mp3")
 
 //MAP
 #define GAME_MAP_TATE_MAX

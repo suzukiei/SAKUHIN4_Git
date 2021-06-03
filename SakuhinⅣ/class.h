@@ -1,31 +1,5 @@
 #include "define.h"
-
-//画像
-class IMAGE
-{
-public:
-	char path[PATH_MAX];
-	int handle;
-	int x;
-	int y;
-	int width;
-	int height;
-};
-
-//タイトル背景
-class IMAGE_BACK : IMAGE
-{
-	BOOL IsDraw;
-
-};
-
-//音声
-class MUSIC
-{
-	char path[PATH_MAX];
-	int handle;
-	int handle2;
-};
+#include "image.h"
 
 //プレイヤー
 class CHARA
@@ -38,6 +12,7 @@ public:
 	int kind1;
 	int imgChangeCnt;
 	int imgChangeCntMAX;
+	int nowRoom;
 	BOOL InRoom = false;
 	BOOL InPass = false;
 	BOOL IsMoveNaname;
@@ -51,6 +26,7 @@ class MAP_ROOM
 {
 public:
 	MAP map[MAP_HEIGHT_MAX][MAP_WIDTH_MAX];
+	GAME_GIMMICK_KIND gimmick;
 
 };
 
@@ -58,10 +34,15 @@ public:
 class MAP_PASS
 {
 public:
+	MAP map[MAP_HEIGHT_MAX][MAP_WIDTH_MAX];
 	int From;
 	int To;
 
 };
 
-
-
+//マップ画像配列
+class MAP_CHIP
+{
+public:
+	MAPCHIP mapchip[MAP_HEIGHT_MAX][MAP_WIDTH_MAX];
+};

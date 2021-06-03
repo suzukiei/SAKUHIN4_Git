@@ -1,26 +1,16 @@
 #include "DxLib.h"
-#include "class.h"
 #include "define.h"
 #include "enum.h"
-#include "flag.h"
-#include "GameProcHeader.h"
+#include "class.h"
 #include "menu.h"
 #include "movement.h"
 #include "textevent.h"
-#include "title.h"
 #include "variable.h"
 
 //ÉQÅ[ÉÄñ{ëÃ
-VOID GameMain(VOID);
-
+void GameMain(void);
 //âÊñ ëJà⁄
-VOID GameSceneMove(VOID);
-
-//äeâÊñ èàóù
-VOID MY_START(VOID);
-VOID MY_PLAY(VOID);
-VOID MY_END(VOID);
-VOID MY_RULE(VOID);
+void GameSceneMove(void);
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
 {
@@ -50,7 +40,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 		MY_ALL_KEYDOWN_UPDATE();
 
-		//MY_MOUSE_UPDATE();
+		MY_MOUSE_UPDATE();
 
 		MY_FPS_UPDATE();
 

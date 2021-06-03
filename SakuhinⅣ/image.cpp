@@ -9,8 +9,6 @@
 MAPCHIP mapChip;
 
 
-//IMAGE_BACK ImageBack[IMAGE_BACK_NUM];
-
 IMAGE ImageTitleBk;
 IMAGE ImageEndBk;
 
@@ -37,6 +35,73 @@ BOOL MY_LOAD_CSV_MAP(VOID)
 
 	return TRUE;
 }
+
+//---------------------------------------------------画像描画↓-------------------------------------------
+
+VOID MY_START_DRAW(VOID)
+{
+	DrawGraph(0, 0, ImageTitleBk.GetHandle(), TRUE);
+
+	return;
+}
+
+VOID MY_RULE_DRAW(VOID)
+{
+
+
+	return;
+}
+
+VOID MY_PLAY_DRAW(VOID)
+{
+	//マップの描画
+	for (int tate = 0; tate < MAP_HEIGHT_MAX; tate++)
+	{
+		for (int yoko = 0; yoko < MAP_WIDTH_MAX; yoko++)
+		{
+			DrawGraph(mapRoom[player.nowRoom].map[tate][yoko].x - player.CenterX,
+				mapRoom[player.nowRoom].map[tate][yoko].y - player.CenterY,
+				mapChipRoom[player.nowRoom].mapchip[tate][yoko].handle[mapRoom[player.nowRoom].map[tate][yoko].kind],
+				TRUE
+			);
+		}
+	}
+
+	return;
+}
+
+VOID MY_END_DRAW(VOID)
+{
+	DrawGraph(0, 0, ImageEndBk.GetHandle(), TRUE);
+
+	return;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ////マップの役割を設定

@@ -20,3 +20,19 @@ enum MENU_SELECT
 	MENU_TITLE,//タイトルボタン選択時
 	MENU_SAVE //セーブボタン選択時
 };
+
+//マップチップ
+enum GAME_MAP_KIND
+{
+
+};
+
+//ギミック
+enum GAME_GIMMICK_KIND
+{
+	GIMMICK_BUTTON,
+	GIMMICK_WARP,
+	GIMMICK_MINE,
+	GIMMICK_PAZLE,
+	GIMMICK_MAZE
+};
