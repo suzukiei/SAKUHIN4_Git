@@ -1,13 +1,5 @@
-#include"class.h"
-
-
-//BGM
-MUSIC BGM_TITLE;
-MUSIC BGM_PLAY;
-MUSIC BGM_COMP;
-MUSIC BGM_END;
-<<<<<<< HEAD
-MUSIC BGM_SE;
+#include"define.h"
+#include"DxLib.h"
 
 class MUSIC
 {
@@ -57,20 +49,20 @@ VOID SE_BGM(VOID);
 //BGM“Ç‚Ýž‚Ýˆ—
 BOOL MY_LOAD_MUSIC(VOID)
 {
-	BGM_TITLE.SetPath(MUSIC_BGM_TITLE_PATH);
+	BGM_TITLE.SetPath(MUSIC_BGM_PATH_TITLE);
 	BGM_TITLE.SetHandle = LoadSoundMem(BGM_TITLE.SetPath);
 	if (BGM_TITLE.SethHandle == -1)
 	{
-		MessageBox(GetMainWindowHandle(), MUSIC_BGM_TITLE_PATH, MUSIC_LOAD_ERR_TITLE, MB_OK);
+		MessageBox(GetMainWindowHandle(), MUSIC_BGM_PATH_TITLE, MUSIC_LOAD_ERR_TITLE, MB_OK);
 		return(FALSE);
 	}
 
 
-	BGM_PLAY.SetPath(MUSIC_BGM_PLAY_PATH);
+	BGM_PLAY.SetPath(MUSIC_BGM_PATH_PLAY);
 		BGM_PLAY.SetHandle = LoadSoundMem(BGM_PLAY.SetPath);
 	if (BGM_PLAY.SethHandle == -1)
 	{
-		MessageBox(GetMainWindowHandle(), MUSIC_BGM_PLAY_PATH, MUSIC_LOAD_ERR_TITLE, MB_OK);
+		MessageBox(GetMainWindowHandle(), MUSIC_BGM_PATH_PLAY, MUSIC_LOAD_ERR_TITLE, MB_OK);
 		return(FALSE);
 	}
 
@@ -78,15 +70,23 @@ BOOL MY_LOAD_MUSIC(VOID)
 		BGM_COMP.SetHandle = LoadSoundMem(BGM_COMP.SetPath);
 	if (BGM_COMP.SethHandle == -1)
 	{
-		MessageBox(GetMainWindowHandle(), MUSIC_BGM_COMP_PATH, MUSIC_LOAD_ERR_TITLE, MB_OK);
+		MessageBox(GetMainWindowHandle(), MUSIC_BGM_PATH_COMP, MUSIC_LOAD_ERR_TITLE, MB_OK);
 		return(FALSE);
 	}
 
-	BGM_END.SetPath(MUSIC_BGM_END_PATH);
+	BGM_END.SetPath(MUSIC_BGM_PATH_END);
 		BGM_END.SetHandle = LoadSoundMem(BGM_END.SetPath);
 	if (BGM_END.SethHandle == -1)
 	{
-		MessageBox(GetMainWindowHandle(), MUSIC_BGM_END_PATH, MUSIC_LOAD_ERR_TITLE, MB_OK);
+		MessageBox(GetMainWindowHandle(), MUSIC_BGM_PATH_END, MUSIC_LOAD_ERR_TITLE, MB_OK);
+		return(FALSE);
+	}
+
+	BGM_SE.SetPath(MUSIC_BGM_SE_PATH);
+	BGM_SE.SetHandle = LoadSoundMem(BGM_SE.SetPath);
+	if (BGM_SE.SethHandle == -1)
+	{
+		MessageBox(GetMainWindowHandle(), MUSIC_BGM_PATH_SE, MUSIC_LOAD_ERR_TITLE, MB_OK);
 		return(FALSE);
 	}
 
@@ -104,6 +104,10 @@ BOOL MY_DELETE_MUSIC(VOID)
 
 	return;
 }
-=======
+
+//BGM
+MUSIC BGM_TITLE;
+MUSIC BGM_PLAY;
+MUSIC BGM_COMP;
+MUSIC BGM_END;
 MUSIC BGM_SE;
->>>>>>> 5c96d0daf7617451ee8268772f4d77cbb8c8f286
