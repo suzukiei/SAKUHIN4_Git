@@ -5,6 +5,7 @@
 #define GAME_COLOR 32
 
 #define GAME_WINDOW_BAR 0
+
 //GAME_NAME
 #define GAME_WINDOW_NAME "ˆÃˆÅ‚ÌŠá"
 
