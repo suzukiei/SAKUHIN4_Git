@@ -28,13 +28,15 @@
 //#define GAME_CSV_PATH_STAGE1_SBLOOD 	TEXT(".\\IMAGE\\csv\\Stage1_重ね血.csv")//STAGE1重ね血
 //#define GAME_CSV_PATH_STAGE1_ACCES 		TEXT(".\\IMAGE\\csv\\Stage1_小物.csv")//STAGE1小物
 //#define GAME_CSV_PATH_STAGE1_RECT 		TEXT(".\\IMAGE\\csv\\Stage1_当たり判定.csv")//STAGE1当たり判定
+//#define GAME_CSV_PATH_STAGE1_SG 		TEXT(".\\IMAGE\\csv\\Stage1_SG.csv")//STAGE1スタートゴール
 
-#define GAME_CSV_PATH_STAGE2_FLOOR 		TEXT(".\\IMAGE\\csv\\Stage2_床.csv")//STAGE1床
-#define GAME_CSV_PATH_STAGE2_WALL 		TEXT(".\\IMAGE\\csv\\Stage2_壁.csv")//STAGE1壁
-#define GAME_CSV_PATH_STAGE2_BLOOD 		TEXT(".\\IMAGE\\csv\\Stage2_血.csv")//STAGE1血
-#define GAME_CSV_PATH_STAGE2_SBLOOD 	TEXT(".\\IMAGE\\csv\\Stage2_重ね血.csv")//STAGE1重ね血
-#define GAME_CSV_PATH_STAGE2_ACCES 		TEXT(".\\IMAGE\\csv\\Stage2_小物.csv")//STAGE1小物
-#define GAME_CSV_PATH_STAGE2_RECT 		TEXT(".\\IMAGE\\csv\\Stage2_当たり判定.csv")//STAGE1当たり判定
+#define GAME_CSV_PATH_STAGE2_FLOOR 		TEXT(".\\IMAGE\\csv\\Stage2_床.csv")//STAGE2床
+#define GAME_CSV_PATH_STAGE2_WALL 		TEXT(".\\IMAGE\\csv\\Stage2_壁.csv")//STAGE2壁
+#define GAME_CSV_PATH_STAGE2_BLOOD 		TEXT(".\\IMAGE\\csv\\Stage2_血.csv")//STAGE2血
+#define GAME_CSV_PATH_STAGE2_SBLOOD 	TEXT(".\\IMAGE\\csv\\Stage2_重ね血.csv")//STAGE重ね血
+#define GAME_CSV_PATH_STAGE2_ACCES 		TEXT(".\\IMAGE\\csv\\Stage2_小物.csv")//STAGE2小物
+#define GAME_CSV_PATH_STAGE2_RECT 		TEXT(".\\IMAGE\\csv\\Stage2_当たり判定.csv")//STAGE2当たり判定
+#define GAME_CSV_PATH_STAGE2_SG 		TEXT(".\\IMAGE\\csv\\Stage2_SG.csv")//STAGE2スタートゴール
 
 //画像
 class IMAGE
@@ -93,13 +95,14 @@ public:
 }; 
 
 BOOL MY_LOAD_MAPCHIP(VOID);
+BOOL MY_LOAD_CSV(VOID);
 
 BOOL MY_LOAD_IMAGE(VOID);
 VOID MY_DELETE_IMAGE(VOID);
 
 BOOL MY_LOAD_CSV_MAP(const char* path);
 
-VOID MY_START_DRAW(VOID);	//スタート画面の描画
-VOID MY_RULE_DRAW(VOID);	//ルール画面の描画
-VOID MY_PLAY_DRAW(VOID);	//プレイ画面の描画
-VOID MY_END_DRAW(VOID);	    //エンド画面の描画
+VOID START_DRAW(VOID);	//スタート画面の描画
+VOID RULE_DRAW(VOID);	//ルール画面の描画
+VOID PLAY_DRAW(VOID);	//プレイ画面の描画
+VOID END_DRAW(VOID);	    //エンド画面の描画

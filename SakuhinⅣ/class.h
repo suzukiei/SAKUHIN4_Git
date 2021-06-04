@@ -31,6 +31,8 @@ public:
 	MAP map[MAP_HEIGHT_MAX][MAP_WIDTH_MAX];
 	GAME_GIMMICK_KIND gimmick;
 
+	IPOINT StartPt;   //スタート地点
+	IPOINT GoalPt;	  //ゴール地点
 };
 
 //マップ通路
@@ -41,6 +43,8 @@ public:
 	int From;
 	int To;
 
+	IPOINT StartPt;   //スタート地点
+	IPOINT GoalPt;	  //ゴール地点
 };
 
 //マップ画像配列
