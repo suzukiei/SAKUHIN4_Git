@@ -1,3 +1,5 @@
+#pragma once
+
 //ƒQ[ƒ€ƒV[ƒ“
 enum GAME_SCENE 
 {

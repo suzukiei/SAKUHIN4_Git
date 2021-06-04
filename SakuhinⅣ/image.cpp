@@ -192,26 +192,24 @@ BOOL MY_LOAD_CSV(VOID)
 }
 
 //マップの読み込み
-BOOL MY_LOAD_CSV_MAP(const char* path)
-{
-	//csvファイルを開く
-	FILE* fp;
-
-	if ((fp = fopen(path, "r")) == NULL) 
-	{
-		return FALSE;
-	}
-
-	for (int tate = 0; tate < MAP_HEIGHT_MAX; tate++)
-	{
-		for (int yoko = 0; yoko < MAP_WIDTH_MAX; yoko++)
-		{
-
-		}
-	}
-		
-
-}
+//BOOL MY_LOAD_CSV_MAP(const char* path)
+//{
+//	//csvファイルを開く
+//	FILE* fp;
+//	
+//	if ((fp = fopen(path, "r")) == NULL) 
+//	{
+//		return FALSE;
+//	}
+//
+//	for (int tate = 0; tate < MAP_HEIGHT_MAX; tate++)
+//	{
+//		for (int yoko = 0; yoko < MAP_WIDTH_MAX; yoko++)
+//		{
+//
+//		}
+//	}
+//}
 
 //---------------------------------------------------画像描画↓----------------------------------------------------------
 
