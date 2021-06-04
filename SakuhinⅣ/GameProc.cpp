@@ -1,10 +1,15 @@
 #include "DxLib.h"
+#include "BGM.h"
+#include "class.h"
 #include "define.h"
 #include "enum.h"
-#include "class.h"
-#include "variable.h"
-#include "GameProcHeader.h"
 #include "flag.h"
+#include "GameProcHeader.h"
+#include "menu.h"
+#include "movement.h"
+#include "textevent.h"
+#include "title.h"
+#include "variable.h"
 
 int StartTimeFps;
 int CountFps;
@@ -44,4 +49,45 @@ VOID MY_FPS_WAIT(VOID)
 		WaitTimer(waitTime);
 	}
 	return;
+}
+
+VOID START_PROC(VOID)
+{
+	return;
+}
+
+VOID RULE_PROC(VOID)
+{
+	return;
+}
+
+VOID PLAY_PROC(VOID)
+{
+	GIMMIK();
+	return;
+}
+
+VOID END_PROC(VOID)
+{
+	return;
+}
+
+VOID GIMMIK(VOID)
+{
+	if (MY_KEY_DOWN(KEY_INPUT_W))
+	{
+		MOVEMENT(&player, UP);
+	}
+	else if (MY_KEY_DOWN(KEY_INPUT_S))
+	{
+		MOVEMENT(&player, DOWN);
+	}
+	else if (MY_KEY_DOWN(KEY_INPUT_A))
+	{
+		MOVEMENT(&player, LEFT);
+	}
+	else if (MY_KEY_DOWN(KEY_INPUT_D))
+	{
+		MOVEMENT(&player, RIGHT);
+	}
 }
