@@ -36,7 +36,7 @@ VOID TITLE(VOID)
 			if (MY_KEY_DOWN(KEY_INPUT_DOWN) == TRUE)
 			{
 
-				TITLE_SELECT_NO = TITLE_CONTINUE;
+				TITLE_SELECT_NO = TITLE_RULE;
 
 			}
 
@@ -48,6 +48,31 @@ VOID TITLE(VOID)
 
 			break;
 
+		case TITLE_RULE:
+			//ここに選択時の囲いを表示
+
+
+			if (MY_KEY_DOWN(KEY_INPUT_RETURN) == TRUE)
+			{
+				//ルール画面遷移
+				GameScene = GAME_SCENE_RULE;
+				break;
+			}
+
+			if (MY_KEY_DOWN(KEY_INPUT_DOWN) == TRUE)
+			{
+
+				TITLE_SELECT_NO = TITLE_CONTINUE;
+
+			}
+
+			if (MY_KEY_DOWN(KEY_INPUT_UP) == TRUE)
+			{
+
+				TITLE_SELECT_NO = TITLE_START;
+			}
+
+			break;
 
 		case TITLE_CONTINUE:
 			//ここに選択時の囲いを表示
@@ -74,7 +99,7 @@ VOID TITLE(VOID)
 			if (MY_KEY_DOWN(KEY_INPUT_UP) == TRUE)
 			{
 
-				TITLE_SELECT_NO = TITLE_START;
+				TITLE_SELECT_NO = TITLE_RULE;
 			}
 
 			break;
