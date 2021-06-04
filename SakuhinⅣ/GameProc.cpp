@@ -5,6 +5,7 @@
 #include "enum.h"
 #include "flag.h"
 #include "GameProcHeader.h"
+#include "image.h"
 #include "menu.h"
 #include "movement.h"
 #include "textevent.h"
@@ -53,41 +54,77 @@ VOID MY_FPS_WAIT(VOID)
 
 VOID START_PROC(VOID)
 {
+	//デバッグ用
+	if (MY_KEY_UP(KEY_INPUT_SPACE))
+	{
+		GameScene = GAME_SCENE_RULE;
+	}
+	if (MY_KEY_UP(KEY_INPUT_RETURN))
+	{
+		GameScene = GAME_SCENE_PLAY;
+	}
+
 	return;
 }
 
 VOID RULE_PROC(VOID)
 {
+	//デバッグ用
+	if (MY_KEY_UP(KEY_INPUT_RETURN))
+	{
+		GameScene = GAME_SCENE_START;
+	}
+
 	return;
 }
 
 VOID PLAY_PROC(VOID)
 {
 	GIMMIK();
+
+	//デバッグ用
+	if (MY_KEY_UP(KEY_INPUT_ESCAPE))
+	{
+		GameScene = GAME_SCENE_END;
+	}
+
 	return;
 }
 
 VOID END_PROC(VOID)
 {
+	//デバッグ用
+	if (MY_KEY_UP(KEY_INPUT_RETURN))
+	{
+		GameScene = GAME_SCENE_START;
+	}
 	return;
 }
 
 VOID GIMMIK(VOID)
 {
-	if (MY_KEY_DOWN(KEY_INPUT_W))
+	switch (mapRoom[player.nowRoom].gimmick)
 	{
-		MOVEMENT(&player, UP);
+	case GIMMICK_MAZE:
+
+		if (MY_KEY_DOWN(KEY_INPUT_W))
+		{
+			MOVEMENT((CHARA*)&player, UP);
+		}
+		else if (MY_KEY_DOWN(KEY_INPUT_S))
+		{
+			MOVEMENT((CHARA*)&player, DOWN);
+		}
+		else if (MY_KEY_DOWN(KEY_INPUT_A))
+		{
+			MOVEMENT((CHARA*)&player, LEFT);
+		}
+		else if (MY_KEY_DOWN(KEY_INPUT_D))
+		{
+			MOVEMENT((CHARA*)&player, RIGHT);
+		}
+		break;
 	}
-	else if (MY_KEY_DOWN(KEY_INPUT_S))
-	{
-		MOVEMENT(&player, DOWN);
-	}
-	else if (MY_KEY_DOWN(KEY_INPUT_A))
-	{
-		MOVEMENT(&player, LEFT);
-	}
-	else if (MY_KEY_DOWN(KEY_INPUT_D))
-	{
-		MOVEMENT(&player, RIGHT);
-	}
+
+	return;
 }
