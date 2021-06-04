@@ -96,6 +96,8 @@
 #define MUSIC_BGM_COMP_PATH		TEXT(".\\BGM\\famipop3.mp3")
 //END_BGM
 #define MUSIC_BGM_FAIL_PATH		TEXT(".\\BGM\\famipop3.mp3")
+//SE_BGM
+#define MUSIC_BGM_SE_PATH			TEXT(".\\BGM\\famipop3.mp3")
 
 //MAP
 #define GAME_MAP_TATE_MAX
