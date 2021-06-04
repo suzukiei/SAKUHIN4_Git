@@ -3,6 +3,7 @@
 #include "enum.h"
 #include "class.h"
 #include "movement.h"
+#include "variable.h"
 
 BOOL CHARA_COLLISION(CHARA a, CHARA b)
 {
@@ -74,6 +75,39 @@ VOID CHECK_COLLISION_GOAL(VOID)
 		player.image.y = player.CenterY;*/
 
 		//GameScene = GAME_SCENE_PLAY2;
+
+
+
+		return;	//強制的にエンド画面に飛ぶ
+	}
+}
+
+
+VOID CHECK_COLLISION_ENEMY(VOID)
+{
+	//プレイヤーと敵の当たり判定の設定
+	player.coll.left = player.CenterX - 40 / 20 + 5;
+	player.coll.top = player.CenterY + 200 / 20 + 5;
+	player.coll.right = player.CenterX + 650 / 20 - 5;
+	player.coll.bottom = player.CenterY + 1000 / 20 - 5;
+
+	RECT PlayerRect;
+	PlayerRect.left = player.CenterX - 40 / 20 + 5;
+	PlayerRect.top = player.CenterY + 200 / 20 + 5;
+	PlayerRect.right = player.CenterX + 650 / 20 - 5;
+	PlayerRect.bottom = player.CenterY + 1000 / 20 - 5;
+
+	RECT EnemyRect;
+	EnemyRect.left = player.CenterX - 40 / 20 + 5;
+	EnemyRect.top = player.CenterY + 200 / 20 + 5;
+	EnemyRect.right = player.CenterX + 650 / 20 - 5;
+	EnemyRect.bottom = player.CenterY + 1000 / 20 - 5;
+
+	//ゴールに触れているかチェック
+	if (MY_CHECK_RECT_COLL(PlayerRect,EnemyRect) == TRUE)
+	{
+
+		GameScene = GAME_SCENE_END;//本当はゲームオーバ画面へ遷移したい。
 
 
 
