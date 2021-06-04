@@ -125,7 +125,7 @@ BOOL MOVEMENT(CHARA* chara,int move)
 	
 
 //キーを押し上げたか、キーコードで判断する
-extern BOOL MY_KEY_UP(int KEY_INPUT_)
+ BOOL MY_KEY_UP(int KEY_INPUT_)
 {
 	if (OldAllKeyState[KEY_INPUT_] >= 1	//直前は押していて
 		&& AllKeyState[KEY_INPUT_] == 0)	//今は押していないとき
@@ -139,7 +139,7 @@ extern BOOL MY_KEY_UP(int KEY_INPUT_)
 }
 
 //キーを押しているか、キーコードで判断する
-extern BOOL MY_KEY_DOWN(int KEY_INPUT_)
+ BOOL MY_KEY_DOWN(int KEY_INPUT_)
 {
 	//キーコードのキーを押している時
 	if (AllKeyState[KEY_INPUT_] != 0)
@@ -153,7 +153,7 @@ extern BOOL MY_KEY_DOWN(int KEY_INPUT_)
 }
 
 //########## キーの入力状態を更新する関数 ##########
-extern VOID MY_ALL_KEYDOWN_UPDATE(VOID)
+VOID MY_ALL_KEYDOWN_UPDATE(VOID)
 {
 
 	//一時的に、現在のキーの入力状態を格納する

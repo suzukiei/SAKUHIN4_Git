@@ -1,3 +1,5 @@
+#pragma once
+
 //ボタンギミックフラグ
 BOOL IsButtonPush;
 //強制移動ギミックフラグ
