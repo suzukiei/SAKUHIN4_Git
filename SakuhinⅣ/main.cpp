@@ -22,6 +22,19 @@ VOID MY_RULE(VOID);
 VOID MY_PLAY(VOID);
 VOID MY_END(VOID);
 
+extern int GameScene; //ゲームシーン
+
+extern int GameEndkind;  //エンド画面
+
+CHARA player;   //プレイヤー
+CHARA enemy;   //エネミー
+
+MAP_CHIP mapChipRoom[8];  //ルームマップチップ
+MAP_CHIP mapChipPass;  //通路マップチップ
+
+MAP_ROOM mapRoom[8]; //マップ
+
+MAP_PASS mappass;
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
 {
@@ -34,8 +47,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	//SetWindowIconID(IDI_ICON1);
 
 	if (DxLib_Init() == -1) { return(-1); }
-	//if (MY_LOAD_IMAGE() == -1) { return(-1); }
-	//if (MY_LOAD_MUSIC() == -1) { return(-1); }
+	if (MY_LOAD_IMAGE() == -1) { return(-1); }
+	if (MY_LOAD_MUSIC() == -1) { return(-1); }
 
 	SetMouseDispFlag(FALSE);
 
@@ -66,8 +79,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	//--------------------------------終了処理---------------------------------
 
 
-	//MY_DELETE_IMAGE();
-	//MY_DELETE_MUSIC();
+	MY_DELETE_IMAGE();
+	MY_DELETE_MUSIC();
 
 	DxLib_End();
 
