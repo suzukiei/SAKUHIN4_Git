@@ -160,26 +160,57 @@ BOOL MY_LOAD_IMAGE(VOID)
 
 
 //csvの読み込み
-BOOL MY_LOAD_CSV_MAP(VOID)
+BOOL MY_LOAD_CSV(VOID)
 {
 	//マップチップを読み込む
 	if (MY_LOAD_MAPCHIP() == FALSE) { return -1; }
 
 	//csvを読み込む
-	if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE2_FLOOR)) { return -1; }	  //ステージ１床
-	if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE2_WALL)) { return -1; }    //ステージ１壁
-	if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE2_BLOOD)) { return -1; }   //ステージ１血
-	if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE2_SBLOOD)) { return -1; }  //ステージ１重ね血
-	if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE2_ACCES)) { return -1; }   //ステージ１小物
-	if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE2_RECT)) { return -1; }    //ステージ１当たり判定
+	//if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE1_FLOOR)) { return -1; }	  //ステージ1床
+	//if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE1_WALL)) { return -1; }    //ステージ1壁
+	//if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE1_BLOOD)) { return -1; }   //ステージ1血
+	//if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE1_SBLOOD)) { return -1; }  //ステージ1重ね血
+	//if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE1_ACCES)) { return -1; }   //ステージ1小物
+	//if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE1_RECT)) { return -1; }    //ステージ1当たり判定
+	//if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE1_SG)) { return -1; }    //ステージ1スタートゴール
+	if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE2_FLOOR)) { return -1; }	  //ステージ2床
+	if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE2_WALL)) { return -1; }    //ステージ2壁
+	if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE2_BLOOD)) { return -1; }   //ステージ2血
+	if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE2_SBLOOD)) { return -1; }  //ステージ2重ね血
+	if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE2_ACCES)) { return -1; }   //ステージ2小物
+	if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE2_RECT)) { return -1; }    //ステージ2当たり判定
+	if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE2_SG)) { return -1; }    //ステージ2スタートゴール
+
 
 	return TRUE;
+}
+
+//マップの読み込み
+BOOL MY_LOAD_CSV_MAP(const char* path)
+{
+	//csvファイルを開く
+	FILE* fp;
+
+	if ((fp = fopen(path, "r")) == NULL) 
+	{
+		return FALSE;
+	}
+
+	for (int tate = 0; tate < MAP_HEIGHT_MAX; tate++)
+	{
+		for (int yoko = 0; yoko < MAP_WIDTH_MAX; yoko++)
+		{
+
+		}
+	}
+		
+
 }
 
 //---------------------------------------------------画像描画↓----------------------------------------------------------
 
 //スタート画面の描画処理
-VOID MY_START_DRAW(VOID)
+VOID START_DRAW(VOID)
 {
 	DrawGraph(0, 0, ImageTitleBk.GetHandle(), TRUE);
 
@@ -187,7 +218,7 @@ VOID MY_START_DRAW(VOID)
 }
 
 //ルール画面の描画処理
-VOID MY_RULE_DRAW(VOID)
+VOID RULE_DRAW(VOID)
 {
 	//DrawGraph(0, 0, , TRUE);
 
@@ -195,13 +226,14 @@ VOID MY_RULE_DRAW(VOID)
 }
 
 //プレイ画面の描画処理
-VOID MY_PLAY_DRAW(VOID)
+VOID PLAY_DRAW(VOID)
 {
 	//マップの描画
 	for (int tate = 0; tate < MAP_HEIGHT_MAX; tate++)
 	{
 		for (int yoko = 0; yoko < MAP_WIDTH_MAX; yoko++)
 		{
+
 			DrawGraph(mapRoom[player.nowRoom].map[tate][yoko].x - player.CenterX,
 				mapRoom[player.nowRoom].map[tate][yoko].y - player.CenterY,
 				mapChipRoom[player.nowRoom].mapchip[tate][yoko].handle[mapRoom[player.nowRoom].map[tate][yoko].kind],
@@ -222,7 +254,7 @@ VOID MY_PLAY_DRAW(VOID)
 }
 
 //エンド画面の描画処理
-VOID MY_END_DRAW(VOID)
+VOID END_DRAW(VOID)
 {
 	DrawGraph(0, 0, ImageEndBk.GetHandle(), TRUE);
 
@@ -251,41 +283,3 @@ VOID MY_DELETE_IMAGE(VOID)
 	ButtonMenu2.DeleteHandle();
 }
 
-
-
-
-////マップの役割を設定
-//for (int tate = 0; tate < GAME_MAP_TATE_MAX; tate++) {
-//	for (int yoko = 0; yoko < GAME_MAP_YOKO_MAX; yoko++) {
-//		MAP* p = m + tate * GAME_MAP_YOKO_MAX + yoko;
-//		MAP* pInit = mInit + tate * GAME_MAP_YOKO_MAX + yoko;
-//
-//		p->kind = MAP_KIND_TURO;
-//
-//		for (int cnt = 0; cnt < MAP_JIMEN_KIND; cnt++) {
-//			if (p->value == MapJimenID[cnt]) {
-//				p->kind = MAP_KIND_KABE;
-//				break;
-//			}
-//		}
-//
-//		for (int cnt = 0; cnt < MAP_GUILD_KIND; cnt++) {
-//			if (p->value == MapGuildID[cnt]) {
-//				p->kind = MAP_KIND_GUILD;
-//				break;
-//			}
-//		}
-//
-//		if (p->value == MapKanbanID)
-//		{
-//			p->kind = MAP_KIND_KANBAN;
-//		}
-//
-//		//マップ位置処理
-//		p->x = yoko * MAP_DIV_WIDTH;
-//		p->y = tate * MAP_DIV_HEIGHT;
-//		p->width = MAP_DIV_WIDTH;
-//		p->height = MAP_DIV_HEIGHT;
-//		pInit = p;
-//	}
-//}

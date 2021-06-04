@@ -1,3 +1,14 @@
+#include "DxLib.h"
+#include "BGM.h"
+#include "class.h"
+#include "define.h"
+#include "enum.h"
+#include "flag.h"
+#include "menu.h"
+#include "movement.h"
+#include "textevent.h"
+#include "title.h"
+
 int GameScene; //ゲームシーン
 
 int GameEndkind;  //エンド画面
