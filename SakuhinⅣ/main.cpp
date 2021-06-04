@@ -5,6 +5,7 @@
 #include "enum.h"
 #include "flag.h"
 #include "GameProcHeader.h"
+#include "image.h"
 #include "menu.h"
 #include "movement.h"
 #include "textevent.h"
@@ -103,23 +104,27 @@ void GameSceneMove(void)
 VOID MY_START(VOID)
 {
 	START_PROC();
+	START_DRAW();
 	return;
 }
 
 VOID MY_RULE(VOID)
 {
 	RULE_PROC();
+	RULE_DRAW();
 	return;
 }
 
 VOID MY_PLAY(VOID)
 {
 	PLAY_PROC();
+	PLAY_DRAW();
 	return;
 }
 
 VOID MY_END(VOID)
 {
 	END_PROC();
+	END_DRAW();
 	return;
 }
