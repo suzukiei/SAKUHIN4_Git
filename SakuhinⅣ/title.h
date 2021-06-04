@@ -2,7 +2,7 @@
 
 VOID TITLE(VOID);
 
-int TITLE_SELECT_NO = 0;
+extern int TITLE_SELECT_NO = 0;
 
 enum TITLE_SELECT
 {
