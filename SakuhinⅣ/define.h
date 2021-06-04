@@ -1,3 +1,5 @@
+#pragma once
+
 #include"enum.h"
 
 #define WINDOW_WIDTH 960
