@@ -33,21 +33,21 @@
 #define IMAGE_TITLE_ROGO_PATH				TEXT(".\\IMAGE\\karilogo.png")
 #define IMAGE_TITLE_BUTTON_PLAY_PATH		TEXT(".\\IMAGE\\button1.png")
 //ルールに飛ぶボタン画像
-//#define IMAGE_TITLE_BUTTON_RULE_PATH		TEXT(".\\IMAGE\\.png")
+#define IMAGE_TITLE_BUTTON_RULE_PATH		TEXT(".\\IMAGE\\button_lule.png")
 //終了するためのボタン画像
-//#define IMAGE_TITLE_BUTTON_END_PATH		TEXT(".\\IMAGE\\.png")
+#define IMAGE_TITLE_BUTTON_END_PATH			TEXT(".\\IMAGE\\button_end.png")
 // 選択中のボタンに画像をのっける
-//#define IMAGE_TITLE_BUTTON_NOW_PATH		TEXT(".\\IMAGE\\.png")
-//#define IMAGE_TITLE_BUTTON_SPAN		30
+#define IMAGE_TITLE_BUTTON_NOW_PATH			TEXT(".\\IMAGE\\button_now.png")
+#define IMAGE_TITLE_BUTTON_SPAN		30
 
 //ルール画像
 #define IMAGE_RULE_PATH	TEXT(".\\IMAGE\\lule.png")
 
 
 //成功	
-//#define IMAGE_END_COMP_PATH	TEXT(".png")
-//#define IMAGE_END_COMP_CNT	1
-//#define IMAGE_END_COMP_CNT_MAX	30
+#define IMAGE_END_COMP_PATH	TEXT(".\\IMAGE\\COMP_kari.png")
+#define IMAGE_END_COMP_CNT	1
+#define IMAGE_END_COMP_CNT_MAX	30
 
 //失敗	
 #define IMAGE_END_FAIL_PATH	TEXT(".\\IMAGE\\GameOver1.\\IMAGE\\.png")
@@ -73,31 +73,28 @@
 #define MENU_BUTTON_SELECT_SAVE_HEIGHT_POSITION 370 //セーブ選択時の位置
 
 //player
-#define IMAGE_PLAYER_PATH
+#define IMAGE_PLAYER_PATH		TEXT(".\\IMAGE\\chara.png")
 
 //enemy
-#define IMAGE_ENEMY_PATH
+#define IMAGE_ENEMY_PATH		TEXT(".\\IMAGE\\enemy.png")
 
 //音楽
 #define MUSIC_LOAD_ERR_TITLE	TEXT("音楽読み込みエラー")
 
 //TITLE_BGM
-//#define MUSIC_BGM_PATH_TITLE		TEXT(".mp3")
+#define MUSIC_BGM_PATH_TITLE		TEXT(".\\BGM\\famipop3.mp3")
 //PLEY_BGM
-//#define MUSIC_BGM_PATH			TEXT(".mp3")
+#define MUSIC_BGM_PATH			TEXT(".\\BGM\\famipop3.mp3")
 //COMP_BGM
-//#define MUSIC_BGM_COMP_PATH		TEXT(".mp3")
+#define MUSIC_BGM_COMP_PATH		TEXT(".\\BGM\\famipop3.mp3")
 //END_BGM
-//#define MUSIC_BGM_FAIL_PATH		TEXT(".mp3")
+#define MUSIC_BGM_FAIL_PATH		TEXT(".\\BGM\\famipop3.mp3")
 
 //MAP
 #define GAME_MAP_TATE_MAX
 #define GAME_MAP_YOKO_MAX
 #define GAME_MAP_KIND_MAX
 #define GAME_MAP_KAISO_MAX
-
-//MAP画像PATH
-//#define GAME_MAP_PATH(".png")
 
 //制限時間
 #define GAME_TIME_LIMIT	60
@@ -108,6 +105,7 @@
 #define MAP_DIV_HEIGHT	32
 #define MAP_DIV_TATE		64
 #define MAP_DIV_YOKO		64
+
 //MAPTHIP分割する(4096)
 #define MAP_DIV_NUM	MAP_DIV_TATE * MAP_DIV_YOKO
 
