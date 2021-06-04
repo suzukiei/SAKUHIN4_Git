@@ -9,16 +9,16 @@
 #include "textevent.h"
 #include "title.h"
 
-int GameScene; //ゲームシーン
+extern int GameScene; //ゲームシーン
 
-int GameEndkind;  //エンド画面
+extern int GameEndkind;  //エンド画面
 
-CHARA player;   //プレイヤー
-CHARA enemy;   //エネミー
+extern CHARA player;   //プレイヤー
+extern CHARA enemy;   //エネミー
 
-MAP_CHIP mapChipRoom[8];  //ルームマップチップ
-MAP_CHIP mapChipPass;  //通路マップチップ
+extern MAP_CHIP mapChipRoom[8];  //ルームマップチップ
+extern MAP_CHIP mapChipPass;  //通路マップチップ
 
-MAP_ROOM mapRoom[8]; //マップ
+extern MAP_ROOM mapRoom[8]; //マップ
 
-MAP_PASS mappass;
+extern MAP_PASS mappass;
