@@ -22,9 +22,9 @@ public:
 		DeleteMusicMem(MusicHandle);
 		return;
 	}
-	VOID SetPath(char MusicPath[])
+	VOID SetPath(const char* MusicPath)
 	{
-		strcpy(MusicPath, MusicPath);
+		strcpy_s(path, MusicPath);
 		return;
 	}
 	int GetHandle(VOID)
