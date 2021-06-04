@@ -6,15 +6,18 @@ class CHARA
 {
 public:
 	IMAGE image;
-	int speed;
-	int CenterX;
-	int CenterY;
-	int kind1;
-	int imgChangeCnt;
-	int imgChangeCntMAX;
+	int handle[PLAYER_DIV_NUM];
+	int speed;                   //キャラクタースピード
+	int CenterX;                 //キャラクターX位置
+	int CenterY;                 //キャラクターY位置
+	int kind1;                	 //現在のキャラクター状態
+	int imgChangeCnt;            //変更したい画像
+	int imgChangeCntMAX;         
 	int nowRoom;
-	BOOL InRoom = false;
-	BOOL InPass = false;
+	double angle;
+	double rate;
+	BOOL InRoom = false;        //部屋にいるかどうか
+	BOOL InPass = false;        //通路に居るかどうか
 	BOOL IsMoveNaname;
 
 	RECT coll;
