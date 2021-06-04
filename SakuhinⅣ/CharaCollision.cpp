@@ -61,25 +61,25 @@ VOID CHECK_COLLISION_GOAL(VOID)
 	PlayerRect.bottom = player.CenterY + 1000 / 20 - 5;
 
 	//ゴールに触れているかチェック
-	if (MY_CHECK_RECT_COLL(PlayerRect, /*GoalRect ゴールの判定*/) == TRUE)
-	{
+	//if (MY_CHECK_RECT_COLL(PlayerRect, /*GoalRect ゴールの判定*/) == TRUE)
+	//{
 
 
 
-		//スタートポイントに設定し遷移
-		/*player.CenterX = startPt2.x;
-		player.CenterY = startPt2.y;
+	//	//スタートポイントに設定し遷移
+	//	/*player.CenterX = startPt2.x;
+	//	player.CenterY = startPt2.y;
 
 
-		player.image.x = player.CenterX;
-		player.image.y = player.CenterY;*/
+	//	player.image.x = player.CenterX;
+	//	player.image.y = player.CenterY;*/
 
-		//GameScene = GAME_SCENE_PLAY2;
+	//	//GameScene = GAME_SCENE_PLAY2;
 
 
 
-		return;	//強制的にエンド画面に飛ぶ
-	}
+	//	return;	//強制的にエンド画面に飛ぶ
+	//}
 }
 
 
