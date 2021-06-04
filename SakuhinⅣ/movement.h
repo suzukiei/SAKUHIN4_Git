@@ -4,7 +4,7 @@
 #define CharaSpeed 2			//キャラクターのスピード
 
 
-BOOL MOVEMENT(CHARA*,MOVE);				//キャラの移動関数 //移動できたときTRUE
+BOOL MOVEMENT(CHARA *,MOVE);				//キャラの移動関数 //移動できたときTRUE
 VOID MY_ALL_KEYDOWN_UPDATE(VOID);	//キーの入力状態を更新する関数
 BOOL CHARA_COLLISION(CHARA,MAP[MAP_DIV_HEIGHT][MAP_DIV_WIDTH]); //当たり判定を確認する関数の定義 //壁などに衝突しているときTRUE
 
