@@ -14,7 +14,7 @@ BOOL MOVEMENT(CHARA* chara,int move)
 	case UP:
 		chara->IsMoveNaname = FALSE;	//斜め移動していない
 		
-		if (CHARA_COLLISION() == FALSE) {
+		//if (CHARA_COLLISION() == FALSE) {
 			if (chara->kind1 >= U_1 && chara->kind1 < U_4)
 			{
 				//画像変更カウンタ
@@ -36,7 +36,7 @@ BOOL MOVEMENT(CHARA* chara,int move)
 			chara->image.y -= CharaSpeed;	//移動
 
 			break;
-		}
+		//}
 
 	case DOWN:
 
