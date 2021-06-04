@@ -31,7 +31,7 @@
 //画像パス
 #define IMAGE_TITLE_BK_PATH				TEXT(".\\IMAGE\\title_back.png")
 #define IMAGE_TITLE_ROGO_PATH				TEXT(".\\IMAGE\\karilogo.png")
-#define IMAGE_TITLE_BUTTON_PLAY_PATH		TEXT(".\\IMAGE\\button1.png")
+#define IMAGE_TITLE_BUTTON_PLAY_PATH		TEXT(".\\IMAGE\\button_play.png")
 //ルールに飛ぶボタン画像
 #define IMAGE_TITLE_BUTTON_RULE_PATH		TEXT(".\\IMAGE\\button_lule.png")
 //終了するためのボタン画像
@@ -71,6 +71,11 @@
 #define MENU_BUTTON_SELECT_TITLE_HEIGHT_POSITION 270 //タイトル選択時の位置
 #define MENU_BUTTON_SELECT_SAVE_WIDTH_POSITION 370 //セーブ選択時の位置
 #define MENU_BUTTON_SELECT_SAVE_HEIGHT_POSITION 370 //セーブ選択時の位置
+
+//メニュー時の画像パス
+#define IMAGE_MENU_BUTTON_PATH			TEXT(".\\IMAGE\\.button1.png")
+#define IMAGE_MENU_BUTTON_END_PATH		TEXT(".\\IMAGE\\.button2.png")
+#define IMAGE_MENU_PATH				TEXT(".\\IMAGE\\menu.png")
 
 //player
 #define IMAGE_PLAYER_PATH		TEXT(".\\IMAGE\\chara.png")
