@@ -22,7 +22,7 @@ int LOADING(VOID)
         if (fp == NULL) {
             return;
         }
-        fscanf(fp, "%d", "player.X.100", "player.Y.100",/*&部屋番号,//&プレイヤーの座標,//&プレイヤーの座標*/);
+        //fscanf(fp, "%d", "player.X.100", "player.Y.100",/*&部屋番号,//&プレイヤーの座標,//&プレイヤーの座標*/);
 
          fclose(fp);
 
