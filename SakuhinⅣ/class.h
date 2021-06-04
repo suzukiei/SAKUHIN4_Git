@@ -1,3 +1,5 @@
+#pragma once
+
 #include "define.h"
 #include "image.h"
 
@@ -30,6 +32,8 @@ class MAP_ROOM
 public:
 	MAP map[MAP_HEIGHT_MAX][MAP_WIDTH_MAX];
 	GAME_GIMMICK_KIND gimmick;
+	int x;
+	int y;
 
 	IPOINT StartPt;   //スタート地点
 	IPOINT GoalPt;	  //ゴール地点

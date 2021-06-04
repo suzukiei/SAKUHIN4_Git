@@ -1,3 +1,5 @@
+#pragma once
+
 #include "DxLib.h"
 #include "BGM.h"
 #include "class.h"
