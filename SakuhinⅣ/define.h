@@ -1,3 +1,5 @@
+#include"enum.h"
+
 #define WINDOW_WIDTH 960
 #define WINDOW_HEIGHT 560
 #define GAME_WIDTH 960
