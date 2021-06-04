@@ -12,8 +12,8 @@ VOID CHECK_COLLISION_ENEMY(VOID);
 BOOL MY_CHECK_RECT_COLL(RECT, RECT);	//領域の当たり判定をする関数
 
 //キーボードの入力を取得
-char AllKeyState[KEY_CODE_KIND] = { '\0' };		//すべてのキーの状態が入る
-char OldAllKeyState[KEY_CODE_KIND] = { '\0' };	//すべてのキーの状態(直前)が入る
+extern char AllKeyState[KEY_CODE_KIND] = { '\0' };		//すべてのキーの状態が入る
+extern char OldAllKeyState[KEY_CODE_KIND] = { '\0' };	//すべてのキーの状態(直前)が入る
 
 
 BOOL MY_KEY_DOWN(int);				//キーを押しているか、キーコードで判断する 

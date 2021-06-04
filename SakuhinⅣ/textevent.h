@@ -1,7 +1,7 @@
 #define TEXT_POSITION_X 380 //テキストポジションXの値
 #define TEXT_POSITION_Y 300 //テキストポジションYの値
 
-int textNumber;
+extern int textNumber;
 
 enum text {
     TEXT_OP,
