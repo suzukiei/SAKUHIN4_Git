@@ -24,6 +24,12 @@ IMAGE ButtonNow;
 IMAGE ButtonMenu1;
 IMAGE ButtonMenu2;
 
+MAP_CHIP mapChipRoom[8];  //ルームマップチップ
+MAP_CHIP mapChipPass;  //通路マップチップ
+
+MAP_ROOM mapRoom[8]; //マップ
+
+MAP_PASS mappass;
 //---------------------------------------------------画像の読み込み↓----------------------------------------------------------
 
 
