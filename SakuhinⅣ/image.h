@@ -1,14 +1,40 @@
 #include"define.h"
 #include "DxLib.h"
 
+//プレイー画像
+#define IMAGE_PLAYER_PATH		TEXT(".\\IMAGE\\chara.png")		//プレイヤー画像パス
+#define PLAYER_CHANGE_NUM	3	//プレイヤー画像変更回数
+#define PLAYER_WIDTH		32	//プレイヤー画像横
+#define PLAYER_HEIGHT		32	//プレイヤー画像縦
+#define PLAYER_DIV_TATE		4	//プレイヤー画像縦分割数
+#define	PLAYER_DIV_YOKO		3	//プレイヤー画像横分割数
+#define PLAYER_DIV_NUM		PLAYER_DIV_TATE*PLAYER_DIV_YOKO		//プレイヤー画像総分割数
+#define PLAYER_ROTA			2.0	//プレイヤー拡大率
+#define PLAYER_ACTWAIT		100	//プレイヤーアニメーション待ち時間
+#define PLAYER_LEFT			3	//左向き
+#define PLAYER_LEFT_MAX		5	//左最大
+#define PLAYER_RIGHT		6	//右向き
+#define	PLAYER_RIGHT_MAX	8	//右最大
+#define PLAYER_BACK			9	//後ろ向き
+#define PLAYER_BACK_MAX		11	//後ろ最大
+#define PLAYER_RIGHT_STAY	7	//右向き待ち
+#define PLAYER_LEFT_STAY	4	//左向き待ち
+
 #define GAME_MAP_PATH		TEXT(".\\IMAGE\\mapuse.png")		//マップ画像パス
 
-#define GAME_CSV_PATH_STAGE1_FLOOR 		TEXT(".\\IMAGE\\csv\\Stage1_床.csv")//STAGE1床
-#define GAME_CSV_PATH_STAGE1_WALL 		TEXT(".\\IMAGE\\csv\\Stage1_壁.csv")//STAGE1壁
-#define GAME_CSV_PATH_STAGE1_BLOOD 		TEXT(".\\IMAGE\\csv\\Stage1_血.csv")//STAGE1血
-#define GAME_CSV_PATH_STAGE1_SBLOOD 	TEXT(".\\IMAGE\\csv\\Stage1_重ね血.csv")//STAGE1重ね血
-#define GAME_CSV_PATH_STAGE1_ACCES 		TEXT(".\\IMAGE\\csv\\Stage1_小物.csv")//STAGE1小物
-#define GAME_CSV_PATH_STAGE1_RECT 		TEXT(".\\IMAGE\\csv\\Stage1_当たり判定.csv")//STAGE1当たり判定
+//#define GAME_CSV_PATH_STAGE1_FLOOR 		TEXT(".\\IMAGE\\csv\\Stage1_床.csv")//STAGE1床
+//#define GAME_CSV_PATH_STAGE1_WALL 		TEXT(".\\IMAGE\\csv\\Stage1_壁.csv")//STAGE1壁
+//#define GAME_CSV_PATH_STAGE1_BLOOD 		TEXT(".\\IMAGE\\csv\\Stage1_血.csv")//STAGE1血
+//#define GAME_CSV_PATH_STAGE1_SBLOOD 	TEXT(".\\IMAGE\\csv\\Stage1_重ね血.csv")//STAGE1重ね血
+//#define GAME_CSV_PATH_STAGE1_ACCES 		TEXT(".\\IMAGE\\csv\\Stage1_小物.csv")//STAGE1小物
+//#define GAME_CSV_PATH_STAGE1_RECT 		TEXT(".\\IMAGE\\csv\\Stage1_当たり判定.csv")//STAGE1当たり判定
+
+#define GAME_CSV_PATH_STAGE2_FLOOR 		TEXT(".\\IMAGE\\csv\\Stage2_床.csv")//STAGE1床
+#define GAME_CSV_PATH_STAGE2_WALL 		TEXT(".\\IMAGE\\csv\\Stage2_壁.csv")//STAGE1壁
+#define GAME_CSV_PATH_STAGE2_BLOOD 		TEXT(".\\IMAGE\\csv\\Stage2_血.csv")//STAGE1血
+#define GAME_CSV_PATH_STAGE2_SBLOOD 	TEXT(".\\IMAGE\\csv\\Stage2_重ね血.csv")//STAGE1重ね血
+#define GAME_CSV_PATH_STAGE2_ACCES 		TEXT(".\\IMAGE\\csv\\Stage2_小物.csv")//STAGE1小物
+#define GAME_CSV_PATH_STAGE2_RECT 		TEXT(".\\IMAGE\\csv\\Stage2_当たり判定.csv")//STAGE1当たり判定
 
 //画像
 class IMAGE

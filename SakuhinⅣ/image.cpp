@@ -16,10 +16,13 @@ IMAGE ImageEndBk;
 IMAGE ImageEndComp;
 IMAGE ImageEndFail;
 IMAGE ImageRule;
+IMAGE ImageMenu;
 IMAGE ButtonPlay;
 IMAGE ButtonEnd;
 IMAGE ButtonRule;
 IMAGE ButtonNow;
+IMAGE ButtonMenu1;
+IMAGE ButtonMenu2;
 
 //---------------------------------------------------画像の読み込み↓----------------------------------------------------------
 
@@ -54,6 +57,15 @@ BOOL MY_LOAD_IMAGE(VOID)
 		return FALSE;
 	}
 
+	//メニューの読み込み
+	ImageMenu.SetPath(IMAGE_MENU_PATH);
+	ImageMenu.SetHandle(LoadGraph(ImageMenu.GetPath()));
+	if (ImageTitleBk.GetPath() == ERR)
+	{
+		MessageBox(GetMainWindowHandle(), IMAGE_MENU_PATH, IMAGE_LOAD_ERR_TITLE, MB_OK);
+		return FALSE;
+	}
+
 	////エンド背景の読み込み
 	//ImageEndBk.SetPath(IMAGE_END_BK_PATH);
 	//ImageEndBk.SetHandle(LoadGraph(ImageEndBk.GetPath()));
@@ -64,22 +76,22 @@ BOOL MY_LOAD_IMAGE(VOID)
 	//}
 
 	////エンド成功の読み込み
-	//ImageEndComp.SetPath(IMAGE_END_COMP_PATH);
-	//ImageEndComp.SetHandle(LoadGraph(ImageEndComp.GetPath()));
-	//if (ImageEndComp.GetPath() == ERR)
-	//{
-	//	MessageBox(GetMainWindowHandle(), IMAGE_END_COMP_PATH, IMAGE_LOAD_ERR_TITLE, MB_OK);
-	//	return FALSE;
-	//}
+	ImageEndComp.SetPath(IMAGE_END_COMP_PATH);
+	ImageEndComp.SetHandle(LoadGraph(ImageEndComp.GetPath()));
+	if (ImageEndComp.GetPath() == ERR)
+	{
+		MessageBox(GetMainWindowHandle(), IMAGE_END_COMP_PATH, IMAGE_LOAD_ERR_TITLE, MB_OK);
+		return FALSE;
+	}
 
 	////エンド失敗の読み込み
-	//ImageEndFail.SetPath(IMAGE_END_FAIL_PATH);
-	//ImageEndFail.SetHandle(LoadGraph(ImageEndFail.GetPath()));
-	//if (ImageEndFail.GetPath() == ERR)
-	//{
-	//	MessageBox(GetMainWindowHandle(), IMAGE_END_FAIL_PATH, IMAGE_LOAD_ERR_TITLE, MB_OK);
-	//	return FALSE;
-	//}
+	ImageEndFail.SetPath(IMAGE_END_FAIL_PATH);
+	ImageEndFail.SetHandle(LoadGraph(ImageEndFail.GetPath()));
+	if (ImageEndFail.GetPath() == ERR)
+	{
+		MessageBox(GetMainWindowHandle(), IMAGE_END_FAIL_PATH, IMAGE_LOAD_ERR_TITLE, MB_OK);
+		return FALSE;
+	}
 
 	//プレイ画面へ遷移するためのボタンの読み込み
 	ButtonPlay.SetPath(IMAGE_TITLE_BUTTON_PLAY_PATH);
@@ -117,6 +129,33 @@ BOOL MY_LOAD_IMAGE(VOID)
 	//	return FALSE;
 	//}
 
+	//ボタン選択画像の読み込み
+	ButtonNow.SetPath(IMAGE_TITLE_BUTTON_NOW_PATH);
+	ButtonNow.SetHandle(LoadGraph(ButtonNow.GetPath()));
+	if (ButtonNow.GetPath() == ERR)
+	{
+		MessageBox(GetMainWindowHandle(), IMAGE_TITLE_BUTTON_NOW_PATH, IMAGE_LOAD_ERR_TITLE, MB_OK);
+		return FALSE;
+	}
+
+	//メニューボタン１の読み込み
+	ButtonMenu1.SetPath(IMAGE_MENU_BUTTON_PATH);
+	ButtonMenu1.SetHandle(LoadGraph(ButtonMenu1.GetPath()));
+	if (ButtonNow.GetPath() == ERR)
+	{
+		MessageBox(GetMainWindowHandle(), IMAGE_MENU_BUTTON_PATH, IMAGE_LOAD_ERR_TITLE, MB_OK);
+		return FALSE;
+	}
+
+	//メニューボタン2の読み込み
+	ButtonMenu2.SetPath(IMAGE_MENU_BUTTON_END_PATH);
+	ButtonMenu2.SetHandle(LoadGraph(ButtonMenu1.GetPath()));
+	if (ButtonNow.GetPath() == ERR)
+	{
+		MessageBox(GetMainWindowHandle(), IMAGE_MENU_BUTTON_END_PATH, IMAGE_LOAD_ERR_TITLE, MB_OK);
+		return FALSE;
+	}
+
 }
 
 
@@ -127,12 +166,12 @@ BOOL MY_LOAD_CSV_MAP(VOID)
 	if (MY_LOAD_MAPCHIP() == FALSE) { return -1; }
 
 	//csvを読み込む
-	if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE1_FLOOR)) { return -1; }	  //ステージ１床
-	if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE1_WALL)) { return -1; }    //ステージ１壁
-	if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE1_BLOOD)) { return -1; }   //ステージ１血
-	if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE1_SBLOOD)) { return -1; }  //ステージ１重ね血
-	if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE1_ACCES)) { return -1; }   //ステージ１小物
-	if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE1_RECT)) { return -1; }    //ステージ１当たり判定
+	if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE2_FLOOR)) { return -1; }	  //ステージ１床
+	if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE2_WALL)) { return -1; }    //ステージ１壁
+	if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE2_BLOOD)) { return -1; }   //ステージ１血
+	if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE2_SBLOOD)) { return -1; }  //ステージ１重ね血
+	if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE2_ACCES)) { return -1; }   //ステージ１小物
+	if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE2_RECT)) { return -1; }    //ステージ１当たり判定
 
 	return TRUE;
 }
@@ -171,6 +210,14 @@ VOID MY_PLAY_DRAW(VOID)
 		}
 	}
 
+	//プレイヤー表示
+	DrawGraph(
+		player.CenterX,
+		player.CenterY,
+		player.handle[player.kind1],
+		TRUE
+	);
+
 	return;
 }
 
@@ -195,10 +242,13 @@ VOID MY_DELETE_IMAGE(VOID)
 	ImageEndComp.DeleteHandle();
 	ImageEndFail.DeleteHandle();
 	ImageRule.DeleteHandle();
+	ImageMenu.DeleteHandle();
 	ButtonPlay.DeleteHandle();
 	ButtonEnd.DeleteHandle();
 	ButtonRule.DeleteHandle();
 	ButtonNow.DeleteHandle();
+	ButtonMenu1.DeleteHandle();
+	ButtonMenu2.DeleteHandle();
 }
 
 
