@@ -3,7 +3,7 @@
 #include "movement.h"
 #include "class.h"
 
-BOOL MOVEMENT(CHARA*chara,MOVE move)
+BOOL MOVEMENT(CHARA* chara,MOVE move)
 {
 
 	BOOL IsMove = TRUE; //ˆÚ“®‰Â”\
