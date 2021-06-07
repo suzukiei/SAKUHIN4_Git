@@ -1,20 +1,20 @@
 #pragma once
 
 //ボタンギミックフラグ
-BOOL IsButtonPush;
+extern BOOL IsButtonPush;
 //強制移動ギミックフラグ
-BOOL OnTheFloor;
+extern BOOL OnTheFloor;
 //地雷ギミックフラグ
-BOOL IsMineCollision;
+extern BOOL IsMineCollision;
 //ワープギミックフラグ
-BOOL IsWorp;
+extern BOOL IsWorp;
 //テキスト終了フラグ
-BOOL StringEndFlag;
+extern BOOL StringEndFlag;
 //生きているか
-BOOL IsCharaAlive;
+extern BOOL IsCharaAlive;
 //時間エンド
-BOOL GAMEOVER;
+extern BOOL GAMEOVER;
 //ゲームが終わっているか
-BOOL GameLoop = TRUE;
+extern BOOL GameLoop;
 //動いているか
-BOOL IsMove;
+extern BOOL IsMove;
