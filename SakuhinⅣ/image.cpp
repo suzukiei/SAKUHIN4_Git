@@ -108,32 +108,32 @@ BOOL MY_LOAD_IMAGE(VOID)
 		return FALSE;
 	}
 
-	////エンド画面へ遷移するためのボタンの読み込み
-	//ButtonEnd.SetPath(IMAGE_TITLE_BUTTON_END_PATH);
-	//ButtonEnd.SetHandle(LoadGraph(ButtonEnd.GetPath()));
-	//if (ButtonEnd.GetPath() == ERR)
-	//{
-	//	MessageBox(GetMainWindowHandle(), IMAGE_TITLE_BUTTON_END_PATH, IMAGE_LOAD_ERR_TITLE, MB_OK);
-	//	return FALSE;
-	//}
+	//エンド画面へ遷移するためのボタンの読み込み
+	ButtonEnd.SetPath(IMAGE_TITLE_BUTTON_END_PATH);
+	ButtonEnd.SetHandle(LoadGraph(ButtonEnd.GetPath()));
+	if (ButtonEnd.GetPath() == ERR)
+	{
+		MessageBox(GetMainWindowHandle(), IMAGE_TITLE_BUTTON_END_PATH, IMAGE_LOAD_ERR_TITLE, MB_OK);
+		return FALSE;
+	}
 
-	////ルール画面へ遷移するためのボタンの読み込み
-	//ButtonRule.SetPath(IMAGE_TITLE_BUTTON_RULE_PATH);
-	//ButtonRule.SetHandle(LoadGraph(ButtonRule.GetPath()));
-	//if (ButtonRule.GetPath() == ERR)
-	//{
-	//	MessageBox(GetMainWindowHandle(), IMAGE_TITLE_BUTTON_RULE_PATH, IMAGE_LOAD_ERR_TITLE, MB_OK);
-	//	return FALSE;
-	//}
+	//ルール画面へ遷移するためのボタンの読み込み
+	ButtonRule.SetPath(IMAGE_TITLE_BUTTON_RULE_PATH);
+	ButtonRule.SetHandle(LoadGraph(ButtonRule.GetPath()));
+	if (ButtonRule.GetPath() == ERR)
+	{
+		MessageBox(GetMainWindowHandle(), IMAGE_TITLE_BUTTON_RULE_PATH, IMAGE_LOAD_ERR_TITLE, MB_OK);
+		return FALSE;
+	}
 
-	////ボタン選択画像の読み込み
-	//ButtonNow.SetPath(IMAGE_TITLE_BUTTON_NOW_PATH);
-	//ButtonNow.SetHandle(LoadGraph(ButtonNow.GetPath()));
-	//if (ButtonNow.GetPath() == ERR)
-	//{
-	//	MessageBox(GetMainWindowHandle(), IMAGE_TITLE_BUTTON_NOW_PATH, IMAGE_LOAD_ERR_TITLE, MB_OK);
-	//	return FALSE;
-	//}
+	//ボタン選択画像の読み込み
+	ButtonNow.SetPath(IMAGE_TITLE_BUTTON_NOW_PATH);
+	ButtonNow.SetHandle(LoadGraph(ButtonNow.GetPath()));
+	if (ButtonNow.GetPath() == ERR)
+	{
+		MessageBox(GetMainWindowHandle(), IMAGE_TITLE_BUTTON_NOW_PATH, IMAGE_LOAD_ERR_TITLE, MB_OK);
+		return FALSE;
+	}
 
 	//ボタン選択画像の読み込み
 	ButtonNow.SetPath(IMAGE_TITLE_BUTTON_NOW_PATH);
@@ -217,6 +217,9 @@ BOOL MY_LOAD_CSV(VOID)
 VOID START_DRAW(VOID)
 {
 	DrawGraph(0, 0, ImageTitleBk.GetHandle(), TRUE);
+	DrawGraph(0, 0, ButtonPlay.GetHandle(), TRUE);
+	DrawGraph(0, 0, ButtonRule.GetHandle(), TRUE);
+	DrawGraph(0, 0, ButtonEnd.GetHandle(), TRUE);
 
 	return;
 }
@@ -260,7 +263,21 @@ VOID PLAY_DRAW(VOID)
 //エンド画面の描画処理
 VOID END_DRAW(VOID)
 {
-	DrawGraph(0, 0, ImageEndBk.GetHandle(), TRUE);
+	//DrawGraph(0, 0, ImageEndBk.GetHandle(), TRUE); //エンド背景
+
+	switch (GameEndkind)
+	{
+	case GAME_END_COMP: //成功画面
+		DrawGraph(0, 0, ImageEndComp.GetHandle(), TRUE);
+		break;
+
+	case GAME_END_FAIL: //失敗画面
+		DrawGraph(0, 0, ImageEndFail.GetHandle(), TRUE);
+		break;
+
+	default:
+		break;
+	}
 
 	return;
 }
