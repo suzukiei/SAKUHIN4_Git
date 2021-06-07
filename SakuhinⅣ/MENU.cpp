@@ -7,6 +7,7 @@
 #include "variable.h"
 #include "flag.h"
 
+int SELECT = 0;
 
 VOID MENU(VOID)
 {
