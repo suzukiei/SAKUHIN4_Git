@@ -5,6 +5,11 @@
 #include "movement.h"
 #include "variable.h"
 
+BOOL MY_CHECK_RECT_COLL(RECT, RECT)	//—Ìˆæ‚Ì“–‚½‚è”»’è‚ğ‚·‚éŠÖ”
+{
+	return FALSE;
+}
+
 BOOL CHARA_COLLISION(CHARA a, CHARA b)
 {
 	if (a.coll.left < b.coll.right &&

@@ -7,6 +7,11 @@
 char AllKeyState[KEY_CODE_KIND] = { '\0' };		//すべてのキーの状態が入る
 char OldAllKeyState[KEY_CODE_KIND] = { '\0' };	//すべてのキーの状態(直前)が入る
 
+//BOOL CHARA_COLLISION(CHARA, CHARA)
+//{
+//	return FALSE; //ダミー関数
+//}
+
 BOOL MOVEMENT(CHARA* chara,int move)
 {
 
@@ -46,8 +51,7 @@ BOOL MOVEMENT(CHARA* chara,int move)
 
 		chara->IsMoveNaname = FALSE;	//斜め移動していない
 
-		if (CHARA_COLLISION == FALSE)
-		{
+		//if (CHARA_COLLISION == FALSE){
 			if (chara->kind1 >= D_1 && chara->kind1 < D_4)
 			{
 				//画像変更カウンタ
@@ -66,9 +70,10 @@ BOOL MOVEMENT(CHARA* chara,int move)
 				chara->kind1 = D_1;	//最初の画像にする
 			}
 			chara->image.y += CharaSpeed;	//移動
-		}
+			return TRUE; //移動できているのでTRUEを返す
+		//}
 
-		return TRUE; //移動できているのでTRUEを返す
+		
 
 		break;
 
@@ -76,7 +81,7 @@ BOOL MOVEMENT(CHARA* chara,int move)
 
 		chara->IsMoveNaname = FALSE;	//斜め移動していない
 
-		if (CHARA_COLLISION == FALSE) {
+		//if (CHARA_COLLISION == FALSE) {
 			if (chara->kind1 >= R_1 && chara->kind1 < R_4)
 			{
 				//画像変更カウンタ
@@ -95,9 +100,11 @@ BOOL MOVEMENT(CHARA* chara,int move)
 				chara->kind1 = R_1;	//最初の画像にする
 			}
 			chara->image.x += CharaSpeed;	//移動
-		}
 
-		return TRUE; //移動できているのでTRUEを返す
+			return TRUE; //移動できているのでTRUEを返す
+		//}
+
+		
 
 		break;
 
@@ -105,7 +112,7 @@ BOOL MOVEMENT(CHARA* chara,int move)
 
 		chara->IsMoveNaname = FALSE;	//斜め移動していない
 
-		if (CHARA_COLLISION == FALSE) {
+		//if (CHARA_COLLISION == FALSE) {
 			if (chara->kind1 >= L_1 && chara->kind1 < L_4)
 			{
 				//画像変更カウンタ
@@ -124,8 +131,9 @@ BOOL MOVEMENT(CHARA* chara,int move)
 				chara->kind1 = L_1;	//最初の画像にする
 			}
 			chara->image.x -= CharaSpeed;	//移動
-		}
-		return TRUE; //移動できているのでTRUEを返す
+			return TRUE; //移動できているのでTRUEを返す
+		//}
+		
 
 		break;
 	}
@@ -134,6 +142,7 @@ BOOL MOVEMENT(CHARA* chara,int move)
 	return FALSE;
 
 }
+
 	
 
 //キーを押し上げたか、キーコードで判断する
