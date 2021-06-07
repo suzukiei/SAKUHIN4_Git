@@ -1,3 +1,4 @@
+#define _CRT_SECURE_NO_WARNINGS
 #include "Dxlib.h"
 #include "menu.h"
 
@@ -20,12 +21,12 @@ int LOADING(VOID)
 {
     fp = fopen("/GAMEDATA.txt", "r");
         if (fp == NULL) {
-            return;
+            return 0;
         }
         //fscanf(fp, "%d", "player.X.100", "player.Y.100",/*&部屋番号,//&プレイヤーの座標,//&プレイヤーの座標*/);
 
          fclose(fp);
 
-        return;
+        return 0;
 
 }
