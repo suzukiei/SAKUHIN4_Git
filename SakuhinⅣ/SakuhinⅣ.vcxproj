@@ -157,6 +157,7 @@
     <ClInclude Include="enum.h" />
     <ClInclude Include="flag.h" />
     <ClInclude Include="GameProcHeader.h" />
+    <ClInclude Include="image.h" />
     <ClInclude Include="menu.h" />
     <ClInclude Include="movement.h" />
     <ClInclude Include="textevent.h" />
@@ -164,7 +165,9 @@
     <ClInclude Include="variable.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="BGM.cpp" />
     <ClCompile Include="GameProc.cpp" />
+    <ClCompile Include="image.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MENU.cpp" />
     <ClCompile Include="Movement.cpp" />
