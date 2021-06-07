@@ -8,6 +8,8 @@
 #include "flag.h"
 #include "title.h"
 
+int TITLE_SELECT_NO = 0;
+
 VOID TITLE(VOID)
 {
 
