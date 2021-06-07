@@ -1,5 +1,5 @@
 #pragma once
-extern int SELECT = 0;
+extern int SELECT;
 
 VOID MENU(VOID);
 VOID RETURN_TITLE(VOID);
