@@ -7,6 +7,7 @@
 #include "movement.h"
 #include "textevent.h"
 
+int textNumber;
 
 VOID TEXTEVENT(VOID)
 {
