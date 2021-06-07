@@ -22,9 +22,9 @@ VOID MY_RULE(VOID);
 VOID MY_PLAY(VOID);
 VOID MY_END(VOID);
 
-extern int GameScene; //ゲームシーン
+int GameScene = GAME_SCENE_START; //ゲームシーン
 
-extern int GameEndkind;  //エンド画面
+int GameEndkind;  //エンド画面
 
 CHARA player;   //プレイヤー
 CHARA enemy;   //エネミー
