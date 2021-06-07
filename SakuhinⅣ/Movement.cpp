@@ -34,7 +34,7 @@ BOOL MOVEMENT(CHARA* chara,int move)
 			}
 
 			chara->image.y -= CharaSpeed;	//ˆÚ“®
-
+			return TRUE; //ˆÚ“®‚Å‚«‚Ä‚¢‚é‚Ì‚ÅTRUE‚ð•Ô‚·
 			break;
 		//}
 
@@ -63,6 +63,9 @@ BOOL MOVEMENT(CHARA* chara,int move)
 			}
 			chara->image.y += CharaSpeed;	//ˆÚ“®
 		}
+
+		return TRUE; //ˆÚ“®‚Å‚«‚Ä‚¢‚é‚Ì‚ÅTRUE‚ð•Ô‚·
+
 		break;
 
 	case RIGHT:
@@ -89,6 +92,9 @@ BOOL MOVEMENT(CHARA* chara,int move)
 			}
 			chara->image.x += CharaSpeed;	//ˆÚ“®
 		}
+
+		return TRUE; //ˆÚ“®‚Å‚«‚Ä‚¢‚é‚Ì‚ÅTRUE‚ð•Ô‚·
+
 		break;
 
 	case LEFT:
@@ -115,11 +121,13 @@ BOOL MOVEMENT(CHARA* chara,int move)
 			}
 			chara->image.x -= CharaSpeed;	//ˆÚ“®
 		}
+		return TRUE; //ˆÚ“®‚Å‚«‚Ä‚¢‚é‚Ì‚ÅTRUE‚ð•Ô‚·
 
 		break;
 	}
 
 
+	return FALSE;
 
 }
 	
