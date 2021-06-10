@@ -26,7 +26,7 @@ int GameScene = GAME_SCENE_START; //ゲームシーン
 
 int GameEndkind;  //エンド画面
 
-BOOL GameLoop;	//ゲーム繰り返し
+BOOL GameLoop = TRUE;	//ゲーム繰り返し
 
 CHARA player;   //プレイヤー
 CHARA enemy;   //エネミー
