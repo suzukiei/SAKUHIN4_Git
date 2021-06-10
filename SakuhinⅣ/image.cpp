@@ -193,6 +193,8 @@ BOOL MY_LOAD_CSV(VOID)
 
 BOOL MY_LOAD_MAPCHIP()
 {
+
+
 	return TRUE;
 }
 
@@ -200,20 +202,25 @@ BOOL MY_LOAD_MAPCHIP()
 BOOL MY_LOAD_CSV_MAP(const char* path)
 {
 	//csvファイルを開く
-	//FILE* fp;
-	//
+	FILE* fp;
+	
+	MAP_ROOM Room[8];
+
 	//if ((fp = fopen(path, "r")) == NULL) 
 	//{
 	//	return FALSE;
 	//}
 
-	//for (int tate = 0; tate < MAP_HEIGHT_MAX; tate++)
-	//{
-	//	for (int yoko = 0; yoko < MAP_WIDTH_MAX; yoko++)
-	//	{
+	for (int tate = 0; tate < MAP_HEIGHT_MAX; tate++)
+	{
+		for (int yoko = 0; yoko < MAP_WIDTH_MAX; yoko++)
+		{
 
-	//	}
-	//}
+
+
+
+		}
+	}
 	return TRUE;
 }
 
@@ -223,9 +230,10 @@ BOOL MY_LOAD_CSV_MAP(const char* path)
 VOID START_DRAW(VOID)
 {
 	DrawGraph(0, 0, ImageTitleBk.GetHandle(), TRUE);
+	DrawGraph(0, 0, ImageTitleRogo.GetHandle(), TRUE);
 	DrawGraph(TITLE_BUTTON_PLAY_WIDTH_POSITION, TITLE_BUTTON_PLAY_HEIGHT_POSITION, ButtonPlay.GetHandle(), TRUE);
 	DrawGraph(TITLE_BUTTON_LULE_TITLE_WIDTH_POSITION, TITLE_BUTTON_LULE_TITLE_HEIGHT_POSITION, ButtonRule.GetHandle(), TRUE);
-	DrawGraph(TITLE_BUTTON_END_WIDTH_POSITION, TITLE_BUTTON_ENDE_HEIGHT_POSITION, ButtonEnd.GetHandle(), TRUE);
+	//DrawGraph(TITLE_BUTTON_END_WIDTH_POSITION, TITLE_BUTTON_END_HEIGHT_POSITION, ButtonEnd.GetHandle(), TRUE);
 
 	return;
 }
