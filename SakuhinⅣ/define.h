@@ -35,6 +35,10 @@
 //画像パス
 #define IMAGE_TITLE_BK_PATH				TEXT(".\\IMAGE\\title_back.png")
 #define IMAGE_TITLE_ROGO_PATH				TEXT(".\\IMAGE\\karilogo.png")
+//logo場所指定
+#define IMAGE_TITLE_ROGO_WIDTH_POSITION		270
+#define IMAGE_TITLE_ROGO_HEIGHT_POSITION	270
+
 #define IMAGE_TITLE_BUTTON_PLAY_PATH		TEXT(".\\IMAGE\\button_play.png")
 //ルールに飛ぶボタン画像
 #define IMAGE_TITLE_BUTTON_RULE_PATH		TEXT(".\\IMAGE\\button_lule.png")
