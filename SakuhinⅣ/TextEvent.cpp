@@ -8,15 +8,27 @@
 #include "textevent.h"
 
 int textNumber;
+BOOL StringEndFlag;
 
 VOID TEXTEVENT(VOID)
 {
-	switch (textNumber) {
-	case TEXT_OP:
-		//DrawString();
-		//DrawGraph();
-		//まだまだ追加予定
-		break;
+//###################################
+//
+//この項目はゲーム全体がほぼ出来上がるまで作業がストップします。
+// (具体的なストーリーを決めなければ作業ができないため。)
+//
+//###################################
+
+	if (StringEndFlag == TRUE) {
+		switch (textNumber) {
+		case TEXT_OP:
+			//DrawString();
+			//DrawGraph();
+			//まだまだ追加予定
+			StringEndFlag = FALSE;
+			textNumber++;
+			break;
+		}
 	}
 	return;
 }
