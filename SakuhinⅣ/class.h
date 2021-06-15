@@ -51,9 +51,10 @@ public:
 	IPOINT GoalPt;	  //ゴール地点
 };
 
-//マップ画像配列
-class MAP_CHIP
-{
-public:
-	MAPCHIP mapchip[MAP_HEIGHT_MAX][MAP_WIDTH_MAX];
-};
+//マップ画像配列(いらないかも)
+//class MAP_CHIP
+//{
+//public:
+//
+//	MAPCHIP mapchip[MAP_HEIGHT_MAX][MAP_WIDTH_MAX];
+//};

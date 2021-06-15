@@ -24,8 +24,8 @@ IMAGE ButtonNow;
 IMAGE ButtonMenu1;
 IMAGE ButtonMenu2;
 
-MAP_CHIP mapChipRoom[8];  //ルームマップチップ
-MAP_CHIP mapChipPass;  //通路マップチップ
+//MAP_CHIP mapChipRoom[8];  //ルームマップチップ
+//MAP_CHIP mapChipPass;  //通路マップチップ
 
 MAP_ROOM mapRoom[8]; //マップ
 
@@ -204,21 +204,21 @@ BOOL MY_LOAD_CSV_MAP(const char* path)
 	//csvファイルを開く
 	FILE* fp;
 	
-	MAP_ROOM Room[8];
+	//MAP_ROOM Room[8];
 
-	//if ((fp = fopen(path, "r")) == NULL) 
-	//{
-	//	return FALSE;
-	//}
+	if ((fp = fopen(path, "r")) == NULL) 
+	{
+		return FALSE;
+	}
 
 	for (int tate = 0; tate < MAP_HEIGHT_MAX; tate++)
 	{
-		for (int yoko = 0; yoko < MAP_WIDTH_MAX; yoko++)
+		char buff[256];
+		fgets(buff, 255, fp);
+		for (int yoko = 0; yoko < MAP_WIDTH_MAX - 1; yoko++)
 		{
-
-
-
-
+			sscanf(buff, "%d,", mapRoom[0].map[tate][yoko].kind);
+			//後x,y,WIDTH,HEIHGTを決める
 		}
 	}
 	return TRUE;
@@ -257,7 +257,7 @@ VOID PLAY_DRAW(VOID)
 
 			DrawGraph(mapRoom[player.nowRoom].map[tate][yoko].x - player.CenterX,
 				mapRoom[player.nowRoom].map[tate][yoko].y - player.CenterY,
-				mapChipRoom[player.nowRoom].mapchip[tate][yoko].handle[mapRoom[player.nowRoom].map[tate][yoko].kind],
+				mapChip.handle[mapRoom[player.nowRoom].map[tate][yoko].kind],
 				TRUE
 			);
 		}
