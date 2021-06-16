@@ -34,7 +34,7 @@
 
 //âÊëúÉpÉX
 #define IMAGE_TITLE_BK_PATH				TEXT(".\\IMAGE\\title_back.png")
-#define IMAGE_TITLE_ROGO_PATH				TEXT(".\\IMAGE\\karilogo.png")
+#define IMAGE_TITLE_ROGO_PATH				TEXT(".\\IMAGE\\Titlelogo.png")
 //logoèÍèäéwíË
 #define IMAGE_TITLE_ROGO_WIDTH_POSITION		270
 #define IMAGE_TITLE_ROGO_HEIGHT_POSITION	270
