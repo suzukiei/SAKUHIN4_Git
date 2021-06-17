@@ -153,6 +153,7 @@ BOOL MY_LOAD_IMAGE(VOID)
 		return FALSE;
 	}
 
+
 	//メニューボタン2の読み込み
 	ButtonMenu2.SetPath(IMAGE_MENU_BUTTON_END_PATH);
 	ButtonMenu2.SetHandle(LoadGraph(ButtonMenu1.GetPath()));
@@ -161,13 +162,14 @@ BOOL MY_LOAD_IMAGE(VOID)
 		MessageBox(GetMainWindowHandle(), IMAGE_MENU_BUTTON_END_PATH, IMAGE_LOAD_ERR_TITLE, MB_OK);
 		return FALSE;
 	}
-
+	return TRUE;
 }
 
 
 //csvの読み込み
 BOOL MY_LOAD_CSV(VOID)
 {
+	MessageBox(GetMainWindowHandle(), "うんち", "うんち", MB_OK);
 	//マップチップを読み込む
 	if (MY_LOAD_MAPCHIP() == FALSE) { return -1; }
 
@@ -208,10 +210,13 @@ BOOL MY_LOAD_CSV_MAP(const char* path)
 
 	errno_t error;
 
+	//--------------------------------ステージ１------------------------------------
+
 	error = fopen_s(&fp, GAME_CSV_PATH_STAGE1_FLOOR, "r");
 	if (error != 0)
 	{
-		printf("ファイルが開けませんでした");
+		MessageBox(GetMainWindowHandle(), GAME_CSV_PATH_STAGE1_FLOOR, IMAGE_LOAD_ERR_TITLE, MB_OK);
+		return FALSE;
 	}
 	else
 	{
@@ -232,33 +237,162 @@ BOOL MY_LOAD_CSV_MAP(const char* path)
 		}
 		fclose(fp);
 	}
-	//if ((fp = fopen_s(&fp,GAME_CSV_PATH_STAGE1_FLOOR, "r")) == NULL)
-	//{
-	//	return FALSE;
-	//}
 
-	if ((fp = fopen(path, "r")) == NULL)
+	error = fopen_s(&fp, GAME_CSV_PATH_STAGE1_WALL, "r");
+	if (error != 0)
 	{
+		MessageBox(GetMainWindowHandle(), GAME_CSV_PATH_STAGE1_WALL, IMAGE_LOAD_ERR_TITLE, MB_OK);
 		return FALSE;
 	}
-
-	for (int tate = 0; tate < MAP_HEIGHT_MAX; tate++)
+	else
 	{
-		char buff[256];
-		fgets(buff, 255, fp);
-		for (int yoko = 0; yoko < MAP_WIDTH_MAX - 1; yoko++)
+		for (int tate = 0; tate < MAP_HEIGHT_MAX; tate++)
 		{
-			sscanf(buff, "%d,", mapRoom[0].map[tate][yoko].kind);
+			char buff[256];
+			fgets(buff, 255, fp);
+			for (int yoko = 0; yoko < MAP_WIDTH_MAX - 1; yoko++)
+			{
+				sscanf_s(buff, "%d,", mapRoom[0].map[tate][yoko].kind);
 
-			mapRoom[1].map[tate][yoko].width = mapChip.width;
-			mapRoom[1].map[tate][yoko].height = mapChip.height;
+				mapRoom[0].map[tate][yoko].width = mapChip.width;
+				mapRoom[0].map[tate][yoko].height = mapChip.height;
 
-			mapRoom[1].map[tate][yoko].x = yoko * mapChip.width;
-			mapRoom[1].map[tate][yoko].height = tate * mapChip.height;
+				mapRoom[0].map[tate][yoko].x = yoko * mapChip.width;
+				mapRoom[0].map[tate][yoko].height = tate * mapChip.height;
+			}
 		}
+		fclose(fp);
 	}
-	fclose(fp);
 
+	error = fopen_s(&fp, GAME_CSV_PATH_STAGE1_BLOOD, "r");
+	if (error != 0)
+	{
+		MessageBox(GetMainWindowHandle(), GAME_CSV_PATH_STAGE1_BLOOD, IMAGE_LOAD_ERR_TITLE, MB_OK);
+		return FALSE;
+	}
+	else
+	{
+		for (int tate = 0; tate < MAP_HEIGHT_MAX; tate++)
+		{
+			char buff[256];
+			fgets(buff, 255, fp);
+			for (int yoko = 0; yoko < MAP_WIDTH_MAX - 1; yoko++)
+			{
+				sscanf_s(buff, "%d,", mapRoom[0].map[tate][yoko].kind);
+
+				mapRoom[0].map[tate][yoko].width = mapChip.width;
+				mapRoom[0].map[tate][yoko].height = mapChip.height;
+
+				mapRoom[0].map[tate][yoko].x = yoko * mapChip.width;
+				mapRoom[0].map[tate][yoko].height = tate * mapChip.height;
+			}
+		}
+		fclose(fp);
+	}
+
+	error = fopen_s(&fp, GAME_CSV_PATH_STAGE1_SBLOOD, "r");
+	if (error != 0)
+	{
+		MessageBox(GetMainWindowHandle(), GAME_CSV_PATH_STAGE1_SBLOOD, IMAGE_LOAD_ERR_TITLE, MB_OK);
+		return FALSE;
+	}
+	else
+	{
+		for (int tate = 0; tate < MAP_HEIGHT_MAX; tate++)
+		{
+			char buff[256];
+			fgets(buff, 255, fp);
+			for (int yoko = 0; yoko < MAP_WIDTH_MAX - 1; yoko++)
+			{
+				sscanf_s(buff, "%d,", mapRoom[0].map[tate][yoko].kind);
+
+				mapRoom[0].map[tate][yoko].width = mapChip.width;
+				mapRoom[0].map[tate][yoko].height = mapChip.height;
+
+				mapRoom[0].map[tate][yoko].x = yoko * mapChip.width;
+				mapRoom[0].map[tate][yoko].height = tate * mapChip.height;
+			}
+		}
+		fclose(fp);
+	}
+
+	error = fopen_s(&fp, GAME_CSV_PATH_STAGE1_ACCES, "r");
+	if (error != 0)
+	{
+		MessageBox(GetMainWindowHandle(), GAME_CSV_PATH_STAGE1_ACCES, IMAGE_LOAD_ERR_TITLE, MB_OK);
+		return FALSE;
+	}
+	else
+	{
+		for (int tate = 0; tate < MAP_HEIGHT_MAX; tate++)
+		{
+			char buff[256];
+			fgets(buff, 255, fp);
+			for (int yoko = 0; yoko < MAP_WIDTH_MAX - 1; yoko++)
+			{
+				sscanf_s(buff, "%d,", mapRoom[0].map[tate][yoko].kind);
+
+				mapRoom[0].map[tate][yoko].width = mapChip.width;
+				mapRoom[0].map[tate][yoko].height = mapChip.height;
+
+				mapRoom[0].map[tate][yoko].x = yoko * mapChip.width;
+				mapRoom[0].map[tate][yoko].height = tate * mapChip.height;
+			}
+		}
+		fclose(fp);
+	}
+
+	error = fopen_s(&fp, GAME_CSV_PATH_STAGE1_RECT, "r");
+	if (error != 0)
+	{
+		MessageBox(GetMainWindowHandle(), GAME_CSV_PATH_STAGE1_RECT, IMAGE_LOAD_ERR_TITLE, MB_OK);
+		return FALSE;
+	}
+	else
+	{
+		for (int tate = 0; tate < MAP_HEIGHT_MAX; tate++)
+		{
+			char buff[256];
+			fgets(buff, 255, fp);
+			for (int yoko = 0; yoko < MAP_WIDTH_MAX - 1; yoko++)
+			{
+				sscanf_s(buff, "%d,", mapRoom[0].map[tate][yoko].kind);
+
+				mapRoom[0].map[tate][yoko].width = mapChip.width;
+				mapRoom[0].map[tate][yoko].height = mapChip.height;
+
+				mapRoom[0].map[tate][yoko].x = yoko * mapChip.width;
+				mapRoom[0].map[tate][yoko].height = tate * mapChip.height;
+			}
+		}
+		fclose(fp);
+	}
+
+	error = fopen_s(&fp, GAME_CSV_PATH_STAGE1_SG, "r");
+	if (error != 0)
+	{
+		MessageBox(GetMainWindowHandle(), GAME_CSV_PATH_STAGE1_SG, IMAGE_LOAD_ERR_TITLE, MB_OK);
+		return FALSE;
+	}
+	else
+	{
+		for (int tate = 0; tate < MAP_HEIGHT_MAX; tate++)
+		{
+			char buff[256];
+			fgets(buff, 255, fp);
+			for (int yoko = 0; yoko < MAP_WIDTH_MAX - 1; yoko++)
+			{
+				sscanf_s(buff, "%d,", mapRoom[0].map[tate][yoko].kind);
+
+				mapRoom[0].map[tate][yoko].width = mapChip.width;
+				mapRoom[0].map[tate][yoko].height = mapChip.height;
+
+				mapRoom[0].map[tate][yoko].x = yoko * mapChip.width;
+				mapRoom[0].map[tate][yoko].height = tate * mapChip.height;
+			}
+		}
+		fclose(fp);
+	}
 	return TRUE;
 }
 
