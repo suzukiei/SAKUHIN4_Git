@@ -24,13 +24,13 @@
 
 #define GAME_MAP_PATH		TEXT(".\\IMAGE\\mapuse.png")		//マップ画像パス
 
-//#define GAME_CSV_PATH_STAGE1_FLOOR 		TEXT(".\\IMAGE\\csv\\Stage1_床.csv")//STAGE1床
-//#define GAME_CSV_PATH_STAGE1_WALL 		TEXT(".\\IMAGE\\csv\\Stage1_壁.csv")//STAGE1壁
-//#define GAME_CSV_PATH_STAGE1_BLOOD 		TEXT(".\\IMAGE\\csv\\Stage1_血.csv")//STAGE1血
-//#define GAME_CSV_PATH_STAGE1_SBLOOD 	TEXT(".\\IMAGE\\csv\\Stage1_重ね血.csv")//STAGE1重ね血
-//#define GAME_CSV_PATH_STAGE1_ACCES 		TEXT(".\\IMAGE\\csv\\Stage1_小物.csv")//STAGE1小物
-//#define GAME_CSV_PATH_STAGE1_RECT 		TEXT(".\\IMAGE\\csv\\Stage1_当たり判定.csv")//STAGE1当たり判定
-//#define GAME_CSV_PATH_STAGE1_SG 		TEXT(".\\IMAGE\\csv\\Stage1_SG.csv")//STAGE1スタートゴール
+#define GAME_CSV_PATH_STAGE1_FLOOR 		TEXT(".\\IMAGE\\csv\\Stage1_床.csv")//STAGE1床
+#define GAME_CSV_PATH_STAGE1_WALL 		TEXT(".\\IMAGE\\csv\\Stage1_壁.csv")//STAGE1壁
+#define GAME_CSV_PATH_STAGE1_BLOOD 		TEXT(".\\IMAGE\\csv\\Stage1_血.csv")//STAGE1血
+#define GAME_CSV_PATH_STAGE1_SBLOOD 	TEXT(".\\IMAGE\\csv\\Stage1_重ね血.csv")//STAGE1重ね血
+#define GAME_CSV_PATH_STAGE1_ACCES 		TEXT(".\\IMAGE\\csv\\Stage1_小物.csv")//STAGE1小物
+#define GAME_CSV_PATH_STAGE1_RECT 		TEXT(".\\IMAGE\\csv\\Stage1_当たり判定.csv")//STAGE1当たり判定
+#define GAME_CSV_PATH_STAGE1_SG 		TEXT(".\\IMAGE\\csv\\Stage1_SG.csv")//STAGE1スタートゴール
 
 #define GAME_CSV_PATH_STAGE2_FLOOR 		TEXT(".\\IMAGE\\csv\\Stage2_床.csv")//STAGE2床
 #define GAME_CSV_PATH_STAGE2_WALL 		TEXT(".\\IMAGE\\csv\\Stage2_壁.csv")//STAGE2壁

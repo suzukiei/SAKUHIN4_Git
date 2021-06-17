@@ -179,13 +179,13 @@ BOOL MY_LOAD_CSV(VOID)
 	//if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE1_ACCES)) { return -1; }   //ステージ1小物
 	//if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE1_RECT)) { return -1; }    //ステージ1当たり判定
 	//if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE1_SG)) { return -1; }    //ステージ1スタートゴール
-	if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE2_FLOOR)) { return -1; }	  //ステージ2床
-	if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE2_WALL)) { return -1; }    //ステージ2壁
-	if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE2_BLOOD)) { return -1; }   //ステージ2血
-	if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE2_SBLOOD)) { return -1; }  //ステージ2重ね血
-	if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE2_ACCES)) { return -1; }   //ステージ2小物
-	if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE2_RECT)) { return -1; }    //ステージ2当たり判定
-	if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE2_SG)) { return -1; }    //ステージ2スタートゴール
+	//if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE2_FLOOR)) { return -1; }	  //ステージ2床
+	//if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE2_WALL)) { return -1; }    //ステージ2壁
+	//if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE2_BLOOD)) { return -1; }   //ステージ2血
+	//if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE2_SBLOOD)) { return -1; }  //ステージ2重ね血
+	//if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE2_ACCES)) { return -1; }   //ステージ2小物
+	//if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE2_RECT)) { return -1; }    //ステージ2当たり判定
+	//if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE2_SG)) { return -1; }    //ステージ2スタートゴール
 
 
 	return TRUE;
@@ -206,7 +206,38 @@ BOOL MY_LOAD_CSV_MAP(const char* path)
 	
 	//MAP_ROOM Room[8];
 
-	if ((fp = fopen(path, "r")) == NULL) 
+	errno_t error;
+
+	error = fopen_s(&fp, GAME_CSV_PATH_STAGE1_FLOOR, "r");
+	if (error != 0)
+	{
+		printf("ファイルが開けませんでした");
+	}
+	else
+	{
+		for (int tate = 0; tate < MAP_HEIGHT_MAX; tate++)
+		{
+			char buff[256];
+			fgets(buff, 255, fp);
+			for (int yoko = 0; yoko < MAP_WIDTH_MAX - 1; yoko++)
+			{
+				sscanf_s(buff, "%d,", mapRoom[0].map[tate][yoko].kind);
+
+				mapRoom[0].map[tate][yoko].width = mapChip.width;
+				mapRoom[0].map[tate][yoko].height = mapChip.height;
+
+				mapRoom[0].map[tate][yoko].x = yoko * mapChip.width;
+				mapRoom[0].map[tate][yoko].height = tate * mapChip.height;
+			}
+		}
+		fclose(fp);
+	}
+	//if ((fp = fopen_s(&fp,GAME_CSV_PATH_STAGE1_FLOOR, "r")) == NULL)
+	//{
+	//	return FALSE;
+	//}
+
+	if ((fp = fopen(path, "r")) == NULL)
 	{
 		return FALSE;
 	}
@@ -218,9 +249,16 @@ BOOL MY_LOAD_CSV_MAP(const char* path)
 		for (int yoko = 0; yoko < MAP_WIDTH_MAX - 1; yoko++)
 		{
 			sscanf(buff, "%d,", mapRoom[0].map[tate][yoko].kind);
-			//後x,y,WIDTH,HEIHGTを決める
+
+			mapRoom[1].map[tate][yoko].width = mapChip.width;
+			mapRoom[1].map[tate][yoko].height = mapChip.height;
+
+			mapRoom[1].map[tate][yoko].x = yoko * mapChip.width;
+			mapRoom[1].map[tate][yoko].height = tate * mapChip.height;
 		}
 	}
+	fclose(fp);
+
 	return TRUE;
 }
 
