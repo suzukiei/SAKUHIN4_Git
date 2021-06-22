@@ -23,6 +23,8 @@ enum MENU_SELECT
 	MENU_SAVE //セーブボタン選択時
 };
 
+
+
 //マップチップ
 enum GAME_MAP_KIND
 {
