@@ -14,7 +14,7 @@ public:
 	int CenterY;                 //キャラクターY位置
 	int kind1;                	 //現在のキャラクター状態
 	int imgChangeCnt;            //変更したい画像
-	int imgChangeCntMAX;         
+	int imgChangeCntMAX;
 	int nowRoom;
 	double angle;
 	double rate;
@@ -27,9 +27,8 @@ public:
 };
 
 //マップ部屋（ギミック）
-class MAP_ROOM
+typedef struct MAP_ROOM
 {
-public:
 	MAP map[MAP_HEIGHT_MAX][MAP_WIDTH_MAX];
 	GAME_GIMMICK_KIND gimmick;
 	int x;
@@ -38,6 +37,8 @@ public:
 	IPOINT StartPt;   //スタート地点
 	IPOINT GoalPt;	  //ゴール地点
 };
+
+typedef struct MAP_ROOM MAP_ROOM;
 
 //マップ通路
 class MAP_PASS

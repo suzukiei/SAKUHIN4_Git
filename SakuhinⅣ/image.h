@@ -1,7 +1,9 @@
 #pragma once
 
-#include"define.h"
 #include "DxLib.h"
+#include"define.h"
+#include "class.h"
+
 
 //プレイー画像
 #define IMAGE_PLAYER_PATH		TEXT(".\\IMAGE\\chara.png")		//プレイヤー画像パス
@@ -31,6 +33,7 @@
 #define GAME_CSV_PATH_STAGE1_ACCES 		TEXT(".\\IMAGE\\csv\\Stage1_小物.csv")//STAGE1小物
 #define GAME_CSV_PATH_STAGE1_RECT 		TEXT(".\\IMAGE\\csv\\Stage1_当たり判定.csv")//STAGE1当たり判定
 #define GAME_CSV_PATH_STAGE1_SG 		TEXT(".\\IMAGE\\csv\\Stage1_SG.csv")//STAGE1スタートゴール
+#define GAME_CSV_PATH_STAGE1_GIMMICK    TEXT(".\\IMAGE\\csv\\Stage1_ギミック.csv")//STAGE1ギミック
 
 #define GAME_CSV_PATH_STAGE2_FLOOR 		TEXT(".\\IMAGE\\csv\\Stage2_床.csv")//STAGE2床
 #define GAME_CSV_PATH_STAGE2_WALL 		TEXT(".\\IMAGE\\csv\\Stage2_壁.csv")//STAGE2壁
@@ -94,7 +97,7 @@ class IMAGE_BACK : IMAGE
 public:
 	BOOL IsDraw;
 
-}; 
+};
 
 BOOL MY_LOAD_MAPCHIP(VOID);
 BOOL MY_LOAD_CSV(VOID);
@@ -102,7 +105,9 @@ BOOL MY_LOAD_CSV(VOID);
 BOOL MY_LOAD_IMAGE(VOID);
 VOID MY_DELETE_IMAGE(VOID);
 
-BOOL MY_LOAD_CSV_MAP(const char* path);
+
+//CSVのマップを読み込み
+BOOL MY_LOAD_CSV_MAP(const char *, MAP_ROOM*);
 
 VOID START_DRAW(VOID);	//スタート画面の描画
 VOID RULE_DRAW(VOID);	//ルール画面の描画
