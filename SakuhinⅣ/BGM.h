@@ -2,6 +2,7 @@
 
 #include"DxLib.h"
 #include"define.h"
+#include"BGM.h"
 
 class MUSIC
 {
@@ -9,7 +10,7 @@ public:
 	int x;
 	int y;
 
-private:
+public:
 	int MusicHandle;
 	char path[PATH_MAX];
 
