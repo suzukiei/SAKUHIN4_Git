@@ -10,7 +10,7 @@ public:
 	int x;
 	int y;
 
-public:
+private:
 	int MusicHandle;
 	char path[PATH_MAX];
 
