@@ -12,45 +12,33 @@ MUSIC BGM_SE;
 
 VOID TITLE_BGM(VOID)
 {
+	//もしBGMが流れていないなら流す
+	if (CheckSoundMem(BGM_TITLE.GetHandle()) == 0)
+	{
+		PlaySoundMem(BGM_TITLE.GetHandle(), DX_PLAYTYPE_LOOP);
+	}
 
+	//もしBGMが流れたいたら止める
 	if (CheckSoundMem(BGM_TITLE.GetHandle() != 0))
 	{
 		StopSoundMem(BGM_TITLE.GetHandle());
 	}
 
-	if (CheckSoundMem(BGM_TITLE.GetHandle()) == 0)
-	{
-		PlaySoundMem(BGM_TITLE.GetHandle(), DX_PLAYTYPE_LOOP);
-	}
-	//if(()==TRUE)
-	//	{
-	//		if (CheckSoundMem(BGM_TITLE.GetHandle()) != 0)
-	//		{
-	//			StopSoundMem(BGM_TITLE.GetHandle());
-	//		}
-	//	}
 	return;
 }
 
 VOID PLAY_BGM(VOID)
 {
+	if (CheckSoundMem(BGM_PLAY.GetHandle()) == 0)
+	{
+		PlaySoundMem(BGM_PLAY.GetHandle(), DX_PLAYTYPE_LOOP);
+	}
 
 	if (CheckSoundMem(BGM_PLAY.GetHandle() != 0))
 	{
 		StopSoundMem(BGM_PLAY.GetHandle());
 	}
 
-	if (CheckSoundMem(BGM_PLAY.GetHandle()) == 0)
-	{
-		PlaySoundMem(BGM_PLAY.GetHandle(), DX_PLAYTYPE_LOOP);
-	}
-	//if (() == TRUE)
-	//{
-	//	if (CheckSoundMem(BGM_PLAY.GetHandle()) != 0)
-	//	{
-	//		StopSoundMem(BGM_PLAY.GetHandle());
-	//	}
-	//}
 	return;
 }
 
@@ -85,51 +73,18 @@ VOID GAME_END(VOID)
 	return;
 }
 
-//VOID COMP_BGM(VOID)
-//{
-//
-	//if (() == TRUE)
-	//{
-	//	if (CheckSoundMem(BGM_COMP.GetHandle()) != 0)
-	//	{
-	//		StopSoundMem(BGM_COMP.GetHandle());
-	//	}
-	//}
-//	return;
-//}
-//
-//VOID END_BGM(VOID)
-//{
-//
-	//if (() == TRUE)
-	//{
-	//	if (CheckSoundMem(BGM_END.GetHandle()) != 0)
-	//	{
-	//		StopSoundMem(BGM_END.GetHandle());
-	//	}
-	//}
-//	return;
-//}
-
 VOID SE_BGM(VOID)
 {
+	if (CheckSoundMem(BGM_SE.GetHandle()) == 0)
+	{
+		PlaySoundMem(BGM_SE.GetHandle(), DX_PLAYTYPE_LOOP);
+	}
 
 	if (CheckSoundMem(BGM_SE.GetHandle() != 0))
 	{
 		StopSoundMem(BGM_SE.GetHandle());
 	}
 
-	if (CheckSoundMem(BGM_SE.GetHandle()) == 0)
-	{
-		PlaySoundMem(BGM_SE.GetHandle(), DX_PLAYTYPE_LOOP);
-	}
-	//if (() == TRUE)
-	//{
-	//	if (CheckSoundMem(BGM_SE.GetHandle()) != 0)
-	//	{
-	//		StopSoundMem(BGM_SE.GetHandle());
-	//	}
-	//}
 	return;
 }
 
@@ -177,8 +132,7 @@ BOOL MY_LOAD_MUSIC(VOID)
 		return(FALSE);
 	}
 
-	//ダミー
-	return TRUE;
+	return;
 }
 
 //BGM削除処理
@@ -190,6 +144,5 @@ BOOL MY_DELETE_MUSIC(VOID)
 	BGM_END.DeleteHandle();
 	BGM_SE.DeleteHandle();
 
-	//ダミー
-	return TRUE;
+	return;
 }
