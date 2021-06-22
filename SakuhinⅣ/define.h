@@ -89,6 +89,11 @@
 #define TITLE_BUTTON_END_WIDTH_POSITION				640		 //終了ボタン
 #define TITLE_BUTTON_END_HEIGHT_POSITION			400 
 
+//時計画像パス
+#define IMAGE_CLOCK_PATH				TEXT(".\\IMAGE\\.clock.png")
+#define IMAGE_CLOCK_WIDTH_PATH			400
+#define IMAGE_CLOCK_HEIGHT_PATH		800
+
 //メニュー時の画像パス
 #define IMAGE_MENU_BUTTON_PATH			TEXT(".\\IMAGE\\.button1.png")
 #define IMAGE_MENU_BUTTON_END_PATH		TEXT(".\\IMAGE\\.button2.png")
