@@ -103,26 +103,36 @@ VOID END_PROC(VOID)
 
 VOID GIMMIK(VOID)
 {
+	if (MY_KEY_DOWN(KEY_INPUT_W))
+	{
+		MOVEMENT((CHARA*)&player, UP);
+	}
+	else if (MY_KEY_DOWN(KEY_INPUT_S))
+	{
+		MOVEMENT((CHARA*)&player, DOWN);
+	}
+	else if (MY_KEY_DOWN(KEY_INPUT_A))
+	{
+		MOVEMENT((CHARA*)&player, LEFT);
+	}
+	else if (MY_KEY_DOWN(KEY_INPUT_D))
+	{
+		MOVEMENT((CHARA*)&player, RIGHT);
+	}
+
 	switch (mapRoom[player.nowRoom].gimmick)
 	{
 	case GIMMICK_MAZE:
+		break;
 
-		if (MY_KEY_DOWN(KEY_INPUT_W))
-		{
-			MOVEMENT((CHARA*)&player, UP);
-		}
-		else if (MY_KEY_DOWN(KEY_INPUT_S))
-		{
-			MOVEMENT((CHARA*)&player, DOWN);
-		}
-		else if (MY_KEY_DOWN(KEY_INPUT_A))
-		{
-			MOVEMENT((CHARA*)&player, LEFT);
-		}
-		else if (MY_KEY_DOWN(KEY_INPUT_D))
-		{
-			MOVEMENT((CHARA*)&player, RIGHT);
-		}
+
+	case GIMMICK_MINE:
+		break;
+
+	case GIMMICK_BUTTON:
+		break;
+
+	case GIMMICK_PAZLE:
 		break;
 	}
 

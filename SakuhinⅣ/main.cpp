@@ -113,6 +113,7 @@ VOID MY_START(VOID)
 {
 	START_PROC();
 	START_DRAW();
+	TITLE_BGM;
 	return;
 }
 
@@ -127,6 +128,7 @@ VOID MY_PLAY(VOID)
 {
 	PLAY_PROC();
 	PLAY_DRAW();
+	PLAY_BGM();
 	return;
 }
 
@@ -134,5 +136,6 @@ VOID MY_END(VOID)
 {
 	END_PROC();
 	END_DRAW();
+	END_BGM();
 	return;
 }
