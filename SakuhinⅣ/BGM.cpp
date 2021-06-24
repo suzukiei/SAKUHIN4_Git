@@ -18,10 +18,20 @@ VOID TITLE_BGM(VOID)
 		PlaySoundMem(BGM_TITLE.GetHandle(), DX_PLAYTYPE_LOOP);
 	}
 
-	//‚à‚µBGM‚ª—¬‚ê‚½‚¢‚½‚çŽ~‚ß‚é
-	if (CheckSoundMem(BGM_TITLE.GetHandle() != 0))
+	//‚à‚µBGM_PLAY‚ª—¬‚ê‚Ä‚¢‚½‚çŽ~‚ß‚é
+	if (CheckSoundMem(BGM_PLAY.GetHandle() != 0))
 	{
-		StopSoundMem(BGM_TITLE.GetHandle());
+		StopSoundMem(BGM_PLAY.GetHandle());
+	}
+	//‚à‚µBGM_COMP‚ª—¬‚ê‚Ä‚¢‚½‚çŽ~‚ß‚é
+	if (CheckSoundMem(BGM_COMP.GetHandle() != 0))
+	{
+		StopSoundMem(BGM_COMP.GetHandle());
+	}
+	//‚à‚µBGM_END‚ª—¬‚ê‚Ä‚¢‚½‚çŽ~‚ß‚é
+	if (CheckSoundMem(BGM_END.GetHandle() != 0))
+	{
+		StopSoundMem(BGM_END.GetHandle());
 	}
 
 	return;
@@ -34,9 +44,10 @@ VOID PLAY_BGM(VOID)
 		PlaySoundMem(BGM_PLAY.GetHandle(), DX_PLAYTYPE_LOOP);
 	}
 
-	if (CheckSoundMem(BGM_PLAY.GetHandle() != 0))
+	//ƒ^ƒCƒgƒ‹BGM‚ª—¬‚ê‚Ä‚¢‚½‚çŽ~‚ß‚é
+	if (CheckSoundMem(BGM_TITLE.GetHandle() != 0))
 	{
-		StopSoundMem(BGM_PLAY.GetHandle());
+		StopSoundMem(BGM_TITLE.GetHandle());
 	}
 
 	return;
@@ -44,15 +55,10 @@ VOID PLAY_BGM(VOID)
 
 VOID END_BGM(VOID)
 {
-
-	if (CheckSoundMem(BGM_COMP.GetHandle() != 0))
+	//‚à‚µBGM_PLAY‚ª—¬‚ê‚Ä‚¢‚½‚çŽ~‚ß‚é
+	if (CheckSoundMem(BGM_PLAY.GetHandle() != 0))
 	{
-		StopSoundMem(BGM_COMP.GetHandle());
-	}
-
-	if (CheckSoundMem(BGM_END.GetHandle() != 0))
-	{
-		StopSoundMem(BGM_END.GetHandle());
+		StopSoundMem(BGM_PLAY.GetHandle());
 	}
 
 	switch (GameEndkind)
@@ -80,10 +86,10 @@ VOID SE_BGM(VOID)
 		PlaySoundMem(BGM_SE.GetHandle(), DX_PLAYTYPE_LOOP);
 	}
 
-	if (CheckSoundMem(BGM_SE.GetHandle() != 0))
-	{
-		StopSoundMem(BGM_SE.GetHandle());
-	}
+	//if (CheckSoundMem(BGM_SE.GetHandle() != 0))
+	//{
+	//	StopSoundMem(BGM_SE.GetHandle());
+	//}
 
 	return;
 }
