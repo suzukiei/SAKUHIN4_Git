@@ -22,12 +22,18 @@ VOID TEXTEVENT(VOID)
 	if (StringEndFlag == TRUE) {
 		switch (textNumber) {
 		case TEXT_OP:
-			//DrawString();
-			//DrawGraph();
+			//DrawString(); //セリフ
+			//DrawGraph(); //テキストボックスの画像
+			//DrawGraph();//キャラの表情差分
 			//まだまだ追加予定
-			StringEndFlag = FALSE;
-			textNumber++;
+			if (MY_KEY_DOWN(KEY_INPUT_RETURN) == TRUE) 
+			{
+				StringEndFlag = FALSE;
+				textNumber++;
+			}
 			break;
+
+
 		}
 	}
 	return;
