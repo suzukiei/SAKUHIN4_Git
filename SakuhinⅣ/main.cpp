@@ -113,7 +113,7 @@ VOID MY_START(VOID)
 {
 	START_PROC();
 	START_DRAW();
-	TITLE_BGM;
+	TITLE_BGM();
 	return;
 }
 
