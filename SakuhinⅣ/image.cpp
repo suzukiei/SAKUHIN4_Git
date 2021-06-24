@@ -193,7 +193,7 @@ BOOL MY_LOAD_IMAGE(VOID)
 
 
 	//csvの読み込み
-	if (MY_LOAD_CSV_MAP() == FALSE)
+	if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE1_FLOOR, &mapRoom[0]) == FALSE)
 	{
 		MessageBox(GetMainWindowHandle(), "えらー", "えらー", MB_OK);
 		return -1;
@@ -258,7 +258,7 @@ BOOL MY_LOAD_MAPCHIP()
 /// <param name="room">階層の構造体のポインタ</param>
 /// <param name="path">マップのパス</param>
 /// <returns></returns>
-BOOL MY_LOAD_CSV_MAP(MAP_ROOM* room, const char* path)
+BOOL MY_LOAD_CSV_MAP(const char* path,MAP_ROOM* room)
 {
 
 	FILE* fp;
