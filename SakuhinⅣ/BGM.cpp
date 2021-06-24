@@ -42,7 +42,7 @@ VOID PLAY_BGM(VOID)
 	return;
 }
 
-VOID GAME_END(VOID)
+VOID END_BGM(VOID)
 {
 
 	if (CheckSoundMem(BGM_COMP.GetHandle() != 0))
