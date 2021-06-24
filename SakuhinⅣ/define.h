@@ -109,15 +109,15 @@
 #define MUSIC_LOAD_ERR_TITLE	TEXT("âπäyì«Ç›çûÇ›ÉGÉâÅ[")
 
 //TITLE_BGM
-#define MUSIC_BGM_PATH_TITLE		TEXT(".\\BGM\\famipop3.mp3")
+#define MUSIC_BGM_PATH_TITLE		TEXT(".\\BGM\\BGM_TITLE.mp3")
 //PLEY_BGM
-#define MUSIC_BGM_PATH			TEXT(".\\BGM\\famipop3.mp3")
+#define MUSIC_BGM_PATH			TEXT(".\\BGM\\BGM_PLAY.mp3")
 //COMP_BGM
-#define MUSIC_BGM_COMP_PATH		TEXT(".\\BGM\\famipop3.mp3")
+#define MUSIC_BGM_COMP_PATH		TEXT(".\\BGM\\BGM_COMP.mp3")
 //END_BGM
-#define MUSIC_BGM_FAIL_PATH		TEXT(".\\BGM\\famipop3.mp3")
+#define MUSIC_BGM_FAIL_PATH		TEXT(".\\BGM\\BGM_END.mp3")
 //SE_BGM
-#define MUSIC_BGM_SE_PATH			TEXT(".\\BGM\\famipop3.mp3")
+#define MUSIC_BGM_SE_PATH			TEXT(".\\BGM\\BGM_SE.mp3")
 
 //MAP
 #define GAME_MAP_TATE_MAX
