@@ -99,6 +99,20 @@ public:
 
 };
 
+//マップ部屋（ギミック）
+typedef struct MAP_ROOM
+{
+	MAP map[MAP_HEIGHT_MAX][MAP_WIDTH_MAX];
+	GAME_GIMMICK_KIND gimmick;
+	int x;
+	int y;
+
+	IPOINT StartPt;   //スタート地点
+	IPOINT GoalPt;	  //ゴール地点
+};
+
+typedef struct MAP_ROOM MAP_ROOM;
+
 BOOL MY_LOAD_MAPCHIP(VOID);
 BOOL MY_LOAD_CSV(VOID);
 
