@@ -125,7 +125,6 @@ VOID GIMMIK(VOID)
 	case GIMMICK_MAZE:
 		break;
 
-
 	case GIMMICK_MINE:
 		break;
 
