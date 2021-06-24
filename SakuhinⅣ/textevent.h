@@ -7,7 +7,8 @@ extern int textNumber;
 
 enum text {
     TEXT_OP,
-    TEXT_OP_1//‚Ü‚¾‚Ü‚¾’Ç‰Á—\’è
+    TEXT_OP_1,//‚Ü‚¾‚Ü‚¾’Ç‰Á—\’è
+    TEXT_END
 };
 
 VOID TEXTEVENT(VOID);
