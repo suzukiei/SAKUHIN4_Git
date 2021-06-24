@@ -132,7 +132,8 @@ BOOL MY_LOAD_MUSIC(VOID)
 		return(FALSE);
 	}
 
-	return;
+	//³íI—¹‚·‚é‚½‚ß‚ÌTRUE
+	return TRUE;
 }
 
 //BGMíœˆ—
@@ -144,5 +145,6 @@ BOOL MY_DELETE_MUSIC(VOID)
 	BGM_END.DeleteHandle();
 	BGM_SE.DeleteHandle();
 
-	return;
+	//³íI—¹‚·‚é‚½‚ß‚ÌTRUE
+	return TRUE;
 }
