@@ -199,7 +199,11 @@ BOOL MY_LOAD_IMAGE(VOID)
 		return -1;
 	}
 
-
+	if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE1_WALL, &mapRoom[0]) == FALSE)
+	{
+		MessageBox(GetMainWindowHandle(), "えらー", "えらー", MB_OK);
+		return -1;
+	}
 
 	return TRUE;
 }
@@ -267,15 +271,15 @@ BOOL MY_LOAD_CSV_MAP(const char* path,MAP_ROOM* room)
 	int result = 0;			//ファイルの最後かチェック
 	int LoopCnt = 0;        //ループカウンタ
 
-	//初期化
-	for (int tate = 0; tate < MAP_HEIGHT_MAX; tate++)
-	{
-		for (int yoko = 0; yoko < MAP_WIDTH_MAX; yoko++)
-		{
-			//mapRoom[0].map[tate][yoko].kind = (GAME_MAP_KIND)COLL_EXISTS;
-			room->map[tate][yoko].kind = (GAME_MAP_KIND)COLL_EXISTS;
-		}
-	}
+	////初期化
+	//for (int tate = 0; tate < MAP_HEIGHT_MAX; tate++)
+	//{
+	//	for (int yoko = 0; yoko < MAP_WIDTH_MAX; yoko++)
+	//	{
+	//		//mapRoom[0].map[tate][yoko].kind = (GAME_MAP_KIND)COLL_EXISTS;
+	//		room->map[tate][yoko].kind = (GAME_MAP_KIND)COLL_EXISTS;
+	//	}
+	//}
 
 	//csvファイルを開く
 	error = fopen_s(&fp, path, "r");
@@ -291,8 +295,23 @@ BOOL MY_LOAD_CSV_MAP(const char* path,MAP_ROOM* room)
 		LoopCnt = 0;
 		while (result != EOF)    //End Of File（ファイルの最後）ではないとき繰り返す
 		{
+			GAME_MAP_KIND mapDate;
+			mapDate = mapRoom[0].map[LoopCnt / MAP_WIDTH_MAX][LoopCnt % MAP_WIDTH_MAX].kind;
+
 			//ファイルから数値を一つ読み込み(%d,)、配列に格納する
 			result = fscanf(fp, "%d,", &room->map[LoopCnt / MAP_WIDTH_MAX][LoopCnt % MAP_WIDTH_MAX].kind);
+
+			mapRoom[0].map[LoopCnt / MAP_WIDTH_MAX][LoopCnt % MAP_WIDTH_MAX].width = mapChip.width;
+			mapRoom[0].map[LoopCnt / MAP_WIDTH_MAX][LoopCnt % MAP_WIDTH_MAX].height = mapChip.height;
+
+			mapRoom[0].map[LoopCnt / MAP_WIDTH_MAX][LoopCnt % MAP_WIDTH_MAX].x = LoopCnt % MAP_WIDTH_MAX * mapChip.width;
+			mapRoom[0].map[LoopCnt / MAP_WIDTH_MAX][LoopCnt % MAP_WIDTH_MAX].y = LoopCnt / MAP_WIDTH_MAX * mapChip.height;
+	
+
+			if (mapRoom[0].map[LoopCnt / MAP_WIDTH_MAX][LoopCnt % MAP_WIDTH_MAX].kind == -1)
+			{
+				mapRoom[0].map[LoopCnt / MAP_WIDTH_MAX][LoopCnt % MAP_WIDTH_MAX].kind = mapDate;
+			}
 
 			LoopCnt++;
 		}
