@@ -22,7 +22,7 @@ extern CHARA enemy;   //エネミー
 //extern MAP_CHIP mapChipRoom[8];  //ルームマップチップ
 //extern MAP_CHIP mapChipPass;  //通路マップチップ
 
-extern MAP_ROOM mapRoom[3][8]; //マップ
+extern MAP_ROOM mapRoom[8]; //マップ
 
 extern MAP_PASS mappass;
 
