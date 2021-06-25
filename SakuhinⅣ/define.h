@@ -128,8 +128,8 @@
 //êßå¿éûä‘
 #define GAME_TIME_LIMIT	60
 
-#define MAP_WIDTH_MAX		30
-#define MAP_HEIGHT_MAX	29
+#define MAP_WIDTH_MAX		29
+#define MAP_HEIGHT_MAX	30
 #define MAP_DIV_WIDTH		32
 #define MAP_DIV_HEIGHT	32
 #define MAP_DIV_TATE		64
