@@ -26,6 +26,8 @@
 
 #define GAME_MAP_PATH		TEXT(".\\IMAGE\\mapuse.png")		//マップ画像パス
 
+#define GAME_MAP_ROOM_NUMBER     8
+
 #define GAME_CSV_PATH_STAGE1_FLOOR 		TEXT(".\\IMAGE\\csv\\Stage1_床.csv")//STAGE1床
 #define GAME_CSV_PATH_STAGE1_WALL 		TEXT(".\\IMAGE\\csv\\Stage1_壁.csv")//STAGE1壁
 #define GAME_CSV_PATH_STAGE1_BLOOD 		TEXT(".\\IMAGE\\csv\\Stage1_血.csv")//STAGE1血
