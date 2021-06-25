@@ -102,7 +102,7 @@ public:
 //マップ部屋（ギミック）
 typedef struct MAP_ROOM
 {
-	MAP map[MAP_HEIGHT_MAX][MAP_WIDTH_MAX];
+	MAP map[LAYER_MAP_DRAWKIND][MAP_HEIGHT_MAX][MAP_WIDTH_MAX];
 	GAME_GIMMICK_KIND gimmick;
 	int x;
 	int y;
@@ -121,7 +121,7 @@ VOID MY_DELETE_IMAGE(VOID);
 
 
 //CSVのマップを読み込み
-BOOL MY_LOAD_CSV_MAP(const char *, MAP_ROOM*);
+BOOL MY_LOAD_CSV_MAP(const char *, MAP_ROOM*,int Layer);
 
 VOID START_DRAW(VOID);	//スタート画面の描画
 VOID RULE_DRAW(VOID);	//ルール画面の描画
