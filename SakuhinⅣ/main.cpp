@@ -21,6 +21,8 @@ VOID MY_START(VOID);
 VOID MY_RULE(VOID);
 VOID MY_PLAY(VOID);
 VOID MY_END(VOID);
+//初期化
+VOID MY_INIT(VOID);
 
 int GameScene = GAME_SCENE_START; //ゲームシーン
 
@@ -40,6 +42,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	SetMainWindowText(TEXT(GAME_WINDOW_NAME));
 
 	//SetWindowIconID(IDI_ICON1);
+
+	MY_INIT();
 
 	if (DxLib_Init() == -1) { return(-1); }
 	if (MY_LOAD_IMAGE() == -1) { return(-1); }
@@ -139,3 +143,29 @@ VOID MY_END(VOID)
 	END_BGM();
 	return;
 }
+
+VOID MY_INIT(VOID)
+{
+	//マップの初期化
+	for (int room = 0; room < GAME_MAP_ROOM_NUMBER; room++)
+	{
+		for (int layer = 0; layer < LAYER_MAP_DRAWKIND; layer++)
+		{
+			for (int y = 0; y < MAP_HEIGHT_MAX; y++)
+			{
+				for (int x = 0; x < MAP_WIDTH_MAX; x++)
+				{
+					mapRoom[room].map[layer][y][x].kind = (GAME_MAP_KIND)-1;
+					mapRoom[room].map[layer][y][x].x = -1;
+					mapRoom[room].map[layer][y][x].y = -1;
+					mapRoom[room].map[layer][y][x].width = -1;
+					mapRoom[room].map[layer][y][x].height = -1;
+					mapRoom[room].map[layer][y][x].IsCollisionNo = FALSE;
+				}
+			}
+		}
+	}
+
+	return;
+}
+
