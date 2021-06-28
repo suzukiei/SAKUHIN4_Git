@@ -28,6 +28,7 @@ IMAGE ButtonNow;
 IMAGE ButtonMenu1;
 IMAGE ButtonMenu2;
 
+
 //MAP_CHIP mapChipRoom[8];  //ルームマップチップ
 //MAP_CHIP mapChipPass;  //通路マップチップ
 
@@ -153,7 +154,7 @@ BOOL MY_LOAD_IMAGE(VOID)
 	//メニューボタン１の読み込み
 	ButtonMenu1.SetPath(IMAGE_MENU_BUTTON_PATH);
 	ButtonMenu1.SetHandle(LoadGraph(ButtonMenu1.GetPath()));
-	if (ButtonNow.GetPath() == ERR)
+	if (ButtonMenu1.GetPath() == ERR)
 	{
 		MessageBox(GetMainWindowHandle(), IMAGE_MENU_BUTTON_PATH, IMAGE_LOAD_ERR_TITLE, MB_OK);
 		return FALSE;
@@ -163,7 +164,7 @@ BOOL MY_LOAD_IMAGE(VOID)
 	//メニューボタン2の読み込み
 	ButtonMenu2.SetPath(IMAGE_MENU_BUTTON_END_PATH);
 	ButtonMenu2.SetHandle(LoadGraph(ButtonMenu1.GetPath()));
-	if (ButtonNow.GetPath() == ERR)
+	if (ButtonMenu2.GetPath() == ERR)
 	{
 		MessageBox(GetMainWindowHandle(), IMAGE_MENU_BUTTON_END_PATH, IMAGE_LOAD_ERR_TITLE, MB_OK);
 		return FALSE;
@@ -171,13 +172,13 @@ BOOL MY_LOAD_IMAGE(VOID)
 
 
 	//プレイヤーの読み込み
-	//int playerRes = LoadDivGraph(
-	//	IMAGE_PLAYER_PATH,
-	//	PLAYER_DIV_NUM, PLAYER_DIV_YOKO, PLAYER_DIV_TATE,
-	//	PLAYER_WIDTH, PLAYER_HEIGHT,
-	//	player.handle);
+	int charaChip = LoadDivGraph(
+		IMAGE_PLAYER_PATH,
+		PLAYER_DIV_NUM, PLAYER_DIV_YOKO, PLAYER_DIV_TATE,
+		PLAYER_WIDTH, PLAYER_HEIGHT,
+		player.handle);
 
-	//if (playerRes == ERR) {
+	//if (charaChip == ERR) {
 	//	MessageBox(GetMainWindowHandle(), IMAGE_PLAYER_PATH, IMAGE_LOAD_ERR_TITLE, MB_OK);
 	//	return FALSE;
 	//}
@@ -201,30 +202,92 @@ BOOL MY_LOAD_IMAGE(VOID)
 		MessageBox(GetMainWindowHandle(), "えらー", "えらー", MB_OK);
 		return -1;
 	}
-
+	//壁
 	if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE1_WALL, &mapRoom[0], LAYER_MAP_UNDER) == FALSE)
 	{
 		MessageBox(GetMainWindowHandle(), "えらー", "えらー", MB_OK);
 		return -1;
 	}
-
+	//小物
 	if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE1_ACCES, &mapRoom[0], LAYER_MAP_UNDER) == FALSE)
 	{
 		MessageBox(GetMainWindowHandle(), "えらー", "えらー", MB_OK);
 		return -1;
 	}
-
+	//血
 	if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE1_BLOOD, &mapRoom[0], LAYER_MAP_MIDDLE) == FALSE)
 	{
 		MessageBox(GetMainWindowHandle(), "えらー", "えらー", MB_OK);
 		return -1;
 	}
-
+	//重ね血
 	if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE1_SBLOOD, &mapRoom[0], LAYER_MAP_TOP) == FALSE)
 	{
 		MessageBox(GetMainWindowHandle(), "えらー", "えらー", MB_OK);
 		return -1;
 	}
+	////当たり判定
+	if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE1_RECT, &mapRoom[0], LAYER_MAP_RECT) == FALSE)
+	{
+		MessageBox(GetMainWindowHandle(), "えらー", "えらー", MB_OK);
+		return -1;
+	}
+	////スタートゴール
+	if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE1_SG, &mapRoom[0], LAYER_MAP_SG) == FALSE)
+	{
+		MessageBox(GetMainWindowHandle(), "えらー", "えらー", MB_OK);
+		return -1;
+	}
+	//ギミック
+	if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE1_GIMMICK, &mapRoom[0], GIMMICK_BUTTON) == FALSE)
+	{
+		MessageBox(GetMainWindowHandle(), "えらー", "えらー", MB_OK);
+		return -1;
+	}
+
+	//-----------------------------ステージ2----------------------------------------------
+	////床
+	//if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE2_FLOOR, &mapRoom[0], LAYER_MAP_UNDER) == FALSE)
+	//{
+	//	MessageBox(GetMainWindowHandle(), "えらー", "えらー", MB_OK);
+	//	return -1;
+	//}
+	////壁
+	//if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE2_WALL, &mapRoom[0], LAYER_MAP_UNDER) == FALSE)
+	//{
+	//	MessageBox(GetMainWindowHandle(), "えらー", "えらー", MB_OK);
+	//	return -1;
+	//}
+	////小物
+	//if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE2_ACCES, &mapRoom[0], LAYER_MAP_UNDER) == FALSE)
+	//{
+	//	MessageBox(GetMainWindowHandle(), "えらー", "えらー", MB_OK);
+	//	return -1;
+	//}
+	////血
+	//if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE2_BLOOD, &mapRoom[0], LAYER_MAP_MIDDLE) == FALSE)
+	//{
+	//	MessageBox(GetMainWindowHandle(), "えらー", "えらー", MB_OK);
+	//	return -1;
+	//}
+	////重ね血
+	//if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE2_SBLOOD, &mapRoom[0], LAYER_MAP_TOP) == FALSE)
+	//{
+	//	MessageBox(GetMainWindowHandle(), "えらー", "えらー", MB_OK);
+	//	return -1;
+	//}
+	//////当たり判定
+	//if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE2_RECT, &mapRoom[0], LAYER_MAP_RECT) == FALSE)
+	//{
+	//	MessageBox(GetMainWindowHandle(), "えらー", "えらー", MB_OK);
+	//	return -1;
+	//}
+	//////スタートゴール
+	//if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE2_SG, &mapRoom[0], LAYER_MAP_SG) == FALSE)
+	//{
+	//	MessageBox(GetMainWindowHandle(), "えらー", "えらー", MB_OK);
+	//	return -1;
+	//}
 
 
 	return TRUE;
@@ -309,8 +372,21 @@ BOOL MY_LOAD_CSV_MAP(const char* path,MAP_ROOM* room,int Layer)
 				}
 			}
 			
-
-
+			//ギミック
+			else if (Layer == LAYER_MAP_GIMMICK)
+			{
+				result = fscanf(fp, "%d,", &mapData);
+			}
+			//スタートゴール
+			else if (Layer == LAYER_MAP_SG)
+			{
+				result = fscanf(fp, "%d,", &mapData);
+			}
+			//当たり判定
+			else if (Layer == LAYER_MAP_RECT)
+			{
+				result = fscanf(fp, "%d,", &mapData);
+			}
 			LoopCnt++;
 		}
 
@@ -336,7 +412,7 @@ VOID START_DRAW(VOID)
 //ルール画面の描画処理
 VOID RULE_DRAW(VOID)
 {
-	//DrawGraph(0, 0, , TRUE);
+	DrawGraph(0, 0, ImageRule.GetHandle(), TRUE);
 
 	return;
 }
@@ -384,16 +460,29 @@ VOID PLAY_DRAW(VOID)
 					TRUE
 				);
 			}
+
+			if (mapRoom[player.nowRoom].map[LAYER_MAP_GIMMICK][tate][yoko].kind != -1)
+			{
+				//ギミックのレイヤー？
+				DrawGraph
+				(
+					mapRoom[player.nowRoom].map[LAYER_MAP_GIMMICK][tate][yoko].x,
+					mapRoom[player.nowRoom].map[LAYER_MAP_GIMMICK][tate][yoko].y,
+					mapChip.handle[mapRoom[player.nowRoom].map[LAYER_MAP_GIMMICK][tate][yoko].kind],
+					TRUE
+				);
+			}
+
 		}
 	}
 
 	//プレイヤー表示
-	//DrawGraph(
-	//	player.CenterX,
-	//	player.CenterY,
-	//	player.handle[player.kind1],
-	//	TRUE
-	//);
+	DrawGraph(
+		player.CenterX ,
+		player.CenterY ,
+		player.handle[player.kind1],
+		TRUE
+	);
 
 	return;
 }
