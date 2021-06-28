@@ -216,6 +216,7 @@ enum GAME_LAYER_KIND
 	LAYER_MAP_TOP,//一番上のレイヤー
 	LAYER_MAP_MIDDLE,//真ん中のレイヤー
 	LAYER_MAP_UNDER,//一番下のレイヤー
+	LAYER_MAP_GIMMICK,//一番下のレイヤー
 	LAYER_MAP_DRAWKIND,//描画するレイヤー数
 
 	LAYER_MAP_RECT,//当たり判定のレイヤー
