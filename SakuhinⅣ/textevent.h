@@ -2,6 +2,8 @@
 
 #define TEXT_POSITION_X 380 //テキストポジションXの値
 #define TEXT_POSITION_Y 300 //テキストポジションYの値
+#define TEXTCOLOR GetColor(255,255,255) //テキストの色
+
 
 extern int textNumber;
 
