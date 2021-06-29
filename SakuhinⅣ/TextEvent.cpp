@@ -22,7 +22,8 @@ VOID TEXTEVENT(VOID)
 	if (StringEndFlag == TRUE) {
 		switch (textNumber) {
 		case TEXT_OP:
-			//DrawString(); //セリフ
+			SetFontSize(30);
+			DrawString(TEXT_POSITION_X,TEXT_POSITION_Y,"ここは一体…",TEXTCOLOR); //セリフ
 			//DrawGraph(); //テキストボックスの画像
 			//DrawGraph();//キャラの表情差分
 			//まだまだ追加予定
@@ -30,6 +31,7 @@ VOID TEXTEVENT(VOID)
 			{
 				StringEndFlag = FALSE;
 				textNumber++;
+				SetFontSize(16);
 			}
 			break;
 
