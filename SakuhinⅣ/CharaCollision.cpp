@@ -38,7 +38,7 @@ BOOL CHECK_COLLISION(CHARA P)
 
 
 			//	//プレイヤーとマップが当たっている
-				if (mapChip.handle[mapRoom[player.nowRoom].map[LAYER_MAP_UNDER][tate][yoko].kind]) { return TRUE; }
+				//if (mapChip.handle[mapRoom[player.nowRoom].map[LAYER_MAP_UNDER][tate][yoko].kind]) { return TRUE; }
 			//	if (mapdata3[tate][yoko] == B) { return TRUE; }
 			//	if (mapdata2[tate][yoko] == t) { return TRUE; }
 			//	if (mapdata2[tate][yoko] == s) { return TRUE; }
