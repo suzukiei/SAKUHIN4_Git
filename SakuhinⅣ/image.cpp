@@ -446,49 +446,49 @@ VOID PLAY_DRAW(VOID)
 	{
 		for (int yoko = 0; yoko < MAP_WIDTH_MAX; yoko++)
 		{
-			if (mapRoom[player.nowRoom].map[LAYER_MAP_UNDER][tate][yoko].kind != -1)
+			if (mapRoom[player.nowRoom].map[tate][yoko].kind[LAYER_MAP_UNDER] != -1)
 			{
 				//床のレイヤー
 				DrawGraph
 				(
-					mapRoom[player.nowRoom].map[LAYER_MAP_UNDER][tate][yoko].x - (player.CenterX - (GAME_WIDTH / 2)),
-					mapRoom[player.nowRoom].map[LAYER_MAP_UNDER][tate][yoko].y - (player.CenterX - (GAME_HEIGHT / 2)),
-					mapChip.handle[mapRoom[player.nowRoom].map[LAYER_MAP_UNDER][tate][yoko].kind],
+					mapRoom[player.nowRoom].map[tate][yoko].x - (player.CenterX - (GAME_WIDTH / 2)),
+					mapRoom[player.nowRoom].map[tate][yoko].y - (player.CenterX - (GAME_HEIGHT / 2)),
+					mapChip.handle[mapRoom[player.nowRoom].map[tate][yoko].kind[LAYER_MAP_UNDER]],
 					TRUE
 				);
 			}
-			if(mapRoom[player.nowRoom].map[LAYER_MAP_MIDDLE][tate][yoko].kind != -1)
+			if(mapRoom[player.nowRoom].map[tate][yoko].kind[LAYER_MAP_UNDER] != -1)
 			{ 
 			//血のレイヤー
 			DrawGraph
 			(
-				mapRoom[player.nowRoom].map[LAYER_MAP_MIDDLE][tate][yoko].x - (player.CenterX - (GAME_WIDTH / 2)),
-				mapRoom[player.nowRoom].map[LAYER_MAP_MIDDLE][tate][yoko].y - (player.CenterX - (GAME_HEIGHT / 2)),
-				mapChip.handle[mapRoom[player.nowRoom].map[LAYER_MAP_MIDDLE][tate][yoko].kind],
+				mapRoom[player.nowRoom].map[tate][yoko].x - (player.CenterX - (GAME_WIDTH / 2)),
+				mapRoom[player.nowRoom].map[tate][yoko].y - (player.CenterX - (GAME_HEIGHT / 2)),
+				mapChip.handle[mapRoom[player.nowRoom].map[tate][yoko].kind[LAYER_MAP_MIDDLE]],
 				TRUE
 			);
 			}
 
-			if (mapRoom[player.nowRoom].map[LAYER_MAP_TOP][tate][yoko].kind != -1)
+			if (mapRoom[player.nowRoom].map[tate][yoko].kind[LAYER_MAP_TOP] != -1)
 			{
 				//重ね血のレイヤー
 				DrawGraph
 				(
-					mapRoom[player.nowRoom].map[LAYER_MAP_TOP][tate][yoko].x - (player.CenterX - (GAME_WIDTH / 2)),
-					mapRoom[player.nowRoom].map[LAYER_MAP_TOP][tate][yoko].y - (player.CenterX - (GAME_HEIGHT / 2)),
-					mapChip.handle[mapRoom[player.nowRoom].map[LAYER_MAP_TOP][tate][yoko].kind],
+					mapRoom[player.nowRoom].map[tate][yoko].x - (player.CenterX - (GAME_WIDTH / 2)),
+					mapRoom[player.nowRoom].map[tate][yoko].y - (player.CenterX - (GAME_HEIGHT / 2)),
+					mapChip.handle[mapRoom[player.nowRoom].map[tate][yoko].kind[LAYER_MAP_TOP]],
 					TRUE
 				);
 			}
 
-			if (mapRoom[player.nowRoom].map[LAYER_MAP_GIMMICK][tate][yoko].kind != -1)
+			if (mapRoom[player.nowRoom].map[tate][yoko].kind[LAYER_MAP_GIMMICK] != -1)
 			{
 				//ギミックのレイヤー？
 				DrawGraph
 				(
-					mapRoom[player.nowRoom].map[LAYER_MAP_GIMMICK][tate][yoko].x - (player.CenterX - (GAME_WIDTH / 2)),
-					mapRoom[player.nowRoom].map[LAYER_MAP_GIMMICK][tate][yoko].y - (player.CenterX - (GAME_HEIGHT / 2)),
-					mapChip.handle[mapRoom[player.nowRoom].map[LAYER_MAP_GIMMICK][tate][yoko].kind],
+					mapRoom[player.nowRoom].map[tate][yoko].x - (player.CenterX - (GAME_WIDTH / 2)),
+					mapRoom[player.nowRoom].map[tate][yoko].y - (player.CenterX - (GAME_HEIGHT / 2)),
+					mapChip.handle[mapRoom[player.nowRoom].map[tate][yoko].kind[LAYER_MAP_GIMMICK]],
 					TRUE
 				);
 			}
