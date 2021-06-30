@@ -12,6 +12,14 @@
 #include "title.h"
 #include "variable.h"
 
+#include <vector>
+
+using namespace std;
+
+vector<GIMMICK_OBJ> gimMain;
+vector<GIMMICK_OBJ> gimBox;
+vector<pair<GIMMICK_OBJ, GIMMICK_OBJ>> gimWarp;
+
 int StartTimeFps;
 int CountFps;
 float CalcFps;
@@ -62,6 +70,8 @@ VOID START_PROC(VOID)
 	if (MY_KEY_UP(KEY_INPUT_RETURN))
 	{
 		GameScene = GAME_SCENE_PLAY;
+
+		PLAY_PLAYER_INIT();
 	}
 
 	return;
@@ -134,6 +144,24 @@ VOID GIMMIK(VOID)
 	case GIMMICK_PAZLE:
 		break;
 	}
+
+	return;
+}
+
+VOID GIMMIK_OBJ_SET(int obj_x, int obj_y, GAME_MAP_KIND kind)
+{
+	return;
+}
+
+VOID PLAY_PLAYER_INIT(VOID)
+{
+	player.CenterX = mapRoom[player.nowRoom].StartPt.x * mapChip.width + (mapChip.width / 2);
+	player.CenterY = mapRoom[player.nowRoom].StartPt.y * mapChip.height + (mapChip.height / 2);
+
+	player.coll.left = mapRoom[player.nowRoom].StartPt.x * mapChip.width;
+	player.coll.right = mapRoom[player.nowRoom].StartPt.x * mapChip.width + mapChip.width;
+	player.coll.top = mapRoom[player.nowRoom].StartPt.y * mapChip.height;
+	player.coll.bottom = mapRoom[player.nowRoom].StartPt.y * mapChip.height + mapChip.height;
 
 	return;
 }

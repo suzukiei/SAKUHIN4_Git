@@ -44,6 +44,15 @@ public:
 	   }
 };
 
+typedef struct STR_GIMMICK_OBJECT
+{
+	IMAGE image;
+	int CenterX;                 //Warp地点X位置
+	int CenterY;                 //Warp地点Y位置
+
+	RECT coll;
+}GIMMICK_OBJ;
+
 VOID MY_FPS_UPDATE(VOID);
 VOID MY_FPS_WAIT(VOID);
 
@@ -52,4 +61,8 @@ VOID RULE_PROC(VOID);
 VOID PLAY_PROC(VOID);
 VOID END_PROC(VOID);
 
+VOID GIMMIK_OBJ_SET(int, int, GAME_MAP_KIND);
+
 VOID GIMMIK(VOID);
+
+VOID PLAY_PLAYER_INIT(VOID);
