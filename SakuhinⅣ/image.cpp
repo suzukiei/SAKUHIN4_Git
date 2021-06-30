@@ -246,48 +246,48 @@ BOOL MY_LOAD_IMAGE(VOID)
 	}
 
 	//-----------------------------ステージ2----------------------------------------------
-	////床
-	//if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE2_FLOOR, &mapRoom[0], LAYER_MAP_UNDER) == FALSE)
-	//{
-	//	MessageBox(GetMainWindowHandle(), "えらー", "えらー", MB_OK);
-	//	return -1;
-	//}
-	////壁
-	//if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE2_WALL, &mapRoom[0], LAYER_MAP_UNDER) == FALSE)
-	//{
-	//	MessageBox(GetMainWindowHandle(), "えらー", "えらー", MB_OK);
-	//	return -1;
-	//}
-	////小物
-	//if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE2_ACCES, &mapRoom[0], LAYER_MAP_UNDER) == FALSE)
-	//{
-	//	MessageBox(GetMainWindowHandle(), "えらー", "えらー", MB_OK);
-	//	return -1;
-	//}
-	////血
-	//if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE2_BLOOD, &mapRoom[0], LAYER_MAP_MIDDLE) == FALSE)
-	//{
-	//	MessageBox(GetMainWindowHandle(), "えらー", "えらー", MB_OK);
-	//	return -1;
-	//}
-	////重ね血
-	//if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE2_SBLOOD, &mapRoom[0], LAYER_MAP_TOP) == FALSE)
-	//{
-	//	MessageBox(GetMainWindowHandle(), "えらー", "えらー", MB_OK);
-	//	return -1;
-	//}
-	//////当たり判定
-	//if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE2_RECT, &mapRoom[0], LAYER_MAP_RECT) == FALSE)
-	//{
-	//	MessageBox(GetMainWindowHandle(), "えらー", "えらー", MB_OK);
-	//	return -1;
-	//}
-	//////スタートゴール
-	//if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE2_SG, &mapRoom[0], LAYER_MAP_SG) == FALSE)
-	//{
-	//	MessageBox(GetMainWindowHandle(), "えらー", "えらー", MB_OK);
-	//	return -1;
-	//}
+	//床
+	if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE2_FLOOR, &mapRoom[1], LAYER_MAP_UNDER) == FALSE)
+	{
+		MessageBox(GetMainWindowHandle(), "えらー", "えらー", MB_OK);
+		return -1;
+	}
+	//壁
+	if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE2_WALL, &mapRoom[1], LAYER_MAP_UNDER) == FALSE)
+	{
+		MessageBox(GetMainWindowHandle(), "えらー", "えらー", MB_OK);
+		return -1;
+	}
+	//小物
+	if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE2_ACCES, &mapRoom[1], LAYER_MAP_UNDER) == FALSE)
+	{
+		MessageBox(GetMainWindowHandle(), "えらー", "えらー", MB_OK);
+		return -1;
+	}
+	//血
+	if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE2_BLOOD, &mapRoom[1], LAYER_MAP_MIDDLE) == FALSE)
+	{
+		MessageBox(GetMainWindowHandle(), "えらー", "えらー", MB_OK);
+		return -1;
+	}
+	//重ね血
+	if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE2_SBLOOD, &mapRoom[1], LAYER_MAP_TOP) == FALSE)
+	{
+		MessageBox(GetMainWindowHandle(), "えらー", "えらー", MB_OK);
+		return -1;
+	}
+	////当たり判定
+	if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE2_RECT, &mapRoom[1], LAYER_MAP_RECT) == FALSE)
+	{
+		MessageBox(GetMainWindowHandle(), "えらー", "えらー", MB_OK);
+		return -1;
+	}
+	////スタートゴール
+	if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE2_SG, &mapRoom[1], LAYER_MAP_SG) == FALSE)
+	{
+		MessageBox(GetMainWindowHandle(), "えらー", "えらー", MB_OK);
+		return -1;
+	}
 
 
 	return TRUE;
@@ -381,6 +381,16 @@ BOOL MY_LOAD_CSV_MAP(const char* path,MAP_ROOM* room,int Layer)
 			else if (Layer == LAYER_MAP_SG)
 			{
 				result = fscanf(fp, "%d,", &mapData);
+				//スタート座標
+				if (mapData == START)
+				{
+					room->StartPt = { LoopCnt % MAP_WIDTH_MAX,LoopCnt / MAP_WIDTH_MAX };
+				}
+				//ゴール座標
+				if (mapData == GOAL)
+				{
+					room->GoalPt = { LoopCnt % MAP_WIDTH_MAX,LoopCnt / MAP_WIDTH_MAX };
+				}
 			}
 			//当たり判定
 			else if (Layer == LAYER_MAP_RECT)
@@ -431,8 +441,8 @@ VOID PLAY_DRAW(VOID)
 				//床のレイヤー
 				DrawGraph
 				(
-					mapRoom[player.nowRoom].map[LAYER_MAP_UNDER][tate][yoko].x,
-					mapRoom[player.nowRoom].map[LAYER_MAP_UNDER][tate][yoko].y,
+					mapRoom[player.nowRoom].map[LAYER_MAP_UNDER][tate][yoko].x - (player.CenterX - (GAME_WIDTH / 2)),
+					mapRoom[player.nowRoom].map[LAYER_MAP_UNDER][tate][yoko].y - (player.CenterX - (GAME_HEIGHT / 2)),
 					mapChip.handle[mapRoom[player.nowRoom].map[LAYER_MAP_UNDER][tate][yoko].kind],
 					TRUE
 				);
@@ -442,8 +452,8 @@ VOID PLAY_DRAW(VOID)
 			//血のレイヤー
 			DrawGraph
 			(
-				mapRoom[player.nowRoom].map[LAYER_MAP_MIDDLE][tate][yoko].x,
-				mapRoom[player.nowRoom].map[LAYER_MAP_MIDDLE][tate][yoko].y,
+				mapRoom[player.nowRoom].map[LAYER_MAP_MIDDLE][tate][yoko].x - (player.CenterX - (GAME_WIDTH / 2)),
+				mapRoom[player.nowRoom].map[LAYER_MAP_MIDDLE][tate][yoko].y - (player.CenterX - (GAME_HEIGHT / 2)),
 				mapChip.handle[mapRoom[player.nowRoom].map[LAYER_MAP_MIDDLE][tate][yoko].kind],
 				TRUE
 			);
@@ -454,8 +464,8 @@ VOID PLAY_DRAW(VOID)
 				//重ね血のレイヤー
 				DrawGraph
 				(
-					mapRoom[player.nowRoom].map[LAYER_MAP_TOP][tate][yoko].x,
-					mapRoom[player.nowRoom].map[LAYER_MAP_TOP][tate][yoko].y,
+					mapRoom[player.nowRoom].map[LAYER_MAP_TOP][tate][yoko].x - (player.CenterX - (GAME_WIDTH / 2)),
+					mapRoom[player.nowRoom].map[LAYER_MAP_TOP][tate][yoko].y - (player.CenterX - (GAME_HEIGHT / 2)),
 					mapChip.handle[mapRoom[player.nowRoom].map[LAYER_MAP_TOP][tate][yoko].kind],
 					TRUE
 				);
@@ -466,8 +476,8 @@ VOID PLAY_DRAW(VOID)
 				//ギミックのレイヤー？
 				DrawGraph
 				(
-					mapRoom[player.nowRoom].map[LAYER_MAP_GIMMICK][tate][yoko].x,
-					mapRoom[player.nowRoom].map[LAYER_MAP_GIMMICK][tate][yoko].y,
+					mapRoom[player.nowRoom].map[LAYER_MAP_GIMMICK][tate][yoko].x - (player.CenterX - (GAME_WIDTH / 2)),
+					mapRoom[player.nowRoom].map[LAYER_MAP_GIMMICK][tate][yoko].y - (player.CenterX - (GAME_HEIGHT / 2)),
 					mapChip.handle[mapRoom[player.nowRoom].map[LAYER_MAP_GIMMICK][tate][yoko].kind],
 					TRUE
 				);
@@ -478,8 +488,8 @@ VOID PLAY_DRAW(VOID)
 
 	//プレイヤー表示
 	DrawGraph(
-		player.CenterX ,
-		player.CenterY ,
+		player.CenterX /*- (GAME_WIDTH / 2) - mapChip.width*/,
+		player.CenterY /*- (GAME_HEIGHT / 2) - mapChip.height*/,
 		player.handle[player.kind1],
 		TRUE
 	);

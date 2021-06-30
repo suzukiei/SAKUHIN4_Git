@@ -14,13 +14,11 @@ public:
 	int CenterY;                 //キャラクターY位置
 	int kind1;                	 //現在のキャラクター状態
 	int imgChangeCnt;            //変更したい画像
-	int imgChangeCntMAX;
-	int nowRoom;
-	double angle;
-	double rate;
-	BOOL InRoom = false;        //部屋にいるかどうか
-	BOOL InPass = false;        //通路に居るかどうか
-	BOOL IsMoveNaname;
+	int imgChangeCntMAX;         //変更する画像の最大
+	int nowRoom;                 //今いる階層
+	MOVE Dire;                   //向いている方向
+	BOOL InRoom = false;         //部屋にいるかどうか
+	BOOL InPass = false;         //通路に居るかどうか
 
 	RECT coll;
 	IPOINT collBeforePt;
