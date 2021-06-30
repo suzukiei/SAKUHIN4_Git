@@ -10,12 +10,12 @@ BOOL MY_CHECK_RECT_COLL(RECT, RECT)	//領域の当たり判定をする関数
 	return FALSE;
 }
 
-BOOL CHARA_COLLISION(CHARA a, CHARA b)
+BOOL CHARA_COLLISION(RECT a, RECT b)
 {
-	if (a.coll.left < b.coll.right &&
-		a.coll.top < b.coll.bottom &&
-		a.coll.right > b.coll.left &&
-		a.coll.bottom > b.coll.top
+	if (a.left < b.right &&
+		a.top < b.bottom &&
+		a.right > b.left &&
+		a.bottom > b.top
 		)
 	{
 		return TRUE;	//当たっている
@@ -38,7 +38,7 @@ BOOL CHECK_COLLISION(CHARA P)
 
 
 			//	//プレイヤーとマップが当たっている
-			//	if (mapdata3[tate][yoko] == d) { return TRUE; }
+				if (mapChip.handle[mapRoom[player.nowRoom].map[LAYER_MAP_UNDER][tate][yoko].kind]) { return TRUE; }
 			//	if (mapdata3[tate][yoko] == B) { return TRUE; }
 			//	if (mapdata2[tate][yoko] == t) { return TRUE; }
 			//	if (mapdata2[tate][yoko] == s) { return TRUE; }
