@@ -154,7 +154,7 @@ BOOL MOVEMENT(CHARA* chara,int move)
 
 	//衝突がなければ、workから大本のキャラの情報に入れる。
 	if (work.InRoom) {
-		if (CHECK_COLLISION(work.coll, mapRoom[work.nowRoom].map) == FALSE) {
+		if (CHECK_COLLISION(work.coll, (MAP**)mapRoom[work.nowRoom].map) == FALSE) {
 			chara->image.y = work.image.y;
 			chara->image.x = work.image.x;
 			chara->CenterX = work.CenterX;
