@@ -24,7 +24,7 @@ BOOL MOVEMENT(CHARA* chara,int move)
 	switch (move)
 	{
 	case UP:
-		chara->IsMoveNaname = FALSE;	//Î‚ßˆÚ“®‚µ‚Ä‚¢‚È‚¢
+		
 		
 		//if (CHARA_COLLISION() == FALSE) {
 			if (chara->kind1 >= CHARACHIP_UP_1 && chara->kind1 < CHARACHIP_UP_3)
@@ -52,7 +52,7 @@ BOOL MOVEMENT(CHARA* chara,int move)
 
 	case DOWN:
 
-		chara->IsMoveNaname = FALSE;	//Î‚ßˆÚ“®‚µ‚Ä‚¢‚È‚¢
+	
 
 		//if (CHARA_COLLISION == FALSE){
 			if (chara->kind1 >= CHARACHIP_DOWN_1 && chara->kind1 < CHARACHIP_DOWN_3)
@@ -82,7 +82,7 @@ BOOL MOVEMENT(CHARA* chara,int move)
 
 	case RIGHT:
 
-		chara->IsMoveNaname = FALSE;	//Î‚ßˆÚ“®‚µ‚Ä‚¢‚È‚¢
+		
 
 		//if (CHARA_COLLISION == FALSE) {
 			if (chara->kind1 >= CHARACHIP_RIGHT_1 && chara->kind1 < CHARACHIP_RIGHT_3)
@@ -113,7 +113,7 @@ BOOL MOVEMENT(CHARA* chara,int move)
 
 	case LEFT:
 
-		chara->IsMoveNaname = FALSE;	//Î‚ßˆÚ“®‚µ‚Ä‚¢‚È‚¢
+		
 
 		//if (CHARA_COLLISION == FALSE) {
 			if (chara->kind1 >= CHARACHIP_LEFT_1 && chara->kind1 < CHARACHIP_LEFT_3)
