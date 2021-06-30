@@ -69,6 +69,11 @@
 
 //#define IMAGE_BACK_PATH_END	TEXT(".\\IMAGE\\.png")
 
+//メニュー時の画像パス
+#define IMAGE_MENU_BUTTON_PATH			TEXT(".\\IMAGE\\.button1.png")
+#define IMAGE_MENU_BUTTON_END_PATH		TEXT(".\\IMAGE\\.button2.png")
+#define IMAGE_MENU_PATH				TEXT(".\\IMAGE\\menu.png")
+
 //MENU画面ボタン
 #define MENU_WIDTH_POSITION 280 //メニュー背景
 #define MENU_HEIGHT_POSITION 180 //メニュー背景
@@ -94,13 +99,27 @@
 #define IMAGE_CLOCK_WIDTH_PATH			400
 #define IMAGE_CLOCK_HEIGHT_PATH		800
 
-//メニュー時の画像パス
-#define IMAGE_MENU_BUTTON_PATH			TEXT(".\\IMAGE\\.button1.png")
-#define IMAGE_MENU_BUTTON_END_PATH		TEXT(".\\IMAGE\\.button2.png")
-#define IMAGE_MENU_PATH				TEXT(".\\IMAGE\\menu.png")
+//TextBox
+#define IMAGE_TEXTBOX_PATH				TEXT(".\\IMAGE\\.button2.png")
+#define IMAGE_TEXTBOX_WIDTH_PATH		0
+#define IMAGE_TEXTBOX_HEIGHT_PATH		800
 
 //player
 #define IMAGE_PLAYER_PATH		TEXT(".\\IMAGE\\chara.png")
+
+//playerのキャラ表情画像
+#define IMAGE_PLAYER_FACE1_PATH			TEXT(".\\IMAGE\\chara_face1.png")
+#define IMAGE_PLAYER_FACE1_WIDTH_PATH		0
+#define IMAGE_PLAYER_FACE1_HEIGHT_PATH		700
+
+#define IMAGE_PLAYER_FACE2_PATH			TEXT(".\\IMAGE\\chara_face2.png")
+#define IMAGE_PLAYER_FACE1_WIDTH_PATH		0
+#define IMAGE_PLAYER_FACE1_HEIGHT_PATH		700
+
+#define IMAGE_PLAYER_FACE3_PATH			TEXT(".\\IMAGE\\chara_face3.png")
+#define IMAGE_PLAYER_FACE1_WIDTH_PATH		0
+#define IMAGE_PLAYER_FACE1_HEIGHT_PATH		700
+
 
 //enemy
 #define IMAGE_ENEMY_PATH		TEXT(".\\IMAGE\\enemy.png")
