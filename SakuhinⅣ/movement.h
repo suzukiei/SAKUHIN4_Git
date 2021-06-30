@@ -22,7 +22,7 @@ extern char OldAllKeyState[KEY_CODE_KIND];	//すべてのキーの状態(直前)が入る
 BOOL MY_KEY_DOWN(int);				//キーを押しているか、キーコードで判断する 
 BOOL MY_KEY_UP(int);				//キーを押し上げたか、キーコードで判断する
 
-RECT mapColl[MAP_HEIGHT_MAX][MAP_WIDTH_MAX];
+extern RECT mapColl[MAP_HEIGHT_MAX][MAP_WIDTH_MAX];
 
 enum MOVE {
 	UP,
