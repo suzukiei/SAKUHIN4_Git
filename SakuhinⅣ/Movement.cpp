@@ -1,11 +1,23 @@
 /*作品制作Ⅳ_冥闇の眼*/
 #include "DxLib.h"
-#include "movement.h"
+#include "BGM.h"
 #include "class.h"
+#include "define.h"
+#include "enum.h"
+#include "flag.h"
+#include "GameProcHeader.h"
+#include "image.h"
+#include "menu.h"
+#include "movement.h"
+#include "textevent.h"
+#include "title.h"
+#include "variable.h"
+
 
 //キーボードの入力を取得
 char AllKeyState[KEY_CODE_KIND] = { '\0' };		//すべてのキーの状態が入る
 char OldAllKeyState[KEY_CODE_KIND] = { '\0' };	//すべてのキーの状態(直前)が入る
+RECT mapColl[MAP_HEIGHT_MAX][MAP_WIDTH_MAX];
 
 //BOOL CHARA_COLLISION(CHARA, CHARA)
 //{
@@ -18,61 +30,60 @@ BOOL MOVEMENT(CHARA* chara,int move)
 	BOOL IsMove = TRUE; //移動可能
 	CHARA work = *chara;
 
-	int old_x = chara->image.x;
-	int old_y = chara->image.y;
+
 
 	switch (move)
 	{
 	case UP:
 		
-		
-		//if (CHARA_COLLISION() == FALSE) {
-			if (chara->kind1 >= CHARACHIP_UP_1 && chara->kind1 < CHARACHIP_UP_3)
+			work.image.y -= CharaSpeed;	//移動
+		 
+			if (work.kind1 >= CHARACHIP_UP_1 && work.kind1 < CHARACHIP_UP_3)
 			{
 				//画像変更カウンタ
-				if (chara->imgChangeCnt < chara->imgChangeCntMAX)
+				if (work.imgChangeCnt < work.imgChangeCntMAX)
 				{
-					chara->imgChangeCnt++;
+					work.imgChangeCnt++;
 				}
 				else //画像を変えるタイミングになったら
 				{
-					chara->kind1++;			//次の画像にする
-					chara->imgChangeCnt = 0;	//変更カウンタ初期化
+					work.kind1++;			//次の画像にする
+					work.imgChangeCnt = 0;	//変更カウンタ初期化
 				}
 			}
 			else
 			{
-				chara->kind1 = CHARACHIP_UP_1;	//最初の画像にする
+				work.kind1 = CHARACHIP_UP_1;	//最初の画像にする
 			}
 
-			chara->image.y -= CharaSpeed;	//移動
+		
 			return TRUE; //移動できているのでTRUEを返す
 			break;
-		//}
+	
 
 	case DOWN:
 
 	
 
 		//if (CHARA_COLLISION == FALSE){
-			if (chara->kind1 >= CHARACHIP_DOWN_1 && chara->kind1 < CHARACHIP_DOWN_3)
+			if (work.kind1 >= CHARACHIP_DOWN_1 && work.kind1 < CHARACHIP_DOWN_3)
 			{
 				//画像変更カウンタ
-				if (chara->imgChangeCnt < chara->imgChangeCntMAX)
+				if (work.imgChangeCnt < work.imgChangeCntMAX)
 				{
-					chara->imgChangeCnt++;
+					work.imgChangeCnt++;
 				}
 				else //画像を変えるタイミングになったら
 				{
-					chara->kind1++;			//次の画像にする
-					chara->imgChangeCnt = 0;	//変更カウンタ初期化
+					work.kind1++;			//次の画像にする
+					work.imgChangeCnt = 0;	//変更カウンタ初期化
 				}
 			}
 			else
 			{
-				chara->kind1 = CHARACHIP_DOWN_1;	//最初の画像にする
+				work.kind1 = CHARACHIP_DOWN_1;	//最初の画像にする
 			}
-			chara->image.y += CharaSpeed;	//移動
+			work.image.y += CharaSpeed;	//移動
 			return TRUE; //移動できているのでTRUEを返す
 		//}
 
@@ -85,24 +96,24 @@ BOOL MOVEMENT(CHARA* chara,int move)
 		
 
 		//if (CHARA_COLLISION == FALSE) {
-			if (chara->kind1 >= CHARACHIP_RIGHT_1 && chara->kind1 < CHARACHIP_RIGHT_3)
+			if (work.kind1 >= CHARACHIP_RIGHT_1 && work.kind1 < CHARACHIP_RIGHT_3)
 			{
 				//画像変更カウンタ
-				if (chara->imgChangeCnt < chara->imgChangeCntMAX)
+				if (work.imgChangeCnt < work.imgChangeCntMAX)
 				{
-					chara->imgChangeCnt++;
+					work.imgChangeCnt++;
 				}
 				else //画像を変えるタイミングになったら
 				{
-					chara->kind1++;			//次の画像にする
-					chara->imgChangeCnt = 0;	//変更カウンタ初期化
+					work.kind1++;			//次の画像にする
+					work.imgChangeCnt = 0;	//変更カウンタ初期化
 				}
 			}
 			else
 			{
-				chara->kind1 = CHARACHIP_RIGHT_1;	//最初の画像にする
+				work.kind1 = CHARACHIP_RIGHT_1;	//最初の画像にする
 			}
-			chara->image.x += CharaSpeed;	//移動
+			work.image.x += CharaSpeed;	//移動
 
 			return TRUE; //移動できているのでTRUEを返す
 		//}
@@ -116,24 +127,24 @@ BOOL MOVEMENT(CHARA* chara,int move)
 		
 
 		//if (CHARA_COLLISION == FALSE) {
-			if (chara->kind1 >= CHARACHIP_LEFT_1 && chara->kind1 < CHARACHIP_LEFT_3)
+			if (work.kind1 >= CHARACHIP_LEFT_1 && work.kind1 < CHARACHIP_LEFT_3)
 			{
 				//画像変更カウンタ
-				if (chara->imgChangeCnt < chara->imgChangeCntMAX)
+				if (work.imgChangeCnt < work.imgChangeCntMAX)
 				{
-					chara->imgChangeCnt++;
+					work.imgChangeCnt++;
 				}
 				else //画像を変えるタイミングになったら
 				{
-					chara->kind1++;			//次の画像にする
-					chara->imgChangeCnt = 0;	//変更カウンタ初期化
+					work.kind1++;			//次の画像にする
+					work.imgChangeCnt = 0;	//変更カウンタ初期化
 				}
 			}
 			else
 			{
-				chara->kind1 = CHARACHIP_LEFT_1;	//最初の画像にする
+				work.kind1 = CHARACHIP_LEFT_1;	//最初の画像にする
 			}
-			chara->image.x -= CharaSpeed;	//移動
+			work.image.x -= CharaSpeed;	//移動
 			return TRUE; //移動できているのでTRUEを返す
 		//}
 		
@@ -141,23 +152,35 @@ BOOL MOVEMENT(CHARA* chara,int move)
 		break;
 	}
 
-	if (IsMove == false)
-	{
-		chara->image.x = old_x;//当たる前に戻る
-		chara->image.y = old_y;
-	}
-
-	if (IsMove == TRUE)
-	{
-
-		{
-			
-
-			//あたっていないときの座標を取得
-			chara->collBeforePt.x = chara->CenterX;
-			chara->collBeforePt.y = chara->CenterY;
+	//衝突がなければ、workから大本のキャラの情報に入れる。
+	if (work.InRoom) {
+		if (CHECK_COLLISION(work.coll, mapRoom[work.nowRoom].map) == FALSE) {
+			chara->image.y = work.image.y;
+			chara->image.x = work.image.x;
+			chara->CenterX = work.CenterX;
+			chara->CenterY = work.CenterY;
 		}
 	}
+		
+
+
+	//if (IsMove == false)
+	//{
+	//	chara->image.x -= CharaSpeed;//当たる前に戻る
+	//	chara->image.y -= old_y;
+	//}
+
+	//if (IsMove == TRUE)
+	//{
+
+	//	{
+	//		
+
+	//		//あたっていないときの座標を取得
+	//		chara->collBeforePt.x = chara->CenterX;
+	//		chara->collBeforePt.y = chara->CenterY;
+	//	}
+	//}
 
 
 	return FALSE;

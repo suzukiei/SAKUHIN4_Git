@@ -24,7 +24,7 @@ BOOL CHARA_COLLISION(RECT a, RECT b)
 	return FALSE;		//当たっていない
 }
 
-BOOL CHECK_COLLISION(CHARA P)
+BOOL CHECK_COLLISION(RECT P,MAP **map)
 {
 
 	//マップの当たり判定を設定する
@@ -33,18 +33,15 @@ BOOL CHECK_COLLISION(CHARA P)
 		for (int yoko = 0; yoko < MAP_WIDTH_MAX; yoko++)
 		{
 			//プレイヤーとマップが当たっているとき
-			//if (CHARA_COLLISION(P, mapColl[tate][yoko]) == TRUE)
-			//{
+			if (CHARA_COLLISION(P, mapColl[tate][yoko]) == TRUE)
+			{
+				//プレイヤーとマップが当たっている
+				//MAP構造体のIsCollisionNoを返す
+				return  map[tate][yoko].IsCollisionNo;
 
+					
 
-			//	//プレイヤーとマップが当たっている
-				//if (mapChip.handle[mapRoom[player.nowRoom].map[LAYER_MAP_UNDER][tate][yoko].kind]) { return TRUE; }
-			//	if (mapdata3[tate][yoko] == B) { return TRUE; }
-			//	if (mapdata2[tate][yoko] == t) { return TRUE; }
-			//	if (mapdata2[tate][yoko] == s) { return TRUE; }
-			//	if (mapdata2[tate][yoko] == g) { return TRUE; }
-
-			//}
+			}
 		}
 	}
 
@@ -53,17 +50,6 @@ BOOL CHECK_COLLISION(CHARA P)
 
 VOID CHECK_COLLISION_GOAL(VOID)
 {
-	//プレイヤーの当たり判定の設定
-	player.coll.left = player.CenterX - 40 / 20 + 5;
-	player.coll.top = player.CenterY + 200 / 20 + 5;
-	player.coll.right = player.CenterX + 650 / 20 - 5;
-	player.coll.bottom = player.CenterY + 1000 / 20 - 5;
-
-	RECT PlayerRect;
-	PlayerRect.left = player.CenterX - 40 / 20 + 5;
-	PlayerRect.top = player.CenterY + 200 / 20 + 5;
-	PlayerRect.right = player.CenterX + 650 / 20 - 5;
-	PlayerRect.bottom = player.CenterY + 1000 / 20 - 5;
 
 	//ゴールに触れているかチェック
 	//if (MY_CHECK_RECT_COLL(PlayerRect, /*GoalRect ゴールの判定*/) == TRUE)
