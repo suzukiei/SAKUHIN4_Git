@@ -115,6 +115,20 @@ typedef struct MAP_ROOM
 
 typedef struct MAP_ROOM MAP_ROOM;
 
+//マップ通路
+typedef struct MAP_PASS
+{
+
+	MAP map[MAP_HEIGHT_MAX][MAP_WIDTH_MAX];
+	int From;
+	int To;
+
+	IPOINT StartPt;   //スタート地点
+	IPOINT GoalPt;	  //ゴール地点
+};
+
+typedef struct MAP_PASS MAP_PASS;
+
 BOOL MY_LOAD_MAPCHIP(VOID);
 BOOL MY_LOAD_CSV(VOID);
 
