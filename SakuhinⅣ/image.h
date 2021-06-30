@@ -104,7 +104,7 @@ public:
 //マップ部屋（ギミック）
 typedef struct MAP_ROOM
 {
-	MAP map[LAYER_MAP_DRAWKIND][MAP_HEIGHT_MAX][MAP_WIDTH_MAX];
+	MAP map[MAP_HEIGHT_MAX][MAP_WIDTH_MAX];
 	GAME_GIMMICK_KIND gimmick;
 	int x;
 	int y;
