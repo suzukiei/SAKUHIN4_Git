@@ -194,7 +194,7 @@ typedef struct STRUCT_MAP_IMAGE
 
 typedef struct STRUCT_MAP
 {
-	GAME_MAP_KIND kind;
+	GAME_MAP_KIND kind[LAYER_MAP_DRAWKIND];
 	int x;
 	int y;
 	int width;
