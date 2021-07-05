@@ -290,6 +290,35 @@ BOOL MY_LOAD_IMAGE(VOID)
 	}
 
 
+
+
+	//-----------------------------通路----------------------------------------------
+	//床
+	if (MY_LOAD_CSV_PASS(GAME_CSV_PATH_STAGEPASS_FLOOR, &mappass, LAYER_MAP_UNDER) == FALSE)
+	{
+		MessageBox(GetMainWindowHandle(), "えらー", "えらー", MB_OK);
+		return -1;
+	}
+	//壁
+	if (MY_LOAD_CSV_PASS(GAME_CSV_PATH_STAGEPASS_WALL, &mappass, LAYER_MAP_UNDER) == FALSE)
+	{
+		MessageBox(GetMainWindowHandle(), "えらー", "えらー", MB_OK);
+		return -1;
+	}
+	////当たり判定
+	if (MY_LOAD_CSV_PASS(GAME_CSV_PATH_STAGEPASS_RECT, &mappass, LAYER_MAP_RECT) == FALSE)
+	{
+		MessageBox(GetMainWindowHandle(), "えらー", "えらー", MB_OK);
+		return -1;
+	}
+	////スタートゴール
+	if (MY_LOAD_CSV_PASS(GAME_CSV_PATH_STAGEPASS_SG, &mappass, LAYER_MAP_SG) == FALSE)
+	{
+		MessageBox(GetMainWindowHandle(), "えらー", "えらー", MB_OK);
+		return -1;
+	}
+
+
 	return TRUE;
 }
 
@@ -405,6 +434,100 @@ BOOL MY_LOAD_CSV_MAP(const char* path,MAP_ROOM* room,int Layer)
 				if (mapData == COLL_NOEXSITS)
 				{
 					room->map[LoopCnt / MAP_WIDTH_MAX][LoopCnt % MAP_WIDTH_MAX].IsCollisionNo = TRUE; //×は当たり判定があるからTRUE
+				}
+			}
+			LoopCnt++;
+		}
+
+		fclose(fp);
+	}
+
+	return TRUE;
+}
+
+/// <summary>
+/// 通路の読み込み
+/// </summary>
+/// <param name="room">階層の構造体のポインタ</param>
+/// <param name="path">マップのパス</param>
+/// <returns></returns>
+BOOL MY_LOAD_CSV_PASS(const char* path, MAP_PASS* pass, int Layer)
+{
+	FILE* fp;
+
+	errno_t error;
+	int result = 0;			//ファイルの最後かチェック
+	int LoopCnt = 0;        //ループカウンタ
+
+	//csvファイルを開く
+	error = fopen_s(&fp, path, "r");
+	if (error != 0)
+	{
+		MessageBox(GetMainWindowHandle(), path, IMAGE_LOAD_ERR_TITLE, MB_OK);
+		return FALSE;
+	}
+
+	else
+	{
+		result = 0;
+		LoopCnt = 0;
+
+		while (result != EOF)    //End Of File（ファイルの最後）ではないとき繰り返す
+		{
+			GAME_MAP_KIND mapData;
+
+			if (Layer == LAYER_MAP_UNDER || Layer == LAYER_MAP_MIDDLE || Layer == LAYER_MAP_TOP)
+			{
+				mapData = pass->map[LoopCnt / MAP_WIDTH_MAX][LoopCnt % MAP_WIDTH_MAX].kind[Layer];
+
+				//ファイルから数値を一つ読み込み(%d,)、配列に格納する
+				result = fscanf(fp, "%d,", &pass->map[LoopCnt / MAP_WIDTH_MAX][LoopCnt % MAP_WIDTH_MAX].kind[Layer]);
+
+				pass->map[LoopCnt / MAP_WIDTH_MAX][LoopCnt % MAP_WIDTH_MAX].width = mapChip.width;
+				pass->map[LoopCnt / MAP_WIDTH_MAX][LoopCnt % MAP_WIDTH_MAX].height = mapChip.height;
+
+				pass->map[LoopCnt / MAP_WIDTH_MAX][LoopCnt % MAP_WIDTH_MAX].x = LoopCnt % MAP_WIDTH_MAX * mapChip.width;
+				pass->map[LoopCnt / MAP_WIDTH_MAX][LoopCnt % MAP_WIDTH_MAX].y = LoopCnt / MAP_WIDTH_MAX * mapChip.height;
+
+				if (pass->map[LoopCnt / MAP_WIDTH_MAX][LoopCnt % MAP_WIDTH_MAX].kind[Layer] == -1)
+				{
+					pass->map[LoopCnt / MAP_WIDTH_MAX][LoopCnt % MAP_WIDTH_MAX].kind[Layer] = mapData;
+				}
+			}
+
+			//ギミック
+			else if (Layer == LAYER_MAP_GIMMICK)
+			{
+				result = fscanf(fp, "%d,", &mapData);
+				GIMMIK_OBJ_SET(LoopCnt % MAP_WIDTH_MAX, LoopCnt / MAP_WIDTH_MAX, mapData);
+			}
+			//スタートゴール
+			else if (Layer == LAYER_MAP_SG)
+			{
+				result = fscanf(fp, "%d,", &mapData);
+				//スタート座標
+				if (mapData == START)
+				{
+					pass->StartPt = { LoopCnt % MAP_WIDTH_MAX,LoopCnt / MAP_WIDTH_MAX };
+				}
+				//ゴール座標
+				if (mapData == GOAL)
+				{
+					pass->GoalPt = { LoopCnt % MAP_WIDTH_MAX,LoopCnt / MAP_WIDTH_MAX };
+				}
+			}
+			//当たり判定
+			else if (Layer == LAYER_MAP_RECT)
+			{
+				result = fscanf(fp, "%d,", &mapData);
+				if (mapData == COLL_EXISTS)
+				{
+					pass->map[LoopCnt / MAP_WIDTH_MAX][LoopCnt % MAP_WIDTH_MAX].IsCollisionNo = FALSE; //〇は当たり判定がないからFALSE
+				}
+				//ゴール座標
+				if (mapData == COLL_NOEXSITS)
+				{
+					pass->map[LoopCnt / MAP_WIDTH_MAX][LoopCnt % MAP_WIDTH_MAX].IsCollisionNo = TRUE; //×は当たり判定があるからTRUE
 				}
 			}
 			LoopCnt++;
