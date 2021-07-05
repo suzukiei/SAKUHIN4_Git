@@ -36,7 +36,7 @@ CHARA charaChip;
 
 MAP_ROOM mapRoom[8]; //マップ
 
-MAP_PASS mappass;
+MAP_PASS mappass; //通路
 //---------------------------------------------------画像の読み込み↓----------------------------------------------------------
 
 
@@ -294,29 +294,29 @@ BOOL MY_LOAD_IMAGE(VOID)
 
 	//-----------------------------通路----------------------------------------------
 	//床
-	if (MY_LOAD_CSV_PASS(GAME_CSV_PATH_STAGEPASS_FLOOR, &mappass, LAYER_MAP_UNDER) == FALSE)
-	{
-		MessageBox(GetMainWindowHandle(), "えらー", "えらー", MB_OK);
-		return -1;
-	}
-	//壁
-	if (MY_LOAD_CSV_PASS(GAME_CSV_PATH_STAGEPASS_WALL, &mappass, LAYER_MAP_UNDER) == FALSE)
-	{
-		MessageBox(GetMainWindowHandle(), "えらー", "えらー", MB_OK);
-		return -1;
-	}
-	////当たり判定
-	if (MY_LOAD_CSV_PASS(GAME_CSV_PATH_STAGEPASS_RECT, &mappass, LAYER_MAP_RECT) == FALSE)
-	{
-		MessageBox(GetMainWindowHandle(), "えらー", "えらー", MB_OK);
-		return -1;
-	}
-	////スタートゴール
-	if (MY_LOAD_CSV_PASS(GAME_CSV_PATH_STAGEPASS_SG, &mappass, LAYER_MAP_SG) == FALSE)
-	{
-		MessageBox(GetMainWindowHandle(), "えらー", "えらー", MB_OK);
-		return -1;
-	}
+	//if (MY_LOAD_CSV_PASS(GAME_CSV_PATH_STAGEPASS_FLOOR, &mappass, LAYER_MAP_UNDER) == FALSE)
+	//{
+	//	MessageBox(GetMainWindowHandle(), "えらー", "えらー", MB_OK);
+	//	return -1;
+	//}
+	////壁
+	//if (MY_LOAD_CSV_PASS(GAME_CSV_PATH_STAGEPASS_WALL, &mappass, LAYER_MAP_UNDER) == FALSE)
+	//{
+	//	MessageBox(GetMainWindowHandle(), "えらー", "えらー", MB_OK);
+	//	return -1;
+	//}
+	//////当たり判定
+	//if (MY_LOAD_CSV_PASS(GAME_CSV_PATH_STAGEPASS_RECT, &mappass, LAYER_MAP_RECT) == FALSE)
+	//{
+	//	MessageBox(GetMainWindowHandle(), "えらー", "えらー", MB_OK);
+	//	return -1;
+	//}
+	//////スタートゴール
+	//if (MY_LOAD_CSV_PASS(GAME_CSV_PATH_STAGEPASS_SG, &mappass, LAYER_MAP_SG) == FALSE)
+	//{
+	//	MessageBox(GetMainWindowHandle(), "えらー", "えらー", MB_OK);
+	//	return -1;
+	//}
 
 
 	return TRUE;
@@ -580,7 +580,7 @@ VOID PLAY_DRAW(VOID)
 					TRUE
 				);
 			}
-			if(mapRoom[player.nowRoom].map[tate][yoko].kind[LAYER_MAP_UNDER] != -1)
+			if(mapRoom[player.nowRoom].map[tate][yoko].kind[LAYER_MAP_MIDDLE] != -1)
 			{ 
 			//血のレイヤー
 			DrawGraph
@@ -600,18 +600,6 @@ VOID PLAY_DRAW(VOID)
 					mapRoom[player.nowRoom].map[tate][yoko].x - (player.CenterX - (GAME_WIDTH / 2)),
 					mapRoom[player.nowRoom].map[tate][yoko].y - (player.CenterX - (GAME_HEIGHT / 2)),
 					mapChip.handle[mapRoom[player.nowRoom].map[tate][yoko].kind[LAYER_MAP_TOP]],
-					TRUE
-				);
-			}
-
-			if (mapRoom[player.nowRoom].map[tate][yoko].kind[LAYER_MAP_GIMMICK] != -1)
-			{
-				//ギミックのレイヤー？
-				DrawGraph
-				(
-					mapRoom[player.nowRoom].map[tate][yoko].x - (player.CenterX - (GAME_WIDTH / 2)),
-					mapRoom[player.nowRoom].map[tate][yoko].y - (player.CenterX - (GAME_HEIGHT / 2)),
-					mapChip.handle[mapRoom[player.nowRoom].map[tate][yoko].kind[LAYER_MAP_GIMMICK]],
 					TRUE
 				);
 			}
