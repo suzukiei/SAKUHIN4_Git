@@ -28,6 +28,13 @@
 
 #define GAME_MAP_ROOM_NUMBER     8
 
+//通路
+#define GAME_CSV_PATH_STAGEPASS_FLOOR 		TEXT(".\\IMAGE\\csv\\turo_床.csv")//通路床
+#define GAME_CSV_PATH_STAGEPASS_WALL 		TEXT(".\\IMAGE\\csv\\turo_壁.csv")//通路壁
+#define GAME_CSV_PATH_STAGEPASS_RECT 		TEXT(".\\IMAGE\\csv\\turo_当たり判定.csv")//通路当たり判定
+#define GAME_CSV_PATH_STAGEPASS_SG 		    TEXT(".\\IMAGE\\csv\\turo_SG.csv")//通路スタートゴール
+
+//ステージ1
 #define GAME_CSV_PATH_STAGE1_FLOOR 		TEXT(".\\IMAGE\\csv\\Stage1_床.csv")//STAGE1床
 #define GAME_CSV_PATH_STAGE1_WALL 		TEXT(".\\IMAGE\\csv\\Stage1_壁.csv")//STAGE1壁
 #define GAME_CSV_PATH_STAGE1_BLOOD 		TEXT(".\\IMAGE\\csv\\Stage1_血.csv")//STAGE1血
@@ -37,6 +44,7 @@
 #define GAME_CSV_PATH_STAGE1_SG 		TEXT(".\\IMAGE\\csv\\Stage1_SG.csv")//STAGE1スタートゴール
 #define GAME_CSV_PATH_STAGE1_GIMMICK    TEXT(".\\IMAGE\\csv\\Stage1_ギミック.csv")//STAGE1ギミック
 
+//ステージ2
 #define GAME_CSV_PATH_STAGE2_FLOOR 		TEXT(".\\IMAGE\\csv\\Stage2_床.csv")//STAGE2床
 #define GAME_CSV_PATH_STAGE2_WALL 		TEXT(".\\IMAGE\\csv\\Stage2_壁.csv")//STAGE2壁
 #define GAME_CSV_PATH_STAGE2_BLOOD 		TEXT(".\\IMAGE\\csv\\Stage2_血.csv")//STAGE2血
@@ -137,7 +145,8 @@ VOID MY_DELETE_IMAGE(VOID);
 
 
 //CSVのマップを読み込み
-BOOL MY_LOAD_CSV_MAP(const char *, MAP_ROOM*,int Layer);
+BOOL MY_LOAD_CSV_MAP(const char*, MAP_ROOM*, int Layer);
+BOOL MY_LOAD_CSV_PASS(const char *, MAP_PASS*,int Layer);
 
 VOID START_DRAW(VOID);	//スタート画面の描画
 VOID RULE_DRAW(VOID);	//ルール画面の描画
