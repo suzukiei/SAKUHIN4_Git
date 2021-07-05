@@ -155,12 +155,14 @@ VOID MY_INIT(VOID)
 			{
 				for (int x = 0; x < MAP_WIDTH_MAX; x++)
 				{
-					mapRoom[room].map[layer][y][x].kind = (GAME_MAP_KIND)-1;
-					mapRoom[room].map[layer][y][x].x = -1;
-					mapRoom[room].map[layer][y][x].y = -1;
-					mapRoom[room].map[layer][y][x].width = -1;
-					mapRoom[room].map[layer][y][x].height = -1;
-					mapRoom[room].map[layer][y][x].IsCollisionNo = FALSE;
+					mapRoom[room].map[y][x].kind[LAYER_MAP_UNDER] = (GAME_MAP_KIND)-1;
+					mapRoom[room].map[y][x].kind[LAYER_MAP_MIDDLE] = (GAME_MAP_KIND)-1;
+					mapRoom[room].map[y][x].kind[LAYER_MAP_TOP] = (GAME_MAP_KIND)-1;
+					mapRoom[room].map[y][x].x = -1;
+					mapRoom[room].map[y][x].y = -1;
+					mapRoom[room].map[y][x].width = -1;
+					mapRoom[room].map[y][x].height = -1;
+					mapRoom[room].map[y][x].IsCollisionNo = FALSE;
 				}
 			}
 		}
