@@ -23,8 +23,10 @@ VOID TEXTEVENT(VOID)
 		switch (textNumber) {
 		case TEXT_OP:
 			SetFontSize(30);
-			DrawString(TEXT_POSITION_X,TEXT_POSITION_Y,"ここは一体…",TEXTCOLOR); //セリフ
-			//DrawGraph(); //テキストボックスの画像
+			ChangeFontType(DX_FONTTYPE_ANTIALIASING_8X8);
+
+			//DrawGraph(IMAGE_TEXTBOX_WIDTH_PATH,IMAGE_TEXTBOX_HEIGHT_PATH,画像ハンドル,TRUE); //テキストボックスの画像
+			DrawString(TEXT_POSITION_X, TEXT_POSITION_Y, "ここは一体…", TEXTCOLOR); //セリフ
 			//DrawGraph();//キャラの表情差分
 			//まだまだ追加予定
 			if (MY_KEY_DOWN(KEY_INPUT_RETURN) == TRUE) 

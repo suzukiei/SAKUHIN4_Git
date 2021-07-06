@@ -1,6 +1,17 @@
 #define _CRT_SECURE_NO_WARNINGS
-#include "Dxlib.h"
+#include "DxLib.h"
+#include "BGM.h"
+#include "class.h"
+#include "define.h"
+#include "enum.h"
+#include "flag.h"
+#include "GameProcHeader.h"
+#include "image.h"
 #include "menu.h"
+#include "movement.h"
+#include "textevent.h"
+#include "title.h"
+#include "variable.h"
 
 
 FILE* fp = NULL; //ファイルポインタ
@@ -11,7 +22,7 @@ VOID SAVING(int)
     if (fp == NULL) {
             return;
     }
-    //fprintf(fp, "1","player.X.100","player.Y.100"); //ここでマップの番号とプレイヤーの座標を書き込む。
+    //fprintf(fp, mapRoom,"player.X.100","player.Y.100"); //ここでマップの番号とプレイヤーの座標を書き込む。
     fclose(fp);
 
     return;
