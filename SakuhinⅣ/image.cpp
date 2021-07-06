@@ -381,23 +381,29 @@ BOOL MY_LOAD_CSV_MAP(const char* path,MAP_ROOM* room,int Layer)
 		while (result != EOF)    //End Of File（ファイルの最後）ではないとき繰り返す
 		{
 			GAME_MAP_KIND mapData;
+			GAME_MAP_KIND indate;
 			
 			if (Layer == LAYER_MAP_UNDER || Layer == LAYER_MAP_MIDDLE || Layer == LAYER_MAP_TOP)
 			{
 				mapData = room->map[LoopCnt / MAP_WIDTH_MAX][LoopCnt % MAP_WIDTH_MAX].kind[Layer];
 
 				//ファイルから数値を一つ読み込み(%d,)、配列に格納する
-				result = fscanf(fp, "%d,", &room->map[LoopCnt / MAP_WIDTH_MAX][LoopCnt % MAP_WIDTH_MAX].kind[Layer]);
+				result = fscanf(fp, "%d,", &indate);
 
-				room->map[LoopCnt / MAP_WIDTH_MAX][LoopCnt % MAP_WIDTH_MAX].width = mapChip.width;
-				room->map[LoopCnt / MAP_WIDTH_MAX][LoopCnt % MAP_WIDTH_MAX].height = mapChip.height;
-
-				room->map[LoopCnt / MAP_WIDTH_MAX][LoopCnt % MAP_WIDTH_MAX].x = LoopCnt % MAP_WIDTH_MAX * mapChip.width;
-				room->map[LoopCnt / MAP_WIDTH_MAX][LoopCnt % MAP_WIDTH_MAX].y = LoopCnt / MAP_WIDTH_MAX * mapChip.height;
-
-				if (room->map[LoopCnt / MAP_WIDTH_MAX][LoopCnt % MAP_WIDTH_MAX].kind[Layer] == -1)
+				if (result != EOF )
 				{
-					room->map[LoopCnt / MAP_WIDTH_MAX][LoopCnt % MAP_WIDTH_MAX].kind[Layer] = mapData;
+					room->map[LoopCnt / MAP_WIDTH_MAX][LoopCnt % MAP_WIDTH_MAX].kind[Layer] = indate;
+
+					room->map[LoopCnt / MAP_WIDTH_MAX][LoopCnt % MAP_WIDTH_MAX].width = mapChip.width;
+					room->map[LoopCnt / MAP_WIDTH_MAX][LoopCnt % MAP_WIDTH_MAX].height = mapChip.height;
+
+					room->map[LoopCnt / MAP_WIDTH_MAX][LoopCnt % MAP_WIDTH_MAX].x = LoopCnt % MAP_WIDTH_MAX * mapChip.width;
+					room->map[LoopCnt / MAP_WIDTH_MAX][LoopCnt % MAP_WIDTH_MAX].y = LoopCnt / MAP_WIDTH_MAX * mapChip.height;
+
+					if (room->map[LoopCnt / MAP_WIDTH_MAX][LoopCnt % MAP_WIDTH_MAX].kind[Layer] == -1)
+					{
+						room->map[LoopCnt / MAP_WIDTH_MAX][LoopCnt % MAP_WIDTH_MAX].kind[Layer] = mapData;
+					}
 				}
 			}
 			
@@ -405,36 +411,46 @@ BOOL MY_LOAD_CSV_MAP(const char* path,MAP_ROOM* room,int Layer)
 			else if (Layer == LAYER_MAP_GIMMICK)
 			{
 				result = fscanf(fp, "%d,", &mapData);
+				if (result != EOF)
 				GIMMIK_OBJ_SET(LoopCnt % MAP_WIDTH_MAX, LoopCnt / MAP_WIDTH_MAX, mapData);
 			}
 			//スタートゴール
 			else if (Layer == LAYER_MAP_SG)
 			{
 				result = fscanf(fp, "%d,", &mapData);
-				//スタート座標
-				if (mapData == START)
+				if (result != EOF)
 				{
-					room->StartPt = { LoopCnt % MAP_WIDTH_MAX,LoopCnt / MAP_WIDTH_MAX };
+					//スタート座標
+					if (mapData == START)
+					{
+						room->StartPt = { LoopCnt % MAP_WIDTH_MAX,LoopCnt / MAP_WIDTH_MAX };
+					}
+					//ゴール座標
+					if (mapData == GOAL)
+					{
+						room->GoalPt = { LoopCnt % MAP_WIDTH_MAX,LoopCnt / MAP_WIDTH_MAX };
+					}
 				}
-				//ゴール座標
-				if (mapData == GOAL)
-				{
-					room->GoalPt = { LoopCnt % MAP_WIDTH_MAX,LoopCnt / MAP_WIDTH_MAX };
-				}
+
 			}
 			//当たり判定
 			else if (Layer == LAYER_MAP_RECT)
 			{
 				result = fscanf(fp, "%d,", &mapData);
-				if (mapData == COLL_EXISTS)
+				if (result != EOF)
 				{
-					room->map[LoopCnt / MAP_WIDTH_MAX][LoopCnt % MAP_WIDTH_MAX].IsCollisionNo = FALSE; //〇は当たり判定がないからFALSE
+					//スタート座標
+					if (mapData == COLL_EXISTS)
+					{
+						room->map[LoopCnt / MAP_WIDTH_MAX][LoopCnt % MAP_WIDTH_MAX].IsCollisionNo = FALSE; //〇は当たり判定がないからFALSE
+					}
+					//ゴール座標
+					if (mapData == COLL_NOEXSITS)
+					{
+						room->map[LoopCnt / MAP_WIDTH_MAX][LoopCnt % MAP_WIDTH_MAX].IsCollisionNo = TRUE; //×は当たり判定があるからTRUE
+					}
 				}
-				//ゴール座標
-				if (mapData == COLL_NOEXSITS)
-				{
-					room->map[LoopCnt / MAP_WIDTH_MAX][LoopCnt % MAP_WIDTH_MAX].IsCollisionNo = TRUE; //×は当たり判定があるからTRUE
-				}
+
 			}
 			LoopCnt++;
 		}
@@ -575,7 +591,7 @@ VOID PLAY_DRAW(VOID)
 				DrawGraph
 				(
 					mapRoom[player.nowRoom].map[tate][yoko].x - (player.CenterX - (GAME_WIDTH / 2)),
-					mapRoom[player.nowRoom].map[tate][yoko].y - (player.CenterX - (GAME_HEIGHT / 2)),
+					mapRoom[player.nowRoom].map[tate][yoko].y - (player.CenterY - (GAME_HEIGHT / 2)),
 					mapChip.handle[mapRoom[player.nowRoom].map[tate][yoko].kind[LAYER_MAP_UNDER]],
 					TRUE
 				);
@@ -586,7 +602,7 @@ VOID PLAY_DRAW(VOID)
 			DrawGraph
 			(
 				mapRoom[player.nowRoom].map[tate][yoko].x - (player.CenterX - (GAME_WIDTH / 2)),
-				mapRoom[player.nowRoom].map[tate][yoko].y - (player.CenterX - (GAME_HEIGHT / 2)),
+				mapRoom[player.nowRoom].map[tate][yoko].y - (player.CenterY - (GAME_HEIGHT / 2)),
 				mapChip.handle[mapRoom[player.nowRoom].map[tate][yoko].kind[LAYER_MAP_MIDDLE]],
 				TRUE
 			);
@@ -598,7 +614,7 @@ VOID PLAY_DRAW(VOID)
 				DrawGraph
 				(
 					mapRoom[player.nowRoom].map[tate][yoko].x - (player.CenterX - (GAME_WIDTH / 2)),
-					mapRoom[player.nowRoom].map[tate][yoko].y - (player.CenterX - (GAME_HEIGHT / 2)),
+					mapRoom[player.nowRoom].map[tate][yoko].y - (player.CenterY - (GAME_HEIGHT / 2)),
 					mapChip.handle[mapRoom[player.nowRoom].map[tate][yoko].kind[LAYER_MAP_TOP]],
 					TRUE
 				);
@@ -608,9 +624,10 @@ VOID PLAY_DRAW(VOID)
 	}
 
 	//プレイヤー表示
-	DrawGraph(
-		player.CenterX /*- (GAME_WIDTH / 2) - mapChip.width*/,
-		player.CenterY /*- (GAME_HEIGHT / 2) - mapChip.height*/,
+	DrawGraph
+	(
+		(GAME_WIDTH / 2) - mapChip.width/2,
+		(GAME_HEIGHT / 2) - mapChip.height/2,
 		player.handle[player.kind1],
 		TRUE
 	);
