@@ -35,22 +35,41 @@
 //画像パス
 #define IMAGE_TITLE_BK_PATH				TEXT(".\\IMAGE\\title_back.png")
 #define IMAGE_TITLE_ROGO_PATH				TEXT(".\\IMAGE\\Titlelogo.png")
+
 //logo場所指定
 #define IMAGE_TITLE_ROGO_WIDTH_POSITION		270
 #define IMAGE_TITLE_ROGO_HEIGHT_POSITION	270
 
 #define IMAGE_TITLE_BUTTON_PLAY_PATH		TEXT(".\\IMAGE\\button_play.png")
+#define IMAGE_TITLE_BUTTON_PLAY_WIDTH		100		//プレイ画面遷移ボタン
+#define IMAGE_TITLE_BUTTON_PLAY_HEIGHT		400 
+
 //ルールに飛ぶボタン画像
-#define IMAGE_TITLE_BUTTON_RULE_PATH		TEXT(".\\IMAGE\\button_lule.png")
+#define IMAGE_TITLE_BUTTON_RULE_PATH			TEXT(".\\IMAGE\\button_lule.png")
+#define IMAGE_TITLE_BUTTON_LULE_TITLE_WIDTH		370		 //ルール画面遷移ボタン
+#define IMAGE_TITLE_BUTTON_LULE_TITLE_HEIGHT	400 
+
 //終了するためのボタン画像
 #define IMAGE_TITLE_BUTTON_END_PATH			TEXT(".\\IMAGE\\button_end.png")
+#define IMAGE_TITLE_BUTTON_END_WIDTH		640		 //終了ボタン
+#define IMAGE_TITLE_BUTTON_END_HEIGHT		400 
+
 // 選択中のボタンに画像をのっける
 #define IMAGE_TITLE_BUTTON_NOW_PATH			TEXT(".\\IMAGE\\button_now.png")
-#define IMAGE_TITLE_BUTTON_SPAN		30
+//playボタン位置
+#define IMAGE_TITLE_BUTTON_NOW_PLAY_WIDTH	100
+#define IMAGE_TITLE_BUTTON_NOW_PLAY_HEIGHT	400
+//luleボタン位置
+#define IMAGE_TITLE_BUTTON_NOW_LULE_WIDTH	370
+#define IMAGE_TITLE_BUTTON_NOW_LULE_HEIGHT	400
+//endボタン位置
+#define IMAGE_TITLE_BUTTON_NOW_END_WIDTH	640
+#define IMAGE_TITLE_BUTTON_NOW_END_HEIGHT	400
+
+#define IMAGE_TITLE_BUTTON_NOW_SPAN		30
 
 //ルール画像
 #define IMAGE_RULE_PATH	TEXT(".\\IMAGE\\lule.png")
-
 
 //成功	
 #define IMAGE_END_COMP_PATH	TEXT(".\\IMAGE\\COMP_kari.png")
@@ -69,57 +88,66 @@
 
 //#define IMAGE_BACK_PATH_END	TEXT(".\\IMAGE\\.png")
 
-//メニュー時の画像パス
-#define IMAGE_MENU_BUTTON_PATH			TEXT(".\\IMAGE\\.button1.png")
+//セーブボタン
+#define IMAGE_MENU_BUTTON_SAVE_PATH			TEXT(".\\IMAGE\\.button1.png")
+#define IMAGE_MENU_BUTTON_SAVE_HEIGHT		370
+#define IMAGE_MENU_BUTTON_SAVE_WIDTH		200
+
+//ゲーム終了ボタン
 #define IMAGE_MENU_BUTTON_END_PATH		TEXT(".\\IMAGE\\.button2.png")
+#define IMAGE_MENU_BUTTON_END_HEIGHT	370
+#define IMAGE_MENU_BUTTON_END_WIDTH		300
+
+//メニュー画面背景
 #define IMAGE_MENU_PATH				TEXT(".\\IMAGE\\menu.png")
+#define IMAGE_MENU_HEIGHT				280
+#define IMAGE_MENU_WIDTH				180
 
-//MENU画面ボタン
-#define MENU_WIDTH_POSITION 280 //メニュー背景
-#define MENU_HEIGHT_POSITION 180 //メニュー背景
-#define MENU_BUTTON_TITLE_WIDTH_POSITION 380 //タイトルへ戻るボタンの位置
-#define MENU_BUTTON_TITLE_HEIGHT_POSITION 280 //タイトルへ戻るボタンの位置
-#define MENU_BUTTON_SAVE_WIDTH_POSITION 380 //セーブボタンの位置
-#define MENU_BUTTON_SAVE_HEIGHT_POSITION 380 //セーブボタンの位置
-#define MENU_BUTTON_SELECT_TITLE_WIDTH_POSITION 370 //タイトル選択時の位置
-#define MENU_BUTTON_SELECT_TITLE_HEIGHT_POSITION 270 //タイトル選択時の位置
-#define MENU_BUTTON_SELECT_SAVE_WIDTH_POSITION 370 //セーブ選択時の位置
-#define MENU_BUTTON_SELECT_SAVE_HEIGHT_POSITION 370 //セーブ選択時の位置
+#define IMAGE_MENU_BUTTON_NOW_PATH				TEXT(".\\IMAGE\\button_now2.png")
+#define IMAGE_MENU_BUTTON_SELECT_TITLE_WIDTH	370 //タイトル選択時の位置
+#define IMAGE_MENU_BUTTON_SELECT_TITLE_HEIGHT	200 //タイトル選択時の位置
 
-//TITLE画面ボタン
-#define TITLE_BUTTON_PLAY_WIDTH_POSITION			100		//プレイ画面遷移ボタン
-#define TITLE_BUTTON_PLAY_HEIGHT_POSITION			400 
-#define TITLE_BUTTON_LULE_TITLE_WIDTH_POSITION		370		 //ルール画面遷移ボタン
-#define TITLE_BUTTON_LULE_TITLE_HEIGHT_POSITION		400 
-#define TITLE_BUTTON_END_WIDTH_POSITION				640		 //終了ボタン
-#define TITLE_BUTTON_END_HEIGHT_POSITION			400 
+//上のbutton_now2を使ってください
+#define IMAGE_MENU_BUTTON_SELECT_SAVE_WIDTH		370 //セーブ選択時の位置
+#define IMAGE_MENU_BUTTON_SELECT_SAVE_HEIGHT	300 //セーブ選択時の位置
 
 //時計画像パス
 #define IMAGE_CLOCK_PATH				TEXT(".\\IMAGE\\.clock.png")
-#define IMAGE_CLOCK_WIDTH_PATH			400
-#define IMAGE_CLOCK_HEIGHT_PATH		800
+#define IMAGE_CLOCK_WIDTH_PATH			800
+#define IMAGE_CLOCK_HEIGHT_PATH		100
 
-//TextBox
-#define IMAGE_TEXTBOX_PATH				TEXT(".\\IMAGE\\.button2.png")
+//TextBoxパス
+#define IMAGE_TEXTBOX_PATH				TEXT(".\\IMAGE\\.TextBox.png")
 #define IMAGE_TEXTBOX_WIDTH_PATH		0
 #define IMAGE_TEXTBOX_HEIGHT_PATH		800
 
-//player
+//playerキャラチップ
 #define IMAGE_PLAYER_PATH		TEXT(".\\IMAGE\\chara.png")
 
-//playerのキャラ表情画像
-#define IMAGE_PLAYER_FACE1_PATH			TEXT(".\\IMAGE\\chara_face1.png")
-#define IMAGE_PLAYER_FACE1_WIDTH_PATH		0
-#define IMAGE_PLAYER_FACE1_HEIGHT_PATH		700
+//player真顔
+#define IMAGE_PLAYER_NOMAL_PATH			TEXT(".\\IMAGE\\playerface_nomal.png")
+#define IMAGE_PLAYER_NOMAL_WIDTH_PATH		50
+#define IMAGE_PLAYER_NOMAL_HEIGHT_PATH		700
 
-#define IMAGE_PLAYER_FACE2_PATH			TEXT(".\\IMAGE\\chara_face2.png")
-#define IMAGE_PLAYER_FACE1_WIDTH_PATH		0
-#define IMAGE_PLAYER_FACE1_HEIGHT_PATH		700
+//player笑顔
+#define IMAGE_PLAYER_SMILE_PATH			TEXT(".\\IMAGE\\playerface_smile.png")
+#define IMAGE_PLAYER_SMILE_WIDTH_PATH		50
+#define IMAGE_PLAYER_SMILE_HEIGHT_PATH		700
 
-#define IMAGE_PLAYER_FACE3_PATH			TEXT(".\\IMAGE\\chara_face3.png")
-#define IMAGE_PLAYER_FACE1_WIDTH_PATH		0
-#define IMAGE_PLAYER_FACE1_HEIGHT_PATH		700
+//player恐怖
+#define IMAGE_PLAYER_FEAR_PATH			TEXT(".\\IMAGE\\playerface_fear.png")
+#define IMAGE_PLAYER_FEAR_WIDTH_PATH		50
+#define IMAGE_PLAYER_FEAR_HEIGHT_PATH		700
 
+//player困り顔
+#define IMAGE_PLAYER_TROUBLE_PATH			TEXT(".\\IMAGE\\playerface_trouble.png")
+#define IMAGE_PLAYER_TROUBLE_WIDTH_PATH		50
+#define IMAGE_PLAYER_TROUBLE_HEIGHT_PATH	700
+
+//player立ち絵画像
+#define IMAGE_PLAYER_ORIGINAL_PATH			TEXT(".\\IMAGE\\player_original.png");
+//#define IMAGE_PLAYER_ORIGINAL_WIDTH
+//#define IMAGE_PLAYER_ORIGINAL_HEIGHT
 
 //enemy
 #define IMAGE_ENEMY_PATH		TEXT(".\\IMAGE\\enemy.png")
