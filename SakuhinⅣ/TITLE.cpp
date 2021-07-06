@@ -13,10 +13,6 @@ int TITLE_SELECT_NO = 0;
 VOID TITLE(VOID)
 {
 
-	//
-	//各UI画像をここに表記
-	//
-
 
 	while (true)
 	{
@@ -35,14 +31,14 @@ VOID TITLE(VOID)
 				GameScene = GAME_SCENE_PLAY;
 			}
 
-			if (MY_KEY_DOWN(KEY_INPUT_DOWN) == TRUE)
+			if (MY_KEY_DOWN(KEY_INPUT_RIGHT) == TRUE)
 			{
 
 				TITLE_SELECT_NO = TITLE_RULE;
 
 			}
 
-			if (MY_KEY_DOWN(KEY_INPUT_UP) == TRUE)
+			if (MY_KEY_DOWN(KEY_INPUT_LEFT) == TRUE)
 			{
 
 				TITLE_SELECT_NO = TITLE_QUIT;
@@ -61,14 +57,14 @@ VOID TITLE(VOID)
 				break;
 			}
 
-			if (MY_KEY_DOWN(KEY_INPUT_DOWN) == TRUE)
+			if (MY_KEY_DOWN(KEY_INPUT_RIGHT) == TRUE)
 			{
 
-				TITLE_SELECT_NO = TITLE_CONTINUE;
+				TITLE_SELECT_NO = TITLE_QUIT;
 
 			}
 
-			if (MY_KEY_DOWN(KEY_INPUT_UP) == TRUE)
+			if (MY_KEY_DOWN(KEY_INPUT_LEFT) == TRUE)
 			{
 
 				TITLE_SELECT_NO = TITLE_START;
@@ -76,35 +72,7 @@ VOID TITLE(VOID)
 
 			break;
 
-		case TITLE_CONTINUE:
-			//ここに選択時の囲いを表示
-
-
-
-
-
-
-
-			if (MY_KEY_DOWN(KEY_INPUT_RETURN) == TRUE)
-			{
-				//セーブしたところから
-				break;
-			}
-
-			if (MY_KEY_DOWN(KEY_INPUT_DOWN) == TRUE)
-			{
-
-				TITLE_SELECT_NO = TITLE_QUIT;
-
-			}
-
-			if (MY_KEY_DOWN(KEY_INPUT_UP) == TRUE)
-			{
-
-				TITLE_SELECT_NO = TITLE_RULE;
-			}
-
-			break;
+		
 
 		case TITLE_QUIT:
 
@@ -115,17 +83,17 @@ VOID TITLE(VOID)
 				break;
 			}
 
-			if (MY_KEY_DOWN(KEY_INPUT_DOWN) == TRUE)
+			if (MY_KEY_DOWN(KEY_INPUT_RIGHT) == TRUE)
 			{
 
 				TITLE_SELECT_NO = TITLE_START;
 
 			}
 
-			if (MY_KEY_DOWN(KEY_INPUT_UP) == TRUE)
+			if (MY_KEY_DOWN(KEY_INPUT_LEFT) == TRUE)
 			{
 
-				TITLE_SELECT_NO = TITLE_CONTINUE;
+				TITLE_SELECT_NO = TITLE_RULE;
 			}
 
 			break;
