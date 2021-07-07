@@ -62,7 +62,12 @@ VOID MY_FPS_WAIT(VOID)
 
 VOID START_PROC(VOID)
 {
-	//デバッグ用
+	TITLE();
+	if (GameScene == GAME_SCENE_PLAY)
+	{
+		PLAY_PLAYER_INIT();
+	}
+	/*デバッグ用
 	if (MY_KEY_UP(KEY_INPUT_SPACE))
 	{
 		GameScene = GAME_SCENE_RULE;
@@ -72,7 +77,7 @@ VOID START_PROC(VOID)
 		GameScene = GAME_SCENE_PLAY;
 
 		PLAY_PLAYER_INIT();
-	}
+	}*/
 
 	return;
 }
