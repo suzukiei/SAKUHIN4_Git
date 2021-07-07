@@ -168,5 +168,8 @@ VOID PLAY_PLAYER_INIT(VOID)
 	player.coll.top = mapRoom[player.nowRoom].StartPt.y * mapChip.height;
 	player.coll.bottom = mapRoom[player.nowRoom].StartPt.y * mapChip.height + mapChip.height;
 
+	player.image.x = mapRoom[player.nowRoom].StartPt.x * mapChip.width;
+	player.image.y = mapRoom[player.nowRoom].StartPt.y * mapChip.height;
+
 	return;
 }
