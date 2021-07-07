@@ -491,23 +491,29 @@ BOOL MY_LOAD_CSV_PASS(const char* path, MAP_PASS* pass, int Layer)
 		while (result != EOF)    //End Of File（ファイルの最後）ではないとき繰り返す
 		{
 			GAME_MAP_KIND mapData;
+			GAME_MAP_KIND indate;
 
 			if (Layer == LAYER_MAP_UNDER || Layer == LAYER_MAP_MIDDLE || Layer == LAYER_MAP_TOP)
 			{
 				mapData = pass->map[LoopCnt / MAP_WIDTH_MAX][LoopCnt % MAP_WIDTH_MAX].kind[Layer];
 
 				//ファイルから数値を一つ読み込み(%d,)、配列に格納する
-				result = fscanf(fp, "%d,", &pass->map[LoopCnt / MAP_WIDTH_MAX][LoopCnt % MAP_WIDTH_MAX].kind[Layer]);
+				result = fscanf(fp, "%d,", &indate);
 
-				pass->map[LoopCnt / MAP_WIDTH_MAX][LoopCnt % MAP_WIDTH_MAX].width = mapChip.width;
-				pass->map[LoopCnt / MAP_WIDTH_MAX][LoopCnt % MAP_WIDTH_MAX].height = mapChip.height;
-
-				pass->map[LoopCnt / MAP_WIDTH_MAX][LoopCnt % MAP_WIDTH_MAX].x = LoopCnt % MAP_WIDTH_MAX * mapChip.width;
-				pass->map[LoopCnt / MAP_WIDTH_MAX][LoopCnt % MAP_WIDTH_MAX].y = LoopCnt / MAP_WIDTH_MAX * mapChip.height;
-
-				if (pass->map[LoopCnt / MAP_WIDTH_MAX][LoopCnt % MAP_WIDTH_MAX].kind[Layer] == -1)
+				if (result != EOF)
 				{
-					pass->map[LoopCnt / MAP_WIDTH_MAX][LoopCnt % MAP_WIDTH_MAX].kind[Layer] = mapData;
+					pass->map[LoopCnt / MAP_WIDTH_MAX][LoopCnt % MAP_WIDTH_MAX].kind[Layer] = indate;
+
+					pass->map[LoopCnt / MAP_WIDTH_MAX][LoopCnt % MAP_WIDTH_MAX].width = mapChip.width;
+					pass->map[LoopCnt / MAP_WIDTH_MAX][LoopCnt % MAP_WIDTH_MAX].height = mapChip.height;
+
+					pass->map[LoopCnt / MAP_WIDTH_MAX][LoopCnt % MAP_WIDTH_MAX].x = LoopCnt % MAP_WIDTH_MAX * mapChip.width;
+					pass->map[LoopCnt / MAP_WIDTH_MAX][LoopCnt % MAP_WIDTH_MAX].y = LoopCnt / MAP_WIDTH_MAX * mapChip.height;
+
+					if (pass->map[LoopCnt / MAP_WIDTH_MAX][LoopCnt % MAP_WIDTH_MAX].kind[Layer] == -1)
+					{
+						pass->map[LoopCnt / MAP_WIDTH_MAX][LoopCnt % MAP_WIDTH_MAX].kind[Layer] = mapData;
+					}
 				}
 			}
 
@@ -515,35 +521,44 @@ BOOL MY_LOAD_CSV_PASS(const char* path, MAP_PASS* pass, int Layer)
 			else if (Layer == LAYER_MAP_GIMMICK)
 			{
 				result = fscanf(fp, "%d,", &mapData);
-				GIMMIK_OBJ_SET(LoopCnt % MAP_WIDTH_MAX, LoopCnt / MAP_WIDTH_MAX, mapData);
+				if (result != EOF)
+				{
+					GIMMIK_OBJ_SET(LoopCnt % MAP_WIDTH_MAX, LoopCnt / MAP_WIDTH_MAX, mapData);
+				}
 			}
 			//スタートゴール
 			else if (Layer == LAYER_MAP_SG)
 			{
 				result = fscanf(fp, "%d,", &mapData);
-				//スタート座標
-				if (mapData == START)
+				if (result != EOF)
 				{
-					pass->StartPt = { LoopCnt % MAP_WIDTH_MAX,LoopCnt / MAP_WIDTH_MAX };
-				}
-				//ゴール座標
-				if (mapData == GOAL)
-				{
-					pass->GoalPt = { LoopCnt % MAP_WIDTH_MAX,LoopCnt / MAP_WIDTH_MAX };
+					//スタート座標
+					if (mapData == START)
+					{
+						pass->StartPt = { LoopCnt % MAP_WIDTH_MAX,LoopCnt / MAP_WIDTH_MAX };
+					}
+					//ゴール座標
+					if (mapData == GOAL)
+					{
+						pass->GoalPt = { LoopCnt % MAP_WIDTH_MAX,LoopCnt / MAP_WIDTH_MAX };
+					}
 				}
 			}
 			//当たり判定
 			else if (Layer == LAYER_MAP_RECT)
 			{
 				result = fscanf(fp, "%d,", &mapData);
-				if (mapData == COLL_EXISTS)
+				if (result != EOF)
 				{
-					pass->map[LoopCnt / MAP_WIDTH_MAX][LoopCnt % MAP_WIDTH_MAX].IsCollisionNo = FALSE; //〇は当たり判定がないからFALSE
-				}
-				//ゴール座標
-				if (mapData == COLL_NOEXSITS)
-				{
-					pass->map[LoopCnt / MAP_WIDTH_MAX][LoopCnt % MAP_WIDTH_MAX].IsCollisionNo = TRUE; //×は当たり判定があるからTRUE
+					if (mapData == COLL_EXISTS)
+					{
+						pass->map[LoopCnt / MAP_WIDTH_MAX][LoopCnt % MAP_WIDTH_MAX].IsCollisionNo = FALSE; //〇は当たり判定がないからFALSE
+					}
+					//ゴール座標
+					if (mapData == COLL_NOEXSITS)
+					{
+						pass->map[LoopCnt / MAP_WIDTH_MAX][LoopCnt % MAP_WIDTH_MAX].IsCollisionNo = TRUE; //×は当たり判定があるからTRUE
+					}
 				}
 			}
 			LoopCnt++;
