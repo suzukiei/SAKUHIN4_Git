@@ -44,7 +44,7 @@ BOOL MOVEMENT(CHARA* chara,int move)
 			if (work.kind1 >= CHARACHIP_UP_1 && work.kind1 < CHARACHIP_UP_3)
 			{
 				//画像変更カウンタ
-				if (work.imgChangeCnt < work.imgChangeCntMAX)
+				if (work.imgChangeCnt < PLAYER_IMG_CHANGE_MAX)
 				{
 					work.imgChangeCnt++;
 				}
@@ -60,7 +60,6 @@ BOOL MOVEMENT(CHARA* chara,int move)
 			}
 
 		
-			return TRUE; //移動できているのでTRUEを返す
 			break;
 
 
@@ -78,7 +77,7 @@ BOOL MOVEMENT(CHARA* chara,int move)
 			if (work.kind1 >= CHARACHIP_DOWN_1 && work.kind1 < CHARACHIP_DOWN_3)
 			{
 				//画像変更カウンタ
-				if (work.imgChangeCnt < work.imgChangeCntMAX)
+				if (work.imgChangeCnt < PLAYER_IMG_CHANGE_MAX)
 				{
 					work.imgChangeCnt++;
 				}
@@ -93,7 +92,7 @@ BOOL MOVEMENT(CHARA* chara,int move)
 				work.kind1 = CHARACHIP_DOWN_1;	//最初の画像にする
 			}
 			
-			return TRUE; //移動できているのでTRUEを返す
+			
 		//}
 
 		
@@ -111,7 +110,7 @@ BOOL MOVEMENT(CHARA* chara,int move)
 			if (work.kind1 >= CHARACHIP_RIGHT_1 && work.kind1 < CHARACHIP_RIGHT_3)
 			{
 				//画像変更カウンタ
-				if (work.imgChangeCnt < work.imgChangeCntMAX)
+				if (work.imgChangeCnt < PLAYER_IMG_CHANGE_MAX)
 				{
 					work.imgChangeCnt++;
 				}
@@ -126,7 +125,7 @@ BOOL MOVEMENT(CHARA* chara,int move)
 				work.kind1 = CHARACHIP_RIGHT_1;	//最初の画像にする
 			}
 			
-			return TRUE; //移動できているのでTRUEを返す
+			
 		//}
 
 		
@@ -144,7 +143,7 @@ BOOL MOVEMENT(CHARA* chara,int move)
 			if (work.kind1 >= CHARACHIP_LEFT_1 && work.kind1 < CHARACHIP_LEFT_3)
 			{
 				//画像変更カウンタ
-				if (work.imgChangeCnt < work.imgChangeCntMAX)
+				if (work.imgChangeCnt < PLAYER_IMG_CHANGE_MAX)
 				{
 					work.imgChangeCnt++;
 				}
@@ -159,7 +158,6 @@ BOOL MOVEMENT(CHARA* chara,int move)
 				work.kind1 = CHARACHIP_LEFT_1;	//最初の画像にする
 			}
 			
-			return TRUE; //移動できているのでTRUEを返す
 		//}
 		
 
@@ -169,7 +167,8 @@ BOOL MOVEMENT(CHARA* chara,int move)
 	//衝突がなければ、workから大本のキャラの情報に入れる。
 	if (work.InRoom) {
 		if (CHARA_COLLISION(work.coll, (MAP**)mapRoom[work.nowRoom].map) == FALSE) {
-			chara = &work;
+			*chara = work;
+			return TRUE;//移動できているのでTRUEを返す。
 		}
 	}
 		
