@@ -609,8 +609,8 @@ VOID PLAY_DRAW(VOID)
 				//床のレイヤー
 				DrawGraph
 				(
-					mapRoom[player.nowRoom].map[tate][yoko].x - (player.CenterX - (GAME_WIDTH / 2)),
-					mapRoom[player.nowRoom].map[tate][yoko].y - (player.CenterY - (GAME_HEIGHT / 2)),
+					mapRoom[player.nowRoom].map[tate][yoko].x - (player.image.x - (GAME_WIDTH / 2)),
+					mapRoom[player.nowRoom].map[tate][yoko].y - (player.image.y- (GAME_HEIGHT / 2)),
 					mapChip.handle[mapRoom[player.nowRoom].map[tate][yoko].kind[LAYER_MAP_UNDER]],
 					TRUE
 				);
@@ -620,8 +620,8 @@ VOID PLAY_DRAW(VOID)
 			//血のレイヤー
 			DrawGraph
 			(
-				mapRoom[player.nowRoom].map[tate][yoko].x - (player.CenterX - (GAME_WIDTH / 2)),
-				mapRoom[player.nowRoom].map[tate][yoko].y - (player.CenterY - (GAME_HEIGHT / 2)),
+				mapRoom[player.nowRoom].map[tate][yoko].x - (player.image.x - (GAME_WIDTH / 2)),
+				mapRoom[player.nowRoom].map[tate][yoko].y - (player.image.y - (GAME_HEIGHT / 2)),
 				mapChip.handle[mapRoom[player.nowRoom].map[tate][yoko].kind[LAYER_MAP_MIDDLE]],
 				TRUE
 			);
@@ -632,8 +632,8 @@ VOID PLAY_DRAW(VOID)
 				//重ね血のレイヤー
 				DrawGraph
 				(
-					mapRoom[player.nowRoom].map[tate][yoko].x - (player.CenterX - (GAME_WIDTH / 2)),
-					mapRoom[player.nowRoom].map[tate][yoko].y - (player.CenterY - (GAME_HEIGHT / 2)),
+					mapRoom[player.nowRoom].map[tate][yoko].x - (player.image.x - (GAME_WIDTH / 2)),
+					mapRoom[player.nowRoom].map[tate][yoko].y - (player.image.y - (GAME_HEIGHT / 2)),
 					mapChip.handle[mapRoom[player.nowRoom].map[tate][yoko].kind[LAYER_MAP_TOP]],
 					TRUE
 				);
