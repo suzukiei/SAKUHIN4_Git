@@ -439,12 +439,16 @@ BOOL MY_LOAD_CSV_MAP(const char* path,MAP_ROOM* room,int Layer)
 				result = fscanf(fp, "%d,", &mapData);
 				if (result != EOF)
 				{
-					//スタート座標
+					mapColl[LoopCnt / MAP_WIDTH_MAX][LoopCnt % MAP_WIDTH_MAX].top = room->map[LoopCnt / MAP_WIDTH_MAX][LoopCnt % MAP_WIDTH_MAX].y ;
+					mapColl[LoopCnt / MAP_WIDTH_MAX][LoopCnt % MAP_WIDTH_MAX].right= room->map[LoopCnt / MAP_WIDTH_MAX][LoopCnt % MAP_WIDTH_MAX].x + mapChip.width;
+					mapColl[LoopCnt / MAP_WIDTH_MAX][LoopCnt % MAP_WIDTH_MAX].bottom = room->map[LoopCnt / MAP_WIDTH_MAX][LoopCnt % MAP_WIDTH_MAX].y + mapChip.height;
+					mapColl[LoopCnt / MAP_WIDTH_MAX][LoopCnt % MAP_WIDTH_MAX].left = room->map[LoopCnt / MAP_WIDTH_MAX][LoopCnt % MAP_WIDTH_MAX].x;
+					//当たり判定〇
 					if (mapData == COLL_EXISTS)
 					{
 						room->map[LoopCnt / MAP_WIDTH_MAX][LoopCnt % MAP_WIDTH_MAX].IsCollisionNo = FALSE; //〇は当たり判定がないからFALSE
 					}
-					//ゴール座標
+					//当たり判定×
 					if (mapData == COLL_NOEXSITS)
 					{
 						room->map[LoopCnt / MAP_WIDTH_MAX][LoopCnt % MAP_WIDTH_MAX].IsCollisionNo = TRUE; //×は当たり判定があるからTRUE
