@@ -9,11 +9,11 @@
 
 BOOL MOVEMENT(CHARA*,int);				//キャラの移動関数 //移動できたときTRUE
 VOID MY_ALL_KEYDOWN_UPDATE(VOID);	//キーの入力状態を更新する関数
-BOOL CHARA_COLLISION(RECT,RECT); //当たり判定を確認する関数の定義 //壁などに衝突しているときTRUE
+BOOL CHECK_COLLISION(RECT,RECT); //当たり判定を確認する関数の定義 //壁などに衝突しているときTRUE
 VOID CHECK_COLLISION_GOAL(VOID);
 VOID CHECK_COLLISION_ENEMY(VOID);
 BOOL MY_CHECK_RECT_COLL(RECT, RECT);	//領域の当たり判定をする関数
-BOOL CHECK_COLLISION(RECT, MAP**);
+BOOL CHARA_COLLISION(RECT, MAP**);
 
 //キーボードの入力を取得
 extern char AllKeyState[KEY_CODE_KIND];		//すべてのキーの状態が入る

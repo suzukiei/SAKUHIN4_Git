@@ -10,7 +10,7 @@ BOOL MY_CHECK_RECT_COLL(RECT, RECT)	//—Ìˆæ‚Ì“–‚½‚è”»’è‚ð‚·‚éŠÖ”
 	return FALSE;
 }
 
-BOOL CHARA_COLLISION(RECT a, RECT b)
+BOOL CHECK_COLLISION(RECT a, RECT b)
 {
 	if (a.left < b.right &&
 		a.top < b.bottom &&
@@ -24,7 +24,7 @@ BOOL CHARA_COLLISION(RECT a, RECT b)
 	return FALSE;		//“–‚½‚Á‚Ä‚¢‚È‚¢
 }
 
-BOOL CHECK_COLLISION(RECT P,MAP **map)
+BOOL CHARA_COLLISION(RECT P,MAP **map)
 {
 
 	//ƒ}ƒbƒv‚Ì“–‚½‚è”»’è‚ðÝ’è‚·‚é
