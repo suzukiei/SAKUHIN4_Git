@@ -26,7 +26,7 @@ BOOL CHECK_COLLISION(RECT a, RECT b)
 
 BOOL CHARA_COLLISION(RECT P,MAP map[MAP_HEIGHT_MAX][MAP_WIDTH_MAX])
 {
-
+	BOOL ret = FALSE;
 	//マップの当たり判定を設定する
 	for (int tate = 0; tate < MAP_HEIGHT_MAX; tate++)
 	{
@@ -37,7 +37,7 @@ BOOL CHARA_COLLISION(RECT P,MAP map[MAP_HEIGHT_MAX][MAP_WIDTH_MAX])
 			{
 				//プレイヤーとマップが当たっている
 				//MAP構造体のIsCollisionNoを返す
-				return  map[tate][yoko].IsCollisionNo;
+				if(ret == FALSE)ret = map[tate][yoko].IsCollisionNo;
 
 					
 
@@ -45,7 +45,7 @@ BOOL CHARA_COLLISION(RECT P,MAP map[MAP_HEIGHT_MAX][MAP_WIDTH_MAX])
 		}
 	}
 
-	return FALSE;
+	return ret;
 }
 
 VOID CHECK_COLLISION_GOAL(VOID)
