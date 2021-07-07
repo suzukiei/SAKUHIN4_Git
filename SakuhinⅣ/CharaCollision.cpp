@@ -33,7 +33,7 @@ BOOL CHARA_COLLISION(RECT P,MAP **map)
 		for (int yoko = 0; yoko < MAP_WIDTH_MAX; yoko++)
 		{
 			//プレイヤーとマップが当たっているとき
-			if (CHARA_COLLISION(P, mapColl[tate][yoko]) == TRUE)
+			if (CHECK_COLLISION(P, mapColl[tate][yoko]) == TRUE)
 			{
 				//プレイヤーとマップが当たっている
 				//MAP構造体のIsCollisionNoを返す
