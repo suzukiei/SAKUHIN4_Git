@@ -6,6 +6,8 @@
 #include "class.h"
 #include "variable.h"
 
+#define GAME_GIMMICK_WARP_KIND 13
+
 //--------経過時間カウントクラス--------
 class TIME_COUNT
 {
@@ -46,11 +48,14 @@ public:
 
 typedef struct STR_GIMMICK_OBJECT
 {
-	IMAGE image;
-	int CenterX;                 //Warp地点X位置
-	int CenterY;                 //Warp地点Y位置
+	GAME_MAP_KIND kind;
+	int x;
+	int y;
+
+	BOOL flag;
 
 	RECT coll;
+
 }GIMMICK_OBJ;
 
 VOID MY_FPS_UPDATE(VOID);
@@ -61,7 +66,10 @@ VOID RULE_PROC(VOID);
 VOID PLAY_PROC(VOID);
 VOID END_PROC(VOID);
 
-VOID GIMMIK_OBJ_SET(int, int, GAME_MAP_KIND);
+BOOL GIMMICK_OBJ_ISNULL(GIMMICK_OBJ);
+VOID GIMMICK_OBJ_ALL_INIT();
+VOID GIMMICK_OBJ_SET(int, int, GAME_MAP_KIND);
+VOID GIMMICK_DRAW();
 
 VOID GIMMIK(VOID);
 
