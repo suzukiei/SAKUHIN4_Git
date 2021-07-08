@@ -45,7 +45,7 @@
 #define IMAGE_TITLE_BUTTON_PLAY_HEIGHT		400 
 
 //ルールに飛ぶボタン画像
-#define IMAGE_TITLE_BUTTON_RULE_PATH			TEXT(".\\IMAGE\\button_lule.png")
+#define IMAGE_TITLE_BUTTON_RULE_PATH			TEXT(".\\IMAGE\\button_rule.png")
 #define IMAGE_TITLE_BUTTON_RULE_TITLE_WIDTH		370		 //ルール画面ボタン
 #define IMAGE_TITLE_BUTTON_RULE_TITLE_HEIGHT	400 
 
@@ -77,7 +77,7 @@
 #define IMAGE_END_COMP_CNT_MAX	30
 
 //失敗	
-#define IMAGE_END_FAIL_PATH	TEXT(".\\IMAGE\\GameOver1.\\IMAGE\\.png")
+#define IMAGE_END_FAIL_PATH	TEXT(".\\IMAGE\\GameOver1.png")
 #define IMAGE_END_FAIL_CNT	1
 #define IMAGE_END_FAIL_CNT_MAX	30
 
