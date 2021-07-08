@@ -412,7 +412,7 @@ BOOL MY_LOAD_CSV_MAP(const char* path,MAP_ROOM* room,int Layer)
 			{
 				result = fscanf(fp, "%d,", &mapData);
 				if (result != EOF)
-				GIMMIK_OBJ_SET(LoopCnt % MAP_WIDTH_MAX, LoopCnt / MAP_WIDTH_MAX, mapData);
+				GIMMICK_OBJ_SET(LoopCnt % MAP_WIDTH_MAX, LoopCnt / MAP_WIDTH_MAX, mapData);
 			}
 			//スタートゴール
 			else if (Layer == LAYER_MAP_SG)
@@ -527,7 +527,7 @@ BOOL MY_LOAD_CSV_PASS(const char* path, MAP_PASS* pass, int Layer)
 				result = fscanf(fp, "%d,", &mapData);
 				if (result != EOF)
 				{
-					GIMMIK_OBJ_SET(LoopCnt % MAP_WIDTH_MAX, LoopCnt / MAP_WIDTH_MAX, mapData);
+					GIMMICK_OBJ_SET(LoopCnt % MAP_WIDTH_MAX, LoopCnt / MAP_WIDTH_MAX, mapData);
 				}
 			}
 			//スタートゴール
@@ -581,7 +581,7 @@ VOID START_DRAW(VOID)
 	DrawGraph(0, 0, ImageTitleBk.GetHandle(), TRUE);
 	DrawGraph(IMAGE_TITLE_ROGO_WIDTH_POSITION, IMAGE_TITLE_ROGO_HEIGHT_POSITION, ImageTitleRogo.GetHandle(), TRUE);
 	DrawGraph(IMAGE_TITLE_BUTTON_PLAY_WIDTH, IMAGE_TITLE_BUTTON_PLAY_HEIGHT, ButtonPlay.GetHandle(), TRUE);
-	DrawGraph(IMAGE_TITLE_BUTTON_LULE_TITLE_WIDTH, IMAGE_TITLE_BUTTON_LULE_TITLE_HEIGHT, ButtonRule.GetHandle(), TRUE);
+	DrawGraph(IMAGE_TITLE_BUTTON_RULE_TITLE_WIDTH, IMAGE_TITLE_BUTTON_RULE_TITLE_HEIGHT, ButtonRule.GetHandle(), TRUE);
 	DrawGraph(IMAGE_TITLE_BUTTON_END_WIDTH, IMAGE_TITLE_BUTTON_END_HEIGHT, ButtonEnd.GetHandle(), TRUE);
 
 	return;
