@@ -98,7 +98,7 @@ VOID RULE_PROC(VOID)
 
 VOID PLAY_PROC(VOID)
 {
-	GIMMIK();
+	GIMMICK();
 	MENU();
 
 	//デバッグ用
