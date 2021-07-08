@@ -69,7 +69,7 @@
 #define IMAGE_TITLE_BUTTON_NOW_SPAN		30
 
 //ルール画像
-#define IMAGE_RULE_PATH	TEXT(".\\IMAGE\\lule.png")
+#define IMAGE_RULE_PATH	TEXT(".\\IMAGE\\rule.png")
 
 //成功	
 #define IMAGE_END_COMP_PATH	TEXT(".\\IMAGE\\COMP_kari.png")
@@ -89,12 +89,12 @@
 //#define IMAGE_BACK_PATH_END	TEXT(".\\IMAGE\\.png")
 
 //セーブボタン
-#define IMAGE_MENU_BUTTON_SAVE_PATH			TEXT(".\\IMAGE\\.button1.png")
+#define IMAGE_MENU_BUTTON_SAVE_PATH			TEXT(".\\IMAGE\\button1.png")
 #define IMAGE_MENU_BUTTON_SAVE_HEIGHT		370
 #define IMAGE_MENU_BUTTON_SAVE_WIDTH		200
 
 //ゲーム終了ボタン
-#define IMAGE_MENU_BUTTON_END_PATH		TEXT(".\\IMAGE\\.button2.png")
+#define IMAGE_MENU_BUTTON_END_PATH		TEXT(".\\IMAGE\\button2.png")
 #define IMAGE_MENU_BUTTON_END_HEIGHT	370
 #define IMAGE_MENU_BUTTON_END_WIDTH		300
 
@@ -112,12 +112,12 @@
 #define IMAGE_MENU_BUTTON_SELECT_SAVE_HEIGHT	300 //セーブ選択時の位置
 
 //時計画像パス
-#define IMAGE_CLOCK_PATH				TEXT(".\\IMAGE\\.clock.png")
+#define IMAGE_CLOCK_PATH				TEXT(".\\IMAGE\\clock.png")
 #define IMAGE_CLOCK_WIDTH_PATH			800
 #define IMAGE_CLOCK_HEIGHT_PATH		100
 
 //TextBoxパス
-#define IMAGE_TEXTBOX_PATH				TEXT(".\\IMAGE\\.TextBox.png")
+#define IMAGE_TEXTBOX_PATH				TEXT(".\\IMAGE\\TextBox.png")
 #define IMAGE_TEXTBOX_WIDTH_PATH		0
 #define IMAGE_TEXTBOX_HEIGHT_PATH		800
 
