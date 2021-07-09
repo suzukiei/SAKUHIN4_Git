@@ -18,3 +18,5 @@ extern BOOL GAMEOVER;
 extern BOOL GameLoop;
 //“®‚¢‚Ä‚¢‚é‚©
 extern BOOL IsMove;
+//ƒƒjƒ…[‚ªŠJ‚©‚ê‚Ä‚¢‚é‚©
+extern BOOL IsOpenMenu;
