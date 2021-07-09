@@ -8,7 +8,7 @@
 #include "flag.h"
 
 int SELECT = 0;
-BOOL IsOpenMenu;
+BOOL IsOpenMenu = FALSE;
 
 
 VOID MENU(VOID)
@@ -18,7 +18,7 @@ VOID MENU(VOID)
 	if (IsOpenMenu == TRUE)
 	{
 
-		if (MY_KEY_UP(KEY_INPUT_BACK) == TRUE)
+		if (MY_KEY_DOWN(KEY_INPUT_BACK) == TRUE)
 		{
 			IsOpenMenu = FALSE;
 		}
@@ -44,7 +44,7 @@ VOID MENU(VOID)
 
 				SELECT = MENU_SAVE;
 			}
-
+			
 			
 
 			break;
@@ -52,11 +52,6 @@ VOID MENU(VOID)
 
 		case MENU_SAVE:
 			//‚±‚±‚É‘I‘ðŽž‚ÌˆÍ‚¢‚ð•\Ž¦
-
-
-
-
-
 
 
 			if (MY_KEY_UP(KEY_INPUT_RETURN) == TRUE)
@@ -77,6 +72,7 @@ VOID MENU(VOID)
 
 				SELECT = MENU_TITLE;
 			}
+			
 
 			
 			break;
