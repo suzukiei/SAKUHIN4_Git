@@ -17,6 +17,12 @@ VOID MENU(VOID)
 
 	if (IsOpenMenu == TRUE)
 	{
+
+		if (MY_KEY_UP(KEY_INPUT_ESCAPE) == TRUE)
+		{
+			IsOpenMenu = FALSE;
+		}
+
 		switch (SELECT)
 		{
 		case MENU_TITLE:
@@ -39,10 +45,7 @@ VOID MENU(VOID)
 				SELECT = MENU_SAVE;
 			}
 
-			if (MY_KEY_UP(KEY_INPUT_ESCAPE) == TRUE)
-			{
-				IsOpenMenu = FALSE;
-			}
+			
 
 			break;
 
@@ -75,10 +78,7 @@ VOID MENU(VOID)
 				SELECT = MENU_TITLE;
 			}
 
-			if (MY_KEY_UP(KEY_INPUT_ESCAPE) == TRUE)
-			{
-				IsOpenMenu = FALSE;
-			}
+			
 			break;
 		}
 
