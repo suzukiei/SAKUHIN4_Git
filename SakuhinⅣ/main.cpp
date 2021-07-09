@@ -132,6 +132,7 @@ VOID MY_PLAY(VOID)
 {
 	PLAY_PROC();
 	PLAY_DRAW();
+	if (IsOpenMenu)MENU_DRAW();
 	PLAY_BGM();
 	return;
 }
@@ -165,6 +166,21 @@ VOID MY_INIT(VOID)
 					mapRoom[room].map[y][x].IsCollisionNo = FALSE;
 				}
 			}
+		}
+	}
+
+	for (int y = 0; y < MAP_HEIGHT_MAX; y++)
+	{
+		for (int x = 0; x < MAP_WIDTH_MAX; x++)
+		{
+			mappass.map[y][x].kind[LAYER_MAP_UNDER] = (GAME_MAP_KIND)-1;
+			mappass.map[y][x].kind[LAYER_MAP_MIDDLE] = (GAME_MAP_KIND)-1;
+			mappass.map[y][x].kind[LAYER_MAP_TOP] = (GAME_MAP_KIND)-1;
+			mappass.map[y][x].x = -1;
+			mappass.map[y][x].y = -1;
+			mappass.map[y][x].width = -1;
+			mappass.map[y][x].height = -1;
+			mappass.map[y][x].IsCollisionNo = FALSE;
 		}
 	}
 

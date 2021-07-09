@@ -98,10 +98,33 @@ VOID RULE_PROC(VOID)
 
 VOID PLAY_PROC(VOID)
 {
-	GIMMICK();
+	if (IsOpenMenu == FALSE)
+	{
+		if (MY_KEY_DOWN(KEY_INPUT_W))
+		{
+			MOVEMENT((CHARA*)&player, UP);
+		}
+		else if (MY_KEY_DOWN(KEY_INPUT_S))
+		{
+			MOVEMENT((CHARA*)&player, DOWN);
+		}
+		else if (MY_KEY_DOWN(KEY_INPUT_A))
+		{
+			MOVEMENT((CHARA*)&player, LEFT);
+		}
+		else if (MY_KEY_DOWN(KEY_INPUT_D))
+		{
+			MOVEMENT((CHARA*)&player, RIGHT);
+		}
+
+		GIMMICK();
+
+		CHECK_COLLISION_GOAL();
+	}
 
 	if (MY_KEY_UP(KEY_INPUT_ESCAPE))
 	{
+		IsOpenMenu = TRUE;
 		MENU();
 	}
 
@@ -126,23 +149,6 @@ VOID END_PROC(VOID)
 
 VOID GIMMICK(VOID)
 {
-	if (MY_KEY_DOWN(KEY_INPUT_W))
-	{
-		MOVEMENT((CHARA*)&player, UP);
-	}
-	else if (MY_KEY_DOWN(KEY_INPUT_S))
-	{
-		MOVEMENT((CHARA*)&player, DOWN);
-	}
-	else if (MY_KEY_DOWN(KEY_INPUT_A))
-	{
-		MOVEMENT((CHARA*)&player, LEFT);
-	}
-	else if (MY_KEY_DOWN(KEY_INPUT_D))
-	{
-		MOVEMENT((CHARA*)&player, RIGHT);
-	}
-
 	switch (mapRoom[player.nowRoom].gimmick)
 	{
 	case GIMMICK_MAZE:
