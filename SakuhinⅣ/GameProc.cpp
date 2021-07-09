@@ -68,7 +68,7 @@ VOID START_PROC(VOID)
 	TITLE();
 	if (GameScene == GAME_SCENE_PLAY)
 	{
-		PLAY_PLAYER_INIT();
+		PLAY_PLAYER_INIT(START_POINT);
 	}
 	/*デバッグ用
 	if (MY_KEY_UP(KEY_INPUT_SPACE))
@@ -119,6 +119,7 @@ VOID PLAY_PROC(VOID)
 
 		GIMMICK();
 
+		CHECK_COLLISION_BACK();
 		CHECK_COLLISION_GOAL();
 	}
 
@@ -296,33 +297,67 @@ VOID GIMMICK_DRAW()
 	return;
 }
 
-VOID PLAY_PLAYER_INIT(VOID)
+VOID PLAY_PLAYER_INIT(FIRST_POINT point)
 {
-	if (player.InRoom)
+	switch (point)
 	{
-		player.CenterX = mapRoom[player.nowRoom].StartPt.x * mapChip.width + (mapChip.width / 2);
-		player.CenterY = mapRoom[player.nowRoom].StartPt.y * mapChip.height + (mapChip.height / 2);
+	case START_POINT:
+		if (player.InRoom)
+		{
+			player.CenterX = mapRoom[player.nowRoom].StartPt.x * mapChip.width + (mapChip.width / 2);
+			player.CenterY = mapRoom[player.nowRoom].StartPt.y * mapChip.height + (mapChip.height / 2);
 
-		player.coll.left = mapRoom[player.nowRoom].StartPt.x * mapChip.width;
-		player.coll.right = mapRoom[player.nowRoom].StartPt.x * mapChip.width + mapChip.width;
-		player.coll.top = mapRoom[player.nowRoom].StartPt.y * mapChip.height;
-		player.coll.bottom = mapRoom[player.nowRoom].StartPt.y * mapChip.height + mapChip.height;
+			player.coll.left = mapRoom[player.nowRoom].StartPt.x * mapChip.width;
+			player.coll.right = mapRoom[player.nowRoom].StartPt.x * mapChip.width + mapChip.width;
+			player.coll.top = mapRoom[player.nowRoom].StartPt.y * mapChip.height;
+			player.coll.bottom = mapRoom[player.nowRoom].StartPt.y * mapChip.height + mapChip.height;
 
-		player.image.x = mapRoom[player.nowRoom].StartPt.x * mapChip.width;
-		player.image.y = mapRoom[player.nowRoom].StartPt.y * mapChip.height;
-	}
-	else if (player.InPass)
-	{
-		player.CenterX = mappass.StartPt.x * mapChip.width + (mapChip.width / 2);
-		player.CenterY = mappass.StartPt.y * mapChip.height + (mapChip.height / 2);
+			player.image.x = mapRoom[player.nowRoom].StartPt.x * mapChip.width;
+			player.image.y = mapRoom[player.nowRoom].StartPt.y * mapChip.height;
+		}
+		else if (player.InPass)
+		{
+			player.CenterX = mappass.StartPt.x * mapChip.width + (mapChip.width / 2);
+			player.CenterY = mappass.StartPt.y * mapChip.height + (mapChip.height / 2);
 
-		player.coll.left = mappass.StartPt.x * mapChip.width;
-		player.coll.right = mappass.StartPt.x * mapChip.width + mapChip.width;
-		player.coll.top = mappass.StartPt.y * mapChip.height;
-		player.coll.bottom = mappass.StartPt.y * mapChip.height + mapChip.height;
+			player.coll.left = mappass.StartPt.x * mapChip.width;
+			player.coll.right = mappass.StartPt.x * mapChip.width + mapChip.width;
+			player.coll.top = mappass.StartPt.y * mapChip.height;
+			player.coll.bottom = mappass.StartPt.y * mapChip.height + mapChip.height;
 
-		player.image.x = mappass.StartPt.x * mapChip.width;
-		player.image.y = mappass.StartPt.y * mapChip.height;
+			player.image.x = mappass.StartPt.x * mapChip.width;
+			player.image.y = mappass.StartPt.y * mapChip.height;
+		}
+		break;
+
+	case GOAL_POINT:
+		if (player.InRoom)
+		{
+			player.CenterX = mapRoom[player.nowRoom].GoalPt.x * mapChip.width + (mapChip.width / 2);
+			player.CenterY = mapRoom[player.nowRoom].GoalPt.y * mapChip.height + (mapChip.height / 2);
+
+			player.coll.left = mapRoom[player.nowRoom].GoalPt.x * mapChip.width;
+			player.coll.right = mapRoom[player.nowRoom].GoalPt.x * mapChip.width + mapChip.width;
+			player.coll.top = mapRoom[player.nowRoom].GoalPt.y * mapChip.height;
+			player.coll.bottom = mapRoom[player.nowRoom].GoalPt.y * mapChip.height + mapChip.height;
+
+			player.image.x = mapRoom[player.nowRoom].GoalPt.x * mapChip.width;
+			player.image.y = mapRoom[player.nowRoom].GoalPt.y * mapChip.height;
+		}
+		else if (player.InPass)
+		{
+			player.CenterX = mappass.GoalPt.x * mapChip.width + (mapChip.width / 2);
+			player.CenterY = mappass.GoalPt.y * mapChip.height + (mapChip.height / 2);
+
+			player.coll.left = mappass.GoalPt.x * mapChip.width;
+			player.coll.right = mappass.GoalPt.x * mapChip.width + mapChip.width;
+			player.coll.top = mappass.GoalPt.y * mapChip.height;
+			player.coll.bottom = mappass.GoalPt.y * mapChip.height + mapChip.height;
+
+			player.image.x = mappass.GoalPt.x * mapChip.width;
+			player.image.y = mappass.GoalPt.y * mapChip.height;
+		}
+		break;
 	}
 
 	return;
