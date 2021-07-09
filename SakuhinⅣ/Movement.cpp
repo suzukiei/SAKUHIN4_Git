@@ -171,12 +171,14 @@ BOOL MOVEMENT(CHARA* chara,int move)
 			return TRUE;//ˆÚ“®‚Å‚«‚Ä‚¢‚é‚Ì‚ÅTRUE‚ğ•Ô‚·B
 		}
 	}
-		
-
 
 	return FALSE;
 
+
+
 }
+
+
 
 	
 
