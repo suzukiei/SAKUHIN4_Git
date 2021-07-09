@@ -41,7 +41,7 @@ IMAGE PlayerTrouble;
 
 CHARA charaChip;
 
-MAP_ROOM mapRoom[8]; //マップ
+MAP_ROOM mapRoom[ROOM_NUM]; //マップ
 
 MAP_PASS mappass; //通路
 //---------------------------------------------------画像の読み込み↓----------------------------------------------------------
@@ -320,13 +320,13 @@ BOOL MY_LOAD_IMAGE(VOID)
 		return -1;
 	}
 	//小物
-	if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE2_ACCES, &mapRoom[1], LAYER_MAP_UNDER) == FALSE)
+	if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE2_ACCES, &mapRoom[1], LAYER_MAP_MIDDLE) == FALSE)
 	{
 		MessageBox(GetMainWindowHandle(), "えらー", "えらー", MB_OK);
 		return -1;
 	}
 	//血
-	if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE2_BLOOD, &mapRoom[1], LAYER_MAP_MIDDLE) == FALSE)
+	if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE2_BLOOD, &mapRoom[1], LAYER_MAP_TOP) == FALSE)
 	{
 		MessageBox(GetMainWindowHandle(), "えらー", "えらー", MB_OK);
 		return -1;
@@ -350,6 +350,78 @@ BOOL MY_LOAD_IMAGE(VOID)
 		return -1;
 	}
 
+	//-----------------------------ステージ3----------------------------------------------
+	//床
+	if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE3_FLOOR, &mapRoom[2], LAYER_MAP_UNDER) == FALSE)
+	{
+		MessageBox(GetMainWindowHandle(), "えらー", "えらー", MB_OK);
+		return -1;
+	}
+	//壁
+	if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE3_WALL, &mapRoom[2], LAYER_MAP_UNDER) == FALSE)
+	{
+		MessageBox(GetMainWindowHandle(), "えらー", "えらー", MB_OK);
+		return -1;
+	}
+	//血
+	if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE3_BLOOD, &mapRoom[2], LAYER_MAP_TOP) == FALSE)
+	{
+		MessageBox(GetMainWindowHandle(), "えらー", "えらー", MB_OK);
+		return -1;
+	}
+	////当たり判定
+	if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE2_RECT, &mapRoom[2], LAYER_MAP_RECT) == FALSE)
+	{
+		MessageBox(GetMainWindowHandle(), "えらー", "えらー", MB_OK);
+		return -1;
+	}
+	////スタートゴール
+	if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE2_SG, &mapRoom[2], LAYER_MAP_SG) == FALSE)
+	{
+		MessageBox(GetMainWindowHandle(), "えらー", "えらー", MB_OK);
+		return -1;
+	}
+
+	//-----------------------------ステージ4----------------------------------------------
+	//床
+	if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE4_FLOOR, &mapRoom[3], LAYER_MAP_UNDER) == FALSE)
+	{
+		MessageBox(GetMainWindowHandle(), "えらー", "えらー", MB_OK);
+		return -1;
+	}
+	//壁
+	if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE4_WALL, &mapRoom[3], LAYER_MAP_UNDER) == FALSE)
+	{
+		MessageBox(GetMainWindowHandle(), "えらー", "えらー", MB_OK);
+		return -1;
+	}
+
+	//血
+	if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE4_ACCES, &mapRoom[3], LAYER_MAP_TOP) == FALSE)
+	{
+		MessageBox(GetMainWindowHandle(), "えらー", "えらー", MB_OK);
+		return -1;
+	}
+
+	////当たり判定
+	if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE4_RECT, &mapRoom[3], LAYER_MAP_RECT) == FALSE)
+	{
+		MessageBox(GetMainWindowHandle(), "えらー", "えらー", MB_OK);
+		return -1;
+	}
+	////スタートゴール
+	if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE4_SG, &mapRoom[3], LAYER_MAP_SG) == FALSE)
+	{
+		MessageBox(GetMainWindowHandle(), "えらー", "えらー", MB_OK);
+		return -1;
+	}
+
+	//ギミック
+	if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE4_GIMMICK, &mapRoom[3], LAYER_MAP_GIMMICK) == FALSE)
+	{
+		MessageBox(GetMainWindowHandle(), "えらー", "えらー", MB_OK);
+		return -1;
+	}
 
 
 
