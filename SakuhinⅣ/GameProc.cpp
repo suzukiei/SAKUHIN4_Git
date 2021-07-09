@@ -334,29 +334,30 @@ VOID PLAY_PLAYER_INIT(FIRST_POINT point)
 		if (player.InRoom)
 		{
 			player.CenterX = mapRoom[player.nowRoom].GoalPt.x * mapChip.width + (mapChip.width / 2);
-			player.CenterY = mapRoom[player.nowRoom].GoalPt.y * mapChip.height + (mapChip.height / 2);
+			player.CenterY = mapRoom[player.nowRoom].GoalPt.y * mapChip.height + (mapChip.height / 2) + mapChip.height;
 
 			player.coll.left = mapRoom[player.nowRoom].GoalPt.x * mapChip.width;
 			player.coll.right = mapRoom[player.nowRoom].GoalPt.x * mapChip.width + mapChip.width;
-			player.coll.top = mapRoom[player.nowRoom].GoalPt.y * mapChip.height;
-			player.coll.bottom = mapRoom[player.nowRoom].GoalPt.y * mapChip.height + mapChip.height;
+			player.coll.top = mapRoom[player.nowRoom].GoalPt.y * mapChip.height + mapChip.height;
+			player.coll.bottom = mapRoom[player.nowRoom].GoalPt.y * mapChip.height + mapChip.height + mapChip.height;
 
 			player.image.x = mapRoom[player.nowRoom].GoalPt.x * mapChip.width;
-			player.image.y = mapRoom[player.nowRoom].GoalPt.y * mapChip.height;
+			player.image.y = mapRoom[player.nowRoom].GoalPt.y * mapChip.height + mapChip.height;
 		}
 		else if (player.InPass)
 		{
 			player.CenterX = mappass.GoalPt.x * mapChip.width + (mapChip.width / 2);
-			player.CenterY = mappass.GoalPt.y * mapChip.height + (mapChip.height / 2);
+			player.CenterY = mappass.GoalPt.y * mapChip.height + (mapChip.height / 2) + mapChip.height;
 
 			player.coll.left = mappass.GoalPt.x * mapChip.width;
 			player.coll.right = mappass.GoalPt.x * mapChip.width + mapChip.width;
-			player.coll.top = mappass.GoalPt.y * mapChip.height;
-			player.coll.bottom = mappass.GoalPt.y * mapChip.height + mapChip.height;
+			player.coll.top = mappass.GoalPt.y * mapChip.height + mapChip.height;
+			player.coll.bottom = mappass.GoalPt.y * mapChip.height + mapChip.height + mapChip.height;
 
 			player.image.x = mappass.GoalPt.x * mapChip.width;
-			player.image.y = mappass.GoalPt.y * mapChip.height;
+			player.image.y = mappass.GoalPt.y * mapChip.height + mapChip.height;
 		}
+
 		break;
 	}
 
