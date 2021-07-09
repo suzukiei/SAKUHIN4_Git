@@ -71,7 +71,7 @@ BOOL MY_LOAD_IMAGE(VOID)
 	//ƒ‹[ƒ‹”wŒi‚Ì“Ç‚İ‚İ
 	ImageRule.SetPath(IMAGE_RULE_PATH);
 	ImageRule.SetHandle(LoadGraph(ImageRule.GetPath()));
-	if (ImageTitleBk.GetHandle() == ERR)
+	if (ImageRule.GetHandle() == ERR)
 	{
 		MessageBox(GetMainWindowHandle(), IMAGE_RULE_PATH, IMAGE_LOAD_ERR_TITLE, MB_OK);
 		return FALSE;
@@ -80,7 +80,7 @@ BOOL MY_LOAD_IMAGE(VOID)
 	//ƒƒjƒ…[‚Ì“Ç‚İ‚İ
 	ImageMenu.SetPath(IMAGE_MENU_PATH);
 	ImageMenu.SetHandle(LoadGraph(ImageMenu.GetPath()));
-	if (ImageTitleBk.GetHandle() == ERR)
+	if (ImageMenu.GetHandle() == ERR)
 	{
 		MessageBox(GetMainWindowHandle(), IMAGE_MENU_PATH, IMAGE_LOAD_ERR_TITLE, MB_OK);
 		return FALSE;
