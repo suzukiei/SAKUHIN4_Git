@@ -20,25 +20,19 @@ VOID TITLE(VOID)
 		{
 		case TITLE_START:
 
-			//ここに選択時の囲いを表示
-
-
-
-
-
-			if (MY_KEY_DOWN(KEY_INPUT_RETURN) == TRUE)
+			if (MY_KEY_UP(KEY_INPUT_RETURN) == TRUE)
 			{
 				GameScene = GAME_SCENE_PLAY;
 			}
 
-			if (MY_KEY_DOWN(KEY_INPUT_RIGHT) == TRUE)
+			if (MY_KEY_UP(KEY_INPUT_RIGHT) == TRUE)
 			{
 
 				TITLE_SELECT_NO = TITLE_RULE;
 
 			}
 
-			if (MY_KEY_DOWN(KEY_INPUT_LEFT) == TRUE)
+			if (MY_KEY_UP(KEY_INPUT_LEFT) == TRUE)
 			{
 
 				TITLE_SELECT_NO = TITLE_QUIT;
@@ -50,21 +44,20 @@ VOID TITLE(VOID)
 			//ここに選択時の囲いを表示
 
 
-			if (MY_KEY_DOWN(KEY_INPUT_RETURN) == TRUE)
+			if (MY_KEY_UP(KEY_INPUT_RETURN) == TRUE)
 			{
-				//ルール画面遷移
 				GameScene = GAME_SCENE_RULE;
 				break;
 			}
 
-			if (MY_KEY_DOWN(KEY_INPUT_RIGHT) == TRUE)
+			if (MY_KEY_UP(KEY_INPUT_RIGHT) == TRUE)
 			{
 
 				TITLE_SELECT_NO = TITLE_QUIT;
 
 			}
 
-			if (MY_KEY_DOWN(KEY_INPUT_LEFT) == TRUE)
+			if (MY_KEY_UP(KEY_INPUT_LEFT) == TRUE)
 			{
 
 				TITLE_SELECT_NO = TITLE_START;
@@ -76,21 +69,21 @@ VOID TITLE(VOID)
 
 		case TITLE_QUIT:
 
-			if (MY_KEY_DOWN(KEY_INPUT_RETURN) == TRUE)
+			if (MY_KEY_UP(KEY_INPUT_RETURN) == TRUE)
 			{
 				//ゲーム終了
 				GameLoop = FALSE;
 				break;
 			}
 
-			if (MY_KEY_DOWN(KEY_INPUT_RIGHT) == TRUE)
+			if (MY_KEY_UP(KEY_INPUT_RIGHT) == TRUE)
 			{
 
 				TITLE_SELECT_NO = TITLE_START;
 
 			}
 
-			if (MY_KEY_DOWN(KEY_INPUT_LEFT) == TRUE)
+			if (MY_KEY_UP(KEY_INPUT_LEFT) == TRUE)
 			{
 
 				TITLE_SELECT_NO = TITLE_RULE;

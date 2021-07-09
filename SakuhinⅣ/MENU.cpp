@@ -9,43 +9,38 @@
 
 int SELECT = 0;
 
+
 VOID MENU(VOID)
 {
 
-	//DrawGraph(MENU_WIDTH_POSITION, MENU_HEIGHT_POSITION, /*.handle*/, TRUE); //メニュー画面背景画像
-	//メニューのタイトルへ戻るボタンの位置
-	//DrawGraph(MENU_BUTTON_TITLE_WIDTH_POSITION, MENU_BUTTON_TITLE_HEIGHT_POSITION,/*.handle*/, TRUE);
-	//セーブボタンの位置
-	//DrawGraph(MENU_BUTTON_SAVE_WIDTH_POSITION, MENU_BUTTON_SAVE_HEIGHT_POSITION,/*.handle*/, TRUE);
 
-	while (true)
+	if (IsOpenMenu == TRUE)
 	{
 		switch (SELECT)
 		{
 		case MENU_TITLE:
 
-			//ここに選択時の囲いを表示
-
-
-
-
-
-			if (MY_KEY_DOWN(KEY_INPUT_RETURN) == TRUE)
+			if (MY_KEY_UP(KEY_INPUT_RETURN) == TRUE)
 			{
 				GameScene = GAME_SCENE_START;
 			}
 
-			if (MY_KEY_DOWN(KEY_INPUT_DOWN) == TRUE)
+			if (MY_KEY_UP(KEY_INPUT_DOWN) == TRUE)
 			{
 
 				SELECT = MENU_SAVE;
 
 			}
 
-			if (MY_KEY_DOWN(KEY_INPUT_UP) == TRUE)
+			if (MY_KEY_UP(KEY_INPUT_UP) == TRUE)
 			{
 
 				SELECT = MENU_SAVE;
+			}
+
+			if (MY_KEY_UP(KEY_INPUT_ESCAPE) == TRUE)
+			{
+				IsOpenMenu = FALSE;
 			}
 
 			break;
@@ -60,28 +55,32 @@ VOID MENU(VOID)
 
 
 
-			if (MY_KEY_DOWN(KEY_INPUT_RETURN) == TRUE)
+			if (MY_KEY_UP(KEY_INPUT_RETURN) == TRUE)
 			{
 				//ここにセーブ機能
 				break;
 			}
 
-			if (MY_KEY_DOWN(KEY_INPUT_DOWN) == TRUE)
+			if (MY_KEY_UP(KEY_INPUT_DOWN) == TRUE)
 			{
 
 				SELECT = MENU_TITLE;
 
 			}
 
-			if (MY_KEY_DOWN(KEY_INPUT_UP) == TRUE)
+			if (MY_KEY_UP(KEY_INPUT_UP) == TRUE)
 			{
 
 				SELECT = MENU_TITLE;
+			}
+
+			if (MY_KEY_UP(KEY_INPUT_ESCAPE) == TRUE)
+			{
+				IsOpenMenu = FALSE;
 			}
 			break;
 		}
 
-		break;
 	}
 
 
@@ -90,7 +89,7 @@ VOID MENU(VOID)
 VOID RETURN_TITLE(VOID)
 {
 	//マウスを右クリックすると、タイトル画面に戻る
-	if (MY_KEY_DOWN(KEY_INPUT_L) == TRUE)
+	if (MY_KEY_UP(KEY_INPUT_L) == TRUE)
 	{
 
 
