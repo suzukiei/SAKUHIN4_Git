@@ -64,6 +64,8 @@ enum GAME_MAP_KIND
 	MAP_CARDBOARD = 1158,
 	//ギミックのボタン
 	MAP_DOLL = 3328,
+	//ギミックの地雷
+	MAP_MINE = 2738,
 	//------------------------------血--------------------------------------
 	MAP_BLOOD_FOOTPOINT_FORNT1 = 234,
 	MAP_BLOOD_FOOTPOINT_FORNT2 = 235,

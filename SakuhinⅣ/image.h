@@ -151,4 +151,5 @@ BOOL MY_LOAD_CSV_PASS(const char *, MAP_PASS*,int Layer);
 VOID START_DRAW(VOID);	//スタート画面の描画
 VOID RULE_DRAW(VOID);	//ルール画面の描画
 VOID PLAY_DRAW(VOID);	//プレイ画面の描画
+VOID MENU_DRAW(VOID);	//メニュー画面の描画
 VOID END_DRAW(VOID);	    //エンド画面の描画
