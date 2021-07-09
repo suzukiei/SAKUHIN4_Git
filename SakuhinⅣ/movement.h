@@ -3,16 +3,17 @@
 #include "class.h"
 //キーボードの種類
 #define KEY_CODE_KIND		256	//256種類
-#define CharaSpeed 16			//キャラクターのスピード
+#define CharaSpeed 8			//キャラクターのスピード
 #define PLAYER_IMG_CHANGE_MAX 16
-#define PLAYER_MOVE_MAX 8
+#define PLAYER_MOVE_MAX 4 //キャラの移動カウントの上限
 
 
 
 BOOL MOVEMENT(CHARA*,int);				//キャラの移動関数 //移動できたときTRUE
 VOID MY_ALL_KEYDOWN_UPDATE(VOID);	//キーの入力状態を更新する関数
 BOOL CHECK_COLLISION(RECT,RECT); //当たり判定を確認する関数の定義 //壁などに衝突しているときTRUE
-VOID CHECK_COLLISION_GOAL(VOID);
+VOID CHECK_COLLISION_GOAL(VOID); //ゴールした際の当たり判定
+VOID CHECK_COLLISION_BACK(VOID); 
 VOID CHECK_COLLISION_ENEMY(VOID);
 BOOL MY_CHECK_RECT_COLL(RECT, RECT);	//領域の当たり判定をする関数
 BOOL CHARA_COLLISION(RECT, MAP[MAP_HEIGHT_MAX][MAP_WIDTH_MAX]);

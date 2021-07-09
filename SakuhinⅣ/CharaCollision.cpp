@@ -99,6 +99,40 @@ VOID CHECK_COLLISION_GOAL(VOID)
 }
 
 
+
+VOID CHECK_COLLISION_BACK(VOID)
+{
+	if (player.InRoom == TRUE)
+	{
+		if (player.image.y > MAP_HEIGHT_MAX * mapChip.height)
+		{
+			if (player.nowRoom != 0) {
+				player.InRoom = FALSE;
+				player.nowRoom--;
+				player.InPass = TRUE;
+				PLAY_PLAYER_INIT();
+			}
+			else {
+				MOVEMENT(&player,UP);
+			}
+
+			
+		}
+	}
+	else if (player.InPass == TRUE)
+	{
+		if (player.image.y > MAP_HEIGHT_MAX * mapChip.height)
+		{
+			player.InRoom = TRUE;		
+			player.InPass = FALSE;
+
+			PLAY_PLAYER_INIT();
+
+		}
+	}
+}
+
+
 //VOID CHECK_COLLISION_ENEMY(VOID)
 //{
 //	//ƒvƒŒƒCƒ„[‚Æ“G‚Ì“–‚½‚è”»’è‚ÌÝ’è
