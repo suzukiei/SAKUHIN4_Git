@@ -349,6 +349,8 @@ BOOL MY_LOAD_IMAGE(VOID)
 		MessageBox(GetMainWindowHandle(), "えらー", "えらー", MB_OK);
 		return -1;
 	}
+	mapRoom[1].gimmick = GIMMICK_MAZE;
+
 
 	//-----------------------------ステージ3----------------------------------------------
 	//床
@@ -370,17 +372,18 @@ BOOL MY_LOAD_IMAGE(VOID)
 		return -1;
 	}
 	////当たり判定
-	if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE2_RECT, &mapRoom[2], LAYER_MAP_RECT) == FALSE)
+	if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE3_RECT, &mapRoom[2], LAYER_MAP_RECT) == FALSE)
 	{
 		MessageBox(GetMainWindowHandle(), "えらー", "えらー", MB_OK);
 		return -1;
 	}
 	////スタートゴール
-	if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE2_SG, &mapRoom[2], LAYER_MAP_SG) == FALSE)
+	if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE3_SG, &mapRoom[2], LAYER_MAP_SG) == FALSE)
 	{
 		MessageBox(GetMainWindowHandle(), "えらー", "えらー", MB_OK);
 		return -1;
 	}
+	mapRoom[2].gimmick = GIMMICK_MOVE;
 
 	//-----------------------------ステージ4----------------------------------------------
 	//床
@@ -422,7 +425,126 @@ BOOL MY_LOAD_IMAGE(VOID)
 		MessageBox(GetMainWindowHandle(), "えらー", "えらー", MB_OK);
 		return -1;
 	}
+	mapRoom[3].gimmick = GIMMICK_MINE;
 
+	//-----------------------------ステージ5----------------------------------------------
+//床
+	if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE5_FLOOR, &mapRoom[4], LAYER_MAP_UNDER) == FALSE)
+	{
+		MessageBox(GetMainWindowHandle(), "えらー", "えらー", MB_OK);
+		return -1;
+	}
+	//壁
+	if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE5_WALL, &mapRoom[4], LAYER_MAP_UNDER) == FALSE)
+	{
+		MessageBox(GetMainWindowHandle(), "えらー", "えらー", MB_OK);
+		return -1;
+	}
+	//小物
+	if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE5_ACCES, &mapRoom[4], LAYER_MAP_UNDER) == FALSE)
+	{
+		MessageBox(GetMainWindowHandle(), "えらー", "えらー", MB_OK);
+		return -1;
+	}
+	//血
+	if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE5_BLOOD, &mapRoom[4], LAYER_MAP_MIDDLE) == FALSE)
+	{
+		MessageBox(GetMainWindowHandle(), "えらー", "えらー", MB_OK);
+		return -1;
+	}
+	//重ね血
+	if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE5_SBLOOD, &mapRoom[4], LAYER_MAP_TOP) == FALSE)
+	{
+		MessageBox(GetMainWindowHandle(), "えらー", "えらー", MB_OK);
+		return -1;
+	}
+	////当たり判定
+	if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE5_RECT, &mapRoom[4], LAYER_MAP_RECT) == FALSE)
+	{
+		MessageBox(GetMainWindowHandle(), "えらー", "えらー", MB_OK);
+		return -1;
+	}
+	////スタートゴール
+	if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE5_SG, &mapRoom[4], LAYER_MAP_SG) == FALSE)
+	{
+		MessageBox(GetMainWindowHandle(), "えらー", "えらー", MB_OK);
+		return -1;
+	}
+	//ギミック
+	if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE5_GIMMICK, &mapRoom[4], LAYER_MAP_GIMMICK) == FALSE)
+	{
+		MessageBox(GetMainWindowHandle(), "えらー", "えらー", MB_OK);
+		return -1;
+	}
+	mapRoom[4].gimmick = GIMMICK_WARP;
+
+	//-----------------------------ステージ6----------------------------------------------
+	//床
+	if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE6_FLOOR, &mapRoom[5], LAYER_MAP_UNDER) == FALSE)
+	{
+		MessageBox(GetMainWindowHandle(), "えらー", "えらー", MB_OK);
+		return -1;
+	}
+	//壁
+	if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE6_WALL, &mapRoom[5], LAYER_MAP_UNDER) == FALSE)
+	{
+		MessageBox(GetMainWindowHandle(), "えらー", "えらー", MB_OK);
+		return -1;
+	}
+
+	////当たり判定
+	if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE6_RECT, &mapRoom[5], LAYER_MAP_RECT) == FALSE)
+	{
+		MessageBox(GetMainWindowHandle(), "えらー", "えらー", MB_OK);
+		return -1;
+	}
+	////スタートゴール
+	if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE6_SG, &mapRoom[5], LAYER_MAP_SG) == FALSE)
+	{
+		MessageBox(GetMainWindowHandle(), "えらー", "えらー", MB_OK);
+		return -1;
+	}
+	mapRoom[5].gimmick = GIMMICK_MAZE;
+
+
+	//-----------------------------ステージ7----------------------------------------------
+	//床
+	if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE7_FLOOR, &mapRoom[6], LAYER_MAP_UNDER) == FALSE)
+	{
+		MessageBox(GetMainWindowHandle(), "えらー", "えらー", MB_OK);
+		return -1;
+	}
+	//壁
+	if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE7_WALL, &mapRoom[6], LAYER_MAP_UNDER) == FALSE)
+	{
+		MessageBox(GetMainWindowHandle(), "えらー", "えらー", MB_OK);
+		return -1;
+	}
+	//小物
+	if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE7_ACCES, &mapRoom[6], LAYER_MAP_UNDER) == FALSE)
+	{
+		MessageBox(GetMainWindowHandle(), "えらー", "えらー", MB_OK);
+		return -1;
+	}
+	////当たり判定
+	if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE7_RECT, &mapRoom[6], LAYER_MAP_RECT) == FALSE)
+	{
+		MessageBox(GetMainWindowHandle(), "えらー", "えらー", MB_OK);
+		return -1;
+	}
+	////スタートゴール
+	if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE7_SG, &mapRoom[6], LAYER_MAP_SG) == FALSE)
+	{
+		MessageBox(GetMainWindowHandle(), "えらー", "えらー", MB_OK);
+		return -1;
+	}
+	//ギミック
+	if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE5_GIMMICK, &mapRoom[6], LAYER_MAP_GIMMICK) == FALSE)
+	{
+		MessageBox(GetMainWindowHandle(), "えらー", "えらー", MB_OK);
+		return -1;
+	}
+	mapRoom[6].gimmick = GIMMICK_PAZLE;
 
 
 	//-----------------------------通路----------------------------------------------

@@ -88,7 +88,7 @@
 
 //ステージ7
 #define GAME_CSV_PATH_STAGE7_FLOOR 		TEXT(".\\IMAGE\\csv\\Stage8_床.csv")//STAGE7床
-#define GAME_CSV_PATH_STAGE7_WALL 		TEXT(".\\IMAGE\\csv\\Stage_壁.csv")//STAGE7壁
+#define GAME_CSV_PATH_STAGE7_WALL 		TEXT(".\\IMAGE\\csv\\Stage8_壁.csv")//STAGE7壁
 #define GAME_CSV_PATH_STAGE7_ACCES 		TEXT(".\\IMAGE\\csv\\Stage8_小物.csv")//STAGE7血
 #define GAME_CSV_PATH_STAGE7_GIMMICK    TEXT(".\\IMAGE\\csv\\Stage8_ギミック.csv")//STAGE7ギミック
 #define GAME_CSV_PATH_STAGE7_RECT 		TEXT(".\\IMAGE\\csv\\Stage8_当たり判定.csv")//STAGE7当たり判定
