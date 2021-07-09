@@ -12,6 +12,9 @@
 #include "title.h"
 #include "variable.h"
 
+RECT mapPassColl[MAP_HEIGHT_MAX][MAP_WIDTH_MAX];
+RECT mapColl[MAP_HEIGHT_MAX][MAP_WIDTH_MAX];
+
 BOOL MY_CHECK_RECT_COLL(RECT, RECT)	//—Ìˆæ‚Ì“–‚½‚è”»’è‚ğ‚·‚éŠÖ”
 {
 	return FALSE;
