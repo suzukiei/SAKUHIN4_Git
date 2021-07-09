@@ -99,7 +99,11 @@ VOID RULE_PROC(VOID)
 VOID PLAY_PROC(VOID)
 {
 	GIMMICK();
-	MENU();
+
+	if (MY_KEY_UP(KEY_INPUT_ESCAPE))
+	{
+		MENU();
+	}
 
 	//デバッグ用
 	if (MY_KEY_UP(KEY_INPUT_Q))
@@ -206,46 +210,43 @@ VOID GIMMICK_OBJ_SET(int obj_x, int obj_y, GAME_MAP_KIND kind)
 	work.coll.right = obj_x * mapChip.width + mapChip.width;
 	work.coll.bottom = obj_y * mapChip.height + mapChip.height;
 
-	switch (kind)
+	if (kind == MAP_DOLL)
 	{
-	case GIMMICK_BUTTON:
+		work.kind = MAP_CARDBOARD;
 		gimButton.push_back(work);
-		break;
-
-	case GIMMICK_MINE:
+	}
+	/*
+	if (kind ==)
+	{
 		gimMine.push_back(work);
-		break;
+	}*/
 
-	case GIMMICK_PAZLE:
+	if (kind == MAP_CARDBOARD)
+	{
 		gimPazzle.push_back(work);
-		break;
+	}
 
-	case GIMMICK_WARP:
-
-		if (WARP_1 <= kind && kind <= WARP_7)
+	if (WARP_1 <= kind && kind <= WARP_7)
+	{
+		if (GIMMICK_OBJ_ISNULL(gimWarp[kind - WARP_1].first))
 		{
-			if (GIMMICK_OBJ_ISNULL(gimWarp[kind - WARP_1].first))
-			{
-				gimWarp[kind - WARP_1].first = work;
-			}
-			else
-			{
-				gimWarp[kind - WARP_1].second = work;
-			}
+			gimWarp[kind - WARP_1].first = work;
 		}
-		if (WARP_8 <= kind && kind <= WARP_D)
+		else
 		{
-			if (GIMMICK_OBJ_ISNULL(gimWarp[(kind - WARP_8) + (WARP_7 - WARP_1 + 1)].first))
-			{
-				gimWarp[(kind - WARP_8) + (WARP_7 - WARP_1 + 1)].first = work;
-			}
-			else
-			{
-				gimWarp[(kind - WARP_8) + (WARP_7 - WARP_1 + 1)].second = work;
-			}
+			gimWarp[kind - WARP_1].second = work;
 		}
-
-		break;
+	}
+	if (WARP_8 <= kind && kind <= WARP_D)
+	{
+		if (GIMMICK_OBJ_ISNULL(gimWarp[(kind - WARP_8) + (WARP_7 - WARP_1 + 1)].first))
+		{
+			gimWarp[(kind - WARP_8) + (WARP_7 - WARP_1 + 1)].first = work;
+		}
+		else
+		{
+			gimWarp[(kind - WARP_8) + (WARP_7 - WARP_1 + 1)].second = work;
+		}
 	}
 
 	return;
