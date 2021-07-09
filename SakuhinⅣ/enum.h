@@ -60,7 +60,10 @@ enum GAME_MAP_KIND
 	MAP_CLOSET1_DOWN = 768,
 	MAP_CLOSET2_DOWN = 769,
 	MAP_CLOSET3_DOWN = 770,
+	//ギミックの動かすやつ
 	MAP_CARDBOARD = 1158,
+	//ギミックのボタン
+	MAP_DOLL = 3328,
 	//------------------------------血--------------------------------------
 	MAP_BLOOD_FOOTPOINT_FORNT1 = 234,
 	MAP_BLOOD_FOOTPOINT_FORNT2 = 235,
@@ -161,15 +164,15 @@ enum GAME_MAP_KIND
 
 };
 
-enum GAME_MOVE_CARDBOARD
-{
-	MAP_CARDBOARD = 1158
-};
+//enum GAME_MOVE_CARDBOARD
+//{
+//	MAP_CARDBOARD = 1158
+//};
 
-enum GAME_BUTTON_DOLL
-{
-	MAP_DOLL = 3328
-};
+//enum GAME_BUTTON_DOLL
+//{
+//	MAP_DOLL = 3328
+//};
 
 enum GAME_MAP_WARP
 {
