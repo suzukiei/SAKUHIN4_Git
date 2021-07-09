@@ -104,7 +104,7 @@ VOID CHECK_COLLISION_BACK(VOID)
 {
 	if (player.InRoom == TRUE)
 	{
-		if (player.image.y > MAP_HEIGHT_MAX * mapChip.height)
+		if (player.image.y + mapChip.height > MAP_HEIGHT_MAX * mapChip.height)
 		{
 			if (player.nowRoom != 0) {
 				player.InRoom = FALSE;
@@ -121,7 +121,7 @@ VOID CHECK_COLLISION_BACK(VOID)
 	}
 	else if (player.InPass == TRUE)
 	{
-		if (player.image.y > MAP_HEIGHT_MAX * mapChip.height)
+		if (player.image.y + mapChip.height > MAP_HEIGHT_MAX * mapChip.height)
 		{
 			player.InRoom = TRUE;		
 			player.InPass = FALSE;
