@@ -53,6 +53,47 @@
 #define GAME_CSV_PATH_STAGE2_RECT 		TEXT(".\\IMAGE\\csv\\Stage2_当たり判定.csv")//STAGE2当たり判定
 #define GAME_CSV_PATH_STAGE2_SG 		TEXT(".\\IMAGE\\csv\\Stage2_SG.csv")//STAGE2スタートゴール
 
+
+//ステージ3
+#define GAME_CSV_PATH_STAGE3_FLOOR 		TEXT(".\\IMAGE\\csv\\Stage4_床.csv")//STAGE3床
+#define GAME_CSV_PATH_STAGE3_WALL 		TEXT(".\\IMAGE\\csv\\Stage4_壁.csv")//STAGE3壁
+#define GAME_CSV_PATH_STAGE3_BLOOD 		TEXT(".\\IMAGE\\csv\\Stage4_血.csv")//STAGE3血
+#define GAME_CSV_PATH_STAGE3_GIMMICK    TEXT(".\\IMAGE\\csv\\Stage4_ギミック.csv")//STAGE3ギミック
+#define GAME_CSV_PATH_STAGE3_RECT 		TEXT(".\\IMAGE\\csv\\Stage4_当たり判定.csv")//STAGE3当たり判定
+#define GAME_CSV_PATH_STAGE3_SG 		TEXT(".\\IMAGE\\csv\\Stage4_SG.csv")//STAGE3スタートゴール
+
+//ステージ4
+#define GAME_CSV_PATH_STAGE4_FLOOR 		TEXT(".\\IMAGE\\csv\\Stage5_床.csv")//STAGE4床
+#define GAME_CSV_PATH_STAGE4_WALL 		TEXT(".\\IMAGE\\csv\\Stage5_壁.csv")//STAGE4壁
+#define GAME_CSV_PATH_STAGE4_ACCES 		TEXT(".\\IMAGE\\csv\\Stage5_小物.csv")//STAGE4小物
+#define GAME_CSV_PATH_STAGE4_GIMMICK    TEXT(".\\IMAGE\\csv\\Stage5_ギミック.csv")//STAGE4ギミック
+#define GAME_CSV_PATH_STAGE4_RECT 		TEXT(".\\IMAGE\\csv\\Stage5_当たり判定.csv")//STAGE4当たり判定
+#define GAME_CSV_PATH_STAGE4_SG 		TEXT(".\\IMAGE\\csv\\Stage5_SG.csv")//STAGE4スタートゴール
+
+//ステージ5
+#define GAME_CSV_PATH_STAGE5_FLOOR 		TEXT(".\\IMAGE\\csv\\Stage6_床.csv")//STAGE5床
+#define GAME_CSV_PATH_STAGE5_WALL 		TEXT(".\\IMAGE\\csv\\Stage6_壁.csv")//STAGE5壁
+#define GAME_CSV_PATH_STAGE5_ACCES 		TEXT(".\\IMAGE\\csv\\Stage6_小物.csv")//STAGE5血
+#define GAME_CSV_PATH_STAGE5_BLOOD 		TEXT(".\\IMAGE\\csv\\Stage6_血.csv")//STAGE5血
+#define GAME_CSV_PATH_STAGE5_SBLOOD 	TEXT(".\\IMAGE\\csv\\Stage6_重ね血.csv")//STAGE5重ね血
+#define GAME_CSV_PATH_STAGE5_GIMMICK    TEXT(".\\IMAGE\\csv\\Stage6_ワープ対応.csv")//STAGE5ワープギミック
+#define GAME_CSV_PATH_STAGE5_RECT 		TEXT(".\\IMAGE\\csv\\Stage6_当たり判定.csv")//STAGE5当たり判定
+#define GAME_CSV_PATH_STAGE5_SG 		TEXT(".\\IMAGE\\csv\\Stage6_SG.csv")//STAGE5スタートゴール
+
+//ステージ6
+#define GAME_CSV_PATH_STAGE6_FLOOR 		TEXT(".\\IMAGE\\csv\\Stage7_床.csv")//STAGE6床
+#define GAME_CSV_PATH_STAGE6_WALL 		TEXT(".\\IMAGE\\csv\\Stage7_壁.csv")//STAGE6壁
+#define GAME_CSV_PATH_STAGE6_RECT 		TEXT(".\\IMAGE\\csv\\Stage7_当たり判定.csv")//STAGE6当たり判定
+#define GAME_CSV_PATH_STAGE6_SG 		TEXT(".\\IMAGE\\csv\\Stage7_SG.csv")//STAGE6スタートゴール
+
+//ステージ7
+#define GAME_CSV_PATH_STAGE7_FLOOR 		TEXT(".\\IMAGE\\csv\\Stage8_床.csv")//STAGE7床
+#define GAME_CSV_PATH_STAGE7_WALL 		TEXT(".\\IMAGE\\csv\\Stage_壁.csv")//STAGE7壁
+#define GAME_CSV_PATH_STAGE7_ACCES 		TEXT(".\\IMAGE\\csv\\Stage8_小物.csv")//STAGE7血
+#define GAME_CSV_PATH_STAGE7_GIMMICK    TEXT(".\\IMAGE\\csv\\Stage8_ギミック.csv")//STAGE7ギミック
+#define GAME_CSV_PATH_STAGE7_RECT 		TEXT(".\\IMAGE\\csv\\Stage8_当たり判定.csv")//STAGE7当たり判定
+#define GAME_CSV_PATH_STAGE7_SG 		TEXT(".\\IMAGE\\csv\\Stage8_SG.csv")//STAGE7スタートゴール
+
 //画像
 class IMAGE
 {
