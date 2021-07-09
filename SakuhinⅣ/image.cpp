@@ -442,18 +442,18 @@ BOOL MY_LOAD_CSV_MAP(const char* path,MAP_ROOM* room,int Layer)
 		while (result != EOF)    //End Of File（ファイルの最後）ではないとき繰り返す
 		{
 			GAME_MAP_KIND mapData;
-			GAME_MAP_KIND indate;
+			GAME_MAP_KIND indata;
 			
 			if (Layer == LAYER_MAP_UNDER || Layer == LAYER_MAP_MIDDLE || Layer == LAYER_MAP_TOP)
 			{
 				mapData = room->map[LoopCnt / MAP_WIDTH_MAX][LoopCnt % MAP_WIDTH_MAX].kind[Layer];
 
 				//ファイルから数値を一つ読み込み(%d,)、配列に格納する
-				result = fscanf(fp, "%d,", &indate);
+				result = fscanf(fp, "%d,", &indata);
 
 				if (result != EOF )
 				{
-					room->map[LoopCnt / MAP_WIDTH_MAX][LoopCnt % MAP_WIDTH_MAX].kind[Layer] = indate;
+					room->map[LoopCnt / MAP_WIDTH_MAX][LoopCnt % MAP_WIDTH_MAX].kind[Layer] = indata;
 
 					room->map[LoopCnt / MAP_WIDTH_MAX][LoopCnt % MAP_WIDTH_MAX].width = mapChip.width;
 					room->map[LoopCnt / MAP_WIDTH_MAX][LoopCnt % MAP_WIDTH_MAX].height = mapChip.height;
@@ -557,18 +557,18 @@ BOOL MY_LOAD_CSV_PASS(const char* path, MAP_PASS* pass, int Layer)
 		while (result != EOF)    //End Of File（ファイルの最後）ではないとき繰り返す
 		{
 			GAME_MAP_KIND mapData;
-			GAME_MAP_KIND indate;
+			GAME_MAP_KIND indata;
 
 			if (Layer == LAYER_MAP_UNDER || Layer == LAYER_MAP_MIDDLE || Layer == LAYER_MAP_TOP)
 			{
 				mapData = pass->map[LoopCnt / MAP_WIDTH_MAX][LoopCnt % MAP_WIDTH_MAX].kind[Layer];
 
 				//ファイルから数値を一つ読み込み(%d,)、配列に格納する
-				result = fscanf(fp, "%d,", &indate);
+				result = fscanf(fp, "%d,", &indata);
 
 				if (result != EOF)
 				{
-					pass->map[LoopCnt / MAP_WIDTH_MAX][LoopCnt % MAP_WIDTH_MAX].kind[Layer] = indate;
+					pass->map[LoopCnt / MAP_WIDTH_MAX][LoopCnt % MAP_WIDTH_MAX].kind[Layer] = indata;
 
 					pass->map[LoopCnt / MAP_WIDTH_MAX][LoopCnt % MAP_WIDTH_MAX].width = mapChip.width;
 					pass->map[LoopCnt / MAP_WIDTH_MAX][LoopCnt % MAP_WIDTH_MAX].height = mapChip.height;
@@ -616,6 +616,12 @@ BOOL MY_LOAD_CSV_PASS(const char* path, MAP_PASS* pass, int Layer)
 				result = fscanf(fp, "%d,", &mapData);
 				if (result != EOF)
 				{
+
+					mapPassColl[LoopCnt / MAP_WIDTH_MAX][LoopCnt % MAP_WIDTH_MAX].top = pass->map[LoopCnt / MAP_WIDTH_MAX][LoopCnt % MAP_WIDTH_MAX].y;
+					mapPassColl[LoopCnt / MAP_WIDTH_MAX][LoopCnt % MAP_WIDTH_MAX].right = pass->map[LoopCnt / MAP_WIDTH_MAX][LoopCnt % MAP_WIDTH_MAX].x + mapChip.width;
+					mapPassColl[LoopCnt / MAP_WIDTH_MAX][LoopCnt % MAP_WIDTH_MAX].bottom = pass->map[LoopCnt / MAP_WIDTH_MAX][LoopCnt % MAP_WIDTH_MAX].y + mapChip.height;
+					mapPassColl[LoopCnt / MAP_WIDTH_MAX][LoopCnt % MAP_WIDTH_MAX].left = pass->map[LoopCnt / MAP_WIDTH_MAX][LoopCnt % MAP_WIDTH_MAX].x;
+
 					if (mapData == COLL_EXISTS)
 					{
 						pass->map[LoopCnt / MAP_WIDTH_MAX][LoopCnt % MAP_WIDTH_MAX].IsCollisionNo = FALSE; //〇は当たり判定がないからFALSE
