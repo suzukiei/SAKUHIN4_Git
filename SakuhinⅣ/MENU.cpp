@@ -8,6 +8,7 @@
 #include "flag.h"
 
 int SELECT = 0;
+BOOL IsOpenMenu;
 
 
 VOID MENU(VOID)
