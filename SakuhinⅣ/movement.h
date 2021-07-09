@@ -3,8 +3,9 @@
 #include "class.h"
 //キーボードの種類
 #define KEY_CODE_KIND		256	//256種類
-#define CharaSpeed 2			//キャラクターのスピード
+#define CharaSpeed 16			//キャラクターのスピード
 #define PLAYER_IMG_CHANGE_MAX 16
+#define PLAYER_MOVE_MAX 8
 
 
 

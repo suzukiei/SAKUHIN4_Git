@@ -17,6 +17,7 @@
 //キーボードの入力を取得
 char AllKeyState[KEY_CODE_KIND] = { '\0' };		//すべてのキーの状態が入る
 char OldAllKeyState[KEY_CODE_KIND] = { '\0' };	//すべてのキーの状態(直前)が入る
+int CharaMoveCnt = 0;
 
 //BOOL CHARA_COLLISION(CHARA, CHARA)
 //{
@@ -34,11 +35,18 @@ BOOL MOVEMENT(CHARA* chara,int move)
 	switch (move)
 	{
 	case UP:
-		
+		if (CharaMoveCnt < PLAYER_MOVE_MAX)
+		{
+			CharaMoveCnt++;
+		}
+		else
+		{
 			work.image.y -= CharaSpeed;	//移動
-			work.CenterY -= CharaSpeed; 
+			work.CenterY -= CharaSpeed;
 			work.coll.top -= CharaSpeed;
 			work.coll.bottom -= CharaSpeed;
+			CharaMoveCnt = 0;
+		}
 		 
 			if (work.kind1 >= CHARACHIP_UP_1 && work.kind1 < CHARACHIP_UP_3)
 			{
@@ -65,14 +73,24 @@ BOOL MOVEMENT(CHARA* chara,int move)
 	
 
 	case DOWN:
-		work.image.y += CharaSpeed;	//移動
-		work.CenterY += CharaSpeed;
-		work.coll.top += CharaSpeed;
-		work.coll.bottom += CharaSpeed;
+
+		if (CharaMoveCnt < PLAYER_MOVE_MAX)
+		{
+			CharaMoveCnt++;
+		}
+		else
+		{
+
+			work.image.y += CharaSpeed;	//移動
+			work.CenterY += CharaSpeed;
+			work.coll.top += CharaSpeed;
+			work.coll.bottom += CharaSpeed;
+			CharaMoveCnt = 0;
+		}
 	
 	
 
-		//if (CHARA_COLLISION == FALSE){
+	
 			if (work.kind1 >= CHARACHIP_DOWN_1 && work.kind1 < CHARACHIP_DOWN_3)
 			{
 				//画像変更カウンタ
@@ -91,8 +109,6 @@ BOOL MOVEMENT(CHARA* chara,int move)
 				work.kind1 = CHARACHIP_DOWN_1;	//最初の画像にする
 			}
 			
-			
-		//}
 
 		
 
@@ -100,12 +116,19 @@ BOOL MOVEMENT(CHARA* chara,int move)
 
 	case RIGHT:
 
-		work.image.x += CharaSpeed;	//移動
-		work.CenterX += CharaSpeed;
-		work.coll.left += CharaSpeed;
-		work.coll.right += CharaSpeed;
+		if (CharaMoveCnt < PLAYER_MOVE_MAX)
+		{
+			CharaMoveCnt++;
+		}
+		else
+		{
+			work.image.x += CharaSpeed;	//移動
+			work.CenterX += CharaSpeed;
+			work.coll.left += CharaSpeed;
+			work.coll.right += CharaSpeed;
+			CharaMoveCnt = 0;
+		}
 
-		//if (CHARA_COLLISION == FALSE) {
 			if (work.kind1 >= CHARACHIP_RIGHT_1 && work.kind1 < CHARACHIP_RIGHT_3)
 			{
 				//画像変更カウンタ
@@ -123,22 +146,26 @@ BOOL MOVEMENT(CHARA* chara,int move)
 			{
 				work.kind1 = CHARACHIP_RIGHT_1;	//最初の画像にする
 			}
-			
-			
-		//}
-
+	
 		
 
 		break;
 
 	case LEFT:
-		work.image.x -= CharaSpeed;	//移動
-		work.CenterX -= CharaSpeed;
-		work.coll.left -= CharaSpeed;
-		work.coll.right -= CharaSpeed;
-		
 
-		//if (CHARA_COLLISION == FALSE) {
+
+		if (CharaMoveCnt < PLAYER_MOVE_MAX)
+		{
+			CharaMoveCnt++;
+		}
+		else
+		{
+			work.image.x -= CharaSpeed;	//移動
+			work.CenterX -= CharaSpeed;
+			work.coll.left -= CharaSpeed;
+			work.coll.right -= CharaSpeed;
+			CharaMoveCnt = 0;
+		}
 			if (work.kind1 >= CHARACHIP_LEFT_1 && work.kind1 < CHARACHIP_LEFT_3)
 			{
 				//画像変更カウンタ
@@ -156,8 +183,7 @@ BOOL MOVEMENT(CHARA* chara,int move)
 			{
 				work.kind1 = CHARACHIP_LEFT_1;	//最初の画像にする
 			}
-			
-		//}
+	
 		
 
 		break;
