@@ -292,16 +292,32 @@ VOID GIMMICK_DRAW()
 
 VOID PLAY_PLAYER_INIT(VOID)
 {
-	player.CenterX = mapRoom[player.nowRoom].StartPt.x * mapChip.width + (mapChip.width / 2);
-	player.CenterY = mapRoom[player.nowRoom].StartPt.y * mapChip.height + (mapChip.height / 2);
+	if (player.InRoom)
+	{
+		player.CenterX = mapRoom[player.nowRoom].StartPt.x * mapChip.width + (mapChip.width / 2);
+		player.CenterY = mapRoom[player.nowRoom].StartPt.y * mapChip.height + (mapChip.height / 2);
 
-	player.coll.left = mapRoom[player.nowRoom].StartPt.x * mapChip.width;
-	player.coll.right = mapRoom[player.nowRoom].StartPt.x * mapChip.width + mapChip.width;
-	player.coll.top = mapRoom[player.nowRoom].StartPt.y * mapChip.height;
-	player.coll.bottom = mapRoom[player.nowRoom].StartPt.y * mapChip.height + mapChip.height;
+		player.coll.left = mapRoom[player.nowRoom].StartPt.x * mapChip.width;
+		player.coll.right = mapRoom[player.nowRoom].StartPt.x * mapChip.width + mapChip.width;
+		player.coll.top = mapRoom[player.nowRoom].StartPt.y * mapChip.height;
+		player.coll.bottom = mapRoom[player.nowRoom].StartPt.y * mapChip.height + mapChip.height;
 
-	player.image.x = mapRoom[player.nowRoom].StartPt.x * mapChip.width;
-	player.image.y = mapRoom[player.nowRoom].StartPt.y * mapChip.height;
+		player.image.x = mapRoom[player.nowRoom].StartPt.x * mapChip.width;
+		player.image.y = mapRoom[player.nowRoom].StartPt.y * mapChip.height;
+	}
+	else if (player.InPass)
+	{
+		player.CenterX = mappass.StartPt.x * mapChip.width + (mapChip.width / 2);
+		player.CenterY = mappass.StartPt.y * mapChip.height + (mapChip.height / 2);
+
+		player.coll.left = mappass.StartPt.x * mapChip.width;
+		player.coll.right = mappass.StartPt.x * mapChip.width + mapChip.width;
+		player.coll.top = mappass.StartPt.y * mapChip.height;
+		player.coll.bottom = mappass.StartPt.y * mapChip.height + mapChip.height;
+
+		player.image.x = mappass.StartPt.x * mapChip.width;
+		player.image.y = mappass.StartPt.y * mapChip.height;
+	}
 
 	return;
 }
