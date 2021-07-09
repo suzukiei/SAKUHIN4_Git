@@ -170,6 +170,12 @@ BOOL MOVEMENT(CHARA* chara,int move)
 			return TRUE;//ˆÚ“®‚Å‚«‚Ä‚¢‚é‚Ì‚ÅTRUE‚ğ•Ô‚·B
 		}
 	}
+	if (work.InPass) {
+		if (CHARA_COLLISION(work.coll, mappass.map) == FALSE) {
+			*chara = work;
+			return TRUE;//ˆÚ“®‚Å‚«‚Ä‚¢‚é‚Ì‚ÅTRUE‚ğ•Ô‚·B
+		}
+	}
 
 	return FALSE;
 
