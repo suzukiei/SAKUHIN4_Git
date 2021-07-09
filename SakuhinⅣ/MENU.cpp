@@ -18,7 +18,7 @@ VOID MENU(VOID)
 	if (IsOpenMenu == TRUE)
 	{
 
-		if (MY_KEY_UP(KEY_INPUT_ESCAPE) == TRUE)
+		if (MY_KEY_UP(KEY_INPUT_BACK) == TRUE)
 		{
 			IsOpenMenu = FALSE;
 		}
