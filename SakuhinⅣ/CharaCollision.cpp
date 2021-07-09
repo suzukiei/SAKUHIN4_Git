@@ -1,8 +1,15 @@
-#include "Dxlib.h"
+#include "DxLib.h"
+#include "BGM.h"
+#include "class.h"
 #include "define.h"
 #include "enum.h"
-#include "class.h"
+#include "flag.h"
+#include "GameProcHeader.h"
+#include "image.h"
+#include "menu.h"
 #include "movement.h"
+#include "textevent.h"
+#include "title.h"
 #include "variable.h"
 
 BOOL MY_CHECK_RECT_COLL(RECT, RECT)	//領域の当たり判定をする関数
@@ -32,15 +39,26 @@ BOOL CHARA_COLLISION(RECT P,MAP map[MAP_HEIGHT_MAX][MAP_WIDTH_MAX])
 	{
 		for (int yoko = 0; yoko < MAP_WIDTH_MAX; yoko++)
 		{
-			//プレイヤーとマップが当たっているとき
-			if (CHECK_COLLISION(P, mapColl[tate][yoko]) == TRUE)
+			//プレイヤーが部屋にいるとき
+			if (player.InRoom == TRUE) {
+				if (CHECK_COLLISION(P, mapColl[tate][yoko]) == TRUE)
+				{
+					//プレイヤーとマップが当たっている
+					//MAP構造体のIsCollisionNoを返す
+					if (ret == FALSE)ret = map[tate][yoko].IsCollisionNo;
+
+
+
+				}
+			}
+			//プレイヤーが廊下にいるとき
+			if (player.InPass == TRUE)
 			{
-				//プレイヤーとマップが当たっている
-				//MAP構造体のIsCollisionNoを返す
-				if(ret == FALSE)ret = map[tate][yoko].IsCollisionNo;
-
-					
-
+				if (CHECK_COLLISION(P, mapPassColl[tate][yoko]) == TRUE)
+				{
+					//プレイヤーと廊下のマップが当たっている
+					if (ret == FALSE)ret = map[tate][yoko].IsCollisionNo;
+				}
 			}
 		}
 	}
@@ -50,58 +68,62 @@ BOOL CHARA_COLLISION(RECT P,MAP map[MAP_HEIGHT_MAX][MAP_WIDTH_MAX])
 
 VOID CHECK_COLLISION_GOAL(VOID)
 {
+	
+	
+		if (player.InRoom == TRUE)
+		{
+			if (CHECK_COLLISION(player.coll, mapColl[mapRoom[player.nowRoom].GoalPt.y][mapRoom[player.nowRoom].GoalPt.x]))
+			{
+				player.InRoom = FALSE;
+				player.InPass = TRUE;
 
-	//ゴールに触れているかチェック
-	//if (MY_CHECK_RECT_COLL(PlayerRect, /*GoalRect ゴールの判定*/) == TRUE)
-	//{
+				PLAY_PLAYER_INIT();
+			}
+		}
+		else if (player.InPass == TRUE)
+		{
+			if (CHECK_COLLISION(player.coll, mapPassColl[mappass.GoalPt.y][mappass.GoalPt.x]))
+			{
+				player.InRoom = TRUE;
+				player.nowRoom++;
+				player.InPass = FALSE;
 
+				PLAY_PLAYER_INIT();
 
-
-	//	//スタートポイントに設定し遷移
-	//	/*player.CenterX = startPt2.x;
-	//	player.CenterY = startPt2.y;
-
-
-	//	player.image.x = player.CenterX;
-	//	player.image.y = player.CenterY;*/
-
-	//	//GameScene = GAME_SCENE_PLAY2;
-
-
-
-	//	return;	//強制的にエンド画面に飛ぶ
-	//}
+			}
+		}
+	
 }
 
 
-VOID CHECK_COLLISION_ENEMY(VOID)
-{
-	//プレイヤーと敵の当たり判定の設定
-	player.coll.left = player.CenterX - 40 / 20 + 5;
-	player.coll.top = player.CenterY + 200 / 20 + 5;
-	player.coll.right = player.CenterX + 650 / 20 - 5;
-	player.coll.bottom = player.CenterY + 1000 / 20 - 5;
-
-	RECT PlayerRect;
-	PlayerRect.left = player.CenterX - 40 / 20 + 5;
-	PlayerRect.top = player.CenterY + 200 / 20 + 5;
-	PlayerRect.right = player.CenterX + 650 / 20 - 5;
-	PlayerRect.bottom = player.CenterY + 1000 / 20 - 5;
-
-	RECT EnemyRect;
-	EnemyRect.left = player.CenterX - 40 / 20 + 5;
-	EnemyRect.top = player.CenterY + 200 / 20 + 5;
-	EnemyRect.right = player.CenterX + 650 / 20 - 5;
-	EnemyRect.bottom = player.CenterY + 1000 / 20 - 5;
-
-	//ゴールに触れているかチェック
-	if (MY_CHECK_RECT_COLL(PlayerRect,EnemyRect) == TRUE)
-	{
-
-		GameScene = GAME_SCENE_END;//本当はゲームオーバ画面へ遷移したい。
-
-
-
-		return;	//強制的にエンド画面に飛ぶ
-	}
-}
+//VOID CHECK_COLLISION_ENEMY(VOID)
+//{
+//	//プレイヤーと敵の当たり判定の設定
+//	player.coll.left = player.CenterX - 40 / 20 + 5;
+//	player.coll.top = player.CenterY + 200 / 20 + 5;
+//	player.coll.right = player.CenterX + 650 / 20 - 5;
+//	player.coll.bottom = player.CenterY + 1000 / 20 - 5;
+//
+//	RECT PlayerRect;
+//	PlayerRect.left = player.CenterX - 40 / 20 + 5;
+//	PlayerRect.top = player.CenterY + 200 / 20 + 5;
+//	PlayerRect.right = player.CenterX + 650 / 20 - 5;
+//	PlayerRect.bottom = player.CenterY + 1000 / 20 - 5;
+//
+//	RECT EnemyRect;
+//	EnemyRect.left = player.CenterX - 40 / 20 + 5;
+//	EnemyRect.top = player.CenterY + 200 / 20 + 5;
+//	EnemyRect.right = player.CenterX + 650 / 20 - 5;
+//	EnemyRect.bottom = player.CenterY + 1000 / 20 - 5;
+//
+//	//ゴールに触れているかチェック
+//	if (MY_CHECK_RECT_COLL(PlayerRect,EnemyRect) == TRUE)
+//	{
+//
+//		GameScene = GAME_SCENE_END;//本当はゲームオーバ画面へ遷移したい。
+//
+//
+//
+//		return;	//強制的にエンド画面に飛ぶ
+//	}
+//}

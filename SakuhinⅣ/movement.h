@@ -25,6 +25,8 @@ BOOL MY_KEY_DOWN(int);				//キーを押しているか、キーコードで判断する
 BOOL MY_KEY_UP(int);				//キーを押し上げたか、キーコードで判断する
 
 extern RECT mapColl[MAP_HEIGHT_MAX][MAP_WIDTH_MAX];
+extern RECT mapPassColl[MAP_HEIGHT_MAX][MAP_WIDTH_MAX];
+
 
 enum MOVE {
 	UP,
