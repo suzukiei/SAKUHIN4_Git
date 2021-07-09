@@ -116,6 +116,7 @@ typedef struct MAP_ROOM
 	GAME_GIMMICK_KIND gimmick;
 	int x;
 	int y;
+	bool IsGimmickClear;
 
 	IPOINT StartPt;   //スタート地点
 	IPOINT GoalPt;	  //ゴール地点
