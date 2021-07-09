@@ -25,9 +25,15 @@ IMAGE ButtonPlay;
 IMAGE ButtonEnd;
 IMAGE ButtonRule;
 IMAGE ButtonTitleNow;
-IMAGE ButtonNow;
-IMAGE ButtonMenu1;
-IMAGE ButtonMenu2;
+IMAGE ButtonMenuNow;
+IMAGE ButtonMenuSave;
+IMAGE ButtonMenuEnd;
+IMAGE Clock;
+IMAGE TextBox;
+IMAGE PlayerNomal;
+IMAGE PlayerSmile;
+IMAGE PlayerFear;
+IMAGE PlayerTrouble;
 
 
 //MAP_CHIP mapChipRoom[8];  //ルームマップチップ
@@ -137,25 +143,25 @@ BOOL MY_LOAD_IMAGE(VOID)
 	//タイトル画面ボタン選択画像の読み込み
 	ButtonTitleNow.SetPath(IMAGE_TITLE_BUTTON_NOW_PATH);
 	ButtonTitleNow.SetHandle(LoadGraph(ButtonTitleNow.GetPath()));
-	if (ButtonNow.GetHandle() == ERR)
+	if (ButtonTitleNow.GetHandle() == ERR)
 	{
 		MessageBox(GetMainWindowHandle(), IMAGE_TITLE_BUTTON_NOW_PATH, IMAGE_LOAD_ERR_TITLE, MB_OK);
 		return FALSE;
 	}
 
-	//ボタン選択画像の読み込み
-	ButtonNow.SetPath(IMAGE_TITLE_BUTTON_NOW_PATH);
-	ButtonNow.SetHandle(LoadGraph(ButtonNow.GetPath()));
-	if (ButtonNow.GetHandle() == ERR)
+	//メニューボタン選択画像の読み込み
+	ButtonMenuNow.SetPath(IMAGE_MENU_BUTTON_NOW_PATH);
+	ButtonMenuNow.SetHandle(LoadGraph(ButtonMenuNow.GetPath()));
+	if (ButtonMenuNow.GetHandle() == ERR)
 	{
-		MessageBox(GetMainWindowHandle(), IMAGE_TITLE_BUTTON_NOW_PATH, IMAGE_LOAD_ERR_TITLE, MB_OK);
+		MessageBox(GetMainWindowHandle(), IMAGE_MENU_BUTTON_NOW_PATH, IMAGE_LOAD_ERR_TITLE, MB_OK);
 		return FALSE;
 	}
 
 	//メニュー(セーブボタン)の読み込み
-	ButtonMenu1.SetPath(IMAGE_MENU_BUTTON_SAVE_PATH);
-	ButtonMenu1.SetHandle(LoadGraph(ButtonMenu1.GetPath()));
-	if (ButtonMenu1.GetHandle() == ERR)
+	ButtonMenuSave.SetPath(IMAGE_MENU_BUTTON_SAVE_PATH);
+	ButtonMenuSave.SetHandle(LoadGraph(ButtonMenuSave.GetPath()));
+	if (ButtonMenuSave.GetHandle() == ERR)
 	{
 		MessageBox(GetMainWindowHandle(), IMAGE_MENU_BUTTON_SAVE_PATH, IMAGE_LOAD_ERR_TITLE, MB_OK);
 		return FALSE;
@@ -163,14 +169,67 @@ BOOL MY_LOAD_IMAGE(VOID)
 
 
 	//メニュー(終了ボタン)の読み込み
-	ButtonMenu2.SetPath(IMAGE_MENU_BUTTON_END_PATH);
-	ButtonMenu2.SetHandle(LoadGraph(ButtonMenu2.GetPath()));
-	if (ButtonMenu2.GetHandle() == ERR)
+	ButtonMenuEnd.SetPath(IMAGE_MENU_BUTTON_END_PATH);
+	ButtonMenuEnd.SetHandle(LoadGraph(ButtonMenuEnd.GetPath()));
+	if (ButtonMenuEnd.GetHandle() == ERR)
 	{
 		MessageBox(GetMainWindowHandle(), IMAGE_MENU_BUTTON_END_PATH, IMAGE_LOAD_ERR_TITLE, MB_OK);
 		return FALSE;
 	}
 
+	//時計の読み込み
+	Clock.SetPath(IMAGE_CLOCK_PATH);
+	Clock.SetHandle(LoadGraph(Clock.GetPath()));
+	if (Clock.GetHandle() == ERR)
+	{
+		MessageBox(GetMainWindowHandle(), IMAGE_CLOCK_PATH, IMAGE_LOAD_ERR_TITLE, MB_OK);
+		return FALSE;
+	}
+
+	//テキストの読み込み
+	TextBox.SetPath(IMAGE_TEXTBOX_PATH);
+	TextBox.SetHandle(LoadGraph(TextBox.GetPath()));
+	if (TextBox.GetHandle() == ERR)
+	{
+		MessageBox(GetMainWindowHandle(), IMAGE_TEXTBOX_PATH, IMAGE_LOAD_ERR_TITLE, MB_OK);
+		return FALSE;
+	}
+
+	//真顔の読み込み
+	PlayerNomal.SetPath(IMAGE_PLAYER_NOMAL_PATH);
+	PlayerNomal.SetHandle(LoadGraph(PlayerNomal.GetPath()));
+	if (PlayerNomal.GetHandle() == ERR)
+	{
+		MessageBox(GetMainWindowHandle(), IMAGE_PLAYER_NOMAL_PATH, IMAGE_LOAD_ERR_TITLE, MB_OK);
+		return FALSE;
+	}
+
+	//笑顔の読み込み
+	PlayerSmile.SetPath(IMAGE_PLAYER_SMILE_PATH);
+	PlayerSmile.SetHandle(LoadGraph(PlayerSmile.GetPath()));
+	if (PlayerSmile.GetHandle() == ERR)
+	{
+		MessageBox(GetMainWindowHandle(), IMAGE_PLAYER_SMILE_PATH, IMAGE_LOAD_ERR_TITLE, MB_OK);
+		return FALSE;
+	}
+
+	//困り顔の読み込み
+	PlayerFear.SetPath(IMAGE_PLAYER_FEAR_PATH);
+	PlayerFear.SetHandle(LoadGraph(PlayerFear.GetPath()));
+	if (PlayerFear.GetHandle() == ERR)
+	{
+		MessageBox(GetMainWindowHandle(), IMAGE_PLAYER_FEAR_PATH, IMAGE_LOAD_ERR_TITLE, MB_OK);
+		return FALSE;
+	}
+
+	//真顔の読み込み
+	PlayerTrouble.SetPath(IMAGE_PLAYER_TROUBLE_PATH);
+	PlayerTrouble.SetHandle(LoadGraph(PlayerNomal.GetPath()));
+	if (PlayerTrouble.GetHandle() == ERR)
+	{
+		MessageBox(GetMainWindowHandle(), IMAGE_PLAYER_TROUBLE_PATH, IMAGE_LOAD_ERR_TITLE, MB_OK);
+		return FALSE;
+	}
 
 	//プレイヤーの読み込み
 	int charaChip = LoadDivGraph(
@@ -586,14 +645,17 @@ VOID START_DRAW(VOID)
 	DrawGraph(IMAGE_TITLE_BUTTON_PLAY_WIDTH, IMAGE_TITLE_BUTTON_PLAY_HEIGHT, ButtonPlay.GetHandle(), TRUE);
 	DrawGraph(IMAGE_TITLE_BUTTON_RULE_TITLE_WIDTH, IMAGE_TITLE_BUTTON_RULE_TITLE_HEIGHT, ButtonRule.GetHandle(), TRUE);
 	DrawGraph(IMAGE_TITLE_BUTTON_END_WIDTH, IMAGE_TITLE_BUTTON_END_HEIGHT, ButtonEnd.GetHandle(), TRUE);
+	//スタートボタンと重なったとき
 	if (TITLE_SELECT_NO == TITLE_START)
 	{
 		DrawGraph(IMAGE_TITLE_BUTTON_NOW_PLAY_WIDTH, IMAGE_TITLE_BUTTON_NOW_PLAY_HEIGHT, ButtonTitleNow.GetHandle(), TRUE);
 	}
+	//ルールボタンと重なったとき
 	if (TITLE_SELECT_NO == TITLE_RULE)
 	{
 		DrawGraph(IMAGE_TITLE_BUTTON_NOW_RULE_WIDTH, IMAGE_TITLE_BUTTON_NOW_RULE_HEIGHT, ButtonTitleNow.GetHandle(), TRUE);
 	}
+	//エンドボタンと重なったとき
 	if (TITLE_SELECT_NO == TITLE_QUIT)
 	{
 		DrawGraph(IMAGE_TITLE_BUTTON_NOW_END_WIDTH, IMAGE_TITLE_BUTTON_NOW_END_HEIGHT, ButtonTitleNow.GetHandle(), TRUE);
@@ -717,6 +779,24 @@ VOID PLAY_DRAW(VOID)
 	return;
 }
 
+//メニュー画面の描画処理
+VOID MENU_DRAW(VOID)
+{
+	DrawGraph(IMAGE_MENU_WIDTH, IMAGE_MENU_HEIGHT, ImageMenu.GetHandle(), TRUE);
+	DrawGraph(IMAGE_MENU_BUTTON_SAVE_WIDTH, IMAGE_MENU_BUTTON_SAVE_HEIGHT, ButtonMenuSave.GetHandle(), TRUE);
+	DrawGraph(IMAGE_MENU_BUTTON_END_WIDTH, IMAGE_MENU_BUTTON_END_HEIGHT, ButtonMenuEnd.GetHandle(), TRUE);
+	//ボタンがエンドボタンに重なってる
+	if (SELECT == MENU_TITLE)
+	{
+		DrawGraph(IMAGE_MENU_BUTTON_SELECT_TITLE_WIDTH, IMAGE_MENU_BUTTON_SELECT_TITLE_HEIGHT, ButtonMenuNow.GetHandle(), TRUE);
+	}
+	//ボタンがセーブボタンに重なってる
+	if (SELECT == MENU_TITLE)
+	{
+		DrawGraph(IMAGE_MENU_BUTTON_SELECT_SAVE_WIDTH, IMAGE_MENU_BUTTON_SELECT_SAVE_HEIGHT, ButtonMenuNow.GetHandle(), TRUE);
+	}
+}
+
 //エンド画面の描画処理
 VOID END_DRAW(VOID)
 {
@@ -756,8 +836,14 @@ VOID MY_DELETE_IMAGE(VOID)
 	ButtonPlay.DeleteHandle();
 	ButtonEnd.DeleteHandle();
 	ButtonRule.DeleteHandle();
-	ButtonNow.DeleteHandle();
-	ButtonMenu1.DeleteHandle();
-	ButtonMenu2.DeleteHandle();
+	ButtonMenuNow.DeleteHandle();
+	ButtonMenuSave.DeleteHandle();
+	ButtonMenuEnd.DeleteHandle();
+	Clock.DeleteHandle();
+	TextBox.DeleteHandle();
+	PlayerNomal.DeleteHandle();
+	PlayerSmile.DeleteHandle();
+	PlayerFear.DeleteHandle();
+	PlayerTrouble.DeleteHandle();
 }
 
