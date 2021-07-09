@@ -10,7 +10,7 @@
 
 #include<stdio.h>
 
-#define ERR ("")
+#define ERR -1
 
 MAPCHIP mapChip;
 
@@ -24,6 +24,7 @@ IMAGE ImageMenu;
 IMAGE ButtonPlay;
 IMAGE ButtonEnd;
 IMAGE ButtonRule;
+IMAGE ButtonTitleNow;
 IMAGE ButtonNow;
 IMAGE ButtonMenu1;
 IMAGE ButtonMenu2;
@@ -46,7 +47,7 @@ BOOL MY_LOAD_IMAGE(VOID)
 	//タイトル背景の読み込み
 	ImageTitleBk.SetPath(IMAGE_TITLE_BK_PATH);
 	ImageTitleBk.SetHandle(LoadGraph(ImageTitleBk.GetPath()));
-	if (ImageTitleBk.GetPath() == ERR)
+	if (ImageTitleBk.GetHandle() == ERR)
 	{
 		MessageBox(GetMainWindowHandle(), IMAGE_TITLE_BK_PATH, IMAGE_LOAD_ERR_TITLE, MB_OK);
 		return FALSE;
@@ -55,7 +56,7 @@ BOOL MY_LOAD_IMAGE(VOID)
 	//タイトルロゴの読み込み
 	ImageTitleRogo.SetPath(IMAGE_TITLE_ROGO_PATH);
 	ImageTitleRogo.SetHandle(LoadGraph(ImageTitleRogo.GetPath()));
-	if (ImageTitleBk.GetPath() == ERR)
+	if (ImageTitleBk.GetHandle() == ERR)
 	{
 		MessageBox(GetMainWindowHandle(), IMAGE_TITLE_ROGO_PATH, IMAGE_LOAD_ERR_TITLE, MB_OK);
 		return FALSE;
@@ -64,7 +65,7 @@ BOOL MY_LOAD_IMAGE(VOID)
 	//ルール背景の読み込み
 	ImageRule.SetPath(IMAGE_RULE_PATH);
 	ImageRule.SetHandle(LoadGraph(ImageRule.GetPath()));
-	if (ImageTitleBk.GetPath() == ERR)
+	if (ImageTitleBk.GetHandle() == ERR)
 	{
 		MessageBox(GetMainWindowHandle(), IMAGE_RULE_PATH, IMAGE_LOAD_ERR_TITLE, MB_OK);
 		return FALSE;
@@ -73,7 +74,7 @@ BOOL MY_LOAD_IMAGE(VOID)
 	//メニューの読み込み
 	ImageMenu.SetPath(IMAGE_MENU_PATH);
 	ImageMenu.SetHandle(LoadGraph(ImageMenu.GetPath()));
-	if (ImageTitleBk.GetPath() == ERR)
+	if (ImageTitleBk.GetHandle() == ERR)
 	{
 		MessageBox(GetMainWindowHandle(), IMAGE_MENU_PATH, IMAGE_LOAD_ERR_TITLE, MB_OK);
 		return FALSE;
@@ -82,7 +83,7 @@ BOOL MY_LOAD_IMAGE(VOID)
 	////エンド背景の読み込み
 	//ImageEndBk.SetPath(IMAGE_END_BK_PATH);
 	//ImageEndBk.SetHandle(LoadGraph(ImageEndBk.GetPath()));
-	//if (ImageEndBk.GetPath() == ERR)
+	//if (ImageEndBk.GetHandle() == ERR)
 	//{
 	//	MessageBox(GetMainWindowHandle(), IMAGE_END_BK_PATH, IMAGE_LOAD_ERR_TITLE, MB_OK);
 	//	return FALSE;
@@ -91,7 +92,7 @@ BOOL MY_LOAD_IMAGE(VOID)
 	////エンド成功の読み込み
 	ImageEndComp.SetPath(IMAGE_END_COMP_PATH);
 	ImageEndComp.SetHandle(LoadGraph(ImageEndComp.GetPath()));
-	if (ImageEndComp.GetPath() == ERR)
+	if (ImageEndComp.GetHandle() == ERR)
 	{
 		MessageBox(GetMainWindowHandle(), IMAGE_END_COMP_PATH, IMAGE_LOAD_ERR_TITLE, MB_OK);
 		return FALSE;
@@ -100,7 +101,7 @@ BOOL MY_LOAD_IMAGE(VOID)
 	////エンド失敗の読み込み
 	ImageEndFail.SetPath(IMAGE_END_FAIL_PATH);
 	ImageEndFail.SetHandle(LoadGraph(ImageEndFail.GetPath()));
-	if (ImageEndFail.GetPath() == ERR)
+	if (ImageEndFail.GetHandle() == ERR)
 	{
 		MessageBox(GetMainWindowHandle(), IMAGE_END_FAIL_PATH, IMAGE_LOAD_ERR_TITLE, MB_OK);
 		return FALSE;
@@ -109,7 +110,7 @@ BOOL MY_LOAD_IMAGE(VOID)
 	//プレイ画面へ遷移するためのボタンの読み込み
 	ButtonPlay.SetPath(IMAGE_TITLE_BUTTON_PLAY_PATH);
 	ButtonPlay.SetHandle(LoadGraph(ButtonPlay.GetPath()));
-	if (ButtonPlay.GetPath() == ERR)
+	if (ButtonPlay.GetHandle() == ERR)
 	{
 		MessageBox(GetMainWindowHandle(), IMAGE_TITLE_BUTTON_PLAY_PATH, IMAGE_LOAD_ERR_TITLE, MB_OK);
 		return FALSE;
@@ -118,7 +119,7 @@ BOOL MY_LOAD_IMAGE(VOID)
 	//エンド画面へ遷移するためのボタンの読み込み
 	ButtonEnd.SetPath(IMAGE_TITLE_BUTTON_END_PATH);
 	ButtonEnd.SetHandle(LoadGraph(ButtonEnd.GetPath()));
-	if (ButtonEnd.GetPath() == ERR)
+	if (ButtonEnd.GetHandle() == ERR)
 	{
 		MessageBox(GetMainWindowHandle(), IMAGE_TITLE_BUTTON_END_PATH, IMAGE_LOAD_ERR_TITLE, MB_OK);
 		return FALSE;
@@ -127,16 +128,16 @@ BOOL MY_LOAD_IMAGE(VOID)
 	//ルール画面へ遷移するためのボタンの読み込み
 	ButtonRule.SetPath(IMAGE_TITLE_BUTTON_RULE_PATH);
 	ButtonRule.SetHandle(LoadGraph(ButtonRule.GetPath()));
-	if (ButtonRule.GetPath() == ERR)
+	if (ButtonRule.GetHandle() == ERR)
 	{
 		MessageBox(GetMainWindowHandle(), IMAGE_TITLE_BUTTON_RULE_PATH, IMAGE_LOAD_ERR_TITLE, MB_OK);
 		return FALSE;
 	}
 
-	//ボタン選択画像の読み込み
-	ButtonNow.SetPath(IMAGE_TITLE_BUTTON_NOW_PATH);
-	ButtonNow.SetHandle(LoadGraph(ButtonNow.GetPath()));
-	if (ButtonNow.GetPath() == ERR)
+	//タイトル画面ボタン選択画像の読み込み
+	ButtonTitleNow.SetPath(IMAGE_TITLE_BUTTON_NOW_PATH);
+	ButtonTitleNow.SetHandle(LoadGraph(ButtonTitleNow.GetPath()));
+	if (ButtonNow.GetHandle() == ERR)
 	{
 		MessageBox(GetMainWindowHandle(), IMAGE_TITLE_BUTTON_NOW_PATH, IMAGE_LOAD_ERR_TITLE, MB_OK);
 		return FALSE;
@@ -145,26 +146,26 @@ BOOL MY_LOAD_IMAGE(VOID)
 	//ボタン選択画像の読み込み
 	ButtonNow.SetPath(IMAGE_TITLE_BUTTON_NOW_PATH);
 	ButtonNow.SetHandle(LoadGraph(ButtonNow.GetPath()));
-	if (ButtonNow.GetPath() == ERR)
+	if (ButtonNow.GetHandle() == ERR)
 	{
 		MessageBox(GetMainWindowHandle(), IMAGE_TITLE_BUTTON_NOW_PATH, IMAGE_LOAD_ERR_TITLE, MB_OK);
 		return FALSE;
 	}
 
-	//メニューボタン１の読み込み
+	//メニュー(セーブボタン)の読み込み
 	ButtonMenu1.SetPath(IMAGE_MENU_BUTTON_SAVE_PATH);
 	ButtonMenu1.SetHandle(LoadGraph(ButtonMenu1.GetPath()));
-	if (ButtonMenu1.GetPath() == ERR)
+	if (ButtonMenu1.GetHandle() == ERR)
 	{
 		MessageBox(GetMainWindowHandle(), IMAGE_MENU_BUTTON_SAVE_PATH, IMAGE_LOAD_ERR_TITLE, MB_OK);
 		return FALSE;
 	}
 
 
-	//メニューボタン2の読み込み
+	//メニュー(終了ボタン)の読み込み
 	ButtonMenu2.SetPath(IMAGE_MENU_BUTTON_END_PATH);
-	ButtonMenu2.SetHandle(LoadGraph(ButtonMenu1.GetPath()));
-	if (ButtonMenu2.GetPath() == ERR)
+	ButtonMenu2.SetHandle(LoadGraph(ButtonMenu2.GetPath()));
+	if (ButtonMenu2.GetHandle() == ERR)
 	{
 		MessageBox(GetMainWindowHandle(), IMAGE_MENU_BUTTON_END_PATH, IMAGE_LOAD_ERR_TITLE, MB_OK);
 		return FALSE;
@@ -244,6 +245,7 @@ BOOL MY_LOAD_IMAGE(VOID)
 		MessageBox(GetMainWindowHandle(), "えらー", "えらー", MB_OK);
 		return -1;
 	}
+	mapRoom[0].gimmick = GIMMICK_BUTTON;
 
 	//-----------------------------ステージ2----------------------------------------------
 	//床
@@ -294,29 +296,29 @@ BOOL MY_LOAD_IMAGE(VOID)
 
 	//-----------------------------通路----------------------------------------------
 	//床
-	//if (MY_LOAD_CSV_PASS(GAME_CSV_PATH_STAGEPASS_FLOOR, &mappass, LAYER_MAP_UNDER) == FALSE)
-	//{
-	//	MessageBox(GetMainWindowHandle(), "えらー", "えらー", MB_OK);
-	//	return -1;
-	//}
-	////壁
-	//if (MY_LOAD_CSV_PASS(GAME_CSV_PATH_STAGEPASS_WALL, &mappass, LAYER_MAP_UNDER) == FALSE)
-	//{
-	//	MessageBox(GetMainWindowHandle(), "えらー", "えらー", MB_OK);
-	//	return -1;
-	//}
-	//////当たり判定
-	//if (MY_LOAD_CSV_PASS(GAME_CSV_PATH_STAGEPASS_RECT, &mappass, LAYER_MAP_RECT) == FALSE)
-	//{
-	//	MessageBox(GetMainWindowHandle(), "えらー", "えらー", MB_OK);
-	//	return -1;
-	//}
-	//////スタートゴール
-	//if (MY_LOAD_CSV_PASS(GAME_CSV_PATH_STAGEPASS_SG, &mappass, LAYER_MAP_SG) == FALSE)
-	//{
-	//	MessageBox(GetMainWindowHandle(), "えらー", "えらー", MB_OK);
-	//	return -1;
-	//}
+	if (MY_LOAD_CSV_PASS(GAME_CSV_PATH_STAGEPASS_FLOOR, &mappass, LAYER_MAP_UNDER) == FALSE)
+	{
+		MessageBox(GetMainWindowHandle(), "えらー", "えらー", MB_OK);
+		return -1;
+	}
+	//壁
+	if (MY_LOAD_CSV_PASS(GAME_CSV_PATH_STAGEPASS_WALL, &mappass, LAYER_MAP_UNDER) == FALSE)
+	{
+		MessageBox(GetMainWindowHandle(), "えらー", "えらー", MB_OK);
+		return -1;
+	}
+	////当たり判定
+	if (MY_LOAD_CSV_PASS(GAME_CSV_PATH_STAGEPASS_RECT, &mappass, LAYER_MAP_RECT) == FALSE)
+	{
+		MessageBox(GetMainWindowHandle(), "えらー", "えらー", MB_OK);
+		return -1;
+	}
+	////スタートゴール
+	if (MY_LOAD_CSV_PASS(GAME_CSV_PATH_STAGEPASS_SG, &mappass, LAYER_MAP_SG) == FALSE)
+	{
+		MessageBox(GetMainWindowHandle(), "えらー", "えらー", MB_OK);
+		return -1;
+	}
 
 
 	return TRUE;
@@ -412,7 +414,8 @@ BOOL MY_LOAD_CSV_MAP(const char* path,MAP_ROOM* room,int Layer)
 			{
 				result = fscanf(fp, "%d,", &mapData);
 				if (result != EOF)
-				GIMMICK_OBJ_SET(LoopCnt % MAP_WIDTH_MAX, LoopCnt / MAP_WIDTH_MAX, mapData);
+					GIMMICK_OBJ_SET(LoopCnt % MAP_WIDTH_MAX, LoopCnt / MAP_WIDTH_MAX, mapData);
+
 			}
 			//スタートゴール
 			else if (Layer == LAYER_MAP_SG)
@@ -583,6 +586,18 @@ VOID START_DRAW(VOID)
 	DrawGraph(IMAGE_TITLE_BUTTON_PLAY_WIDTH, IMAGE_TITLE_BUTTON_PLAY_HEIGHT, ButtonPlay.GetHandle(), TRUE);
 	DrawGraph(IMAGE_TITLE_BUTTON_RULE_TITLE_WIDTH, IMAGE_TITLE_BUTTON_RULE_TITLE_HEIGHT, ButtonRule.GetHandle(), TRUE);
 	DrawGraph(IMAGE_TITLE_BUTTON_END_WIDTH, IMAGE_TITLE_BUTTON_END_HEIGHT, ButtonEnd.GetHandle(), TRUE);
+	if (TITLE_SELECT_NO == TITLE_START)
+	{
+		DrawGraph(IMAGE_TITLE_BUTTON_NOW_PLAY_WIDTH, IMAGE_TITLE_BUTTON_NOW_PLAY_HEIGHT, ButtonTitleNow.GetHandle(), TRUE);
+	}
+	if (TITLE_SELECT_NO == TITLE_RULE)
+	{
+		DrawGraph(IMAGE_TITLE_BUTTON_NOW_RULE_WIDTH, IMAGE_TITLE_BUTTON_NOW_RULE_HEIGHT, ButtonTitleNow.GetHandle(), TRUE);
+	}
+	if (TITLE_SELECT_NO == TITLE_QUIT)
+	{
+		DrawGraph(IMAGE_TITLE_BUTTON_NOW_END_WIDTH, IMAGE_TITLE_BUTTON_NOW_END_HEIGHT, ButtonTitleNow.GetHandle(), TRUE);
+	}
 
 	return;
 }
@@ -639,6 +654,8 @@ VOID PLAY_DRAW(VOID)
 						TRUE
 					);
 				}
+
+				GIMMICK_DRAW();
 			}
 		}
 	}
@@ -683,12 +700,10 @@ VOID PLAY_DRAW(VOID)
 						TRUE
 					);
 				}
+
 			}
 		}
 	}
-	
-
-
 
 	//プレイヤー表示
 	DrawGraph
