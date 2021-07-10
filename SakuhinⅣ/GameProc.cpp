@@ -19,7 +19,7 @@ using namespace std;
 vector<GIMMICK_OBJ> gimButton;
 vector<GIMMICK_OBJ> gimMine;
 vector<GIMMICK_OBJ> gimPazzle;
-pair<GIMMICK_OBJ, GIMMICK_OBJ> gimWarp[GAME_GIMMICK_WARP_KIND];
+pair<GIMMICK_OBJ, GIMMICK_OBJ> gimWarp[GAME_GIMMICK_WARP_NUM];
 
 GIMMICK_OBJ gimNull;
 
@@ -27,6 +27,7 @@ int StartTimeFps;
 int CountFps;
 float CalcFps;
 int SampleNumFps = GAME_FPS;
+BOOL canWarp = TRUE;
 
 TIME_COUNT TimeCounter;
 
@@ -120,7 +121,10 @@ VOID PLAY_PROC(VOID)
 		GIMMICK();
 
 		CHECK_COLLISION_BACK();
-		CHECK_COLLISION_GOAL();
+		if (mapRoom[player.nowRoom].IsGimmickClear)
+		{
+			CHECK_COLLISION_GOAL();
+		}
 	}
 
 	if (MY_KEY_UP(KEY_INPUT_ESCAPE))
@@ -153,17 +157,132 @@ VOID GIMMICK(VOID)
 {
 	switch (mapRoom[player.nowRoom].gimmick)
 	{
+
 	case GIMMICK_MAZE:
+	{
+		mapRoom[player.nowRoom].IsGimmickClear = TRUE;
 		break;
+	}
 
 	case GIMMICK_MINE:
+	{
+		mapRoom[player.nowRoom].IsGimmickClear = TRUE;
+
+		for (int i = 0; i < (int)gimMine.size(); i++)
+		{
+			if (CHECK_COLLISION(player.coll, gimButton[i].coll))
+			{
+				GameScene = GAME_SCENE_END;
+				GameEndkind = GAME_END_FAIL;
+			}
+		}
 		break;
+	}
 
 	case GIMMICK_BUTTON:
+	{
+		RECT target = player.coll;
+		int cou = 0;
+
+		if (CHARACHIP_DOWN_1 <= player.kind1 && player.kind1 <= CHARACHIP_DOWN_3)
+		{
+			target.top += CharaSpeed;
+			target.bottom += CharaSpeed;
+		}
+		if (CHARACHIP_LEFT_1 <= player.kind1 && player.kind1 <= CHARACHIP_LEFT_3)
+		{
+			target.left -= CharaSpeed;
+			target.right -= CharaSpeed;
+		}
+		if (CHARACHIP_RIGHT_1 <= player.kind1 && player.kind1 <= CHARACHIP_RIGHT_3)
+		{
+			target.left += CharaSpeed;
+			target.right += CharaSpeed;
+		}
+		if (CHARACHIP_UP_1 <= player.kind1 && player.kind1 <= CHARACHIP_UP_3)
+		{
+			target.top -= CharaSpeed;
+			target.bottom -= CharaSpeed;
+		}
+
+		if (MY_KEY_DOWN(KEY_INPUT_RETURN))
+		{
+			for (int i = 0; i < (int)gimButton.size(); i++)
+			{
+				if (CHECK_COLLISION(target, gimButton[i].coll))
+				{
+					cou++;
+				}
+			}
+		}
+		if (cou == (int)gimButton.size())
+		{
+			mapRoom[player.nowRoom].IsGimmickClear = TRUE;
+		}
+
 		break;
+	}
 
 	case GIMMICK_PAZLE:
+	{
 		break;
+	}
+
+	case GIMMICK_WARP:
+	{
+		int cou = 0;
+
+		mapRoom[player.nowRoom].IsGimmickClear = TRUE;
+
+		for (int i = 0; i < GAME_GIMMICK_WARP_NUM; i++)
+		{
+			if (CHECK_COLLISION(player.coll, gimWarp[i].first.coll))
+			{
+				if (canWarp)
+				{
+					player.image.x = gimWarp[i].second.x;
+					player.image.y = gimWarp[i].second.y;
+					player.CenterX = gimWarp[i].second.x + (mapChip.width / 2);
+					player.CenterY = gimWarp[i].second.y + (mapChip.height / 2);
+					player.coll = gimWarp[i].second.coll;
+
+					canWarp = FALSE;
+				}
+				break;
+			}
+			else if (CHECK_COLLISION(player.coll, gimWarp[i].second.coll))
+			{
+				if (canWarp)
+				{
+					player.image.x = gimWarp[i].first.x;
+					player.image.y = gimWarp[i].first.y;
+					player.CenterX = gimWarp[i].first.x + (mapChip.width / 2);
+					player.CenterY = gimWarp[i].first.y + (mapChip.height / 2);
+					player.coll = gimWarp[i].first.coll;
+
+					canWarp = FALSE;
+				}
+				break;
+			}
+			else
+			{
+				cou++;
+			}
+		}
+		if (cou == GAME_GIMMICK_WARP_NUM)
+		{
+			canWarp = TRUE;
+		}
+
+		break;
+	}
+
+	case GIMMICK_MOVE:
+	{
+		mapRoom[player.nowRoom].IsGimmickClear = TRUE;
+		break;
+	}
+
 	}
 
 	return;
@@ -180,7 +299,7 @@ VOID GIMMICK_OBJ_ALL_INIT()
 	gimButton.clear();
 	gimMine.clear();
 	gimPazzle.clear();
-	for (int i = 0; i < GAME_GIMMICK_WARP_KIND; i++)
+	for (int i = 0; i < GAME_GIMMICK_WARP_NUM; i++)
 	{
 		gimWarp[i].first = gimNull;
 		gimWarp[i].second = gimNull;
@@ -236,6 +355,11 @@ VOID GIMMICK_OBJ_SET(int obj_x, int obj_y, GAME_MAP_KIND kind)
 
 	if (WARP_1 <= kind && kind <= WARP_7)
 	{
+		work.coll.top++;
+		work.coll.left++;
+		work.coll.right--;
+		work.coll.bottom--;
+
 		if (GIMMICK_OBJ_ISNULL(gimWarp[kind - WARP_1].first))
 		{
 			gimWarp[kind - WARP_1].first = work;
@@ -247,6 +371,11 @@ VOID GIMMICK_OBJ_SET(int obj_x, int obj_y, GAME_MAP_KIND kind)
 	}
 	if (WARP_8 <= kind && kind <= WARP_D)
 	{
+		work.coll.top++;
+		work.coll.left++;
+		work.coll.right--;
+		work.coll.bottom--;
+
 		if (GIMMICK_OBJ_ISNULL(gimWarp[(kind - WARP_8) + (WARP_7 - WARP_1 + 1)].first))
 		{
 			gimWarp[(kind - WARP_8) + (WARP_7 - WARP_1 + 1)].first = work;
