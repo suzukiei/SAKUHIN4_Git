@@ -194,6 +194,9 @@
 #define MOUSE_R_CLICK_TITLE	TEXT("ゲーム中断")
 #define MOUSE_R_CLICK_CAPTION	TEXT("ゲームを中断し、タイトル画面に戻りますか？")
 
+//何故拉致られたのかの動画
+#define MOVIE_START_PATH		TEXT(".\\MOVIE\\序章.mp4")
+
 typedef struct STRUCT_IPOINT
 {
 	int x = -1;
