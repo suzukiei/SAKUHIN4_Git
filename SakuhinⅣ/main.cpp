@@ -148,7 +148,7 @@ VOID MY_END(VOID)
 VOID MY_INIT(VOID)
 {
 	//ƒ}ƒbƒv‚Ì‰Šú‰»
-	for (int room = 0; room < GAME_MAP_ROOM_NUMBER; room++)
+	for (int room = 0; room < ROOM_NUM; room++)
 	{
 		for (int layer = 0; layer < LAYER_MAP_DRAWKIND; layer++)
 		{
@@ -167,6 +167,7 @@ VOID MY_INIT(VOID)
 				}
 			}
 		}
+		mapRoom[room].IsGimmickClear = FALSE;
 	}
 
 	for (int y = 0; y < MAP_HEIGHT_MAX; y++)
