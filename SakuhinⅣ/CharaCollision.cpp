@@ -34,6 +34,20 @@ BOOL CHECK_COLLISION(RECT a, RECT b)
 	return FALSE;		//“–‚½‚Á‚Ä‚¢‚È‚¢
 }
 
+BOOL CHECK_COLLISION_EVENT(RECT p, RECT d)
+{
+	if (p.left == d.left &&
+		p.top == d.top &&
+		p.right == d.right &&
+		p.bottom == d.bottom
+		)
+	{
+		return TRUE;	//“–‚½‚Á‚Ä‚¢‚é
+	}
+
+	return FALSE;		//“–‚½‚Á‚Ä‚¢‚È‚¢
+}
+
 BOOL CHARA_COLLISION(RECT P,MAP map[MAP_HEIGHT_MAX][MAP_WIDTH_MAX])
 {
 	BOOL ret = FALSE;

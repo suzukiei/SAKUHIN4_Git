@@ -12,6 +12,7 @@
 BOOL MOVEMENT(CHARA*,int);				//キャラの移動関数 //移動できたときTRUE
 VOID MY_ALL_KEYDOWN_UPDATE(VOID);	//キーの入力状態を更新する関数
 BOOL CHECK_COLLISION(RECT,RECT); //当たり判定を確認する関数の定義 //壁などに衝突しているときTRUE
+BOOL CHECK_COLLISION_EVENT(RECT, RECT); //ギミックで使用する当たり判定を確認する関数 //□が重なっているとき、TRUE
 VOID CHECK_COLLISION_GOAL(VOID); //ゴールした際の当たり判定
 VOID CHECK_COLLISION_BACK(VOID); 
 VOID CHECK_COLLISION_ENEMY(VOID);
