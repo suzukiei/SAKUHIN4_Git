@@ -30,6 +30,7 @@ VOID MENU(VOID)
 			if (MY_KEY_UP(KEY_INPUT_RETURN) == TRUE)
 			{
 				GameScene = GAME_SCENE_START;
+				IsOpenMenu = FALSE;
 			}
 
 			if (MY_KEY_UP(KEY_INPUT_DOWN) == TRUE)
@@ -57,6 +58,7 @@ VOID MENU(VOID)
 			if (MY_KEY_UP(KEY_INPUT_RETURN) == TRUE)
 			{
 				//ここにセーブ機能
+				IsOpenMenu = FALSE;
 				break;
 			}
 

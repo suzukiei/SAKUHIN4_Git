@@ -10,6 +10,7 @@ extern int textNumber;
 enum text {
     TEXT_OP,
     TEXT_OP_1,//‚Ü‚¾‚Ü‚¾’Ç‰Á—\’è
+    TEXT_STAGE1_GMMICK_CLEAR,
     TEXT_END
 };
 
