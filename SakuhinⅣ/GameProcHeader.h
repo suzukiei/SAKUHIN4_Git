@@ -6,7 +6,7 @@
 #include "class.h"
 #include "variable.h"
 
-#define GAME_GIMMICK_WARP_NUM 13
+#define GAME_GIMMICK_WARP_NUM 14
 
 //--------経過時間カウントクラス--------
 class TIME_COUNT
