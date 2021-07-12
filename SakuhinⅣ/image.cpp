@@ -971,7 +971,7 @@ VOID PLAY_DRAW(VOID)
 	DrawGraph
 	(
 		(GAME_WIDTH / 2),
-		(GAME_HEIGHT / 2) - mapChip.height /2 ,
+		(GAME_HEIGHT / 2),
 		player.handle[player.kind1],
 		TRUE
 	);
