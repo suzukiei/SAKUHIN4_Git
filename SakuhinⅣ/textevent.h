@@ -10,10 +10,15 @@
 extern int textNumber;
 
 enum text {
-    TEXT_OP,
-    TEXT_OP_1,//まだまだ追加予定
-    TEXT_STAGE1_GMMICK_CLEAR,
-    TEXT_END
+    TEXT_OP,//目を覚ました瞬間
+    TEXT_OP1,//続き
+    TEXT_STAGE1_GMMICK_CLEAR,//段ボールの中のギミックをクリアした瞬間
+    TEXT_STAGE2_START,//2ステージ目に入った瞬間
+    TEXT_STAGE4_START,//4ステージ目に入った瞬間
+    TEXT_STAGE5_START,//5ステージ目に入った瞬間
+    TEXT_STAGE6_START,//6ステージ目に入った瞬間
+    TEXT_TIMEOVER,//時間切れになった瞬間
+    TEXT_END //脱出できたとき
 };
 
 VOID TEXTEVENT(VOID);
