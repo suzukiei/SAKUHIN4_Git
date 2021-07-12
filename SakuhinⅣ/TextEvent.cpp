@@ -31,9 +31,9 @@ VOID TEXTEVENT(VOID)
 			ChangeFontType(DX_FONTTYPE_ANTIALIASING_8X8);
 
 			//DrawGraph(IMAGE_TEXTBOX_WIDTH_PATH,IMAGE_TEXTBOX_HEIGHT_PATH, TextBox.GetHandle(),TRUE); //テキストボックスの画像
+			//DrawString(TEXT_POSITION_X, TEXT_POSITION_Y, "[永依]", TEXTCOLOR); //名前
 			//DrawString(TEXT_POSITION_X, TEXT_POSITION_Y, "ここは一体…とりあえずここから出ないと…", TEXTCOLOR); //セリフ
 			//DrawGraph(IMAGE_PLAYER_NOMAL_WIDTH_PATH, IMAGE_PLAYER_NOMAL_HEIGHT_PATH, PlayerFear.GetHandle());//キャラの表情差分
-			//まだまだ追加予定
 			if (MY_KEY_DOWN(KEY_INPUT_RETURN) == TRUE) 
 			{
 				StringEndFlag = FALSE;
