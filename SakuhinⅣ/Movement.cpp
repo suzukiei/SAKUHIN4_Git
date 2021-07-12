@@ -191,7 +191,8 @@ BOOL MOVEMENT(CHARA* chara,int move)
 
 	//衝突がなければ、workから大本のキャラの情報に入れる。
 	if (work.InRoom) {
-		if (CHARA_COLLISION(work.coll, mapRoom[work.nowRoom].map) == FALSE) {
+		if ((CHARA_COLLISION(work.coll, mapRoom[work.nowRoom].map) == FALSE)&&
+			(CHARA_COLLISION_GIMMICK(work.coll) == FALSE)){
 			*chara = work;
 			return TRUE;//移動できているのでTRUEを返す。
 		}
