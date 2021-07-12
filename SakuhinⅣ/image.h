@@ -94,6 +94,7 @@
 #define GAME_CSV_PATH_STAGE7_RECT 		TEXT(".\\IMAGE\\csv\\Stage8_当たり判定.csv")//STAGE7当たり判定
 #define GAME_CSV_PATH_STAGE7_SG 		TEXT(".\\IMAGE\\csv\\Stage8_SG.csv")//STAGE7スタートゴール
 
+
 //画像
 class IMAGE
 {
@@ -195,3 +196,9 @@ VOID RULE_DRAW(VOID);	//ルール画面の描画
 VOID PLAY_DRAW(VOID);	//プレイ画面の描画
 VOID MENU_DRAW(VOID);	//メニュー画面の描画
 VOID END_DRAW(VOID);	    //エンド画面の描画
+
+extern IMAGE TextBox;
+extern IMAGE PlayerNomal;
+extern IMAGE PlayerSmile;
+extern IMAGE PlayerFear;
+extern IMAGE PlayerTrouble;
