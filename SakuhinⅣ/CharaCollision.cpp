@@ -34,7 +34,7 @@ BOOL CHECK_COLLISION(RECT a, RECT b)
 	return FALSE;		//“–‚½‚Á‚Ä‚¢‚È‚¢
 }
 
-BOOL CHECK_COLLISION_EVENT(RECT p, RECT d)
+BOOL CHECK_COLLISION_JUSTCOL(RECT p, RECT d)
 {
 	if (p.left == d.left &&
 		p.top == d.top &&
