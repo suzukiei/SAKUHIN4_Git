@@ -170,7 +170,7 @@ VOID GIMMICK(VOID)
 
 		for (int i = 0; i < (int)gimMine.size(); i++)
 		{
-			if (CHECK_COLLISION(player.coll, gimButton[i].coll))
+			if (CHECK_COLLISION(player.coll, gimMine[i].coll))
 			{
 				GameScene = GAME_SCENE_END;
 				GameEndkind = GAME_END_FAIL;
@@ -225,6 +225,70 @@ VOID GIMMICK(VOID)
 
 	case GIMMICK_PAZLE:
 	{
+		RECT target = player.coll;
+		RECT work;
+
+		if (CHARACHIP_DOWN_1 <= player.kind1 && player.kind1 <= CHARACHIP_DOWN_3)
+		{
+			target.top += mapChip.height;
+			target.bottom += mapChip.height;
+		}
+		if (CHARACHIP_LEFT_1 <= player.kind1 && player.kind1 <= CHARACHIP_LEFT_3)
+		{
+			target.left -= mapChip.width;
+			target.right -= mapChip.width;
+		}
+		if (CHARACHIP_RIGHT_1 <= player.kind1 && player.kind1 <= CHARACHIP_RIGHT_3)
+		{
+			target.left += mapChip.width;
+			target.right += mapChip.width;
+		}
+		if (CHARACHIP_UP_1 <= player.kind1 && player.kind1 <= CHARACHIP_UP_3)
+		{
+			target.top -= mapChip.height;
+			target.bottom -= mapChip.height;
+		}
+
+		for (int i = 0; i < (int)gimPazzle.size(); i++)
+		{
+			work = gimPazzle[i].coll;
+
+			if (CHARACHIP_DOWN_1 <= player.kind1 && player.kind1 <= CHARACHIP_DOWN_3)
+			{
+				work.top += mapChip.height;
+				work.bottom += mapChip.height;
+			}
+			if (CHARACHIP_LEFT_1 <= player.kind1 && player.kind1 <= CHARACHIP_LEFT_3)
+			{
+				work.left -= mapChip.width;
+				work.right -= mapChip.width;
+			}
+			if (CHARACHIP_RIGHT_1 <= player.kind1 && player.kind1 <= CHARACHIP_RIGHT_3)
+			{
+				work.left += mapChip.width;
+				work.right += mapChip.width;
+			}
+			if (CHARACHIP_UP_1 <= player.kind1 && player.kind1 <= CHARACHIP_UP_3)
+			{
+				work.top -= mapChip.height;
+				work.bottom -= mapChip.height;
+			}
+
+			if (MY_KEY_DOWN(KEY_INPUT_RETURN))
+			{
+				if (CHECK_COLLISION_JUSTCOL(target, gimPazzle[i].coll) &&
+					!CHARA_COLLISION(work, mapRoom[player.nowRoom].map) &&
+					!CHECK_COLLISION_GIMMICK(work) &&
+					work.bottom < mapChip.height * MAP_HEIGHT_MAX &&
+					work.top > mapChip.height)
+				{
+					gimPazzle[i].coll = work;
+					gimPazzle[i].x = gimPazzle[i].coll.left;
+					gimPazzle[i].y = gimPazzle[i].coll.top;
+				}
+			}
+		}
+
 		break;
 	}
 
@@ -342,11 +406,11 @@ VOID GIMMICK_OBJ_SET(int obj_x, int obj_y, GAME_MAP_KIND kind)
 		work.kind = MAP_CARDBOARD;
 		gimButton.push_back(work);
 	}
-	/*
-	if (kind ==)
+	
+	if (kind == MAP_MINE)
 	{
 		gimMine.push_back(work);
-	}*/
+	}
 
 	if (kind == MAP_CARDBOARD)
 	{
@@ -492,4 +556,40 @@ VOID PLAY_PLAYER_INIT(FIRST_POINT point)
 	}
 
 	return;
+}
+
+BOOL CHECK_COLLISION_GIMMICK(RECT r)
+{
+	BOOL ret = FALSE;
+
+	switch (mapRoom[player.nowRoom].gimmick)
+	{
+
+	case GIMMICK_BUTTON:
+	{
+		for (int i = 0; i < (int)gimButton.size(); i++)
+		{
+			if (CHECK_COLLISION(r, gimButton[i].coll))
+			{
+				ret = TRUE;
+			}
+		}
+
+		break;
+	}
+	case GIMMICK_PAZLE:
+	{
+		for (int i = 0; i < (int)gimPazzle.size(); i++)
+		{
+			if (CHECK_COLLISION(r, gimPazzle[i].coll))
+			{
+				ret = TRUE;
+			}
+		}
+		break;
+	}
+
+	}
+
+	return(ret);
 }
