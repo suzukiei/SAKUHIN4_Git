@@ -19,6 +19,7 @@ using namespace std;
 vector<GIMMICK_OBJ> gimButton;
 vector<GIMMICK_OBJ> gimMine;
 vector<GIMMICK_OBJ> gimPazzle;
+vector<GIMMICK_OBJ> gimMove;
 pair<GIMMICK_OBJ, GIMMICK_OBJ> gimWarp[GAME_GIMMICK_WARP_NUM];
 
 GIMMICK_OBJ gimNull;
@@ -28,6 +29,8 @@ int CountFps;
 float CalcFps;
 int SampleNumFps = GAME_FPS;
 BOOL canWarp = TRUE;
+BOOL onMoveGimmick = FALSE;
+MOVE nowMoveGimmickDir;
 
 TIME_COUNT TimeCounter;
 
@@ -101,24 +104,27 @@ VOID PLAY_PROC(VOID)
 {
 	if (IsOpenMenu == FALSE)
 	{
-		if (MY_KEY_DOWN(KEY_INPUT_W))
+		if (onMoveGimmick == FALSE)
 		{
-			MOVEMENT((CHARA*)&player, UP);
-		}
-		else if (MY_KEY_DOWN(KEY_INPUT_S))
-		{
-			MOVEMENT((CHARA*)&player, DOWN);
-		}
-		else if (MY_KEY_DOWN(KEY_INPUT_A))
-		{
-			MOVEMENT((CHARA*)&player, LEFT);
-		}
-		else if (MY_KEY_DOWN(KEY_INPUT_D))
-		{
-			MOVEMENT((CHARA*)&player, RIGHT);
+			if (MY_KEY_DOWN(KEY_INPUT_W))
+			{
+				MOVEMENT((CHARA*)&player, UP);
+			}
+			else if (MY_KEY_DOWN(KEY_INPUT_S))
+			{
+				MOVEMENT((CHARA*)&player, DOWN);
+			}
+			else if (MY_KEY_DOWN(KEY_INPUT_A))
+			{
+				MOVEMENT((CHARA*)&player, LEFT);
+			}
+			else if (MY_KEY_DOWN(KEY_INPUT_D))
+			{
+				MOVEMENT((CHARA*)&player, RIGHT);
+			}
 		}
 
-		GIMMICK();
+		if(player.InRoom)GIMMICK();
 
 		CHECK_COLLISION_BACK();
 		if (mapRoom[player.nowRoom].IsGimmickClear)
@@ -211,8 +217,10 @@ VOID GIMMICK(VOID)
 			{
 				if (CHECK_COLLISION(target, gimButton[i].coll))
 				{
-					cou++;
+					gimButton[i].flag = TRUE;
 				}
+
+				if (gimButton[i].flag)cou++;
 			}
 		}
 		if (cou == (int)gimButton.size())
@@ -300,7 +308,7 @@ VOID GIMMICK(VOID)
 
 		for (int i = 0; i < GAME_GIMMICK_WARP_NUM; i++)
 		{
-			if (CHECK_COLLISION(player.coll, gimWarp[i].first.coll))
+			if (CHECK_COLLISION_JUSTCOL(player.coll, gimWarp[i].first.coll))
 			{
 				if (canWarp)
 				{
@@ -314,7 +322,7 @@ VOID GIMMICK(VOID)
 				}
 				break;
 			}
-			else if (CHECK_COLLISION(player.coll, gimWarp[i].second.coll))
+			else if (CHECK_COLLISION_JUSTCOL(player.coll, gimWarp[i].second.coll))
 			{
 				if (canWarp)
 				{
@@ -343,7 +351,104 @@ VOID GIMMICK(VOID)
 
 	case GIMMICK_MOVE:
 	{
+		BOOL flag = FALSE;
 		mapRoom[player.nowRoom].IsGimmickClear = TRUE;
+
+
+		if (CHARACHIP_DOWN_1 <= player.kind1 && player.kind1 <= CHARACHIP_DOWN_3)
+		{
+			nowMoveGimmickDir = DOWN;
+		}
+		if (CHARACHIP_LEFT_1 <= player.kind1 && player.kind1 <= CHARACHIP_LEFT_3)
+		{
+			nowMoveGimmickDir = LEFT;
+		}
+		if (CHARACHIP_RIGHT_1 <= player.kind1 && player.kind1 <= CHARACHIP_RIGHT_3)
+		{
+			nowMoveGimmickDir = RIGHT;
+		}
+		if (CHARACHIP_UP_1 <= player.kind1 && player.kind1 <= CHARACHIP_UP_3)
+		{
+			nowMoveGimmickDir = UP;
+		}
+
+
+		for (int i = 0; i < (int)gimMove.size(); i++)
+		{
+			if (CHECK_COLLISION_JUSTCOL(player.coll, gimMove[i].coll))
+			{
+				switch (gimMove[i].kind)
+				{
+				case MAP_BLOOD_ARROW_BACK:
+					MOVEMENT(&player, DOWN);
+					break;
+
+				case MAP_BLOOD_ARROW_FORNT:
+					MOVEMENT(&player, UP);
+					break;
+
+				case MAP_BLOOD_ARROW_LEFT:
+					MOVEMENT(&player, LEFT);
+					break;
+
+				case MAP_BLOOD_ARROW_RIGHT:
+					MOVEMENT(&player, RIGHT);
+					break;
+				}
+
+				onMoveGimmick = TRUE;
+
+				flag = TRUE;
+			}
+			else if(CHECK_COLLISION(player.coll, gimMove[i].coll))
+			{
+				//if (onMoveGimmick)
+				{
+					switch (gimMove[i].kind)
+					{
+					case MAP_BLOOD_ARROW_BACK:
+						if (nowMoveGimmickDir == UP || nowMoveGimmickDir == DOWN)
+						{
+							onMoveGimmick = TRUE;
+							MOVEMENT(&player, DOWN);
+						}
+						break;
+
+					case MAP_BLOOD_ARROW_FORNT:
+						if (nowMoveGimmickDir == UP || nowMoveGimmickDir == DOWN)
+						{
+							onMoveGimmick = TRUE;
+							MOVEMENT(&player, UP);
+						}
+						break;
+
+					case MAP_BLOOD_ARROW_LEFT:
+						if (nowMoveGimmickDir == RIGHT || nowMoveGimmickDir == LEFT)
+						{
+							onMoveGimmick = TRUE;
+							MOVEMENT(&player, LEFT);
+						}
+						break;
+
+					case MAP_BLOOD_ARROW_RIGHT:
+						if (nowMoveGimmickDir == RIGHT || nowMoveGimmickDir == LEFT)
+						{
+							onMoveGimmick = TRUE;
+							MOVEMENT(&player, RIGHT);
+						}
+						break;
+					}
+
+					flag = TRUE;
+				}
+			}
+		}
+
+		if (!flag && onMoveGimmick)
+		{
+			onMoveGimmick = FALSE;
+		}
+
 		break;
 	}
 
@@ -419,11 +524,6 @@ VOID GIMMICK_OBJ_SET(int obj_x, int obj_y, GAME_MAP_KIND kind)
 
 	if (WARP_1 <= kind && kind <= WARP_7)
 	{
-		work.coll.top++;
-		work.coll.left++;
-		work.coll.right--;
-		work.coll.bottom--;
-
 		if (GIMMICK_OBJ_ISNULL(gimWarp[kind - WARP_1].first))
 		{
 			gimWarp[kind - WARP_1].first = work;
@@ -433,13 +533,8 @@ VOID GIMMICK_OBJ_SET(int obj_x, int obj_y, GAME_MAP_KIND kind)
 			gimWarp[kind - WARP_1].second = work;
 		}
 	}
-	if (WARP_8 <= kind && kind <= WARP_D)
+	if (WARP_8 <= kind && kind <= WARP_E)
 	{
-		work.coll.top++;
-		work.coll.left++;
-		work.coll.right--;
-		work.coll.bottom--;
-
 		if (GIMMICK_OBJ_ISNULL(gimWarp[(kind - WARP_8) + (WARP_7 - WARP_1 + 1)].first))
 		{
 			gimWarp[(kind - WARP_8) + (WARP_7 - WARP_1 + 1)].first = work;
@@ -448,6 +543,11 @@ VOID GIMMICK_OBJ_SET(int obj_x, int obj_y, GAME_MAP_KIND kind)
 		{
 			gimWarp[(kind - WARP_8) + (WARP_7 - WARP_1 + 1)].second = work;
 		}
+	}
+
+	if (kind == MAP_BLOOD_ARROW_FORNT || kind == MAP_BLOOD_ARROW_BACK || kind == MAP_BLOOD_ARROW_LEFT || kind == MAP_BLOOD_ARROW_RIGHT)
+	{
+		gimMove.push_back(work);
 	}
 
 	return;
