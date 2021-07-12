@@ -383,6 +383,13 @@ BOOL MY_LOAD_IMAGE(VOID)
 		MessageBox(GetMainWindowHandle(), "えらー", "えらー", MB_OK);
 		return -1;
 	}
+
+	//ギミック
+	if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE3_GIMMICK, &mapRoom[3], LAYER_MAP_GIMMICK) == FALSE)
+	{
+		MessageBox(GetMainWindowHandle(), "えらー", "えらー", MB_OK);
+		return -1;
+	}
 	mapRoom[2].gimmick = GIMMICK_MOVE;
 
 	//-----------------------------ステージ4----------------------------------------------
@@ -539,7 +546,7 @@ BOOL MY_LOAD_IMAGE(VOID)
 		return -1;
 	}
 	//ギミック
-	if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE5_GIMMICK, &mapRoom[6], LAYER_MAP_GIMMICK) == FALSE)
+	if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE7_GIMMICK, &mapRoom[6], LAYER_MAP_GIMMICK) == FALSE)
 	{
 		MessageBox(GetMainWindowHandle(), "えらー", "えらー", MB_OK);
 		return -1;
@@ -971,7 +978,7 @@ VOID PLAY_DRAW(VOID)
 	DrawGraph
 	(
 		(GAME_WIDTH / 2),
-		(GAME_HEIGHT / 2),
+		(GAME_HEIGHT / 2) - mapChip.height /2,
 		player.handle[player.kind1],
 		TRUE
 	);
