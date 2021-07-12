@@ -15,7 +15,7 @@
 int textNumber;
 BOOL StringEndFlag;
 
-VOID TEXTEVENT(VOID)
+VOID TEXTEVENT(int textNumber)
 {
 //###################################
 //
@@ -24,7 +24,6 @@ VOID TEXTEVENT(VOID)
 //
 //###################################
 
-	if (StringEndFlag == TRUE) {
 		switch (textNumber) {
 		case TEXT_OP:
 			SetFontSize(30);
@@ -34,12 +33,12 @@ VOID TEXTEVENT(VOID)
 			//DrawString(TEXT_POSITION_X, TEXT_POSITION_Y, "[永依]", TEXTCOLOR); //名前
 			//DrawString(TEXT_POSITION_X, TEXT_POSITION_Y, "ここは一体…とりあえずここから出ないと…", TEXTCOLOR); //セリフ
 			//DrawGraph(IMAGE_PLAYER_NOMAL_WIDTH_PATH, IMAGE_PLAYER_NOMAL_HEIGHT_PATH, PlayerFear.GetHandle());//キャラの表情差分
-			if (MY_KEY_DOWN(KEY_INPUT_RETURN) == TRUE) 
+			while (MY_KEY_DOWN(KEY_INPUT_RETURN) != TRUE) 
 			{
-				StringEndFlag = FALSE;
-				textNumber++;
-				SetFontSize(16);
+				//StringEndFlag = FALSE;
+				
 			}
+			SetFontSize(16);
 			break;
 		case TEXT_STAGE1_GMMICK_CLEAR:
 			SetFontSize(30);
@@ -56,6 +55,5 @@ VOID TEXTEVENT(VOID)
 			break;
 
 		}
-	}
 	return;
 }
