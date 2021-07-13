@@ -18,7 +18,7 @@ FILE* fp = NULL; //ファイルポインタ
 VOID SAVING(int NOWROOM)
 {
 
-    fp = fopen("SAVEDATA/gamedata.txt", "w");
+    fp = fopen("/SAVEDATA/gamedata.txt", "w");
     if (fp == NULL) {
         return;
     }
@@ -31,7 +31,7 @@ VOID SAVING(int NOWROOM)
 
 int LOADING(VOID)
 {
-    fp = fopen("SAVEDATA/gamedata.dat", "r");
+    fp = fopen("/SAVEDATA/gamedata.dat", "r");
     if (fp == NULL) {
         return 0;
     }
