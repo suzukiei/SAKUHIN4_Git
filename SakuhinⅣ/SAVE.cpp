@@ -15,14 +15,15 @@
 
 
 FILE* fp = NULL; //ファイルポインタ
-VOID SAVING(int)
+VOID SAVING(int NOWROOM)
 {
 
-    fp = fopen("SAVEDATA/gamedata.dat", "wb");
+    fp = fopen("SAVEDATA/gamedata.txt", "w");
     if (fp == NULL) {
         return;
     }
-    fwrite(&player.nowRoom, sizeof(player.nowRoom), 1, fp); //ここでマップの番号とプレイヤーの座標を書き込む。
+
+    fwrite(&NOWROOM, sizeof(NOWROOM), 1, fp); //ここでマップの番号とプレイヤーの座標を書き込む。
     fclose(fp);
 
     return;
@@ -30,7 +31,7 @@ VOID SAVING(int)
 
 int LOADING(VOID)
 {
-    fp = fopen("SAVEDATA/gamedata.dat", "rb");
+    fp = fopen("SAVEDATA/gamedata.dat", "r");
     if (fp == NULL) {
         return 0;
     }
