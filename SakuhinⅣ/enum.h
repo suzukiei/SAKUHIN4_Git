@@ -68,7 +68,7 @@ enum GAME_MAP_KIND
 	MAP_MINE = 2738,
 	//------------------------------血--------------------------------------
 	//ギミック移動　前
-	MAP_BLOOD_ARROW_FORNT = 299,
+	MAP_BLOOD_ARROW_FRONT = 299,
 	//ギミック移動　左
 	MAP_BLOOD_ARROW_LEFT = 297,
 	//ギミック移動　右
@@ -216,7 +216,7 @@ enum GAME_GIMMICK_KIND
 	GIMMICK_BUTTON,//ボタン
 	GIMMICK_WARP,//ワープ
 	GIMMICK_MINE,//地雷
-	GIMMICK_PAZLE,//モノを動かす
+	GIMMICK_PAZZLE,//モノを動かす
 	GIMMICK_MAZE,//迷路
 	GIMMICK_MOVE//強制移動
 };

@@ -551,7 +551,7 @@ BOOL MY_LOAD_IMAGE(VOID)
 		MessageBox(GetMainWindowHandle(), "Ç¶ÇÁÅ[", "Ç¶ÇÁÅ[", MB_OK);
 		return -1;
 	}
-	mapRoom[6].gimmick = GIMMICK_PAZLE;
+	mapRoom[6].gimmick = GIMMICK_PAZZLE;
 
 
 	//-----------------------------í òH----------------------------------------------
