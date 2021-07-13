@@ -134,7 +134,7 @@ VOID PLAY_PROC(VOID)
 		}
 	}
 
-	if (MY_KEY_UP(KEY_INPUT_ESCAPE))
+	if (player.InPass && MY_KEY_UP(KEY_INPUT_ESCAPE))
 	{
 		IsOpenMenu = TRUE;
 	}
