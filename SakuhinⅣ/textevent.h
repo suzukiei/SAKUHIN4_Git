@@ -21,5 +21,5 @@ enum text {
     TEXT_END //’Eo‚Å‚«‚½‚Æ‚«
 };
 
-VOID TEXTEVENT(VOID);
+VOID TEXTEVENT(int);
 
