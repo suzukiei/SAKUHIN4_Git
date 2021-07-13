@@ -74,6 +74,7 @@ VOID START_PROC(VOID)
 	{
 		FIRST_PLAYER_INIT();
 		PLAY_PLAYER_INIT(START_POINT);
+		TimeCounter.RESET();
 	}
 	/*デバッグ用
 	if (MY_KEY_UP(KEY_INPUT_SPACE))
@@ -103,6 +104,9 @@ VOID RULE_PROC(VOID)
 
 VOID PLAY_PROC(VOID)
 {
+	if (player.InRoom)TimeCounter.START();
+	if (player.InPass)TimeCounter.STOP();
+
 	if (IsOpenMenu == FALSE)
 	{
 		if (onMoveGimmick == FALSE)
@@ -152,6 +156,8 @@ VOID PLAY_PROC(VOID)
 
 VOID END_PROC(VOID)
 {
+	TEXTEVENT(TEXT_END);
+	GameScene = GAME_SCENE_START;
 	//デバッグ用
 	if (MY_KEY_UP(KEY_INPUT_RETURN))
 	{
@@ -167,13 +173,21 @@ VOID GIMMICK(VOID)
 
 	case GIMMICK_MAZE:
 	{
-		mapRoom[player.nowRoom].IsGimmickClear = TRUE;
+		if (!mapRoom[player.nowRoom].IsGimmickClear) {
+			mapRoom[player.nowRoom].IsGimmickClear = TRUE;
+			if (player.nowRoom == MAZE_ROOM)TEXTEVENT(TEXT_STAGE2_START);
+			if (player.nowRoom == NOTSEEMAZE_ROOM)TEXTEVENT(TEXT_STAGE6_START);
+		}
 		break;
 	}
 
 	case GIMMICK_MINE:
 	{
-		mapRoom[player.nowRoom].IsGimmickClear = TRUE;
+		if (!mapRoom[player.nowRoom].IsGimmickClear)
+		{
+			mapRoom[player.nowRoom].IsGimmickClear = TRUE;
+			TEXTEVENT(TEXT_STAGE4_START);
+		}
 
 		for (int i = 0; i < (int)gimMine.size(); i++)
 		{
@@ -226,7 +240,11 @@ VOID GIMMICK(VOID)
 		}
 		if (cou == (int)gimButton.size())
 		{
-			mapRoom[player.nowRoom].IsGimmickClear = TRUE;
+			if (!mapRoom[player.nowRoom].IsGimmickClear)
+			{
+				mapRoom[player.nowRoom].IsGimmickClear = TRUE;
+				TEXTEVENT(TEXT_STAGE1_GMMICK_CLEAR);
+			}
 		}
 
 		break;
@@ -305,7 +323,11 @@ VOID GIMMICK(VOID)
 	{
 		int cou = 0;
 
-		mapRoom[player.nowRoom].IsGimmickClear = TRUE;
+		if (mapRoom[player.nowRoom].IsGimmickClear) 
+		{
+			mapRoom[player.nowRoom].IsGimmickClear = TRUE;
+			TEXTEVENT(TEXT_STAGE5_START);
+		}
 
 		for (int i = 0; i < GAME_GIMMICK_WARP_NUM; i++)
 		{
