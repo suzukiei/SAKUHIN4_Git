@@ -74,6 +74,7 @@ VOID START_PROC(VOID)
 	{
 		FIRST_PLAYER_INIT();
 		PLAY_PLAYER_INIT(START_POINT);
+		TimeCounter.RESET();
 	}
 	/*デバッグ用
 	if (MY_KEY_UP(KEY_INPUT_SPACE))
@@ -103,6 +104,9 @@ VOID RULE_PROC(VOID)
 
 VOID PLAY_PROC(VOID)
 {
+	if (player.InRoom)TimeCounter.START();
+	if (player.InPass)TimeCounter.STOP();
+
 	if (IsOpenMenu == FALSE)
 	{
 		if (onMoveGimmick == FALSE)
@@ -222,7 +226,7 @@ VOID GIMMICK(VOID)
 			target.bottom -= CharaSpeed;
 		}
 
-		if (MY_KEY_UP(KEY_INPUT_RETURN))
+		if (MY_KEY_DOWN(KEY_INPUT_RETURN))
 		{
 			for (int i = 0; i < (int)gimButton.size(); i++)
 			{
