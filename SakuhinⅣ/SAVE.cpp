@@ -31,7 +31,7 @@ VOID SAVING(int NOWROOM)
 
 int LOADING(VOID)
 {
-    fp = fopen(".\\SAVEDATA\\gamedata.dat", "r");
+    fp = fopen(".\\SAVEDATA\\gamedata.txt", "r");
     if (fp == NULL) {
         return 0;
     }
