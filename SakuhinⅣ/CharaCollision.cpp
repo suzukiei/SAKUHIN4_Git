@@ -89,12 +89,19 @@ VOID CHECK_COLLISION_GOAL(VOID)
 	
 		if (player.InRoom == TRUE)
 		{
+			
 			if (CHECK_COLLISION(player.coll, mapColl[mapRoom[player.nowRoom].GoalPt.y][mapRoom[player.nowRoom].GoalPt.x]))
 			{
-				player.InRoom = FALSE;
-				player.InPass = TRUE;
+				if (player.nowRoom >= ROOM_NUM) {
+					GameScene = GAME_SCENE_END;
+					GameEndkind = GAME_END_COMP;
+				}
+				else {
+					player.InRoom = FALSE;
+					player.InPass = TRUE;
 
-				PLAY_PLAYER_INIT(START_POINT);
+					PLAY_PLAYER_INIT(START_POINT);
+				}
 			}
 		}
 		else if (player.InPass == TRUE)
