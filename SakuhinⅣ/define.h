@@ -90,12 +90,12 @@
 
 //セーブボタン
 #define IMAGE_MENU_BUTTON_SAVE_PATH			TEXT(".\\IMAGE\\button1.png")
-#define IMAGE_MENU_BUTTON_SAVE_HEIGHT		120
+#define IMAGE_MENU_BUTTON_SAVE_HEIGHT		300
 #define IMAGE_MENU_BUTTON_SAVE_WIDTH		400
 
 //ゲーム終了ボタン
 #define IMAGE_MENU_BUTTON_END_PATH		TEXT(".\\IMAGE\\button2.png")
-#define IMAGE_MENU_BUTTON_END_HEIGHT	300
+#define IMAGE_MENU_BUTTON_END_HEIGHT	120
 #define IMAGE_MENU_BUTTON_END_WIDTH		400
 
 //メニュー画面背景
@@ -113,8 +113,8 @@
 
 //時計画像パス
 #define IMAGE_CLOCK_PATH				TEXT(".\\IMAGE\\clock.png")
-#define IMAGE_CLOCK_WIDTH_PATH			800
-#define IMAGE_CLOCK_HEIGHT_PATH		100
+#define IMAGE_CLOCK_WIDTH_PATH			750
+#define IMAGE_CLOCK_HEIGHT_PATH		0
 
 //TextBoxパス
 #define IMAGE_TEXTBOX_PATH				TEXT(".\\IMAGE\\TextBox.png")
