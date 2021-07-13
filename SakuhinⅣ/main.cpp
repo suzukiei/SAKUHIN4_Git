@@ -188,7 +188,7 @@ VOID MY_INIT(VOID)
 	//ƒLƒƒƒ‰‚Ì‰Šú‰»
 	player.CenterX = 0;
 	player.CenterY = 0;
-	player.nowRoom = 2;
+	player.nowRoom = 0;
 	player.kind1 = CHARACHIP_UP_2;
 	player.InPass = FALSE;
 	player.InRoom = TRUE;
