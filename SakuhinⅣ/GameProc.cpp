@@ -72,6 +72,7 @@ VOID START_PROC(VOID)
 	TITLE();
 	if (GameScene == GAME_SCENE_PLAY)
 	{
+		FIRST_PLAYER_INIT();
 		PLAY_PLAYER_INIT(START_POINT);
 	}
 	/*デバッグ用
@@ -591,6 +592,43 @@ VOID GIMMICK_DRAW()
 	return;
 }
 
+BOOL CHECK_COLLISION_GIMMICK(RECT r)
+{
+	BOOL ret = FALSE;
+
+	switch (mapRoom[player.nowRoom].gimmick)
+	{
+
+	case GIMMICK_BUTTON:
+	{
+		for (int i = 0; i < (int)gimButton.size(); i++)
+		{
+			if (CHECK_COLLISION(r, gimButton[i].coll))
+			{
+				ret = TRUE;
+			}
+		}
+
+		break;
+	}
+	case GIMMICK_PAZLE:
+	{
+		for (int i = 0; i < (int)gimPazzle.size(); i++)
+		{
+			if (CHECK_COLLISION(r, gimPazzle[i].coll))
+			{
+				ret = TRUE;
+			}
+		}
+		break;
+	}
+
+	}
+
+	return(ret);
+}
+
+
 VOID PLAY_PLAYER_INIT(FIRST_POINT point)
 {
 	switch (point)
@@ -658,38 +696,21 @@ VOID PLAY_PLAYER_INIT(FIRST_POINT point)
 	return;
 }
 
-BOOL CHECK_COLLISION_GIMMICK(RECT r)
+
+VOID FIRST_PLAYER_INIT()
 {
-	BOOL ret = FALSE;
+	player.CenterX = 0;
+	player.CenterY = 0;
+	player.nowRoom = LOADING();
+	player.kind1 = CHARACHIP_UP_2;
+	player.InPass = FALSE;
+	player.InRoom = TRUE;
 
-	switch (mapRoom[player.nowRoom].gimmick)
+	if (player.nowRoom != 0)
 	{
-
-	case GIMMICK_BUTTON:
-	{
-		for (int i = 0; i < (int)gimButton.size(); i++)
-		{
-			if (CHECK_COLLISION(r, gimButton[i].coll))
-			{
-				ret = TRUE;
-			}
-		}
-
-		break;
-	}
-	case GIMMICK_PAZLE:
-	{
-		for (int i = 0; i < (int)gimPazzle.size(); i++)
-		{
-			if (CHECK_COLLISION(r, gimPazzle[i].coll))
-			{
-				ret = TRUE;
-			}
-		}
-		break;
+		player.InPass = TRUE;
+		player.InRoom = FALSE;
 	}
 
-	}
-
-	return(ret);
+	return;
 }
