@@ -36,7 +36,10 @@ int LOADING(VOID)
         return 0;
     }
     int DATAWORK;
-    fread(&DATAWORK, sizeof(DATAWORK), 1, fp);
+    
+    if (fread(&DATAWORK, sizeof(DATAWORK), 1, fp) < 1) {
+        return 0;
+    }
 
     fclose(fp);
 
