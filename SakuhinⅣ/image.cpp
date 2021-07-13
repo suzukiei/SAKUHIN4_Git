@@ -983,6 +983,8 @@ VOID PLAY_DRAW(VOID)
 		TRUE
 	);
 
+	DrawGraph(IMAGE_CLOCK_WIDTH_PATH, IMAGE_CLOCK_HEIGHT_PATH, Clock.GetHandle(), TRUE);
+
 	return;
 }
 
