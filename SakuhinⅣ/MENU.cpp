@@ -58,6 +58,7 @@ VOID MENU(VOID)
 			if (MY_KEY_UP(KEY_INPUT_RETURN) == TRUE)
 			{
 				//ここにセーブ機能
+				SAVING(player.nowRoom);
 				IsOpenMenu = FALSE;
 				break;
 			}
