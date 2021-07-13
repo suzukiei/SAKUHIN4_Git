@@ -38,5 +38,5 @@ int LOADING(VOID)
 
     fclose(fp);
 
-    return 0;
+    return player.nowRoom;
 }
