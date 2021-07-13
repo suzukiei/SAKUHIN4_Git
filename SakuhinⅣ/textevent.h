@@ -22,4 +22,5 @@ enum text {
 };
 
 VOID TEXTEVENT(int);
+VOID TEXTPROC(int);
 

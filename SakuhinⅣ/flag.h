@@ -20,3 +20,6 @@ extern BOOL GameLoop;
 extern BOOL IsMove;
 //メニューが開かれているか
 extern BOOL IsOpenMenu;
+
+//テキストが描画中であるか
+extern BOOL IsDrawText;
