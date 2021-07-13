@@ -34,9 +34,10 @@ int LOADING(VOID)
     if (fp == NULL) {
         return 0;
     }
-    fread(&player.nowRoom, sizeof(player.nowRoom), 1, fp);
+    int DATAWORK;
+    fread(&DATAWORK, sizeof(DATAWORK), 1, fp);
 
     fclose(fp);
 
-    return player.nowRoom;
+    return DATAWORK;
 }
