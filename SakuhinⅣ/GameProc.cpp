@@ -33,6 +33,8 @@ BOOL onMoveGimmick = FALSE;
 MOVE nowMoveGimmickDir;
 
 BOOL IsFirstTime = TRUE;
+BOOL MoviePlayed = FALSE;
+BOOL FirstTxetViewed = FALSE;
 
 TIME_COUNT TimeCounter;
 
@@ -78,11 +80,8 @@ VOID START_PROC(VOID)
 		FIRST_PLAYER_INIT();
 		PLAY_PLAYER_INIT(START_POINT);
 		TimeCounter.RESET();
-		if (IsFirstTime)MOVIE_DRAW();
-		else
-		{
-			IsFirstTime;
-		}
+		MoviePlayed = FALSE;
+		FirstTxetViewed = FALSE;
 	}
 	/*デバッグ用
 	if (MY_KEY_UP(KEY_INPUT_SPACE))
@@ -112,6 +111,20 @@ VOID RULE_PROC(VOID)
 
 VOID PLAY_PROC(VOID)
 {
+	if (IsFirstTime)
+	{
+		if (MoviePlayed == FALSE)
+		{
+			MOVIE_DRAW();
+			MoviePlayed = TRUE;
+		}
+		if (FirstTxetViewed == FALSE)
+		{
+			SET_TEXT_NUMBER(TEXT_OP);
+			FirstTxetViewed = TRUE;
+		}
+	}
+
 	if (player.InRoom)TimeCounter.START();
 	if (player.InPass)TimeCounter.STOP();
 
