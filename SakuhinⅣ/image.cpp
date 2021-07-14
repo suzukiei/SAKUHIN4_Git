@@ -40,8 +40,6 @@ IMAGE PlayerTrouble;
 //MAP_CHIP mapChipRoom[8];  //ルームマップチップ
 //MAP_CHIP mapChipPass;  //通路マップチップ
 
-CHARA charaChip;
-CHARA enemyChip;
 
 MAP_ROOM mapRoom[ROOM_NUM]; //マップ
 
@@ -239,13 +237,29 @@ BOOL MY_LOAD_IMAGE(VOID)
 		PLAYER_DIV_NUM, PLAYER_DIV_YOKO, PLAYER_DIV_TATE,
 		PLAYER_WIDTH, PLAYER_HEIGHT,
 		player.handle);
+	for (int i = 0; i < PLAYER_DIV_NUM; i++)
+	{
+		if (player.handle[i] == ERR)
+		{
+			MessageBox(GetMainWindowHandle(), IMAGE_PLAYER_PATH, IMAGE_LOAD_ERR_TITLE, MB_OK);
+			return FALSE;
+		}
+	}
 
 	//敵の読み込み
 	int enemyChip = LoadDivGraph(
 		IMAGE_ENEMY_PATH,
-		PLAYER_DIV_NUM, PLAYER_DIV_YOKO, PLAYER_DIV_TATE,
+		ENEMY_DIV_NUM, ENEMY_DIV_YOKO, ENEMY_DIV_TATE,
 		ENEMY_WIDTH, ENEMY_HEIGHT,
 		enemy.handle);
+	for (int i = 0; i < ENEMY_DIV_NUM; i++)
+	{
+		if (enemy.handle[i] == ERR)
+		{
+			MessageBox(GetMainWindowHandle(), IMAGE_ENEMY_PATH, IMAGE_LOAD_ERR_TITLE, MB_OK);
+			return FALSE;
+		}
+	}
 
 	//if (charaChip == ERR) {
 	//	MessageBox(GetMainWindowHandle(), IMAGE_PLAYER_PATH, IMAGE_LOAD_ERR_TITLE, MB_OK);
@@ -912,8 +926,8 @@ VOID PLAY_DRAW(VOID)
 					//床のレイヤー
 					DrawGraph
 					(
-						mapRoom[player.nowRoom].map[tate][yoko].x - (player.image.x - (GAME_WIDTH / 2)),
-						mapRoom[player.nowRoom].map[tate][yoko].y - (player.image.y - (GAME_HEIGHT / 2)),
+						mapRoom[player.nowRoom].map[tate][yoko].x - (player.CenterX - (GAME_WIDTH / 2)),
+						mapRoom[player.nowRoom].map[tate][yoko].y - (player.CenterY - (GAME_HEIGHT / 2)),
 						mapChip.handle[mapRoom[player.nowRoom].map[tate][yoko].kind[LAYER_MAP_UNDER]],
 						TRUE
 					);
@@ -923,8 +937,8 @@ VOID PLAY_DRAW(VOID)
 					//血のレイヤー
 					DrawGraph
 					(
-						mapRoom[player.nowRoom].map[tate][yoko].x - (player.image.x - (GAME_WIDTH / 2)),
-						mapRoom[player.nowRoom].map[tate][yoko].y - (player.image.y - (GAME_HEIGHT / 2)),
+						mapRoom[player.nowRoom].map[tate][yoko].x - (player.CenterX - (GAME_WIDTH / 2)),
+						mapRoom[player.nowRoom].map[tate][yoko].y - (player.CenterY - (GAME_HEIGHT / 2)),
 						mapChip.handle[mapRoom[player.nowRoom].map[tate][yoko].kind[LAYER_MAP_MIDDLE]],
 						TRUE
 					);
@@ -935,8 +949,8 @@ VOID PLAY_DRAW(VOID)
 					//重ね血のレイヤー
 					DrawGraph
 					(
-						mapRoom[player.nowRoom].map[tate][yoko].x - (player.image.x - (GAME_WIDTH / 2)),
-						mapRoom[player.nowRoom].map[tate][yoko].y - (player.image.y - (GAME_HEIGHT / 2)),
+						mapRoom[player.nowRoom].map[tate][yoko].x - (player.CenterX - (GAME_WIDTH / 2)),
+						mapRoom[player.nowRoom].map[tate][yoko].y - (player.CenterY - (GAME_HEIGHT / 2)),
 						mapChip.handle[mapRoom[player.nowRoom].map[tate][yoko].kind[LAYER_MAP_TOP]],
 						TRUE
 					);
@@ -944,17 +958,6 @@ VOID PLAY_DRAW(VOID)
 
 				GIMMICK_DRAW();
 			}
-		}
-		if (GAME_TIME_LIMIT - TimeCounter.NOW() < 0)
-		{
-			//敵ー表示
-			DrawGraph
-			(
-				enemy.image.x - (player.image.x - (GAME_WIDTH / 2)),
-				enemy.image.y - (player.image.y - (GAME_HEIGHT / 2)),
-				enemy.handle[enemy.kind1],
-				TRUE
-			);
 		}
 	}
 	else if (player.InPass)
@@ -969,8 +972,8 @@ VOID PLAY_DRAW(VOID)
 					//床のレイヤー
 					DrawGraph
 					(
-						mappass.map[tate][yoko].x - (player.image.x - (GAME_WIDTH / 2)),
-						mappass.map[tate][yoko].y - (player.image.y - (GAME_HEIGHT / 2)),
+						mappass.map[tate][yoko].x - (player.CenterX - (GAME_WIDTH / 2)),
+						mappass.map[tate][yoko].y - (player.CenterY - (GAME_HEIGHT / 2)),
 						mapChip.handle[mappass.map[tate][yoko].kind[LAYER_MAP_UNDER]],
 						TRUE
 					);
@@ -980,8 +983,8 @@ VOID PLAY_DRAW(VOID)
 					//血のレイヤー
 					DrawGraph
 					(
-						mappass.map[tate][yoko].x - (player.image.x - (GAME_WIDTH / 2)),
-						mappass.map[tate][yoko].y - (player.image.y - (GAME_HEIGHT / 2)),
+						mappass.map[tate][yoko].x - (player.CenterX - (GAME_WIDTH / 2)),
+						mappass.map[tate][yoko].y - (player.CenterY - (GAME_HEIGHT / 2)),
 						mapChip.handle[mappass.map[tate][yoko].kind[LAYER_MAP_MIDDLE]],
 						TRUE
 					);
@@ -992,8 +995,8 @@ VOID PLAY_DRAW(VOID)
 					//重ね血のレイヤー
 					DrawGraph
 					(
-						mappass.map[tate][yoko].x - (player.image.x - (GAME_WIDTH / 2)),
-						mappass.map[tate][yoko].y - (player.image.y - (GAME_HEIGHT / 2)),
+						mappass.map[tate][yoko].x - (player.CenterX - (GAME_WIDTH / 2)),
+						mappass.map[tate][yoko].y - (player.CenterY - (GAME_HEIGHT / 2)),
 						mapChip.handle[mappass.map[tate][yoko].kind[LAYER_MAP_TOP]],
 						TRUE
 					);
@@ -1006,15 +1009,45 @@ VOID PLAY_DRAW(VOID)
 	//プレイヤー表示
 	DrawGraph
 	(
-		(GAME_WIDTH / 2),
+		(GAME_WIDTH / 2) - mapChip.width / 2,
 		(GAME_HEIGHT / 2) - mapChip.height /2,
 		player.handle[player.kind1],
 		TRUE
 	);
 
-	DrawGraph(IMAGE_CLOCK_WIDTH_PATH, IMAGE_CLOCK_HEIGHT_PATH, Clock.GetHandle(), TRUE);
+
 	SetFontSize(50);
-	DrawFormatString(CLOCK_TIME_WIDTH_PATH, CLOCK_TIME_HEIGHT_PATH, GetColor(255, 255, 255), "%d", GAME_TIME_LIMIT - TimeCounter.NOW());
+	if (GAME_TIME_LIMIT - TimeCounter.NOW() >= 0)
+	{
+		DrawFormatString(CLOCK_TIME_WIDTH_PATH, CLOCK_TIME_HEIGHT_PATH, GetColor(255, 255, 255), "%d", GAME_TIME_LIMIT - TimeCounter.NOW());
+	}
+	else if (GAME_TIME_LIMIT - TimeCounter.NOW() < 0 && player.InRoom)
+	{
+		//敵表示
+		DrawGraph
+		(
+			enemy.image.x - (player.image.x - (GAME_WIDTH / 2)),
+			enemy.image.y - (ENEMY_HEIGHT - mapChip.height) - (player.image.y - (GAME_HEIGHT / 2)),
+			enemy.handle[enemy.kind1],
+			TRUE
+		);
+		
+		int workX = (TimeCounter.NOW() - GAME_TIME_LIMIT) * ((WINDOW_WIDTH / 2) / GAME_TIME_LIMIT);
+		int workY = (TimeCounter.NOW() - GAME_TIME_LIMIT) * ((WINDOW_HEIGHT / 2) / GAME_TIME_LIMIT);
+
+			//暗闇の表示上
+			DrawBox(0, 0, WINDOW_WIDTH, workY, GetColor(0, 0, 0), TRUE);
+			//暗闇の表示下
+			DrawBox(0, WINDOW_HEIGHT - workY, WINDOW_WIDTH, WINDOW_HEIGHT, GetColor(0, 0, 0), TRUE);
+			//暗闇の表示左
+			DrawBox(0, 0, workX, WINDOW_HEIGHT, GetColor(0, 0, 0), TRUE);
+			//暗闇の表示右
+			DrawBox(WINDOW_WIDTH - workX, 0, WINDOW_WIDTH, WINDOW_HEIGHT, GetColor(0, 0, 0), TRUE);
+
+		DrawFormatString(CLOCK_TIME_WIDTH_PATH, CLOCK_TIME_HEIGHT_PATH, GetColor(255, 0, 0), "%d", GAME_TIME_LIMIT - TimeCounter.NOW());
+	}
+
+	DrawGraph(IMAGE_CLOCK_WIDTH_PATH, IMAGE_CLOCK_HEIGHT_PATH, Clock.GetHandle(), TRUE);
 
 	if (IsDrawText == TRUE)
 	{
