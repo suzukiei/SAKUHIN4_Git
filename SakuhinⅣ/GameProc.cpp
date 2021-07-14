@@ -250,7 +250,7 @@ VOID GIMMICK(VOID)
 		break;
 	}
 
-	case GIMMICK_PAZLE:
+	case GIMMICK_PAZZLE:
 	{
 		RECT target = player.coll;
 		RECT work;
@@ -406,7 +406,7 @@ VOID GIMMICK(VOID)
 					MOVEMENT(&player, DOWN);
 					break;
 
-				case MAP_BLOOD_ARROW_FORNT:
+				case MAP_BLOOD_ARROW_FRONT:
 					MOVEMENT(&player, UP);
 					break;
 
@@ -437,7 +437,7 @@ VOID GIMMICK(VOID)
 						}
 						break;
 
-					case MAP_BLOOD_ARROW_FORNT:
+					case MAP_BLOOD_ARROW_FRONT:
 						if (nowMoveGimmickDir == UP || nowMoveGimmickDir == DOWN)
 						{
 							onMoveGimmick = TRUE;
@@ -568,7 +568,7 @@ VOID GIMMICK_OBJ_SET(int obj_x, int obj_y, GAME_MAP_KIND kind)
 		}
 	}
 
-	if (kind == MAP_BLOOD_ARROW_FORNT || kind == MAP_BLOOD_ARROW_BACK || kind == MAP_BLOOD_ARROW_LEFT || kind == MAP_BLOOD_ARROW_RIGHT)
+	if (kind == MAP_BLOOD_ARROW_FRONT || kind == MAP_BLOOD_ARROW_BACK || kind == MAP_BLOOD_ARROW_LEFT || kind == MAP_BLOOD_ARROW_RIGHT)
 	{
 		gimMove.push_back(work);
 	}
@@ -600,7 +600,7 @@ VOID GIMMICK_DRAW()
 		}
 		break;
 
-	case GIMMICK_PAZLE:
+	case GIMMICK_PAZZLE:
 		for (int i = 0; i < (int)gimPazzle.size(); i++)
 		{
 			DrawGraph(gimPazzle[i].x - (player.image.x - (GAME_WIDTH / 2)),
@@ -633,7 +633,7 @@ BOOL CHECK_COLLISION_GIMMICK(RECT r)
 
 		break;
 	}
-	case GIMMICK_PAZLE:
+	case GIMMICK_PAZZLE:
 	{
 		for (int i = 0; i < (int)gimPazzle.size(); i++)
 		{
