@@ -54,26 +54,28 @@ VOID MENU(VOID)
 		case MENU_SAVE:
 			//ここに選択時の囲いを表示
 
-
-			if (MY_KEY_UP(KEY_INPUT_RETURN) == TRUE)
+			if (player.InRoom == FALSE)
 			{
-				//ここにセーブ機能
-				SAVING(player.nowRoom);
-				IsOpenMenu = FALSE;
-				break;
-			}
+				if (MY_KEY_UP(KEY_INPUT_RETURN) == TRUE)
+				{
+					//ここにセーブ機能
+					SAVING(player.nowRoom);
+					IsOpenMenu = FALSE;
+					break;
+				}
 
-			if (MY_KEY_UP(KEY_INPUT_DOWN) == TRUE)
-			{
+				if (MY_KEY_UP(KEY_INPUT_DOWN) == TRUE)
+				{
 
-				SELECT = MENU_TITLE;
+					SELECT = MENU_TITLE;
 
-			}
+				}
 
-			if (MY_KEY_UP(KEY_INPUT_UP) == TRUE)
-			{
+				if (MY_KEY_UP(KEY_INPUT_UP) == TRUE)
+				{
 
-				SELECT = MENU_TITLE;
+					SELECT = MENU_TITLE;
+				}
 			}
 			
 
