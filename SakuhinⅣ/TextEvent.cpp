@@ -185,3 +185,13 @@ VOID SET_TEXT_NUMBER(int Number)
 	}
 	return;
 }
+
+VOID TEXT_END_KEY(VOID)
+{
+	if (MY_KEY_UP(KEY_INPUT_RETURN) == TRUE)
+	{
+		IsDrawText = FALSE;
+	}
+
+	return;
+}
