@@ -239,3 +239,5 @@ enum GAME_LAYER_KIND
 	LAYER_MAP_RECT,//当たり判定のレイヤー
 	LAYER_MAP_SG//スタートゴールのレイヤー
 };
+
+extern int GameRuleNo;

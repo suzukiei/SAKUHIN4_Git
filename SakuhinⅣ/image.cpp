@@ -20,7 +20,7 @@ IMAGE ImageTitleRogo;
 IMAGE ImageEndBk;
 IMAGE ImageEndComp;
 IMAGE ImageEndFail;
-IMAGE ImageRule;
+IMAGE ImageRule[2];
 IMAGE ImageMenu;
 IMAGE ButtonPlay;
 IMAGE ButtonEnd;
@@ -44,6 +44,8 @@ IMAGE PlayerTrouble;
 MAP_ROOM mapRoom[ROOM_NUM]; //É}ÉbÉv
 
 MAP_PASS mappass; //í òH
+
+int GameRuleNo = 0;
 //---------------------------------------------------âÊëúÇÃì«Ç›çûÇ›Å´----------------------------------------------------------
 
 
@@ -69,9 +71,18 @@ BOOL MY_LOAD_IMAGE(VOID)
 	}
 
 	//ÉãÅ[ÉãîwåiÇÃì«Ç›çûÇ›
-	ImageRule.SetPath(IMAGE_RULE_PATH);
-	ImageRule.SetHandle(LoadGraph(ImageRule.GetPath()));
-	if (ImageRule.GetHandle() == ERR)
+	ImageRule[0].SetPath(IMAGE_RULE_PATH);
+	ImageRule[0].SetHandle(LoadGraph(ImageRule[0].GetPath()));
+	if (ImageRule[0].GetHandle() == ERR)
+	{
+		MessageBox(GetMainWindowHandle(), IMAGE_RULE_PATH, IMAGE_LOAD_ERR_TITLE, MB_OK);
+		return FALSE;
+	}
+
+	//ÉãÅ[ÉãîwåiÇÃì«Ç›çûÇ›
+	ImageRule[1].SetPath(IMAGE_RULE_PATH);
+	ImageRule[1].SetHandle(LoadGraph(ImageRule[1].GetPath()));
+	if (ImageRule[1].GetHandle() == ERR)
 	{
 		MessageBox(GetMainWindowHandle(), IMAGE_RULE_PATH, IMAGE_LOAD_ERR_TITLE, MB_OK);
 		return FALSE;
@@ -904,8 +915,7 @@ VOID START_DRAW(VOID)
 //ÉãÅ[ÉãâÊñ ÇÃï`âÊèàóù
 VOID RULE_DRAW(VOID)
 {
-	DrawGraph(0, 0, ImageRule.GetHandle(), TRUE);
-
+	DrawGraph(0, 0, ImageRule[GameRuleNo].GetHandle(), TRUE);
 	return;
 }
 
@@ -1121,7 +1131,8 @@ VOID MY_DELETE_IMAGE(VOID)
 	ImageEndBk.DeleteHandle();
 	ImageEndComp.DeleteHandle();
 	ImageEndFail.DeleteHandle();
-	ImageRule.DeleteHandle();
+	ImageRule[0].DeleteHandle();
+	ImageRule[1].DeleteHandle();
 	ImageMenu.DeleteHandle();
 	ButtonPlay.DeleteHandle();
 	ButtonEnd.DeleteHandle();
