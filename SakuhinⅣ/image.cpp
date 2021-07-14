@@ -41,6 +41,7 @@ IMAGE PlayerTrouble;
 //MAP_CHIP mapChipPass;  //通路マップチップ
 
 CHARA charaChip;
+CHARA enemyChip;
 
 MAP_ROOM mapRoom[ROOM_NUM]; //マップ
 
@@ -238,6 +239,13 @@ BOOL MY_LOAD_IMAGE(VOID)
 		PLAYER_DIV_NUM, PLAYER_DIV_YOKO, PLAYER_DIV_TATE,
 		PLAYER_WIDTH, PLAYER_HEIGHT,
 		player.handle);
+
+	//敵の読み込み
+	int enemyChip = LoadDivGraph(
+		IMAGE_ENEMY_PATH,
+		PLAYER_DIV_NUM, PLAYER_DIV_YOKO, PLAYER_DIV_TATE,
+		ENEMY_WIDTH, ENEMY_HEIGHT,
+		enemy.handle);
 
 	//if (charaChip == ERR) {
 	//	MessageBox(GetMainWindowHandle(), IMAGE_PLAYER_PATH, IMAGE_LOAD_ERR_TITLE, MB_OK);
@@ -936,6 +944,17 @@ VOID PLAY_DRAW(VOID)
 
 				GIMMICK_DRAW();
 			}
+		}
+		if (GAME_TIME_LIMIT - TimeCounter.NOW() < 0)
+		{
+			//敵ー表示
+			DrawGraph
+			(
+				enemy.image.x - (player.image.x - (GAME_WIDTH / 2)),
+				enemy.image.y - (player.image.y - (GAME_HEIGHT / 2)),
+				enemy.handle[enemy.kind1],
+				TRUE
+			);
 		}
 	}
 	else if (player.InPass)

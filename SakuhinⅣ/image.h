@@ -24,6 +24,12 @@
 #define PLAYER_RIGHT_STAY	7	//右向き待ち
 #define PLAYER_LEFT_STAY	4	//左向き待ち
 
+//敵の描画
+#define IMAGE_ENEMY_PATH		TEXT(".\\IMAGE\\enemy.png")		//プレイヤー画像パス
+#define ENEMY_WIDTH		64	//プレイヤー画像横
+#define ENEMY_HEIGHT		64	//プレイヤー画像縦
+
+
 #define GAME_MAP_PATH		TEXT(".\\IMAGE\\mapuse.png")		//マップ画像パス
 
 #define GAME_MAP_ROOM_NUMBER     8
