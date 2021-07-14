@@ -107,6 +107,8 @@ VOID PLAY_PROC(VOID)
 	if (player.InRoom)TimeCounter.START();
 	if (player.InPass)TimeCounter.STOP();
 
+	if(IsDrawText)TEXT_END_KEY();
+
 	if (IsDrawText == FALSE) 
 	{
 		if (IsOpenMenu == FALSE)
