@@ -82,7 +82,7 @@ VOID START_PROC(VOID)
 		TimeCounter.RESET();
 		MoviePlayed = FALSE;
 		FirstTxetViewed = FALSE;
-		if (MY_LOAD_CSV() == -1)return(-1);
+		MY_LOAD_CSV();
 	}
 	/*デバッグ用
 	if (MY_KEY_UP(KEY_INPUT_SPACE))
