@@ -170,7 +170,7 @@
 //PLEY_BGM
 #define MUSIC_BGM_PATH			TEXT(".\\BGM.\\BGMŒó•â\\06.wav")
 //COMP_BGM
-#define MUSIC_BGM_COMP_PATH		TEXT(".\\BGM\\BGM_COMP.mp3")
+//#define MUSIC_BGM_COMP_PATH		TEXT(".\\BGM\\BGM_COMP.mp3")
 //END_BGM
 #define MUSIC_BGM_FAIL_PATH		TEXT(".\\BGM\\ça‚Ý.mp3")
 //SE_BGM
