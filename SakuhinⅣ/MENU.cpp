@@ -20,6 +20,7 @@ VOID MENU(VOID)
 
 		if (MY_KEY_DOWN(KEY_INPUT_BACK) == TRUE)
 		{
+			SELECT = MENU_TITLE;
 			IsOpenMenu = FALSE;
 		}
 
@@ -33,20 +34,23 @@ VOID MENU(VOID)
 				IsOpenMenu = FALSE;
 			}
 
-			if (MY_KEY_UP(KEY_INPUT_DOWN) == TRUE)
-			{
 
-				SELECT = MENU_SAVE;
+			if (player.InRoom == FALSE)
+			{
+				if (MY_KEY_UP(KEY_INPUT_DOWN) == TRUE)
+				{
+
+					SELECT = MENU_SAVE;
+
+				}
+
+				if (MY_KEY_UP(KEY_INPUT_UP) == TRUE)
+				{
+
+					SELECT = MENU_SAVE;
+				}
 
 			}
-
-			if (MY_KEY_UP(KEY_INPUT_UP) == TRUE)
-			{
-
-				SELECT = MENU_SAVE;
-			}
-			
-			
 
 			break;
 
@@ -61,6 +65,8 @@ VOID MENU(VOID)
 					//ここにセーブ機能
 					SAVING(player.nowRoom);
 					IsOpenMenu = FALSE;
+					SELECT = MENU_TITLE;
+
 					break;
 				}
 
