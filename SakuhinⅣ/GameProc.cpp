@@ -82,6 +82,7 @@ VOID START_PROC(VOID)
 		TimeCounter.RESET();
 		MoviePlayed = FALSE;
 		FirstTxetViewed = FALSE;
+		if (MY_LOAD_CSV() == -1)return(-1);
 	}
 	/*デバッグ用
 	if (MY_KEY_UP(KEY_INPUT_SPACE))
@@ -109,6 +110,7 @@ VOID RULE_PROC(VOID)
 		}
 		else
 		{
+			GameRuleNo = GAME_RULE_PAGE_ONE;
 			GameScene = GAME_SCENE_START;
 		}
 	}
@@ -836,6 +838,12 @@ VOID ENEMY_PROC(VOID)
 	if (player.CenterX > enemy.CenterX && moved == FALSE)
 	{
 		MOVEMENT(&enemy, RIGHT);
+	}
+
+	if (CHECK_COLLISION(player.coll, enemy.coll))
+	{
+		GameScene = GAME_SCENE_END;
+		GameEndkind = GAME_END_FAIL;
 	}
 
 	return;
