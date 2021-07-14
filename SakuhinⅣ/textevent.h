@@ -15,7 +15,8 @@ enum text {
     TEXT_STAGE5_START,//5ステージ目に入った瞬間
     TEXT_STAGE6_START,//6ステージ目に入った瞬間
     TEXT_TIMEOVER,//時間切れになった瞬間
-    TEXT_END //脱出できたとき
+    TEXT_END, //脱出できたとき
+    TEXT_TIMESTOP,//廊下に出たとき
 };
 
 VOID DRAW_TEXT(VOID);
