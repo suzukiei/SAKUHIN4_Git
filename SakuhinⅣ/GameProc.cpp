@@ -79,7 +79,6 @@ VOID START_PROC(VOID)
 	{
 		FIRST_PLAYER_INIT();
 		PLAY_PLAYER_INIT(START_POINT);
-		TimeCounter.RESET();
 		MoviePlayed = FALSE;
 		FirstTxetViewed = FALSE;
 		MY_LOAD_CSV();
@@ -199,7 +198,7 @@ VOID PLAY_PROC(VOID)
 VOID END_PROC(VOID)
 {
 	SET_TEXT_NUMBER(TEXT_END);
-	GameScene = GAME_SCENE_START;
+	//GameScene = GAME_SCENE_START;
 	//デバッグ用
 	if (MY_KEY_UP(KEY_INPUT_RETURN))
 	{
@@ -786,6 +785,7 @@ VOID PLAY_PLAYER_INIT(FIRST_POINT point)
 
 VOID FIRST_PLAYER_INIT()
 {
+	TimeCounter.RESET();
 	player.CenterX = 0;
 	player.CenterY = 0;
 	player.nowRoom = LOADING();
