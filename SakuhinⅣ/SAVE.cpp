@@ -15,7 +15,7 @@
 
 
 FILE* fp = NULL; //ファイルポインタ
-VOID SAVING(int NOWROOM)
+VOID SAVING(int NOWROOM,int TIME)
 {
 
     fp = fopen(".\\SAVEDATA.\\gamedata.txt", "w");
@@ -23,7 +23,8 @@ VOID SAVING(int NOWROOM)
         return;
     }
 
-    fwrite(&NOWROOM, sizeof(NOWROOM), 1, fp); //ここでマップの番号とプレイヤーの座標を書き込む。
+   /* fwrite(&NOWROOM, sizeof(NOWROOM), 1, fp);*/ //ここでマップの番号とプレイヤーの座標を書き込む。
+    fprintf(fp, "%d %d", NOWROOM, TIME);
     fclose(fp);
 
     return;
@@ -37,12 +38,17 @@ int LOADING(VOID)
         return -1;
     }
     int DATAWORK;
+    int TIME;
     
-    if (fread(&DATAWORK, sizeof(DATAWORK), 1, fp) < 1) {
+    if (fscanf(fp, "%d %d", &DATAWORK, &TIME) == EOF) {
         return -1;
     }
+    /*if (fread(&DATAWORK, sizeof(DATAWORK), 1, fp) < 1) {
+        return -1;
+    }*/
 
     fclose(fp);
     IsFirstTime = FALSE;
+    TimeCounter.LOADTIME(DATAWORK,TIME);
     return DATAWORK;
 }
