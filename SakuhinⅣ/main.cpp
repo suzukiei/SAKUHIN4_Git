@@ -168,6 +168,7 @@ VOID MY_INIT(VOID)
 			}
 		}
 		mapRoom[room].IsGimmickClear = FALSE;
+		mapRoom[room].IsTimeAdd = FALSE;
 	}
 
 	for (int y = 0; y < MAP_HEIGHT_MAX; y++)
@@ -188,16 +189,25 @@ VOID MY_INIT(VOID)
 	//ƒLƒƒƒ‰‚Ì‰Šú‰»
 	player.CenterX = 0;
 	player.CenterY = 0;
-	player.nowRoom = LOADING();
+	player.nowRoom = -1;
 	player.kind1 = CHARACHIP_UP_2;
 	player.InPass = FALSE;
 	player.InRoom = TRUE;
+	player.CharaMoveCnt = 0;
 
 	if (player.nowRoom != 0)
 	{
 		player.InPass = TRUE;
 		player.InRoom = FALSE;
 	}
+
+	enemy.CenterX = 0;
+	enemy.CenterY = 0;
+	enemy.nowRoom = -1;
+	enemy.kind1 = CHARACHIP_UP_2;
+	enemy.InPass = FALSE;
+	enemy.InRoom = TRUE;
+	enemy.CharaMoveCnt = 0;
 
 	return;
 }

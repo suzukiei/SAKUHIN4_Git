@@ -156,7 +156,10 @@ VOID PLAY_PROC(VOID)
 
 			if (player.InRoom)
 			{
-				//“G‚ÌˆÚ“®
+				if (TimeCounter.NOW() > GAME_TIME_LIMIT)
+				{
+					ENEMY_PROC();
+				}
 				GIMMICK();
 			}
 
@@ -797,6 +800,30 @@ VOID FIRST_PLAYER_INIT()
 	enemy.kind1 = CHARACHIP_UP_2;
 	enemy.InPass = FALSE;
 	enemy.InRoom = TRUE;
+
+	return;
+}
+
+VOID ENEMY_PROC(VOID)
+{
+	BOOL moved = FALSE;
+
+	if (player.CenterY < enemy.CenterY)
+	{
+		moved = MOVEMENT(&enemy, UP);
+	}
+	if (player.CenterY > enemy.CenterY && moved == FALSE)
+	{
+		moved = MOVEMENT(&enemy, DOWN);
+	}
+	if (player.CenterX < enemy.CenterX && moved == FALSE)
+	{
+		moved = MOVEMENT(&enemy, LEFT);
+	}
+	if (player.CenterX > enemy.CenterX && moved == FALSE)
+	{
+		MOVEMENT(&enemy, RIGHT);
+	}
 
 	return;
 }
