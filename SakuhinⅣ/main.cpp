@@ -11,6 +11,7 @@
 #include "textevent.h"
 #include "title.h"
 #include "variable.h"
+#include "resource.h"
 
 //ƒQ[ƒ€–{‘Ì
 VOID GameMain(VOID);
