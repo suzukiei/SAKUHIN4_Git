@@ -44,6 +44,18 @@ public:
 		   if (CountFlag)TimeCou++;
 		   return;
 	   }
+	   //----ギミッククリア時の経過時間の減算----
+	   VOID SUBTIME(VOID)
+	   {
+		   if (NOW() > GAME_TIME_LIMIT)
+		   {
+			   TimeCou = GAME_TIME_LIMIT * GAME_FPS;
+		   }
+
+		   TimeCou -= (GAME_TIME_LIMIT / 2) * GAME_FPS;
+
+		   return;
+	   }
 };
 
 typedef struct STR_GIMMICK_OBJECT
