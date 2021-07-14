@@ -80,14 +80,21 @@ BOOL MY_LOAD_IMAGE(VOID)
 	}
 
 	//ルール背景の読み込み
-	ImageRule[1].SetPath(IMAGE_RULE_PATH);
-	ImageRule[1].SetHandle(LoadGraph(ImageRule[1].GetPath()));
-	if (ImageRule[1].GetHandle() == ERR)
+	ImageRule[0].SetPath(IMAGE_RULE_PATH);
+	ImageRule[0].SetHandle(LoadGraph(ImageRule[0].GetPath()));
+	if (ImageRule[0].GetHandle() == ERR)
 	{
 		MessageBox(GetMainWindowHandle(), IMAGE_RULE_PATH, IMAGE_LOAD_ERR_TITLE, MB_OK);
 		return FALSE;
 	}
 
+	ImageRule[1].SetPath(IMAGE_RULE2_PATH);
+	ImageRule[1].SetHandle(LoadGraph(ImageRule[1].GetPath()));
+	if (ImageRule[1].GetHandle() == ERR)
+	{
+		MessageBox(GetMainWindowHandle(), IMAGE_RULE2_PATH, IMAGE_LOAD_ERR_TITLE, MB_OK);
+		return FALSE;
+	}
 	//メニューの読み込み
 	ImageMenu.SetPath(IMAGE_MENU_PATH);
 	ImageMenu.SetHandle(LoadGraph(ImageMenu.GetPath()));
@@ -278,17 +285,26 @@ BOOL MY_LOAD_IMAGE(VOID)
 	//}
 
 	//マップチップの読み込み
-
 	if (MY_LOAD_MAPCHIP() == FALSE)
 	{
 		MessageBox(GetMainWindowHandle(), "えらー", "えらー", MB_OK);
 		return -1;
 	}
 
-
-
 	//csvの読み込み
+	if (MY_LOAD_CSV() == -1)
+	{
+		MessageBox(GetMainWindowHandle(), "えらー", "えらー", MB_OK);
+		return -1;
+	}
 
+	return TRUE;
+}
+
+
+//csvの読み込み
+int MY_LOAD_CSV(VOID)
+{
 	//-----------------------------ステージ１----------------------------------------------
 	//床
 	if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE1_FLOOR, &mapRoom[0], LAYER_MAP_UNDER) == FALSE)
@@ -620,17 +636,6 @@ BOOL MY_LOAD_IMAGE(VOID)
 		MessageBox(GetMainWindowHandle(), "えらー", "えらー", MB_OK);
 		return -1;
 	}
-
-
-	return TRUE;
-}
-
-
-//csvの読み込み
-BOOL MY_LOAD_CSV(VOID)
-{
-	//マップチップを読み込む
-	if (MY_LOAD_MAPCHIP() == FALSE) { return -1; }
 
 	return TRUE;
 }
