@@ -522,6 +522,13 @@ BOOL MY_LOAD_IMAGE(VOID)
 		return -1;
 	}
 
+	//åå
+	if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE6_BLOOD, &mapRoom[5], LAYER_MAP_TOP) == FALSE)
+	{
+		MessageBox(GetMainWindowHandle(), "Ç¶ÇÁÅ[", "Ç¶ÇÁÅ[", MB_OK);
+		return -1;
+	}
+
 	////ìñÇΩÇËîªíË
 	if (MY_LOAD_CSV_MAP(GAME_CSV_PATH_STAGE6_RECT, &mapRoom[5], LAYER_MAP_RECT) == FALSE)
 	{
@@ -1026,8 +1033,8 @@ VOID PLAY_DRAW(VOID)
 		//ìGï\é¶
 		DrawGraph
 		(
-			enemy.image.x - (player.image.x - (GAME_WIDTH / 2)),
-			enemy.image.y - (ENEMY_HEIGHT - mapChip.height) - (player.image.y - (GAME_HEIGHT / 2)),
+			enemy.image.x - (player.CenterX- (GAME_WIDTH / 2)),
+			enemy.image.y - (ENEMY_HEIGHT - mapChip.height) - (player.CenterY- (GAME_HEIGHT / 2)),
 			enemy.handle[enemy.kind1],
 			TRUE
 		);

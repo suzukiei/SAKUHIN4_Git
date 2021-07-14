@@ -92,6 +92,7 @@
 //ステージ6
 #define GAME_CSV_PATH_STAGE6_FLOOR 		TEXT(".\\IMAGE\\csv\\Stage7_床.csv")//STAGE6床
 #define GAME_CSV_PATH_STAGE6_WALL 		TEXT(".\\IMAGE\\csv\\Stage7_壁.csv")//STAGE6壁
+#define GAME_CSV_PATH_STAGE6_BLOOD 		TEXT(".\\IMAGE\\csv\\Stage7_血.csv")//STAGE6血
 #define GAME_CSV_PATH_STAGE6_RECT 		TEXT(".\\IMAGE\\csv\\Stage7_当たり判定.csv")//STAGE6当たり判定
 #define GAME_CSV_PATH_STAGE6_SG 		TEXT(".\\IMAGE\\csv\\Stage7_SG.csv")//STAGE6スタートゴール
 
