@@ -106,7 +106,7 @@ VOID CHECK_COLLISION_GOAL(VOID)
 
 					player.InRoom = FALSE;
 					player.InPass = TRUE;
-
+					SET_TEXT_NUMBER(TEXT_TIMESTOP);
 					PLAY_PLAYER_INIT(START_POINT);
 				}
 			}
