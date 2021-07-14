@@ -97,6 +97,13 @@ VOID CHECK_COLLISION_GOAL(VOID)
 					GameEndkind = GAME_END_COMP;
 				}
 				else {
+
+					if (mapRoom[player.nowRoom].IsTimeAdd == FALSE)
+					{
+						mapRoom[player.nowRoom].IsTimeAdd = TRUE;
+						TimeCounter.SUBTIME();
+					}
+
 					player.InRoom = FALSE;
 					player.InPass = TRUE;
 
