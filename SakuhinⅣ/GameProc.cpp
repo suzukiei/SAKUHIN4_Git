@@ -203,7 +203,7 @@ VOID GIMMICK(VOID)
 
 	case GIMMICK_MAZE:
 	{
-		if (!mapRoom[player.nowRoom].IsGimmickClear) {
+		if (mapRoom[player.nowRoom].IsGimmickClear == FALSE) {
 			mapRoom[player.nowRoom].IsGimmickClear = TRUE;
 			if (player.nowRoom == MAZE_ROOM)SET_TEXT_NUMBER(TEXT_STAGE2_START);
 			if (player.nowRoom == NOTSEEMAZE_ROOM)SET_TEXT_NUMBER(TEXT_STAGE6_START);
@@ -213,7 +213,7 @@ VOID GIMMICK(VOID)
 
 	case GIMMICK_MINE:
 	{
-		if (!mapRoom[player.nowRoom].IsGimmickClear)
+		if (mapRoom[player.nowRoom].IsGimmickClear == FALSE)
 		{
 			mapRoom[player.nowRoom].IsGimmickClear = TRUE;
 			SET_TEXT_NUMBER(TEXT_STAGE4_START);
@@ -270,7 +270,7 @@ VOID GIMMICK(VOID)
 		}
 		if (cou == (int)gimButton.size())
 		{
-			if (!mapRoom[player.nowRoom].IsGimmickClear)
+			if (mapRoom[player.nowRoom].IsGimmickClear == FALSE)
 			{
 				mapRoom[player.nowRoom].IsGimmickClear = TRUE;
 				SET_TEXT_NUMBER(TEXT_STAGE1_GMMICK_CLEAR);
@@ -284,6 +284,8 @@ VOID GIMMICK(VOID)
 	{
 		RECT target = player.coll;
 		RECT work;
+
+		mapRoom[player.nowRoom].IsGimmickClear = TRUE;
 
 		if (CHARACHIP_DOWN_1 <= player.kind1 && player.kind1 <= CHARACHIP_DOWN_3)
 		{
@@ -353,7 +355,7 @@ VOID GIMMICK(VOID)
 	{
 		int cou = 0;
 
-		if (mapRoom[player.nowRoom].IsGimmickClear) 
+		if (mapRoom[player.nowRoom].IsGimmickClear == FALSE) 
 		{
 			mapRoom[player.nowRoom].IsGimmickClear = TRUE;
 			SET_TEXT_NUMBER(TEXT_STAGE5_START);
