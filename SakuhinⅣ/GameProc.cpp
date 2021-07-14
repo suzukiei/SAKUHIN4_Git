@@ -32,6 +32,8 @@ BOOL canWarp = TRUE;
 BOOL onMoveGimmick = FALSE;
 MOVE nowMoveGimmickDir;
 
+BOOL IsFirstTime = TRUE;
+
 TIME_COUNT TimeCounter;
 
 VOID MY_FPS_UPDATE(VOID)
