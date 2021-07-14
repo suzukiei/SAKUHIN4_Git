@@ -6,7 +6,7 @@
 
 MUSIC BGM_TITLE;
 MUSIC BGM_PLAY;
-MUSIC BGM_COMP;
+//MUSIC BGM_COMP;
 MUSIC BGM_END;
 MUSIC BGM_SE;
 MUSIC BGM_SE_OPEN;
@@ -26,10 +26,10 @@ VOID TITLE_BGM(VOID)
 		StopSoundMem(BGM_PLAY.GetHandle());
 	}
 	//‚à‚µBGM_COMP‚ª—¬‚ê‚Ä‚¢‚½‚çŽ~‚ß‚é
-	if (CheckSoundMem(BGM_COMP.GetHandle() != 0))
-	{
-		StopSoundMem(BGM_COMP.GetHandle());
-	}
+	//if (CheckSoundMem(BGM_COMP.GetHandle() != 0))
+	//{
+	//	StopSoundMem(BGM_COMP.GetHandle());
+	//}
 	//‚à‚µBGM_END‚ª—¬‚ê‚Ä‚¢‚½‚çŽ~‚ß‚é
 	if (CheckSoundMem(BGM_END.GetHandle() != 0))
 	{
@@ -65,12 +65,12 @@ VOID END_BGM(VOID)
 
 	switch (GameEndkind)
 	{
-	case GAME_END_COMP:
-		if (CheckSoundMem(BGM_COMP.GetHandle()) == 0)
-		{
-			PlaySoundMem(BGM_COMP.GetHandle(), DX_PLAYTYPE_LOOP);
-		}
-		break;
+	//case GAME_END_COMP:
+	//	if (CheckSoundMem(BGM_COMP.GetHandle()) == 0)
+	//	{
+	//		PlaySoundMem(BGM_COMP.GetHandle(), DX_PLAYTYPE_LOOP);
+	//	}
+	//	break;
 
 	case GAME_END_FAIL:
 		if (CheckSoundMem(BGM_END.GetHandle()) == 0)
@@ -131,13 +131,13 @@ BOOL MY_LOAD_MUSIC(VOID)
 		return(FALSE);
 	}
 
-	BGM_COMP.SetPath(MUSIC_BGM_COMP_PATH);
-	BGM_COMP.SetHandle(LoadSoundMem(BGM_COMP.GetPath()));
-	if (BGM_COMP.GetHandle() == -1)
-	{
-		MessageBox(GetMainWindowHandle(), MUSIC_BGM_COMP_PATH, MUSIC_LOAD_ERR_TITLE, MB_OK);
-		return(FALSE);
-	}
+	//BGM_COMP.SetPath(MUSIC_BGM_COMP_PATH);
+	//BGM_COMP.SetHandle(LoadSoundMem(BGM_COMP.GetPath()));
+	//if (BGM_COMP.GetHandle() == -1)
+	//{
+	//	MessageBox(GetMainWindowHandle(), MUSIC_BGM_COMP_PATH, MUSIC_LOAD_ERR_TITLE, MB_OK);
+	//	return(FALSE);
+	//}
 
 	BGM_END.SetPath(MUSIC_BGM_FAIL_PATH);
 	BGM_END.SetHandle(LoadSoundMem(BGM_END.GetPath()));
@@ -180,7 +180,7 @@ BOOL MY_DELETE_MUSIC(VOID)
 {
 	BGM_TITLE.DeleteHandle();
 	BGM_PLAY.DeleteHandle();
-	BGM_COMP.DeleteHandle();
+	//BGM_COMP.DeleteHandle();
 	BGM_END.DeleteHandle();
 	BGM_SE.DeleteHandle();
 	BGM_SE_OPEN.DeleteHandle();
