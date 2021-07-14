@@ -72,11 +72,17 @@ VOID MY_FPS_WAIT(VOID)
 VOID START_PROC(VOID)
 {
 	TITLE();
+
 	if (GameScene == GAME_SCENE_PLAY)
 	{
 		FIRST_PLAYER_INIT();
 		PLAY_PLAYER_INIT(START_POINT);
 		TimeCounter.RESET();
+		if (IsFirstTime)MOVIE_DRAW();
+		else
+		{
+			IsFirstTime;
+		}
 	}
 	/*デバッグ用
 	if (MY_KEY_UP(KEY_INPUT_SPACE))
@@ -135,7 +141,11 @@ VOID PLAY_PROC(VOID)
 				}
 			}
 
-			if (player.InRoom)GIMMICK();
+			if (player.InRoom)
+			{
+				//敵の移動
+				GIMMICK();
+			}
 
 			CHECK_COLLISION_BACK();
 			if (mapRoom[player.nowRoom].IsGimmickClear)
@@ -672,6 +682,18 @@ VOID PLAY_PLAYER_INIT(FIRST_POINT point)
 
 			player.image.x = mapRoom[player.nowRoom].StartPt.x * mapChip.width;
 			player.image.y = mapRoom[player.nowRoom].StartPt.y * mapChip.height;
+
+
+			enemy.CenterX = mapRoom[player.nowRoom].StartPt.x * mapChip.width + (mapChip.width / 2);
+			enemy.CenterY = mapRoom[player.nowRoom].StartPt.y * mapChip.height + (mapChip.height / 2);
+
+			enemy.coll.left = mapRoom[player.nowRoom].StartPt.x * mapChip.width;
+			enemy.coll.right = mapRoom[player.nowRoom].StartPt.x * mapChip.width + mapChip.width;
+			enemy.coll.top = mapRoom[player.nowRoom].StartPt.y * mapChip.height;
+			enemy.coll.bottom = mapRoom[player.nowRoom].StartPt.y * mapChip.height + mapChip.height;
+
+			enemy.image.x = mapRoom[player.nowRoom].StartPt.x * mapChip.width;
+			enemy.image.y = mapRoom[player.nowRoom].StartPt.y * mapChip.height;
 		}
 		else if (player.InPass)
 		{
@@ -701,6 +723,18 @@ VOID PLAY_PLAYER_INIT(FIRST_POINT point)
 
 			player.image.x = mapRoom[player.nowRoom].GoalPt.x * mapChip.width;
 			player.image.y = mapRoom[player.nowRoom].GoalPt.y * mapChip.height + mapChip.height;
+
+
+			enemy.CenterX = mapRoom[player.nowRoom].GoalPt.x * mapChip.width + (mapChip.width / 2);
+			enemy.CenterY = mapRoom[player.nowRoom].GoalPt.y * mapChip.height + (mapChip.height / 2) + mapChip.height;
+
+			enemy.coll.left = mapRoom[player.nowRoom].GoalPt.x * mapChip.width;
+			enemy.coll.right = mapRoom[player.nowRoom].GoalPt.x * mapChip.width + mapChip.width;
+			enemy.coll.top = mapRoom[player.nowRoom].GoalPt.y * mapChip.height + mapChip.height;
+			enemy.coll.bottom = mapRoom[player.nowRoom].GoalPt.y * mapChip.height + mapChip.height + mapChip.height;
+
+			enemy.image.x = mapRoom[player.nowRoom].GoalPt.x * mapChip.width;
+			enemy.image.y = mapRoom[player.nowRoom].GoalPt.y * mapChip.height + mapChip.height;
 		}
 		else if (player.InPass)
 		{
@@ -737,6 +771,13 @@ VOID FIRST_PLAYER_INIT()
 		player.InPass = TRUE;
 		player.InRoom = FALSE;
 	}
+
+	enemy.CenterX = 0;
+	enemy.CenterY = 0;
+	enemy.nowRoom = LOADING();
+	enemy.kind1 = CHARACHIP_UP_2;
+	enemy.InPass = FALSE;
+	enemy.InRoom = TRUE;
 
 	return;
 }
