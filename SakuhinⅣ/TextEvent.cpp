@@ -28,6 +28,7 @@ VOID DRAW_TEXT(VOID)
 			DrawString(TEXT_POSITION_X, TEXT_POSITION_Y, "ここは一体…?この腕輪の装置はなに?", TEXTCOLOR); //セリフ
 			DrawGraph(IMAGE_PLAYER_NOMAL_WIDTH_PATH, IMAGE_PLAYER_NOMAL_HEIGHT_PATH, PlayerFear.GetHandle(),TRUE);//キャラの表情差分
 			
+			
 			break;
 
 		case TEXT_OP1:
@@ -190,7 +191,15 @@ VOID TEXT_END_KEY(VOID)
 {
 	if (MY_KEY_UP(KEY_INPUT_RETURN) == TRUE)
 	{
+		if (textNumber == TEXT_OP) {
+			
+			IsDrawText = TRUE;
+			textNumber == TEXT_OP1;
+		}
+
 		IsDrawText = FALSE;
+
+		
 	}
 
 	return;
