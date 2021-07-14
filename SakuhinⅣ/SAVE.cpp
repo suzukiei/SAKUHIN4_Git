@@ -33,6 +33,7 @@ int LOADING(VOID)
 {
     fp = fopen(".\\SAVEDATA\\gamedata.txt", "r");
     if (fp == NULL) {
+        IsFirstTime = TRUE;
         return 0;
     }
     int DATAWORK;
@@ -42,6 +43,6 @@ int LOADING(VOID)
     }
 
     fclose(fp);
-
+    IsFirstTime = FALSE;
     return DATAWORK;
 }
