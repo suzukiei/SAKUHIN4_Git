@@ -108,6 +108,16 @@ VOID DRAW_TEXT(VOID)
 
 			
 			break;
+
+		case TEXT_TIMESTOP:
+			SetFontSize(30);
+
+			DrawGraph(IMAGE_TEXTBOX_WIDTH_PATH, IMAGE_TEXTBOX_HEIGHT_PATH, TextBox.GetHandle(), TRUE); //テキストボックスの画像
+			DrawString(TEXT_POSITION_X, TEXT_POSITION_Y, "カウントダウンが止まった。", TEXTCOLOR); //セリフ
+		
+
+
+			break;
 			
 
 		}
@@ -182,6 +192,12 @@ VOID SET_TEXT_NUMBER(int Number)
 		
 		break;
 
+	case TEXT_TIMESTOP:
+
+		IsDrawText = TRUE;
+		textNumber = TEXT_TIMESTOP;
+
+		break;
 
 	}
 	return;
@@ -194,11 +210,11 @@ VOID TEXT_END_KEY(VOID)
 		if (textNumber == TEXT_OP) {
 			
 			IsDrawText = TRUE;
-			textNumber == TEXT_OP1;
+			textNumber = TEXT_OP1;
 		}
-
-		IsDrawText = FALSE;
-
+		else {
+			IsDrawText = FALSE;
+		}
 		
 	}
 
