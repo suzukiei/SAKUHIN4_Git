@@ -119,7 +119,13 @@
 //TextBoxパス
 #define IMAGE_TEXTBOX_PATH				TEXT(".\\IMAGE\\TextBox.png")
 #define IMAGE_TEXTBOX_WIDTH_PATH		0
-#define IMAGE_TEXTBOX_HEIGHT_PATH		800
+#define IMAGE_TEXTBOX_HEIGHT_PATH		400
+
+//TEXT位置
+#define TEXT_POSITION_X 380 //テキストポジションXの値
+#define TEXT_POSITION_Y 300 //テキストポジションYの値
+#define NAME_POSITION_X 380 //テキストボックス内の名前の位置X
+#define NAME_POSITION_Y 280 //テキストボックス内の名前の位置Y 
 
 //playerキャラチップ
 #define IMAGE_PLAYER_PATH		TEXT(".\\IMAGE\\chara.png")
@@ -173,7 +179,7 @@
 #define GAME_MAP_KAISO_MAX
 
 //制限時間
-#define GAME_TIME_LIMIT	60
+#define GAME_TIME_LIMIT	120
 
 #define MAP_WIDTH_MAX		29
 #define MAP_HEIGHT_MAX	30
