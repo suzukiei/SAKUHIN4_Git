@@ -9,6 +9,8 @@ MUSIC BGM_PLAY;
 MUSIC BGM_COMP;
 MUSIC BGM_END;
 MUSIC BGM_SE;
+MUSIC BGM_SE_OPEN;
+MUSIC BGM_SE_MENU;
 
 VOID TITLE_BGM(VOID)
 {
@@ -83,13 +85,28 @@ VOID SE_BGM(VOID)
 {
 	if (CheckSoundMem(BGM_SE.GetHandle()) == 0)
 	{
-		PlaySoundMem(BGM_SE.GetHandle(), DX_PLAYTYPE_LOOP);
+		PlaySoundMem(BGM_SE.GetHandle(), DX_PLAYTYPE_BACK);
 	}
 
-	//if (CheckSoundMem(BGM_SE.GetHandle() != 0))
-	//{
-	//	StopSoundMem(BGM_SE.GetHandle());
-	//}
+	return;
+}
+
+VOID SE_OPEN_BGM(VOID)
+{
+	if (CheckSoundMem(BGM_SE_OPEN.GetHandle()) == 0)
+	{
+		PlaySoundMem(BGM_SE_OPEN.GetHandle(), DX_PLAYTYPE_BACK);
+	}
+
+	return;
+}
+
+VOID SE_MENU_BGM(VOID)
+{
+	if (CheckSoundMem(BGM_SE_MENU.GetHandle()) == 0)
+	{
+		PlaySoundMem(BGM_SE_MENU.GetHandle(), DX_PLAYTYPE_BACK);
+	}
 
 	return;
 }
@@ -138,6 +155,22 @@ BOOL MY_LOAD_MUSIC(VOID)
 		return(FALSE);
 	}
 
+	BGM_SE_OPEN.SetPath(MUSIC_BGM_SE_OPEN_PATH);
+	BGM_SE_OPEN.SetHandle(LoadSoundMem(BGM_SE_OPEN.GetPath()));
+	if (BGM_SE_OPEN.GetHandle() == -1)
+	{
+		MessageBox(GetMainWindowHandle(), MUSIC_BGM_SE_OPEN_PATH, MUSIC_LOAD_ERR_TITLE, MB_OK);
+		return(FALSE);
+	}
+
+	BGM_SE_MENU.SetPath(MUSIC_BGM_SE_MENU_PATH);
+	BGM_SE_MENU.SetHandle(LoadSoundMem(BGM_SE_MENU.GetPath()));
+	if (BGM_SE_MENU.GetHandle() == -1)
+	{
+		MessageBox(GetMainWindowHandle(), MUSIC_BGM_SE_MENU_PATH, MUSIC_LOAD_ERR_TITLE, MB_OK);
+		return(FALSE);
+	}
+
 	//ê≥èÌèIóπÇ∑ÇÈÇΩÇﬂÇÃTRUE
 	return TRUE;
 }
@@ -150,6 +183,8 @@ BOOL MY_DELETE_MUSIC(VOID)
 	BGM_COMP.DeleteHandle();
 	BGM_END.DeleteHandle();
 	BGM_SE.DeleteHandle();
+	BGM_SE_OPEN.DeleteHandle();
+	BGM_SE_MENU.DeleteHandle();
 
 	//ê≥èÌèIóπÇ∑ÇÈÇΩÇﬂÇÃTRUE
 	return TRUE;
