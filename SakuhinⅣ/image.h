@@ -94,6 +94,8 @@
 #define GAME_CSV_PATH_STAGE7_RECT 		TEXT(".\\IMAGE\\csv\\Stage8_当たり判定.csv")//STAGE7当たり判定
 #define GAME_CSV_PATH_STAGE7_SG 		TEXT(".\\IMAGE\\csv\\Stage8_SG.csv")//STAGE7スタートゴール
 
+//動画
+#define GAME_MOVIE_PATH                 TEXT(".\\MOVIE\\序章.mp4")//動画
 
 //画像
 class IMAGE
@@ -193,6 +195,7 @@ BOOL MY_LOAD_CSV_PASS(const char *, MAP_PASS*,int Layer);
 
 VOID START_DRAW(VOID);	//スタート画面の描画
 VOID RULE_DRAW(VOID);	//ルール画面の描画
+VOID MOVIE_DRAW(VOID);	//動画の描画
 VOID PLAY_DRAW(VOID);	//プレイ画面の描画
 VOID MENU_DRAW(VOID);	//メニュー画面の描画
 VOID END_DRAW(VOID);	    //エンド画面の描画

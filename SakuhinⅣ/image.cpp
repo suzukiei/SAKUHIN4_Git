@@ -880,9 +880,18 @@ VOID RULE_DRAW(VOID)
 	return;
 }
 
+//動画の描画処理
+VOID MOVIE_DRAW(VOID)
+{
+	PlayMovie(GAME_MOVIE_PATH, 1, DX_MOVIEPLAYTYPE_NORMAL);
+	GameScene = GAME_SCENE_PLAY;
+	return;
+}
+
 //プレイ画面の描画処理
 VOID PLAY_DRAW(VOID)
 {
+
 	if (player.InRoom)
 	{
 		//マップの描画
@@ -988,7 +997,11 @@ VOID PLAY_DRAW(VOID)
 	SetFontSize(50);
 	DrawFormatString(CLOCK_TIME_WIDTH_PATH, CLOCK_TIME_HEIGHT_PATH, GetColor(255, 255, 255), "%d", GAME_TIME_LIMIT - TimeCounter.NOW());
 
-	DRAW_TEXT();
+	if (IsDrawText == TRUE)
+	{
+		DRAW_TEXT();
+	}
+
 
 	return;
 }
