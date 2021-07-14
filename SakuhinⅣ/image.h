@@ -105,6 +105,7 @@
 
 //動画
 #define GAME_MOVIE_PATH                 TEXT(".\\MOVIE\\序章.mp4")//動画
+#define GAME_MOVIE_END_PATH             TEXT(".\\MOVIE\\最後.mp4")//動画
 
 //画像
 class IMAGE
@@ -170,6 +171,7 @@ typedef struct MAP_ROOM
 	int x;
 	int y;
 	bool IsGimmickClear;
+	bool IsTimeAdd;
 
 	IPOINT StartPt;   //スタート地点
 	IPOINT GoalPt;	  //ゴール地点

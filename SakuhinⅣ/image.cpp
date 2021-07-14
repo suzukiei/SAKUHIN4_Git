@@ -1060,9 +1060,12 @@ VOID PLAY_DRAW(VOID)
 
 //メニュー画面の描画処理
 VOID MENU_DRAW(VOID)
-{
+{		
 	DrawGraph(IMAGE_MENU_WIDTH, IMAGE_MENU_HEIGHT, ImageMenu.GetHandle(), TRUE);
-	DrawGraph(IMAGE_MENU_BUTTON_SAVE_WIDTH, IMAGE_MENU_BUTTON_SAVE_HEIGHT, ButtonMenuSave.GetHandle(), TRUE);
+	if (player.InPass)
+	{
+		DrawGraph(IMAGE_MENU_BUTTON_SAVE_WIDTH, IMAGE_MENU_BUTTON_SAVE_HEIGHT, ButtonMenuSave.GetHandle(), TRUE);
+	}
 	DrawGraph(IMAGE_MENU_BUTTON_END_WIDTH, IMAGE_MENU_BUTTON_END_HEIGHT, ButtonMenuEnd.GetHandle(), TRUE);
 	//ボタンがエンドボタンに重なってる
 	if (SELECT == MENU_TITLE)
@@ -1084,6 +1087,7 @@ VOID END_DRAW(VOID)
 	switch (GameEndkind)
 	{
 	case GAME_END_COMP: //成功画面
+		PlayMovie(GAME_MOVIE_END_PATH, 1, DX_MOVIEPLAYTYPE_NORMAL);
 		DrawGraph(0, 0, ImageEndComp.GetHandle(), TRUE);
 		break;
 
