@@ -113,7 +113,7 @@ VOID DRAW_TEXT(VOID)
 			SetFontSize(30);
 
 			DrawGraph(IMAGE_TEXTBOX_WIDTH_PATH, IMAGE_TEXTBOX_HEIGHT_PATH, TextBox.GetHandle(), TRUE); //テキストボックスの画像
-			DrawString(TEXT_POSITION_X, TEXT_POSITION_Y, "カウントダウンが止まった。", TEXTCOLOR); //セリフ
+			DrawString(TEXT_POSITION_X, TEXT_POSITION_Y, "カウントダウンが止まった、時間も増えている。", TEXTCOLOR); //セリフ
 		
 
 
