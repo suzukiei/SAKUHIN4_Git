@@ -985,8 +985,8 @@ VOID PLAY_DRAW(VOID)
 	);
 
 	DrawGraph(IMAGE_CLOCK_WIDTH_PATH, IMAGE_CLOCK_HEIGHT_PATH, Clock.GetHandle(), TRUE);
-	SetFontSize(Clock.height);
-	DrawFormatString(0, 0, GetColor(255, 255, 255), "%d", GAME_TIME_LIMIT - TimeCounter.NOW());
+	SetFontSize(50);
+	DrawFormatString(CLOCK_TIME_WIDTH_PATH, CLOCK_TIME_HEIGHT_PATH, GetColor(255, 255, 255), "%d", GAME_TIME_LIMIT - TimeCounter.NOW());
 
 	DRAW_TEXT();
 
