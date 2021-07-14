@@ -7,6 +7,7 @@
 #include "variable.h"
 #include "GameProcHeader.h"
 #include "image.h"
+#include "textevent.h"
 
 #include<stdio.h>
 
@@ -984,7 +985,10 @@ VOID PLAY_DRAW(VOID)
 	);
 
 	DrawGraph(IMAGE_CLOCK_WIDTH_PATH, IMAGE_CLOCK_HEIGHT_PATH, Clock.GetHandle(), TRUE);
+	SetFontSize(Clock.height);
 	DrawFormatString(0, 0, GetColor(255, 255, 255), "%d", GAME_TIME_LIMIT - TimeCounter.NOW());
+
+	DRAW_TEXT();
 
 	return;
 }
