@@ -107,43 +107,46 @@ VOID PLAY_PROC(VOID)
 	if (player.InRoom)TimeCounter.START();
 	if (player.InPass)TimeCounter.STOP();
 
-	if (IsOpenMenu == FALSE)
+	if (IsDrawText == FALSE) 
 	{
-		if (onMoveGimmick == FALSE)
+		if (IsOpenMenu == FALSE)
 		{
-			if (MY_KEY_DOWN(KEY_INPUT_W))
+			if (onMoveGimmick == FALSE)
 			{
-				MOVEMENT((CHARA*)&player, UP);
+				if (MY_KEY_DOWN(KEY_INPUT_W))
+				{
+					MOVEMENT((CHARA*)&player, UP);
+				}
+				else if (MY_KEY_DOWN(KEY_INPUT_S))
+				{
+					MOVEMENT((CHARA*)&player, DOWN);
+				}
+				else if (MY_KEY_DOWN(KEY_INPUT_A))
+				{
+					MOVEMENT((CHARA*)&player, LEFT);
+				}
+				else if (MY_KEY_DOWN(KEY_INPUT_D))
+				{
+					MOVEMENT((CHARA*)&player, RIGHT);
+				}
 			}
-			else if (MY_KEY_DOWN(KEY_INPUT_S))
+
+			if (player.InRoom)GIMMICK();
+
+			CHECK_COLLISION_BACK();
+			if (mapRoom[player.nowRoom].IsGimmickClear)
 			{
-				MOVEMENT((CHARA*)&player, DOWN);
-			}
-			else if (MY_KEY_DOWN(KEY_INPUT_A))
-			{
-				MOVEMENT((CHARA*)&player, LEFT);
-			}
-			else if (MY_KEY_DOWN(KEY_INPUT_D))
-			{
-				MOVEMENT((CHARA*)&player, RIGHT);
+				CHECK_COLLISION_GOAL();
 			}
 		}
 
-		if(player.InRoom)GIMMICK();
-
-		CHECK_COLLISION_BACK();
-		if (mapRoom[player.nowRoom].IsGimmickClear)
+		if (player.InPass && MY_KEY_UP(KEY_INPUT_ESCAPE))
 		{
-			CHECK_COLLISION_GOAL();
+			IsOpenMenu = TRUE;
 		}
-	}
 
-	if (player.InPass && MY_KEY_UP(KEY_INPUT_ESCAPE))
-	{
-		IsOpenMenu = TRUE;
+		MENU();
 	}
-
-	MENU();
 
 	//デバッグ用
 	if (MY_KEY_UP(KEY_INPUT_Q))
@@ -156,7 +159,7 @@ VOID PLAY_PROC(VOID)
 
 VOID END_PROC(VOID)
 {
-	TEXTEVENT(TEXT_END);
+	SET_TEXT_NUMBER(TEXT_END);
 	GameScene = GAME_SCENE_START;
 	//デバッグ用
 	if (MY_KEY_UP(KEY_INPUT_RETURN))
@@ -175,8 +178,8 @@ VOID GIMMICK(VOID)
 	{
 		if (!mapRoom[player.nowRoom].IsGimmickClear) {
 			mapRoom[player.nowRoom].IsGimmickClear = TRUE;
-			if (player.nowRoom == MAZE_ROOM)TEXTEVENT(TEXT_STAGE2_START);
-			if (player.nowRoom == NOTSEEMAZE_ROOM)TEXTEVENT(TEXT_STAGE6_START);
+			if (player.nowRoom == MAZE_ROOM)SET_TEXT_NUMBER(TEXT_STAGE2_START);
+			if (player.nowRoom == NOTSEEMAZE_ROOM)SET_TEXT_NUMBER(TEXT_STAGE6_START);
 		}
 		break;
 	}
@@ -186,7 +189,7 @@ VOID GIMMICK(VOID)
 		if (!mapRoom[player.nowRoom].IsGimmickClear)
 		{
 			mapRoom[player.nowRoom].IsGimmickClear = TRUE;
-			TEXTEVENT(TEXT_STAGE4_START);
+			SET_TEXT_NUMBER(TEXT_STAGE4_START);
 		}
 
 		for (int i = 0; i < (int)gimMine.size(); i++)
@@ -243,7 +246,7 @@ VOID GIMMICK(VOID)
 			if (!mapRoom[player.nowRoom].IsGimmickClear)
 			{
 				mapRoom[player.nowRoom].IsGimmickClear = TRUE;
-				TEXTEVENT(TEXT_STAGE1_GMMICK_CLEAR);
+				SET_TEXT_NUMBER(TEXT_STAGE1_GMMICK_CLEAR);
 			}
 		}
 
@@ -326,7 +329,7 @@ VOID GIMMICK(VOID)
 		if (mapRoom[player.nowRoom].IsGimmickClear) 
 		{
 			mapRoom[player.nowRoom].IsGimmickClear = TRUE;
-			TEXTEVENT(TEXT_STAGE5_START);
+			SET_TEXT_NUMBER(TEXT_STAGE5_START);
 		}
 
 		for (int i = 0; i < GAME_GIMMICK_WARP_NUM; i++)
@@ -423,47 +426,44 @@ VOID GIMMICK(VOID)
 
 				flag = TRUE;
 			}
-			else if(CHECK_COLLISION(player.coll, gimMove[i].coll))
+			else if (CHECK_COLLISION(player.coll, gimMove[i].coll))
 			{
-				//if (onMoveGimmick)
+				switch (gimMove[i].kind)
 				{
-					switch (gimMove[i].kind)
+				case MAP_BLOOD_ARROW_BACK:
+					if (nowMoveGimmickDir == UP || nowMoveGimmickDir == DOWN)
 					{
-					case MAP_BLOOD_ARROW_BACK:
-						if (nowMoveGimmickDir == UP || nowMoveGimmickDir == DOWN)
-						{
-							onMoveGimmick = TRUE;
-							MOVEMENT(&player, DOWN);
-						}
-						break;
-
-					case MAP_BLOOD_ARROW_FRONT:
-						if (nowMoveGimmickDir == UP || nowMoveGimmickDir == DOWN)
-						{
-							onMoveGimmick = TRUE;
-							MOVEMENT(&player, UP);
-						}
-						break;
-
-					case MAP_BLOOD_ARROW_LEFT:
-						if (nowMoveGimmickDir == RIGHT || nowMoveGimmickDir == LEFT)
-						{
-							onMoveGimmick = TRUE;
-							MOVEMENT(&player, LEFT);
-						}
-						break;
-
-					case MAP_BLOOD_ARROW_RIGHT:
-						if (nowMoveGimmickDir == RIGHT || nowMoveGimmickDir == LEFT)
-						{
-							onMoveGimmick = TRUE;
-							MOVEMENT(&player, RIGHT);
-						}
-						break;
+						onMoveGimmick = TRUE;
+						MOVEMENT(&player, DOWN);
 					}
+					break;
 
-					flag = TRUE;
+				case MAP_BLOOD_ARROW_FRONT:
+					if (nowMoveGimmickDir == UP || nowMoveGimmickDir == DOWN)
+					{
+						onMoveGimmick = TRUE;
+						MOVEMENT(&player, UP);
+					}
+					break;
+
+				case MAP_BLOOD_ARROW_LEFT:
+					if (nowMoveGimmickDir == RIGHT || nowMoveGimmickDir == LEFT)
+					{
+						onMoveGimmick = TRUE;
+						MOVEMENT(&player, LEFT);
+					}
+					break;
+
+				case MAP_BLOOD_ARROW_RIGHT:
+					if (nowMoveGimmickDir == RIGHT || nowMoveGimmickDir == LEFT)
+					{
+						onMoveGimmick = TRUE;
+						MOVEMENT(&player, RIGHT);
+					}
+					break;
 				}
+
+				flag = TRUE;
 			}
 		}
 
