@@ -21,6 +21,6 @@ enum text {
     TEXT_END //’Eo‚Å‚«‚½‚Æ‚«
 };
 
-VOID TEXTEVENT(int);
-VOID TEXTPROC(int);
+VOID DRAW_TEXT(VOID);
+VOID SET_TEXT_NUMBER(int);
 

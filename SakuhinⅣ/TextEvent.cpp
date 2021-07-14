@@ -16,12 +16,13 @@ int textNumber;
 BOOL StringEndFlag;
 BOOL IsDrawText; //描画中か
 
-VOID TEXTEVENT(int textNumber)
+VOID DRAW_TEXT(VOID)
 {
 //必要な時に呼び出される
 		switch (textNumber) {
 		case TEXT_OP:
-
+			ChangeFontType(DX_FONTTYPE_ANTIALIASING_8X8);
+			SetFontSize(30);
 			DrawGraph(IMAGE_TEXTBOX_WIDTH_PATH,IMAGE_TEXTBOX_HEIGHT_PATH, TextBox.GetHandle(),TRUE); //テキストボックスの画像
 			DrawString(NAME_POSITION_X, NAME_POSITION_Y, "[永依]", TEXTCOLOR); //名前
 			DrawString(TEXT_POSITION_X, TEXT_POSITION_Y, "ここは一体…?この腕輪の装置はなに?", TEXTCOLOR); //セリフ
@@ -30,7 +31,7 @@ VOID TEXTEVENT(int textNumber)
 			break;
 
 		case TEXT_OP1:
-		
+			SetFontSize(30);
 			DrawGraph(IMAGE_TEXTBOX_WIDTH_PATH, IMAGE_TEXTBOX_HEIGHT_PATH, TextBox.GetHandle(), TRUE); //テキストボックスの画像
 			DrawString(NAME_POSITION_X, NAME_POSITION_Y, "[永依]", TEXTCOLOR); //名前
 			DrawString(TEXT_POSITION_X, TEXT_POSITION_Y, "カウントダウンが始まってる、とりあえずここから出ないと。", TEXTCOLOR); //セリフ
@@ -39,7 +40,7 @@ VOID TEXTEVENT(int textNumber)
 			break;
 
 		case TEXT_STAGE1_GMMICK_CLEAR:
-			
+			SetFontSize(30);
 			
 			DrawGraph(IMAGE_TEXTBOX_WIDTH_PATH,IMAGE_TEXTBOX_HEIGHT_PATH, TextBox.GetHandle(),TRUE); //テキストボックスの画像
 			DrawString(TEXT_POSITION_X, TEXT_POSITION_Y, "「カチッ」という音がした…", TEXTCOLOR); //扉が開いた
@@ -47,7 +48,7 @@ VOID TEXTEVENT(int textNumber)
 			break;
 
 		case TEXT_STAGE2_START:
-
+			SetFontSize(30);
 			
 			DrawGraph(IMAGE_TEXTBOX_WIDTH_PATH, IMAGE_TEXTBOX_HEIGHT_PATH, TextBox.GetHandle(), TRUE); //テキストボックスの画像
 			DrawString(NAME_POSITION_X, NAME_POSITION_Y, "[永依]", TEXTCOLOR); //名前
@@ -58,7 +59,7 @@ VOID TEXTEVENT(int textNumber)
 			break;
 
 		case TEXT_STAGE4_START:
-			
+			SetFontSize(30);
 		
 			DrawGraph(IMAGE_TEXTBOX_WIDTH_PATH, IMAGE_TEXTBOX_HEIGHT_PATH, TextBox.GetHandle(), TRUE); //テキストボックスの画像
 			DrawString(NAME_POSITION_X, NAME_POSITION_Y, "[永依]", TEXTCOLOR); //名前
@@ -69,7 +70,7 @@ VOID TEXTEVENT(int textNumber)
 			break;
 
 		case TEXT_STAGE5_START:
-
+			SetFontSize(30);
 			DrawGraph(IMAGE_TEXTBOX_WIDTH_PATH, IMAGE_TEXTBOX_HEIGHT_PATH, TextBox.GetHandle(), TRUE); //テキストボックスの画像
 			DrawString(NAME_POSITION_X, NAME_POSITION_Y, "[永依]", TEXTCOLOR); //名前
 			DrawString(TEXT_POSITION_X, TEXT_POSITION_Y, "周りの結界のようなものは何かしら…血生臭い…", TEXTCOLOR); //セリフ
@@ -78,7 +79,7 @@ VOID TEXTEVENT(int textNumber)
 			break;
 
 		case TEXT_STAGE6_START:
-
+			SetFontSize(30);
 			DrawGraph(IMAGE_TEXTBOX_WIDTH_PATH, IMAGE_TEXTBOX_HEIGHT_PATH, TextBox.GetHandle(), TRUE); //テキストボックスの画像
 			DrawString(NAME_POSITION_X, NAME_POSITION_Y, "[永依]", TEXTCOLOR); //名前
 			DrawString(TEXT_POSITION_X, TEXT_POSITION_Y, "この部屋は…何も無い?…", TEXTCOLOR); //セリフ
@@ -88,7 +89,7 @@ VOID TEXTEVENT(int textNumber)
 			break;
 
 		case TEXT_TIMEOVER:
-			
+			SetFontSize(30);
 			DrawGraph(IMAGE_TEXTBOX_WIDTH_PATH, IMAGE_TEXTBOX_HEIGHT_PATH, TextBox.GetHandle(), TRUE); //テキストボックスの画像
 			DrawString(NAME_POSITION_X, NAME_POSITION_Y, "[永依]", TEXTCOLOR); //名前
 			DrawString(TEXT_POSITION_X, TEXT_POSITION_Y, "あなたは・・・!", TEXTCOLOR); //セリフ
@@ -97,7 +98,7 @@ VOID TEXTEVENT(int textNumber)
 			
 			break;
 		case TEXT_END:
-
+			SetFontSize(30);
 		
 			DrawGraph(IMAGE_TEXTBOX_WIDTH_PATH, IMAGE_TEXTBOX_HEIGHT_PATH, TextBox.GetHandle(), TRUE); //テキストボックスの画像
 			DrawString(NAME_POSITION_X, NAME_POSITION_Y, "[永依]", TEXTCOLOR); //名前
@@ -114,70 +115,69 @@ VOID TEXTEVENT(int textNumber)
 
 
 
-VOID TEXTPROC(int textNumber)
+VOID SET_TEXT_NUMBER(int Number)
 {
 	//必要な時に呼び出される
-	switch (textNumber) {
+	switch (Number) {
 	case TEXT_OP:
 		IsDrawText = TRUE;
-		SetFontSize(30);
-		ChangeFontType(DX_FONTTYPE_ANTIALIASING_8X8);
 
+		textNumber = TEXT_OP;
 		
 		break;
 
 	case TEXT_OP1:
 		IsDrawText = TRUE;
-		SetFontSize(30);
-
+		
+		textNumber = TEXT_OP1;
 		
 		break;
 
 	case TEXT_STAGE1_GMMICK_CLEAR:
 		IsDrawText = TRUE;
-		SetFontSize(30);
 		
+		textNumber = TEXT_STAGE1_GMMICK_CLEAR;
 		break;
 
 	case TEXT_STAGE2_START:
 		IsDrawText = TRUE;
-		SetFontSize(30);
 	
+		textNumber = TEXT_STAGE2_START;
 
 	
 		break;
 
 	case TEXT_STAGE4_START:
 		IsDrawText = TRUE;
-		SetFontSize(30);
-
+		
+		textNumber = TEXT_STAGE4_START;
 		
 		break;
 
 	case TEXT_STAGE5_START:
 		IsDrawText = TRUE;
-		SetFontSize(30);
-	
+		
+		textNumber = TEXT_STAGE5_START;
 		
 		break;
 
 	case TEXT_STAGE6_START:
 		IsDrawText = TRUE;
-		SetFontSize(30);
 		
+		textNumber = TEXT_STAGE6_START;
 		
 		break;
 
 	case TEXT_TIMEOVER:
 		IsDrawText = TRUE;
-		SetFontSize(30);
-
+		
+		textNumber = TEXT_TIMEOVER;
 		
 		break;
 	case TEXT_END:
 		IsDrawText = TRUE;
-		SetFontSize(30);
-
+	
+		textNumber = TEXT_END;
 		
 		break;
 
