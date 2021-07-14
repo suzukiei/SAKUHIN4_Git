@@ -35,9 +35,9 @@ BOOL MOVEMENT(CHARA* chara,int move)
 	switch (move)
 	{
 	case UP:
-		if (chara.CharaMoveCnt < PLAYER_MOVE_MAX)
+		if (work.CharaMoveCnt < PLAYER_MOVE_MAX)
 		{
-			chara.CharaMoveCnt++;
+			work.CharaMoveCnt++;
 		}
 		else
 		{
@@ -45,7 +45,7 @@ BOOL MOVEMENT(CHARA* chara,int move)
 			work.CenterY -= CharaSpeed;
 			work.coll.top -= CharaSpeed;
 			work.coll.bottom -= CharaSpeed;
-			chara.CharaMoveCnt = 0;
+			work.CharaMoveCnt = 0;
 		}
 		 
 			if (work.kind1 >= CHARACHIP_UP_1 && work.kind1 < CHARACHIP_UP_3)
@@ -74,9 +74,9 @@ BOOL MOVEMENT(CHARA* chara,int move)
 
 	case DOWN:
 
-		if (chara.CharaMoveCnt < PLAYER_MOVE_MAX)
+		if (work.CharaMoveCnt < PLAYER_MOVE_MAX)
 		{
-			chara.CharaMoveCnt++;
+			work.CharaMoveCnt++;
 		}
 		else
 		{
@@ -85,7 +85,7 @@ BOOL MOVEMENT(CHARA* chara,int move)
 			work.CenterY += CharaSpeed;
 			work.coll.top += CharaSpeed;
 			work.coll.bottom += CharaSpeed;
-			chara.CharaMoveCnt = 0;
+			work.CharaMoveCnt = 0;
 		}
 	
 	
@@ -116,9 +116,9 @@ BOOL MOVEMENT(CHARA* chara,int move)
 
 	case RIGHT:
 
-		if (chara.CharaMoveCnt < PLAYER_MOVE_MAX)
+		if (work.CharaMoveCnt < PLAYER_MOVE_MAX)
 		{
-			chara.CharaMoveCnt++;
+			work.CharaMoveCnt++;
 		}
 		else
 		{
@@ -126,7 +126,7 @@ BOOL MOVEMENT(CHARA* chara,int move)
 			work.CenterX += CharaSpeed;
 			work.coll.left += CharaSpeed;
 			work.coll.right += CharaSpeed;
-			chara.CharaMoveCnt = 0;
+			work.CharaMoveCnt = 0;
 		}
 
 			if (work.kind1 >= CHARACHIP_RIGHT_1 && work.kind1 < CHARACHIP_RIGHT_3)
@@ -154,9 +154,9 @@ BOOL MOVEMENT(CHARA* chara,int move)
 	case LEFT:
 
 
-		if (chara.CharaMoveCnt < PLAYER_MOVE_MAX)
+		if (work.CharaMoveCnt < PLAYER_MOVE_MAX)
 		{
-			chara.CharaMoveCnt++;
+			work.CharaMoveCnt++;
 		}
 		else
 		{
@@ -164,7 +164,7 @@ BOOL MOVEMENT(CHARA* chara,int move)
 			work.CenterX -= CharaSpeed;
 			work.coll.left -= CharaSpeed;
 			work.coll.right -= CharaSpeed;
-			chara.CharaMoveCnt = 0;
+			work.CharaMoveCnt = 0;
 		}
 			if (work.kind1 >= CHARACHIP_LEFT_1 && work.kind1 < CHARACHIP_LEFT_3)
 			{
