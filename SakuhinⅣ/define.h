@@ -116,6 +116,10 @@
 #define IMAGE_CLOCK_WIDTH_PATH			750
 #define IMAGE_CLOCK_HEIGHT_PATH		0
 
+//êßå¿éûä‘èÍèä
+#define CLOCK_TIME_WIDTH_PATH		810
+#define CLOCK_TIME_HEIGHT_PATH		7
+
 //TextBoxÉpÉX
 #define IMAGE_TEXTBOX_PATH				TEXT(".\\IMAGE\\TextBox.png")
 #define IMAGE_TEXTBOX_WIDTH_PATH		0
