@@ -203,7 +203,7 @@ VOID GIMMICK(VOID)
 
 	case GIMMICK_MAZE:
 	{
-		if (!mapRoom[player.nowRoom].IsGimmickClear) {
+		if (mapRoom[player.nowRoom].IsGimmickClear == FALSE) {
 			mapRoom[player.nowRoom].IsGimmickClear = TRUE;
 			if (player.nowRoom == MAZE_ROOM)SET_TEXT_NUMBER(TEXT_STAGE2_START);
 			if (player.nowRoom == NOTSEEMAZE_ROOM)SET_TEXT_NUMBER(TEXT_STAGE6_START);
@@ -213,7 +213,7 @@ VOID GIMMICK(VOID)
 
 	case GIMMICK_MINE:
 	{
-		if (!mapRoom[player.nowRoom].IsGimmickClear)
+		if (mapRoom[player.nowRoom].IsGimmickClear == FALSE)
 		{
 			mapRoom[player.nowRoom].IsGimmickClear = TRUE;
 			SET_TEXT_NUMBER(TEXT_STAGE4_START);
@@ -270,7 +270,7 @@ VOID GIMMICK(VOID)
 		}
 		if (cou == (int)gimButton.size())
 		{
-			if (!mapRoom[player.nowRoom].IsGimmickClear)
+			if (mapRoom[player.nowRoom].IsGimmickClear == FALSE)
 			{
 				mapRoom[player.nowRoom].IsGimmickClear = TRUE;
 				SET_TEXT_NUMBER(TEXT_STAGE1_GMMICK_CLEAR);
@@ -284,6 +284,8 @@ VOID GIMMICK(VOID)
 	{
 		RECT target = player.coll;
 		RECT work;
+
+		mapRoom[player.nowRoom].IsGimmickClear = TRUE;
 
 		if (CHARACHIP_DOWN_1 <= player.kind1 && player.kind1 <= CHARACHIP_DOWN_3)
 		{
@@ -353,7 +355,7 @@ VOID GIMMICK(VOID)
 	{
 		int cou = 0;
 
-		if (mapRoom[player.nowRoom].IsGimmickClear) 
+		if (mapRoom[player.nowRoom].IsGimmickClear == FALSE) 
 		{
 			mapRoom[player.nowRoom].IsGimmickClear = TRUE;
 			SET_TEXT_NUMBER(TEXT_STAGE5_START);
@@ -610,8 +612,8 @@ VOID GIMMICK_DRAW()
 	case GIMMICK_MINE:
 		for (int i = 0; i < (int)gimMine.size(); i++)
 		{
-			DrawGraph(gimMine[i].x - (player.image.x - (GAME_WIDTH / 2)),
-				gimMine[i].y - (player.image.y - (GAME_HEIGHT / 2)),
+			DrawGraph(gimMine[i].x - (player.CenterX - (GAME_WIDTH / 2)),
+				gimMine[i].y - (player.CenterY - (GAME_HEIGHT / 2)),
 				mapChip.handle[gimMine[i].kind],
 				TRUE);
 		}
@@ -620,8 +622,8 @@ VOID GIMMICK_DRAW()
 	case GIMMICK_BUTTON:
 		for (int i = 0; i < (int)gimButton.size(); i++)
 		{
-			DrawGraph(gimButton[i].x - (player.image.x - (GAME_WIDTH / 2)),
-				gimButton[i].y - (player.image.y - (GAME_HEIGHT / 2)),
+			DrawGraph(gimButton[i].x - (player.CenterX - (GAME_WIDTH / 2)),
+				gimButton[i].y - (player.CenterY - (GAME_HEIGHT / 2)),
 				mapChip.handle[gimButton[i].kind],
 				TRUE);
 		}
@@ -630,8 +632,8 @@ VOID GIMMICK_DRAW()
 	case GIMMICK_PAZZLE:
 		for (int i = 0; i < (int)gimPazzle.size(); i++)
 		{
-			DrawGraph(gimPazzle[i].x - (player.image.x - (GAME_WIDTH / 2)),
-				gimPazzle[i].y - (player.image.y - (GAME_HEIGHT / 2)),
+			DrawGraph(gimPazzle[i].x - (player.CenterX - (GAME_WIDTH / 2)),
+				gimPazzle[i].y - (player.CenterY - (GAME_HEIGHT / 2)),
 				mapChip.handle[gimPazzle[i].kind],
 				TRUE);
 		}
