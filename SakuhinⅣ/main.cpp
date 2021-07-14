@@ -41,7 +41,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	SetWindowStyleMode(GAME_WINDOW_BAR);
 	SetMainWindowText(TEXT(GAME_WINDOW_NAME));
 
-	//SetWindowIconID(IDI_ICON1);
+	SetWindowIconID(IDI_ICON1);
 
 	MY_INIT();
 
