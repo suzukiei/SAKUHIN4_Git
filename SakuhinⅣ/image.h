@@ -26,8 +26,11 @@
 
 //敵の描画
 #define IMAGE_ENEMY_PATH		TEXT(".\\IMAGE\\enemy.png")		//プレイヤー画像パス
-#define ENEMY_WIDTH		64	//プレイヤー画像横
-#define ENEMY_HEIGHT		64	//プレイヤー画像縦
+#define ENEMY_WIDTH		    32	//プレイヤー画像横
+#define ENEMY_HEIGHT		48	//プレイヤー画像縦
+#define ENEMY_DIV_TATE		4	//プレイヤー画像縦分割数
+#define	ENEMY_DIV_YOKO		3	//プレイヤー画像横分割数
+#define ENEMY_DIV_NUM		ENEMY_DIV_TATE*ENEMY_DIV_YOKO		//プレイヤー画像総分割数
 
 
 #define GAME_MAP_PATH		TEXT(".\\IMAGE\\mapuse.png")		//マップ画像パス
