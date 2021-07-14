@@ -229,7 +229,7 @@ VOID GIMMICK(VOID)
 			target.bottom -= CharaSpeed;
 		}
 
-		if (MY_KEY_DOWN(KEY_INPUT_RETURN))
+		if (MY_KEY_UP(KEY_INPUT_RETURN))
 		{
 			for (int i = 0; i < (int)gimButton.size(); i++)
 			{
