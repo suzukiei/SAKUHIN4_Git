@@ -144,19 +144,19 @@ VOID PLAY_PROC(VOID)
 		{
 			if (onMoveGimmick == FALSE)
 			{
-				if (MY_KEY_DOWN(KEY_INPUT_W))
+				if (MY_KEY_DOWN(KEY_INPUT_W) || MY_KEY_DOWN(KEY_INPUT_UP))
 				{
 					MOVEMENT((CHARA*)&player, UP);
 				}
-				else if (MY_KEY_DOWN(KEY_INPUT_S))
+				else if (MY_KEY_DOWN(KEY_INPUT_S) || MY_KEY_DOWN(KEY_INPUT_DOWN))
 				{
 					MOVEMENT((CHARA*)&player, DOWN);
 				}
-				else if (MY_KEY_DOWN(KEY_INPUT_A))
+				else if (MY_KEY_DOWN(KEY_INPUT_A) || MY_KEY_DOWN(KEY_INPUT_LEFT))
 				{
 					MOVEMENT((CHARA*)&player, LEFT);
 				}
-				else if (MY_KEY_DOWN(KEY_INPUT_D))
+				else if (MY_KEY_DOWN(KEY_INPUT_D) || MY_KEY_DOWN(KEY_INPUT_RIGHT))
 				{
 					MOVEMENT((CHARA*)&player, RIGHT);
 				}
@@ -709,6 +709,7 @@ VOID PLAY_PLAYER_INIT(FIRST_POINT point)
 			player.image.x = mapRoom[player.nowRoom].StartPt.x * mapChip.width;
 			player.image.y = mapRoom[player.nowRoom].StartPt.y * mapChip.height;
 
+			enemy.nowRoom = player.nowRoom;
 
 			enemy.CenterX = mapRoom[player.nowRoom].StartPt.x * mapChip.width + (mapChip.width / 2);
 			enemy.CenterY = mapRoom[player.nowRoom].StartPt.y * mapChip.height + (mapChip.height / 2);
@@ -750,6 +751,7 @@ VOID PLAY_PLAYER_INIT(FIRST_POINT point)
 			player.image.x = mapRoom[player.nowRoom].GoalPt.x * mapChip.width;
 			player.image.y = mapRoom[player.nowRoom].GoalPt.y * mapChip.height + mapChip.height;
 
+			enemy.nowRoom = player.nowRoom;
 
 			enemy.CenterX = mapRoom[player.nowRoom].GoalPt.x * mapChip.width + (mapChip.width / 2);
 			enemy.CenterY = mapRoom[player.nowRoom].GoalPt.y * mapChip.height + (mapChip.height / 2) + mapChip.height;
