@@ -779,15 +779,19 @@ VOID FIRST_PLAYER_INIT()
 	player.InPass = FALSE;
 	player.InRoom = TRUE;
 
-	if (player.nowRoom != 0)
+	if (player.nowRoom != -1)
 	{
 		player.InPass = TRUE;
 		player.InRoom = FALSE;
 	}
+	else
+	{
+		player.nowRoom = 0;
+	}
 
 	enemy.CenterX = 0;
 	enemy.CenterY = 0;
-	enemy.nowRoom = LOADING();
+	enemy.nowRoom = player.nowRoom;
 	enemy.kind1 = CHARACHIP_UP_2;
 	enemy.InPass = FALSE;
 	enemy.InRoom = TRUE;
