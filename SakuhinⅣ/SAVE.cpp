@@ -34,12 +34,12 @@ int LOADING(VOID)
     fp = fopen(".\\SAVEDATA\\gamedata.txt", "r");
     if (fp == NULL) {
         IsFirstTime = TRUE;
-        return 0;
+        return -1;
     }
     int DATAWORK;
     
     if (fread(&DATAWORK, sizeof(DATAWORK), 1, fp) < 1) {
-        return 0;
+        return -1;
     }
 
     fclose(fp);
