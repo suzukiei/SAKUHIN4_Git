@@ -4,8 +4,6 @@
 #include"define.h"
 #include "class.h"
 
-//アイコンの設定
-#define IDI_ICON1    1001
 
 //プレイー画像
 #define IMAGE_PLAYER_PATH		TEXT(".\\IMAGE\\chara.png")		//プレイヤー画像パス

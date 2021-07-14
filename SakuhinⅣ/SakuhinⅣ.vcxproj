@@ -160,6 +160,7 @@
     <ClInclude Include="image.h" />
     <ClInclude Include="menu.h" />
     <ClInclude Include="movement.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="textevent.h" />
     <ClInclude Include="title.h" />
     <ClInclude Include="variable.h" />
@@ -175,6 +176,9 @@
     <ClCompile Include="SAVE.cpp" />
     <ClCompile Include="TextEvent.cpp" />
     <ClCompile Include="TITLE.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Resource.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

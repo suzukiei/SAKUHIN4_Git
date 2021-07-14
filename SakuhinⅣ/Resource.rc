@@ -1,3 +1,4 @@
-#include "image.h"
 
-IDI_ICON1 ICON "eye.ico"
+#include "Resource.h"
+
+IDI_ICON1 ICON ".\\IMAGE\\eye.ico"
