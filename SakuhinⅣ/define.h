@@ -123,36 +123,36 @@
 //TextBoxパス
 #define IMAGE_TEXTBOX_PATH				TEXT(".\\IMAGE\\TextBox.png")
 #define IMAGE_TEXTBOX_WIDTH_PATH		0
-#define IMAGE_TEXTBOX_HEIGHT_PATH		400
+#define IMAGE_TEXTBOX_HEIGHT_PATH		430
 
 //TEXT位置
-#define TEXT_POSITION_X 380 //テキストポジションXの値
-#define TEXT_POSITION_Y 300 //テキストポジションYの値
-#define NAME_POSITION_X 380 //テキストボックス内の名前の位置X
-#define NAME_POSITION_Y 280 //テキストボックス内の名前の位置Y 
+#define TEXT_POSITION_X 150 //テキストポジションXの値
+#define TEXT_POSITION_Y 500 //テキストポジションYの値
+#define NAME_POSITION_X 150 //テキストボックス内の名前の位置X
+#define NAME_POSITION_Y 450 //テキストボックス内の名前の位置Y 
 
 //playerキャラチップ
 #define IMAGE_PLAYER_PATH		TEXT(".\\IMAGE\\chara.png")
 
 //player真顔
 #define IMAGE_PLAYER_NOMAL_PATH			TEXT(".\\IMAGE\\playerface_nomal.png")
-#define IMAGE_PLAYER_NOMAL_WIDTH_PATH		50
-#define IMAGE_PLAYER_NOMAL_HEIGHT_PATH		700
+#define IMAGE_PLAYER_NOMAL_WIDTH_PATH		15
+#define IMAGE_PLAYER_NOMAL_HEIGHT_PATH		440
 
 //player笑顔
 #define IMAGE_PLAYER_SMILE_PATH			TEXT(".\\IMAGE\\playerface_smile.png")
-#define IMAGE_PLAYER_SMILE_WIDTH_PATH		50
-#define IMAGE_PLAYER_SMILE_HEIGHT_PATH		700
+#define IMAGE_PLAYER_SMILE_WIDTH_PATH		15
+#define IMAGE_PLAYER_SMILE_HEIGHT_PATH		440
 
 //player恐怖
 #define IMAGE_PLAYER_FEAR_PATH			TEXT(".\\IMAGE\\playerface_fear.png")
-#define IMAGE_PLAYER_FEAR_WIDTH_PATH		50
-#define IMAGE_PLAYER_FEAR_HEIGHT_PATH		700
+#define IMAGE_PLAYER_FEAR_WIDTH_PATH		15
+#define IMAGE_PLAYER_FEAR_HEIGHT_PATH		440
 
 //player困り顔
 #define IMAGE_PLAYER_TROUBLE_PATH			TEXT(".\\IMAGE\\playerface_trouble.png")
-#define IMAGE_PLAYER_TROUBLE_WIDTH_PATH		50
-#define IMAGE_PLAYER_TROUBLE_HEIGHT_PATH	700
+#define IMAGE_PLAYER_TROUBLE_WIDTH_PATH		15
+#define IMAGE_PLAYER_TROUBLE_HEIGHT_PATH	440
 
 //player立ち絵画像
 #define IMAGE_PLAYER_ORIGINAL_PATH			TEXT(".\\IMAGE\\player_original.png");
@@ -166,15 +166,19 @@
 #define MUSIC_LOAD_ERR_TITLE	TEXT("音楽読み込みエラー")
 
 //TITLE_BGM
-#define MUSIC_BGM_PATH_TITLE		TEXT(".\\BGM\\BGM_TITLE.mp3")
+#define MUSIC_BGM_PATH_TITLE		TEXT(".\\BGM.\\BGM候補\\DBGM01.wav")
 //PLEY_BGM
-#define MUSIC_BGM_PATH			TEXT(".\\BGM\\BGM_PLAY.mp3")
+#define MUSIC_BGM_PATH			TEXT(".\\BGM.\\BGM候補\\06.wav")
 //COMP_BGM
 #define MUSIC_BGM_COMP_PATH		TEXT(".\\BGM\\BGM_COMP.mp3")
 //END_BGM
-#define MUSIC_BGM_FAIL_PATH		TEXT(".\\BGM\\BGM_END.mp3")
+#define MUSIC_BGM_FAIL_PATH		TEXT(".\\BGM\\軋み.mp3")
 //SE_BGM
-#define MUSIC_BGM_SE_PATH			TEXT(".\\BGM\\BGM_SE.mp3")
+#define MUSIC_BGM_SE_PATH			TEXT(".\\BGM\\SE.mp3")
+
+#define MUSIC_BGM_SE_OPEN_PATH			TEXT(".\\BGM\\OPEN_SE.mp3")
+
+#define MUSIC_BGM_SE_MENU_PATH			TEXT(".\\BGM\\MENU_SE.mp3")
 
 //MAP
 #define GAME_MAP_TATE_MAX
