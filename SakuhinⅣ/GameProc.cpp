@@ -103,7 +103,14 @@ VOID RULE_PROC(VOID)
 	//デバッグ用
 	if (MY_KEY_UP(KEY_INPUT_RETURN))
 	{
-		GameScene = GAME_SCENE_START;
+		if (GameRuleNo == GAME_RULE_PAGE_ONE)
+		{
+			GameRuleNo = GAME_RULE_PAGE_TWO;
+		}
+		else
+		{
+			GameScene = GAME_SCENE_START;
+		}
 	}
 
 	return;
@@ -792,6 +799,12 @@ VOID FIRST_PLAYER_INIT()
 	else
 	{
 		player.nowRoom = 0;
+	}
+
+	for (int i = 0; i < player.nowRoom; i++)
+	{
+		mapRoom[i].IsGimmickClear = TRUE;
+		mapRoom[i].IsTimeAdd = TRUE;
 	}
 
 	enemy.CenterX = 0;
