@@ -70,6 +70,7 @@
 
 //ƒ‹[ƒ‹‰æ‘œ
 #define IMAGE_RULE_PATH	TEXT(".\\IMAGE\\rule.png")
+#define IMAGE_RULE2_PATH	TEXT(".\\IMAGE\\rule2.png")
 
 //¬Œ÷	
 #define IMAGE_END_COMP_PATH	TEXT(".\\IMAGE\\COMP_kari.png")
