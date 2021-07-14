@@ -17,6 +17,7 @@ public:
 	int imgChangeCnt;            //変更したい画像
 	int imgChangeCntMAX;         //変更する画像の最大
 	int nowRoom;                 //今いる階層
+	int CharaMoveCnt;            //キャラクターの移動管理
 	//int  Dire;                   //向いている方向
 	BOOL InRoom = false;         //部屋にいるかどうか
 	BOOL InPass = false;         //通路に居るかどうか

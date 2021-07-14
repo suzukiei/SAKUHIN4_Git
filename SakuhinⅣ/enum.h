@@ -23,6 +23,13 @@ enum MENU_SELECT
 	MENU_SAVE //セーブボタン選択時
 };
 
+//ルール画面
+enum GAME_RULE
+{
+	GAME_RULE_PAGE_ONE,
+	GAME_RULE_PAGE_TWO
+};
+
 
 
 //マップチップ
