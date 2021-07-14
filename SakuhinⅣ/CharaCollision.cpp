@@ -92,7 +92,7 @@ VOID CHECK_COLLISION_GOAL(VOID)
 			
 			if (CHECK_COLLISION(player.coll, mapColl[mapRoom[player.nowRoom].GoalPt.y][mapRoom[player.nowRoom].GoalPt.x]))
 			{
-				if (player.nowRoom >= ROOM_NUM) {
+				if (player.nowRoom + 1 >= ROOM_NUM) {
 					GameScene = GAME_SCENE_END;
 					GameEndkind = GAME_END_COMP;
 				}
