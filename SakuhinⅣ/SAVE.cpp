@@ -49,6 +49,6 @@ int LOADING(VOID)
 
     fclose(fp);
     IsFirstTime = FALSE;
-    TimeCounter.LOADTIME(DATAWORK,TIME);
+    TimeCounter.LOADTIME(TIME);
     return DATAWORK;
 }

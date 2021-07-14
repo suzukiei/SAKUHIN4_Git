@@ -1,11 +1,17 @@
-#include "Dxlib.h"
-#include "movement.h"
-#include "enum.h"
-#include "define.h"
-#include "menu.h"
+#include "DxLib.h"
+#include "BGM.h"
 #include "class.h"
-#include "variable.h"
+#include "define.h"
+#include "enum.h"
 #include "flag.h"
+#include "GameProcHeader.h"
+#include "image.h"
+#include "menu.h"
+#include "movement.h"
+#include "textevent.h"
+#include "title.h"
+#include "variable.h"
+
 
 int SELECT = 0;
 BOOL IsOpenMenu = FALSE;
@@ -63,7 +69,7 @@ VOID MENU(VOID)
 				if (MY_KEY_UP(KEY_INPUT_RETURN) == TRUE)
 				{
 					//ここにセーブ機能
-					SAVING(player.nowRoom);
+					SAVING(player.nowRoom,TimeCounter.NOW());
 					IsOpenMenu = FALSE;
 					SELECT = MENU_TITLE;
 
