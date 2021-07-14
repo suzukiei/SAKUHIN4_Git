@@ -17,7 +17,7 @@
 //キーボードの入力を取得
 char AllKeyState[KEY_CODE_KIND] = { '\0' };		//すべてのキーの状態が入る
 char OldAllKeyState[KEY_CODE_KIND] = { '\0' };	//すべてのキーの状態(直前)が入る
-int CharaMoveCnt = 0;
+
 
 //BOOL CHARA_COLLISION(CHARA, CHARA)
 //{
@@ -35,9 +35,9 @@ BOOL MOVEMENT(CHARA* chara,int move)
 	switch (move)
 	{
 	case UP:
-		if (CharaMoveCnt < PLAYER_MOVE_MAX)
+		if (chara.CharaMoveCnt < PLAYER_MOVE_MAX)
 		{
-			CharaMoveCnt++;
+			chara.CharaMoveCnt++;
 		}
 		else
 		{
@@ -45,7 +45,7 @@ BOOL MOVEMENT(CHARA* chara,int move)
 			work.CenterY -= CharaSpeed;
 			work.coll.top -= CharaSpeed;
 			work.coll.bottom -= CharaSpeed;
-			CharaMoveCnt = 0;
+			chara.CharaMoveCnt = 0;
 		}
 		 
 			if (work.kind1 >= CHARACHIP_UP_1 && work.kind1 < CHARACHIP_UP_3)
@@ -74,9 +74,9 @@ BOOL MOVEMENT(CHARA* chara,int move)
 
 	case DOWN:
 
-		if (CharaMoveCnt < PLAYER_MOVE_MAX)
+		if (chara.CharaMoveCnt < PLAYER_MOVE_MAX)
 		{
-			CharaMoveCnt++;
+			chara.CharaMoveCnt++;
 		}
 		else
 		{
@@ -85,7 +85,7 @@ BOOL MOVEMENT(CHARA* chara,int move)
 			work.CenterY += CharaSpeed;
 			work.coll.top += CharaSpeed;
 			work.coll.bottom += CharaSpeed;
-			CharaMoveCnt = 0;
+			chara.CharaMoveCnt = 0;
 		}
 	
 	
@@ -116,9 +116,9 @@ BOOL MOVEMENT(CHARA* chara,int move)
 
 	case RIGHT:
 
-		if (CharaMoveCnt < PLAYER_MOVE_MAX)
+		if (chara.CharaMoveCnt < PLAYER_MOVE_MAX)
 		{
-			CharaMoveCnt++;
+			chara.CharaMoveCnt++;
 		}
 		else
 		{
@@ -126,7 +126,7 @@ BOOL MOVEMENT(CHARA* chara,int move)
 			work.CenterX += CharaSpeed;
 			work.coll.left += CharaSpeed;
 			work.coll.right += CharaSpeed;
-			CharaMoveCnt = 0;
+			chara.CharaMoveCnt = 0;
 		}
 
 			if (work.kind1 >= CHARACHIP_RIGHT_1 && work.kind1 < CHARACHIP_RIGHT_3)
@@ -154,9 +154,9 @@ BOOL MOVEMENT(CHARA* chara,int move)
 	case LEFT:
 
 
-		if (CharaMoveCnt < PLAYER_MOVE_MAX)
+		if (chara.CharaMoveCnt < PLAYER_MOVE_MAX)
 		{
-			CharaMoveCnt++;
+			chara.CharaMoveCnt++;
 		}
 		else
 		{
@@ -164,7 +164,7 @@ BOOL MOVEMENT(CHARA* chara,int move)
 			work.CenterX -= CharaSpeed;
 			work.coll.left -= CharaSpeed;
 			work.coll.right -= CharaSpeed;
-			CharaMoveCnt = 0;
+			chara.CharaMoveCnt = 0;
 		}
 			if (work.kind1 >= CHARACHIP_LEFT_1 && work.kind1 < CHARACHIP_LEFT_3)
 			{
