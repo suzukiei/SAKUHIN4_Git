@@ -25,7 +25,7 @@ VOID DRAW_TEXT(VOID)
 			SetFontSize(30);
 			DrawGraph(IMAGE_TEXTBOX_WIDTH_PATH,IMAGE_TEXTBOX_HEIGHT_PATH, TextBox.GetHandle(),TRUE); //テキストボックスの画像
 			DrawString(NAME_POSITION_X, NAME_POSITION_Y, "[永依]", TEXTCOLOR); //名前
-			DrawString(TEXT_POSITION_X, TEXT_POSITION_Y, "ここは一体…?この腕輪の装置はなに?", TEXTCOLOR); //セリフ
+			DrawString(TEXT_POSITION_X, TEXT_POSITION_Y, "ここは一体…?この手首の装置はなに?", TEXTCOLOR); //セリフ
 			DrawGraph(IMAGE_PLAYER_NOMAL_WIDTH_PATH, IMAGE_PLAYER_NOMAL_HEIGHT_PATH, PlayerFear.GetHandle(),TRUE);//キャラの表情差分
 			
 			
