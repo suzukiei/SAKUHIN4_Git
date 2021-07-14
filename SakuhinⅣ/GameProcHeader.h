@@ -56,6 +56,12 @@ public:
 
 		   return;
 	   }
+	   //----セーブデータが存在する場合の初期化----
+	   VOID LOADTIME(int second)
+	   {
+		   TimeCou = second * GAME_FPS;
+		   return;
+	   }
 };
 
 typedef struct STR_GIMMICK_OBJECT
