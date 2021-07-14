@@ -210,6 +210,8 @@
 
 //何故拉致られたのかの動画
 #define MOVIE_START_PATH		TEXT(".\\MOVIE\\序章.mp4")
+//クリア後ムービー
+#define MOVIE_END_PATH		TEXT(".\\MOVIE\\最後.mp4")
 
 typedef struct STRUCT_IPOINT
 {
