@@ -1041,7 +1041,7 @@ VOID PLAY_DRAW(VOID)
 	SetFontSize(50);
 	if (GAME_TIME_LIMIT - TimeCounter.NOW() >= 0)
 	{
-		DrawFormatString(CLOCK_TIME_WIDTH_PATH, CLOCK_TIME_HEIGHT_PATH, GetColor(255, 255, 255), "%-3d", GAME_TIME_LIMIT - TimeCounter.NOW());
+		DrawFormatString(CLOCK_TIME_WIDTH_PATH, CLOCK_TIME_HEIGHT_PATH, GetColor(255, 255, 255), "%3d", GAME_TIME_LIMIT - TimeCounter.NOW());
 	}
 	else if (GAME_TIME_LIMIT - TimeCounter.NOW() < 0 && player.InRoom)
 	{
@@ -1066,7 +1066,7 @@ VOID PLAY_DRAW(VOID)
 			//ˆÃˆÅ‚Ì•\Ž¦‰E
 			DrawBox(WINDOW_WIDTH - workX, 0, WINDOW_WIDTH, WINDOW_HEIGHT, GetColor(0, 0, 0), TRUE);
 
-		DrawFormatString(CLOCK_TIME_WIDTH_PATH, CLOCK_TIME_HEIGHT_PATH, GetColor(255, 0, 0), "%-3d", GAME_TIME_LIMIT - TimeCounter.NOW());
+		DrawFormatString(CLOCK_TIME_WIDTH_PATH, CLOCK_TIME_HEIGHT_PATH, GetColor(255, 0, 0), "%3d", GAME_TIME_LIMIT - TimeCounter.NOW());
 	}
 
 	DrawGraph(IMAGE_CLOCK_WIDTH_PATH, IMAGE_CLOCK_HEIGHT_PATH, Clock.GetHandle(), TRUE);
