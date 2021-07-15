@@ -188,10 +188,12 @@ VOID PLAY_PROC(VOID)
 	}
 
 	//デバッグ用
+	/*
 	if (MY_KEY_UP(KEY_INPUT_Q))
 	{
 		GameScene = GAME_SCENE_END;
 	}
+	*/
 
 	return;
 }
@@ -200,7 +202,6 @@ VOID END_PROC(VOID)
 {
 	SET_TEXT_NUMBER(TEXT_END);
 	//GameScene = GAME_SCENE_START;
-	//デバッグ用
 	if (MY_KEY_UP(KEY_INPUT_RETURN))
 	{
 		GameScene = GAME_SCENE_START;
