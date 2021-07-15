@@ -128,7 +128,7 @@
 
 //TEXT位置
 #define TEXT_POSITION_X 150 //テキストポジションXの値
-#define TEXT_POSITION_Y 500 //テキストポジションYの値
+#define TEXT_POSITION_Y 480 //テキストポジションYの値
 #define NAME_POSITION_X 150 //テキストボックス内の名前の位置X
 #define NAME_POSITION_Y 450 //テキストボックス内の名前の位置Y 
 
