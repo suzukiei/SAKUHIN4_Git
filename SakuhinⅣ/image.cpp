@@ -1111,6 +1111,7 @@ VOID END_DRAW(VOID)
 	case GAME_END_COMP: //ê¨å˜âÊñ 
 		PlayMovie(GAME_MOVIE_END_PATH, 1, DX_MOVIEPLAYTYPE_NORMAL);
 		DrawGraph(0, 0, ImageEndComp.GetHandle(), TRUE);
+		GameScene = GAME_SCENE_START;
 		break;
 
 	case GAME_END_FAIL: //é∏îsâÊñ 
