@@ -784,7 +784,6 @@ VOID PLAY_PLAYER_INIT(FIRST_POINT point)
 	return;
 }
 
-
 VOID FIRST_PLAYER_INIT()
 {
 	TimeCounter.RESET();
@@ -799,16 +798,16 @@ VOID FIRST_PLAYER_INIT()
 	{
 		player.InPass = TRUE;
 		player.InRoom = FALSE;
+
+		for (int i = 0; i <= player.nowRoom; i++)
+		{
+			mapRoom[i].IsGimmickClear = TRUE;
+			mapRoom[i].IsTimeAdd = TRUE;
+		}
 	}
 	else
 	{
 		player.nowRoom = 0;
-	}
-
-	for (int i = 0; i < player.nowRoom; i++)
-	{
-		mapRoom[i].IsGimmickClear = TRUE;
-		mapRoom[i].IsTimeAdd = TRUE;
 	}
 
 	enemy.CenterX = 0;
