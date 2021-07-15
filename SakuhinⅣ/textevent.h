@@ -17,6 +17,7 @@ enum text {
     TEXT_TIMEOVER,//時間切れになった瞬間
     TEXT_END, //脱出できたとき
     TEXT_TIMESTOP,//廊下に出たとき
+    TEXT_NOTIMEADD,//廊下に出たが、時間が加算されていないとき
 };
 
 VOID DRAW_TEXT(VOID);

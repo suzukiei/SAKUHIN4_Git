@@ -35,7 +35,8 @@ VOID DRAW_TEXT(VOID)
 			SetFontSize(30);
 			DrawGraph(IMAGE_TEXTBOX_WIDTH_PATH, IMAGE_TEXTBOX_HEIGHT_PATH, TextBox.GetHandle(), TRUE); //テキストボックスの画像
 			DrawString(NAME_POSITION_X, NAME_POSITION_Y, "[永依]", TEXTCOLOR); //名前
-			DrawString(TEXT_POSITION_X, TEXT_POSITION_Y, "カウントダウンが始まってる、とりあえずここから出ないと。", TEXTCOLOR); //セリフ
+			DrawString(TEXT_POSITION_X -20, TEXT_POSITION_Y, "カウントダウンが始まってる、とりあえずここから出ないと…", TEXTCOLOR); //セリフ
+			DrawString(TEXT_POSITION_X -20, TEXT_POSITION_Y + 30, "手掛かりを探そう。", TEXTCOLOR); //セリフ
 			DrawGraph(IMAGE_PLAYER_NOMAL_WIDTH_PATH, IMAGE_PLAYER_NOMAL_HEIGHT_PATH, PlayerNomal.GetHandle(), TRUE);//キャラの表情差分
 
 			break;
@@ -112,11 +113,16 @@ VOID DRAW_TEXT(VOID)
 		case TEXT_TIMESTOP:
 			SetFontSize(30);
 
+			
+
 			DrawGraph(IMAGE_TEXTBOX_WIDTH_PATH, IMAGE_TEXTBOX_HEIGHT_PATH, TextBox.GetHandle(), TRUE); //テキストボックスの画像
 			DrawString(TEXT_POSITION_X, TEXT_POSITION_Y, "カウントダウンが止まった、時間も増えている。", TEXTCOLOR); //セリフ
-		
+			break;
 
+		case TEXT_NOTIMEADD:
 
+			DrawGraph(IMAGE_TEXTBOX_WIDTH_PATH, IMAGE_TEXTBOX_HEIGHT_PATH, TextBox.GetHandle(), TRUE); //テキストボックスの画像
+			DrawString(TEXT_POSITION_X, TEXT_POSITION_Y, "カウントダウンが止まった。", TEXTCOLOR); //セリフ
 			break;
 			
 
@@ -198,6 +204,14 @@ VOID SET_TEXT_NUMBER(int Number)
 		textNumber = TEXT_TIMESTOP;
 
 		break;
+
+	case TEXT_NOTIMEADD:
+
+		IsDrawText = TRUE;
+		textNumber = TEXT_NOTIMEADD;
+
+		break;
+
 
 	}
 	return;

@@ -100,13 +100,16 @@ VOID CHECK_COLLISION_GOAL(VOID)
 
 					if (mapRoom[player.nowRoom].IsTimeAdd == FALSE)
 					{
+						SET_TEXT_NUMBER(TEXT_TIMESTOP);
 						mapRoom[player.nowRoom].IsTimeAdd = TRUE;
 						TimeCounter.SUBTIME();
+					}
+					else{
+						SET_TEXT_NUMBER(TEXT_NOTIMEADD);
 					}
 
 					player.InRoom = FALSE;
 					player.InPass = TRUE;
-					SET_TEXT_NUMBER(TEXT_TIMESTOP);
 					PLAY_PLAYER_INIT(START_POINT);
 				}
 			}
