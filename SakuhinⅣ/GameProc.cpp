@@ -136,6 +136,7 @@ VOID PLAY_PROC(VOID)
 
 	if (player.InRoom)TimeCounter.START();
 	if (player.InPass)TimeCounter.STOP();
+	if (TimeCounter.NOW() == GAME_TIME_LIMIT)SET_TEXT_NUMBER(TEXT_TIMEOVER);
 
 	if(IsDrawText)TEXT_END_KEY();
 
@@ -788,6 +789,7 @@ VOID PLAY_PLAYER_INIT(FIRST_POINT point)
 VOID FIRST_PLAYER_INIT()
 {
 	TimeCounter.RESET();
+	IsComingDarkness = FALSE;
 	player.CenterX = 0;
 	player.CenterY = 0;
 	player.nowRoom = LOADING();
