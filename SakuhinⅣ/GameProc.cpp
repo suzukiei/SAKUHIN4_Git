@@ -81,6 +81,7 @@ VOID START_PROC(VOID)
 		PLAY_PLAYER_INIT(START_POINT);
 		MoviePlayed = FALSE;
 		FirstTxetViewed = FALSE;
+		GIMMICK_OBJ_ALL_INIT();
 		MY_LOAD_CSV();
 	}
 	/*デバッグ用
@@ -358,7 +359,6 @@ VOID GIMMICK(VOID)
 				}
 			}
 		}
-
 		break;
 	}
 
@@ -793,6 +793,12 @@ VOID FIRST_PLAYER_INIT()
 	player.kind1 = CHARACHIP_UP_2;
 	player.InPass = FALSE;
 	player.InRoom = TRUE;
+
+	for (int i = 0; i < ROOM_NUM; i++)
+	{
+		mapRoom[i].IsGimmickClear = FALSE;
+		mapRoom[i].IsTimeAdd = FALSE;
+	}
 
 	if (player.nowRoom != -1)
 	{
