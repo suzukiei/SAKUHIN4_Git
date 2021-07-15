@@ -23,3 +23,6 @@ extern BOOL IsOpenMenu;
 
 //テキストが描画中であるか
 extern BOOL IsDrawText;
+
+//視界が狭まってきているか
+extern BOOL IsComingDarkness;

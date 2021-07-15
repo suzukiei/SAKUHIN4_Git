@@ -15,6 +15,7 @@
 int textNumber;
 BOOL StringEndFlag;
 BOOL IsDrawText; //描画中か
+BOOL IsComingDarkness;
 
 VOID DRAW_TEXT(VOID)
 {
@@ -75,7 +76,7 @@ VOID DRAW_TEXT(VOID)
 			SetFontSize(30);
 			DrawGraph(IMAGE_TEXTBOX_WIDTH_PATH, IMAGE_TEXTBOX_HEIGHT_PATH, TextBox.GetHandle(), TRUE); //テキストボックスの画像
 			DrawString(NAME_POSITION_X, NAME_POSITION_Y, "[永依]", TEXTCOLOR); //名前
-			DrawString(TEXT_POSITION_X, TEXT_POSITION_Y, "周りの結界のようなものは何かしら…血生臭い…", TEXTCOLOR); //セリフ
+			DrawString(TEXT_POSITION_X, TEXT_POSITION_Y, "周りの魔法陣のようなものは何かしら…血生臭い…", TEXTCOLOR); //セリフ
 			DrawGraph(IMAGE_PLAYER_NOMAL_WIDTH_PATH, IMAGE_PLAYER_NOMAL_HEIGHT_PATH, PlayerTrouble.GetHandle(), TRUE);//キャラの表情差分
 
 			break;
@@ -92,12 +93,15 @@ VOID DRAW_TEXT(VOID)
 
 		case TEXT_TIMEOVER:
 			SetFontSize(30);
-			DrawGraph(IMAGE_TEXTBOX_WIDTH_PATH, IMAGE_TEXTBOX_HEIGHT_PATH, TextBox.GetHandle(), TRUE); //テキストボックスの画像
-			DrawString(NAME_POSITION_X, NAME_POSITION_Y, "[永依]", TEXTCOLOR); //名前
-			DrawString(TEXT_POSITION_X, TEXT_POSITION_Y, "あなたは・・・!", TEXTCOLOR); //セリフ
-			DrawGraph(IMAGE_PLAYER_NOMAL_WIDTH_PATH, IMAGE_PLAYER_NOMAL_HEIGHT_PATH, PlayerTrouble.GetHandle(), TRUE);//キャラの表情差分
-
-			
+			if (IsComingDarkness == TRUE)
+			{
+				IsDrawText = FALSE;
+			}
+			else {
+				DrawGraph(IMAGE_TEXTBOX_WIDTH_PATH, IMAGE_TEXTBOX_HEIGHT_PATH, TextBox.GetHandle(), TRUE); //テキストボックスの画像
+				DrawString(TEXT_POSITION_X, TEXT_POSITION_Y, "視界が狭まってきているようだ…", TEXTCOLOR); //セリフ
+				IsComingDarkness = TRUE;
+			}
 			break;
 		case TEXT_END:
 			SetFontSize(30);
