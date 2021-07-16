@@ -1,8 +1,17 @@
 #include "DxLib.h"
 #include "BGM.h"
+#include "class.h"
+#include "define.h"
 #include "enum.h"
+#include "flag.h"
+#include "GameProcHeader.h"
+#include "image.h"
+#include "menu.h"
+#include "movement.h"
+#include "textevent.h"
+#include "title.h"
 #include "variable.h"
-
+#include "resource.h"
 
 MUSIC BGM_TITLE;
 MUSIC BGM_PLAY;
@@ -41,9 +50,11 @@ VOID TITLE_BGM(VOID)
 
 VOID PLAY_BGM(VOID)
 {
-	if (CheckSoundMem(BGM_PLAY.GetHandle()) == 0)
-	{
-		PlaySoundMem(BGM_PLAY.GetHandle(), DX_PLAYTYPE_LOOP);
+	if (TimeCounter.NOW() > GAME_TIME_LIMIT) {
+		if (CheckSoundMem(BGM_PLAY.GetHandle()) == 0)
+		{
+			PlaySoundMem(BGM_PLAY.GetHandle(), DX_PLAYTYPE_LOOP);
+		}
 	}
 
 	//ƒ^ƒCƒgƒ‹BGM‚ª—¬‚ê‚Ä‚¢‚½‚çŽ~‚ß‚é
