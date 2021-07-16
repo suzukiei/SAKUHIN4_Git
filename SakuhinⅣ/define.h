@@ -169,7 +169,7 @@
 //TITLE_BGM
 #define MUSIC_BGM_PATH_TITLE		TEXT(".\\BGM.\\BGMŒó•â\\DBGM01.wav")
 //PLEY_BGM
-#define MUSIC_BGM_PATH			TEXT(".\\BGM.\\BGMŒó•â\\06.wav")
+#define MUSIC_BGM_PATH			TEXT(".\\BGM.\\BGMŒó•â\\DBGM03.wav")
 //COMP_BGM
 //#define MUSIC_BGM_COMP_PATH		TEXT(".\\BGM\\BGM_COMP.mp3")
 //END_BGM

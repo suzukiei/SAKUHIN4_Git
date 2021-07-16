@@ -110,6 +110,7 @@ VOID CHECK_COLLISION_GOAL(VOID)
 
 					player.InRoom = FALSE;
 					player.InPass = TRUE;
+					SE_OPEN_BGM();
 					PLAY_PLAYER_INIT(START_POINT);
 				}
 			}
@@ -121,7 +122,7 @@ VOID CHECK_COLLISION_GOAL(VOID)
 				player.InRoom = TRUE;
 				player.nowRoom++;
 				player.InPass = FALSE;
-
+				SE_OPEN_BGM();
 				PLAY_PLAYER_INIT(START_POINT);
 
 			}
@@ -141,6 +142,7 @@ VOID CHECK_COLLISION_BACK(VOID)
 				player.InRoom = FALSE;
 				player.nowRoom--;
 				player.InPass = TRUE;
+				SE_OPEN_BGM();
 				PLAY_PLAYER_INIT(GOAL_POINT);
 			}
 			else {
@@ -156,7 +158,7 @@ VOID CHECK_COLLISION_BACK(VOID)
 		{
 			player.InRoom = TRUE;		
 			player.InPass = FALSE;
-
+			SE_OPEN_BGM();
 			PLAY_PLAYER_INIT(GOAL_POINT);
 
 		}
