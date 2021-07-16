@@ -93,15 +93,11 @@ VOID DRAW_TEXT(VOID)
 
 		case TEXT_TIMEOVER:
 			SetFontSize(30);
-			if (IsComingDarkness == TRUE)
-			{
-				IsDrawText = FALSE;
-			}
-			else {
+			
 				DrawGraph(IMAGE_TEXTBOX_WIDTH_PATH, IMAGE_TEXTBOX_HEIGHT_PATH, TextBox.GetHandle(), TRUE); //テキストボックスの画像
 				DrawString(TEXT_POSITION_X, TEXT_POSITION_Y, "視界が狭まってきているようだ…", TEXTCOLOR); //セリフ
-				IsComingDarkness = TRUE;
-			}
+				
+			
 			break;
 		case TEXT_END:
 			SetFontSize(30);
@@ -193,6 +189,13 @@ VOID SET_TEXT_NUMBER(int Number)
 		IsDrawText = TRUE;
 		
 		textNumber = TEXT_TIMEOVER;
+
+		if (IsComingDarkness == TRUE) {
+
+			IsDrawText = FALSE;
+
+
+		}
 		
 		break;
 	case TEXT_END:
@@ -233,6 +236,21 @@ VOID TEXT_END_KEY(VOID)
 		else {
 			IsDrawText = FALSE;
 		}
+
+		if (textNumber == TEXT_TIMEOVER )
+		{
+			
+
+			
+
+			
+			if(IsComingDarkness == FALSE)
+			{
+				IsComingDarkness = TRUE;
+			}
+
+		}
+	
 		
 	}
 
