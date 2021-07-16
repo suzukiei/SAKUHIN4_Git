@@ -180,9 +180,10 @@ VOID PLAY_PROC(VOID)
 			}
 		}
 
-		if (MY_KEY_UP(KEY_INPUT_ESCAPE))
+		if (MY_KEY_UP(KEY_INPUT_ESCAPE) && IsOpenMenu == FALSE)
 		{
 			IsOpenMenu = TRUE;
+			SE_MENU_BGM();
 		}
 
 		MENU();
